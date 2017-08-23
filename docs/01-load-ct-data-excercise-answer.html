@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Eduard Bukin" />
+
+<meta name="date" content="2017-08-23" />
+
+<title>Loading COMTRADE/WITS data</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Trade data sources and practice</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="00-data-sources.html">
+    <span class="fa fa-info"></span>
+     
+    Trade data sources
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    Data manipulation practice in R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R practice</li>
+    <li>
+      <a href="01-data-import.html">Loading COMTRADE data in R</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Excercises</li>
+    <li>
+      <a href="01-load-ct-data-excercise.html">Load data</a>
+    </li>
+    <li>
+      <a href="02-filter-ct-data-excercise.html">Filter data</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Answers</li>
+    <li>
+      <a href="01-load-ct-data-excercise-answer.html">Load data</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Loading COMTRADE/WITS data</h1>
+<h4 class="author"><em>Eduard Bukin</em></h4>
+<h4 class="date"><em>August 23, 2017</em></h4>
+
+</div>
+
+
+<div id="ex" class="section level2">
+<h2>1. Ex</h2>
+<p>Load according to the following predefined parameters from two different sources (WITS and COMTRADE) and compare the results:</p>
+<ul>
+<li>Reporter: Poland</li>
+<li>Partner: All available partners</li>
+<li>Trade Flow: Import, Export</li>
+<li>Year: 2014</li>
+<li>Commodities: TOTAL</li>
+</ul>
+<p>Questions:<br />
+1. Load both data sets to R under the names <code>ctPolandTotals</code> and <code>witsPolandTotals</code><br />
+2. Compare two data sets using different functions such as: <code>glimpse()</code>, <code>str()</code>, <code>nrows()</code>, <code>all_equal()</code> or more from <code>dplyr</code> package. 3. Briefly describe what is the difference between two data sets.</p>
+</div>
+<div id="ex-answers" class="section level2">
+<h2>1. Ex Answers</h2>
+<p>Step 1. general setup of the working area:</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<ol style="list-style-type: decimal">
+<li>Loading CT data using the <code>read_csv()</code> because the are no customized function developed for reading regular CT data download. 0(Loading data after we manually loaded it from the website).</li>
+</ol>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_character(),
+##   Year = col_integer(),
+##   Period = col_integer(),
+##   `Period Desc.` = col_integer(),
+##   `Aggregate Level` = col_integer(),
+##   `Is Leaf Code` = col_integer(),
+##   `Trade Flow Code` = col_integer(),
+##   `Reporter Code` = col_integer(),
+##   `Partner Code` = col_integer(),
+##   `Qty Unit Code` = col_integer(),
+##   `Trade Value (US$)` = col_double(),
+##   Flag = col_integer()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre><code>## Observations: 453
+## Variables: 35
+## $ Classification         &lt;chr&gt; &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4...
+## $ Year                   &lt;int&gt; 2014, 2014, 2014, 2014, 2014, 2014, 201...
+## $ Period                 &lt;int&gt; 2014, 2014, 2014, 2014, 2014, 2014, 201...
+## $ Period Desc.           &lt;int&gt; 2014, 2014, 2014, 2014, 2014, 2014, 201...
+## $ Aggregate Level        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
+## $ Is Leaf Code           &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...
+## $ Trade Flow Code        &lt;int&gt; 1, 2, 1, 2, 1, 2, 2, 1, 2, 1, 1, 2, 1, ...
+## $ Trade Flow             &lt;chr&gt; &quot;Import&quot;, &quot;Export&quot;, &quot;Import&quot;, &quot;Export&quot;,...
+## $ Reporter Code          &lt;int&gt; 616, 616, 616, 616, 616, 616, 616, 616,...
+## $ Reporter               &lt;chr&gt; &quot;Poland&quot;, &quot;Poland&quot;, &quot;Poland&quot;, &quot;Poland&quot;,...
+## $ Reporter ISO           &lt;chr&gt; &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL...
+## $ Partner Code           &lt;int&gt; 0, 0, 4, 4, 8, 8, 10, 12, 12, 16, 20, 2...
+## $ Partner                &lt;chr&gt; &quot;World&quot;, &quot;World&quot;, &quot;Afghanistan&quot;, &quot;Afgha...
+## $ Partner ISO            &lt;chr&gt; &quot;WLD&quot;, &quot;WLD&quot;, &quot;AFG&quot;, &quot;AFG&quot;, &quot;ALB&quot;, &quot;ALB...
+## $ 2nd Partner Code       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ 2nd Partner            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ 2nd Partner ISO        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Customs Proc. Code     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Customs                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Mode of Transport Code &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Mode of Transport      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Commodity Code         &lt;chr&gt; &quot;TOTAL&quot;, &quot;TOTAL&quot;, &quot;TOTAL&quot;, &quot;TOTAL&quot;, &quot;TO...
+## $ Commodity              &lt;chr&gt; &quot;All Commodities&quot;, &quot;All Commodities&quot;, &quot;...
+## $ Qty Unit Code          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+## $ Qty Unit               &lt;chr&gt; &quot;No Quantity&quot;, &quot;No Quantity&quot;, &quot;No Quant...
+## $ Qty                    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Alt Qty Unit Code      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Alt Qty Unit           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Alt Qty                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Netweight (kg)         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Gross weight (kg)      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Trade Value (US$)      &lt;dbl&gt; 216687292345, 214476794173, 482913, 125...
+## $ CIF Trade Value (US$)  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ FOB Trade Value (US$)  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Flag                   &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ...</code></pre>
+<p>Loading WITS data using the <code>read_csv()</code>. (Loading data also after we manually loaded it from the website).</p>
+<pre class="r"><code>witsPolandTotals &lt;- read_csv(&quot;01-data-import/wits_poland_data.csv&quot;)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Nomenclature = col_character(),
+##   ReporterISO3 = col_character(),
+##   ProductCode = col_character(),
+##   ReporterName = col_character(),
+##   PartnerISO3 = col_character(),
+##   PartnerName = col_character(),
+##   Year = col_integer(),
+##   TradeFlowName = col_character(),
+##   TradeFlowCode = col_integer(),
+##   `TradeValue in 1000 USD` = col_double(),
+##   Quantity = col_character(),
+##   QuantityToken = col_integer(),
+##   QtyUnit = col_character(),
+##   ProductDescription = col_character(),
+##   `NetWeight in KGM` = col_character(),
+##   `Reporter Region` = col_character(),
+##   `Reporter Income Group` = col_character(),
+##   `Partner Region` = col_character(),
+##   `Partner Income Group` = col_character()
+## )</code></pre>
+<pre class="r"><code>glimpse(witsPolandTotals)</code></pre>
+<pre><code>## Observations: 449
+## Variables: 19
+## $ Nomenclature           &lt;chr&gt; &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4...
+## $ ReporterISO3           &lt;chr&gt; &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL...
+## $ ProductCode            &lt;chr&gt; &quot;Total&quot;, &quot;Total&quot;, &quot;Total&quot;, &quot;Total&quot;, &quot;To...
+## $ ReporterName           &lt;chr&gt; &quot;Poland&quot;, &quot;Poland&quot;, &quot;Poland&quot;, &quot;Poland&quot;,...
+## $ PartnerISO3            &lt;chr&gt; &quot;ABW&quot;, &quot;ABW&quot;, &quot;AFG&quot;, &quot;AFG&quot;, &quot;AGO&quot;, &quot;AGO...
+## $ PartnerName            &lt;chr&gt; &quot;Aruba&quot;, &quot;Aruba&quot;, &quot;Afghanistan&quot;, &quot;Afgha...
+## $ Year                   &lt;int&gt; 2014, 2014, 2014, 2014, 2014, 2014, 201...
+## $ TradeFlowName          &lt;chr&gt; &quot;Export&quot;, &quot;Import&quot;, &quot;Export&quot;, &quot;Import&quot;,...
+## $ TradeFlowCode          &lt;int&gt; 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, ...
+## $ TradeValue in 1000 USD &lt;dbl&gt; 512.927, 1.075, 12536.755, 482.913, 371...
+## $ Quantity               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ QuantityToken          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, ...
+## $ QtyUnit                &lt;chr&gt; &quot;N.Q.&quot;, &quot;N.Q.&quot;, &quot;N.Q.&quot;, &quot;N.Q.&quot;, &quot;N.Q.&quot;,...
+## $ ProductDescription     &lt;chr&gt; &quot;Total Trade&quot;, &quot;Total Trade&quot;, &quot;Total Tr...
+## $ NetWeight in KGM       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,...
+## $ Reporter Region        &lt;chr&gt; &quot;Europe &amp; Central Asia&quot;, &quot;Europe &amp; Cent...
+## $ Reporter Income Group  &lt;chr&gt; &quot;High income&quot;, &quot;High income&quot;, &quot;High inc...
+## $ Partner Region         &lt;chr&gt; &quot;Latin America &amp; Caribbean&quot;, &quot;Latin Ame...
+## $ Partner Income Group   &lt;chr&gt; &quot;High income&quot;, &quot;High income&quot;, &quot;Low inco...</code></pre>
+<p>It is clear, that both tables have dfferent number of rows as well as sets of columns. Therefore, we need to go one step ahead and use <code>dplyr</code> package and comands <code>select()</code> and <code>rename()</code> to clean and unify variables across two dataframes.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Cleaning WITS data frame.</li>
+</ol>
+<pre class="r"><code>witsPolandTotals &lt;- 
+  witsPolandTotals %&gt;% 
+  select(Nomenclature, ReporterISO3, PartnerISO3, 
+         ProductCode, Year, TradeFlowName, `TradeValue in 1000 USD`)
+glimpse(witsPolandTotals)</code></pre>
+<pre><code>## Observations: 449
+## Variables: 7
+## $ Nomenclature           &lt;chr&gt; &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4...
+## $ ReporterISO3           &lt;chr&gt; &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL...
+## $ PartnerISO3            &lt;chr&gt; &quot;ABW&quot;, &quot;ABW&quot;, &quot;AFG&quot;, &quot;AFG&quot;, &quot;AGO&quot;, &quot;AGO...
+## $ ProductCode            &lt;chr&gt; &quot;Total&quot;, &quot;Total&quot;, &quot;Total&quot;, &quot;Total&quot;, &quot;To...
+## $ Year                   &lt;int&gt; 2014, 2014, 2014, 2014, 2014, 2014, 201...
+## $ TradeFlowName          &lt;chr&gt; &quot;Export&quot;, &quot;Import&quot;, &quot;Export&quot;, &quot;Import&quot;,...
+## $ TradeValue in 1000 USD &lt;dbl&gt; 512.927, 1.075, 12536.755, 482.913, 371...</code></pre>
+<p>Cleaning CT data frame.</p>
+<pre class="r"><code>ctPolandTotals &lt;- 
+  ctPolandTotals %&gt;% 
+  select(Classification, `Reporter ISO`, `Partner ISO`, 
+         `Commodity Code`, Year, `Trade Flow`, `Trade Value (US$)`) %&gt;% 
+  rename(Nomenclature = Classification, 
+         ReporterISO3 = `Reporter ISO`, 
+         PartnerISO3 = `Partner ISO`, 
+         ProductCode = `Commodity Code`, 
+         Year = Year, 
+         TradeFlowName = `Trade Flow`, 
+         `TradeValue in 1000 USD` = `Trade Value (US$)`)
+glimpse(ctPolandTotals)</code></pre>
+<pre><code>## Observations: 453
+## Variables: 7
+## $ Nomenclature           &lt;chr&gt; &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4&quot;, &quot;H4...
+## $ ReporterISO3           &lt;chr&gt; &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL&quot;, &quot;POL...
+## $ PartnerISO3            &lt;chr&gt; &quot;WLD&quot;, &quot;WLD&quot;, &quot;AFG&quot;, &quot;AFG&quot;, &quot;ALB&quot;, &quot;ALB...
+## $ ProductCode            &lt;chr&gt; &quot;TOTAL&quot;, &quot;TOTAL&quot;, &quot;TOTAL&quot;, &quot;TOTAL&quot;, &quot;TO...
+## $ Year                   &lt;int&gt; 2014, 2014, 2014, 2014, 2014, 2014, 201...
+## $ TradeFlowName          &lt;chr&gt; &quot;Import&quot;, &quot;Export&quot;, &quot;Import&quot;, &quot;Export&quot;,...
+## $ TradeValue in 1000 USD &lt;dbl&gt; 216687292345, 214476794173, 482913, 125...</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>The differences are in the units of the <code>TradeValue</code> in both data sets, different number of rows, and codings for <code>ProductCode</code>.</li>
+</ol>
+</div>
+
+<p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

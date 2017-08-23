@@ -1,9 +1,8 @@
 ---
-title: "Lesson 1. Using bulk/regular download in COMTRADE and loading data in R"
-output:
-  html_document:
-    toc: true
-    toc_float: true
+title: "Using COMTRADE bulk/regular downloads and loading data into R"
+date: "`r Sys.Date()`"
+author: Eduard Bukin
+output: html_document
 ---
 
 ## Regular CT download
@@ -106,8 +105,8 @@ ctData_2
 To load bulk CT data file into R directly from the ZIP archive, we need to use the `tradeAnalysis` package. In the `tradeAnalysis` library, we use the function `readCTZIP()`. To learn more about the syntax of the `readCTZIP()`function run `?readCTZIP`, to see the source code run `readCTZIP`, or select `readCTZIP` with the mouse and press `F2`.
 
 ```{r }
-ctData_3 <- 
-  readCTZIP(folder = "01-data-import/", 
+ctData_3 <-
+  readCTZIP(folder = "01-data-import/",
             file = "type-C_r-804_ps-2014_freq-A_px-HS_pub-20150317_fmt-csv_ex-20150609.zip")
 ctData_3
 ```
@@ -144,7 +143,7 @@ This approach makes some of the variables more user friendly.
 
 ```{r eval=FALSE}
 library(tradeAnalysis)
-availableCtData_2 <- getCTParameters()
+# availableCtData_2 <- getCTParameters()
 ```
 
 ## Downloading CT bulk data using CT API, R and intrnet connection
@@ -164,10 +163,10 @@ library(tidyverse)
 Creating one line: (In one of the following lessons the usage of the 'filter' function will be discussed with more details)
 
 ```{r eval=FALSE}
-oneLine <- 
+oneLine <-
   filter(availableCtData_2,
-         r == 804, 
-         type == "COMMODITIES", 
+         r == 804,
+         type == "COMMODITIES",
          freq == "ANNUAL",
          year == 2014,
          px == "HS")

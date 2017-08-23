@@ -1,0 +1,25 @@
+---
+title: "Loading COMTRADE/WITS data"
+author: "Eduard Bukin"
+date: "August 23, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Ex
+
+Load according to the following predefined parameters from two different sources (WITS and COMTRADE) and compare the results:
+
+* Reporter: Poland
+* Partner: All available partners
+* Trade Flow: Import, Export
+* Year: 2014
+* Commodities: TOTAL  
+
+Questions:  
+1. Load both data sets to R under the names `ctPolandTotals` and `witsPolandTotals`  
+2. Compare two data sets using different functions such as: `glimpse()`, `str()`, `nrows()`, `all_equal()` or more from `dplyr` package.
+3. Briefly describe what is the difference between two data sets.

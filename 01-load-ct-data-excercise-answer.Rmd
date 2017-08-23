@@ -1,0 +1,77 @@
+---
+title: "Loading COMTRADE/WITS data"
+author: "Eduard Bukin"
+date: "August 23, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. Ex
+
+Load according to the following predefined parameters from two different sources (WITS and COMTRADE) and compare the results:
+
+* Reporter: Poland
+* Partner: All available partners
+* Trade Flow: Import, Export
+* Year: 2014
+* Commodities: TOTAL  
+
+Questions:  
+1. Load both data sets to R under the names `ctPolandTotals` and `witsPolandTotals`  
+2. Compare two data sets using different functions such as: `glimpse()`, `str()`, `nrows()`, `all_equal()` or more from `dplyr` package.
+3. Briefly describe what is the difference between two data sets. 
+
+## 1. Ex Answers
+
+Step 1. general setup of the working area:
+```{r }
+library(tidyverse)
+```
+
+1. Loading CT data using the `read_csv()` because the are no customized function developed for reading regular CT data download. 0(Loading data after we manually loaded it from the website).
+
+```{r pressure, echo=FALSE, warning=FALSE}
+ctPolandTotals <- read_csv("01-data-import/ct_poland_data.csv")
+glimpse(ctPolandTotals)
+```
+
+Loading WITS data using the `read_csv()`. (Loading data also after we manually loaded it from the website).
+
+```{r}
+witsPolandTotals <- read_csv("01-data-import/wits_poland_data.csv")
+glimpse(witsPolandTotals)
+```
+
+It is clear, that both tables have dfferent number of rows as well as sets of columns. Therefore, we need to go one step ahead and use `dplyr` package and comands `select()` and `rename()` to clean and unify variables across two dataframes.
+
+2. Cleaning WITS data frame.
+
+```{r}
+witsPolandTotals <- 
+  witsPolandTotals %>% 
+  select(Nomenclature, ReporterISO3, PartnerISO3, 
+         ProductCode, Year, TradeFlowName, `TradeValue in 1000 USD`)
+glimpse(witsPolandTotals)
+```
+
+Cleaning CT data frame.
+
+```{r}
+ctPolandTotals <- 
+  ctPolandTotals %>% 
+  select(Classification, `Reporter ISO`, `Partner ISO`, 
+         `Commodity Code`, Year, `Trade Flow`, `Trade Value (US$)`) %>% 
+  rename(Nomenclature = Classification, 
+         ReporterISO3 = `Reporter ISO`, 
+         PartnerISO3 = `Partner ISO`, 
+         ProductCode = `Commodity Code`, 
+         Year = Year, 
+         TradeFlowName = `Trade Flow`, 
+         `TradeValue in 1000 USD` = `Trade Value (US$)`)
+glimpse(ctPolandTotals)
+```
+
+3. The differences are in the units of the `TradeValue` in both data sets, different number of rows, and codings for `ProductCode`.

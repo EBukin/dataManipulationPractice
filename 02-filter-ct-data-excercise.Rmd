@@ -1,0 +1,16 @@
+---
+title: "Filtering CT data in R"
+author: "Eduard Bukin"
+date: "August 23, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Main packages
+
+## dplyr::filter()
+
+## dplyr::select()

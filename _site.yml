@@ -9,24 +9,28 @@ navbar:
       href: index.html
     - text: "Trade data sources"
       icon: fa-info
-      href: about.html
-    - text: "Data manipulation practice"
+      href: 00-data-sources.html
+    - text: "Data manipulation practice in R"
       icon: fa-gear
       menu:
+        - text: "R practice"
         - text: "Loading COMTRADE data in R"
-        - text: "Page A"
           href: 01-data-import.html
-        - text: "Page B"
-          href: page_b.html
         - text: "---------"
-        - text: "Heading 2"
-        - text: "Page C"
-          href: page_c.html
-        - text: "Page D"
-          href: page_d.html
+        - text: "Excercises"
+        - text: "Load data"
+          href: 01-load-ct-data-excercise.html
+        - text: "Filter data"
+          href: 02-filter-ct-data-excercise.html
+        - text: "---------"
+        - text: "Answers"
+        - text: "Load data"
+          href: 01-load-ct-data-excercise-answer.html
 output:
   html_document:
-    theme: readable
-    highlight: textmate
+    toc: true
+    toc_float: true
+    theme: cerulean
+    highlight: default
     include:
       after_body: footer.html

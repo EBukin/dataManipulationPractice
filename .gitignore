@@ -16,6 +16,8 @@
 
 # Data folders
 /data_raw
+*.csv
+*.zip
 
 # RStudio files
 .Rproj.user/

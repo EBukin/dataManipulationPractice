@@ -1,0 +1,32 @@
+name: "dataManipulationPractice"
+output_dir: "docs"
+exclude: ["*.csv", "*.zip"]
+navbar:
+  title: "Trade data sources and practice"
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Trade data sources"
+      icon: fa-info
+      href: about.html
+    - text: "Data manipulation practice"
+      icon: fa-gear
+      menu:
+        - text: "Loading COMTRADE data in R"
+        - text: "Page A"
+          href: 01-data-import.html
+        - text: "Page B"
+          href: page_b.html
+        - text: "---------"
+        - text: "Heading 2"
+        - text: "Page C"
+          href: page_c.html
+        - text: "Page D"
+          href: page_d.html
+output:
+  html_document:
+    theme: readable
+    highlight: textmate
+    include:
+      after_body: footer.html

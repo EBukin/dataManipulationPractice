@@ -5,12 +5,24 @@ author: Eduard Bukin
 output: html_document
 ---
 
+---------------
+
+## COMTRADE
+
+There are two main options of data download in COMTRADE (CT):
+
+*  Regular - manually insert a query in the browser and get a `.csv` file response
+
+*  Bulk - manually insert short query on a web page, or use the browser command line (API) to pass arguments to the server. In return, consumer downloads a zip archive with data that covers trade of at least one country in one time period in a specified coding system. Bulk download has an option to download data of all reporters for one period/coding system in file.  
+
+---------------
+
 ## Regular CT download
+
+Regular downloads are available at https://comtrade.un.org/data/. This is a query based approach to load CT data selecting a specific range of parameters (API calls are covered for bulk downloads). The downloaded CSV file can then be inserted into the R code. 
  
-Regular download is available at https://comtrade.un.org/data/. This is a query / (API call not covered here) based approach to load CT data selecting a specific range of parameters. It returns a CSV file, could be made manually and inserted in the R code manually.  
- 
-Using https://comtrade.un.org/data/, load the following data:
- 
+On https://comtrade.un.org/data/, submit a query and download the following data:
+
 * Type of product: Goods
 * Frequency: Annual
 * HS: As reported (Most frequently used as it combines all codes that were ever recorded)
@@ -18,17 +30,18 @@ Using https://comtrade.un.org/data/, load the following data:
 * Reporter: Finland
 * Partners: World, USA
 * Trade flow: All
-* HS (as reported) commodity codes: Total, any 2, 4 and 6 digits code (11, 1101, 110100)  
-  
+* HS (as reported) commodity codes: Total, any 2, 4 and 6 digits code (11, 1101, 110100)
+
 ### Loading regular CT data in R
 
-Load this data in R using the tools available in the `base` package. We can use base package, but sometimes, it is not efficient. Try to always use `stringsAsFactors = FALSE` because having too many factors variables may complicate your work.
+Before starting practicing in R, make sure that you have setup a proper working directly. Best option would be to create an R project [see](http://r4ds.had.co.nz/workflow-projects.html) and use the project folder as your working directory. To check what is your working directory use `getwd()`.
 
-```{r }
+After downloading the CSV file, it's time to load the data in R, using the tools available in the `base` package. It's good to always use the `stringsAsFactors = FALSE` argument to avoid having too many factors variables, which may complicate your work.
+
+```{r cache=TRUE}
 file <- "01-data-import/ct_regular_extraction.csv"
-ctData <- read.csv(file, stringsAsFactors = FALSE) # No extra parameters; generally works fine.
-names(ctData)     # See the names of all variables
-```
+ctData <- read.csv(file, stringsAsFactors = FALSE) 
+names(ctData)     # See the names of all variables  
 ```{r eval=FALSE}
 head(ctData)     # See the first 5 rows of the data frame
 tail(ctData)     # See the last 4 rows of the data frame
@@ -36,131 +49,145 @@ str(ctData)     # See the structure of the data object
 class(ctData)     # See the class of the data object
 ```
 
-Doing the same using user friendly tools from the `tidyverse`
+Attention: when assigning the `.csv` file to `file` specify the path leading to the `.csv` file from the working directory. To find out what the working directory is run `getwd()`. In the example above the `.csv` file is situated in the `01-data-directory`, which itself is in the working directory.
+
+There are more efficient packages than the `base` package to load data in R. We can, for example, do the same using the more user friendly tools from the `tidyverse` package:
 
 ```{r message=FALSE}
 library(tidyverse)  # Setups
 library(readr)      # Setups
+```{r message=FALSE, cache=TRUE}
 ctData <- read_csv(file) 
 ```
 
-Using `read_csv()` returns a tbl_df() or tibble object that allows you to explore all variables of the dataframe without printing it all in the console. No need to use `head()`, `tail()`, `str()`.
+Using `read_csv()` returns a tbl_df(), or tibble, object that allows you to explore all variables of the data frame without printing it all in the console. There is no need to use `head()`, `tail()`, `str()`.
 
 ```{r }
 ctData  
 ```
 
+---------------------
+
 ## Bulk CT download
- 
-Bulk download is available using the web page https://comtrade.un.org/data/bulk.
+
+Bulk downloads are available using the web page https://comtrade.un.org/data/bulk.
 
 There are two options how to access data here:
-* Web based query with the help of the mouse in the browser https://comtrade.un.org/data/bulk
-* API call based approach to load CT data. Used constructs a query such as "http://comtrade.un.org/api/get/bulk/C/A/1994/251/HS" following the guidelines are here https://comtrade.un.org/data/doc/api/bulk/. To request a bulk data file we need to use the following specific format explained in the COMTRADE: http://comtrade.un.org/api/get/bulk/{type}/{freq}/{ps}/{r}/{px}?{token=}, where type (trade type), freq (frequency), ps (period), r (reporter), px (classification), and optionally token (see authentication).  
 
-Using the web interface download data for France’s annual trade of commodities in 1994. 
+* Web based query in the browser https://comtrade.un.org/data/bulk as we have just seen.
+
+* API call based approach to load CT data. In this case the user constructs a query such as "http://comtrade.un.org/api/get/bulk/C/A/1994/251/HS" following the guidelines outlined on https://comtrade.un.org/data/doc/api/bulk/. To request a bulk data file we need to use the specific format explained on COMTRADE, as follows: `http://comtrade.un.org/api/get/bulk/{type}/{freq}/{ps}/{r}/{px}?{token=}`, with `type` (trade type), `freq` (frequency), `ps` (period), `r` (reporter), `px` (classification), and optionally token (see authentication).
+
+Using the web query approach let's download data for France’s annual trade of commodities in 1994. 
  
-The file returned by the COMTRADE has name "type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.zip". The zip archive contains the file "type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.csv" with data. Attention! Data files could be VERY HEAVY (up to 9-10 GB). This may lead to difficulties in loading them. 
+The zip archive returned by COMTRADE is named "type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.zip", and contains the file "type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.csv" with data. **Attention!** Data files can be VERY HEAVY (up to 9-10 GB), which may lead to difficulties while loading them. 
 
-The same file could have been obtained from the query "http://comtrade.un.org/api/get/bulk/C/A/1994/251/H".
+The same file can be obtained through the API call "http://comtrade.un.org/api/get/bulk/C/A/1994/251/H".
 
-### Loading zipped bulk download data  into R  
-
-Here we learn how to load data into R.
+### Loading zipped bulk download data into R  
  
-#### Manual unziping 
+#### Manual unzipping 
 
-Here we Manually unzip bulk COMTRADE data file into the same folder and read in the way as it was done before.
+Manually unzipping the bulk COMTRADE data file into the same folder and reading it is done in the same way as before.
 
-```{r }
+```{r cache=TRUE}
 file <- "01-data-import/type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.csv"
-ctFranceData <- read_csv(file, guess_max = 1000000) # guess_max = 1000000 is used to avoid useless warninggs.
+ctFranceData <- read_csv(file, guess_max = 1000000) # guess_max = 1000000 is used to avoid useless warnings.
 ctFranceData
 ```
 
-To speed up the reading process, in the package `tradeAnalysis` there is a function `readCTCSV()` which does reading of the bulk downloaded COMTRADE data file and convert all columns into proper format as well as remove all irrelevant columns and formats. The package `tradeAnalysis` could be installed in the following way:
+To speed up the reading process, in the package `tradeAnalysis` there is a function `readCTCSV()` which reads the bulk downloaded COMTRADE data file and converts all columns into a readable format, as well as removing all irrelevant columns and formats. 
+
+To install the `tradeAnalysis` package:
 
 ```{r chunck1, eval=FALSE}
-# install.packages("devtools") # Run if needed
+install.packages("devtools") # Run if needed
 devtools::install_github("EBukin/tradeAnalysis-pack")
 ```
 ```{r }
 library(tradeAnalysis)
 ```
 
-Reading files is done as:
+And to read the file using the new `readCTCSV()` function:
 
-```{r }
+```{r cache=TRUE}
 ctData_2 <- readCTCSV(file)
 ```
 
-The file is slightly lighter and is loaded faster. It is especially important when loaded files are 4 or more GB in volume.
+Using `tradeAnalysis` the file is slightly lighter and loads faster. This is especially important when loaded files are 4 Gb or more in volume.
 
-```{r }
+```{r cache=TRUE}
 ctData_2
 ```
 
-#### use R for unziping
+#### Unzipping files using R
 
-To load bulk CT data file into R directly from the ZIP archive, we need to use the `tradeAnalysis` package. In the `tradeAnalysis` library, we use the function `readCTZIP()`. To learn more about the syntax of the `readCTZIP()`function run `?readCTZIP`, to see the source code run `readCTZIP`, or select `readCTZIP` with the mouse and press `F2`.
+To load bulk CT data files into R directly from the .zip archive we need to use the `tradeAnalysis` package. In the `tradeAnalysis` library we use the function `readCTZIP()`. To learn more about the syntax of the `readCTZIP()`function run `?readCTZIP`, to see the source code run `readCTZIP`, or select `readCTZIP` with the mouse and press `F2`.
 
-```{r }
+```{r cache=TRUE}
 ctData_3 <-
   readCTZIP(folder = "01-data-import/",
             file = "type-C_r-804_ps-2014_freq-A_px-HS_pub-20150317_fmt-csv_ex-20150609.zip")
 ctData_3
 ```
 
+Attention: if the .zip file we want to open is placed in the home directory, specify `folder = "."` in the function.
+
+---------------------
+
 ## CT data availability and API commands for data download
 
-In R we can see all available in COMTRADE bulk download data files. To do that we use the COMTRADE API interface (https://comtrade.un.org/data/doc/api/bulk/#DataRequests).
+In R it is possible to see all the data available in the COMTRADE bulk download data files. This is achieved by using the COMTRADE API interface (https://comtrade.un.org/data/doc/api/bulk/#DataRequests).
 
-Run the command "http://comtrade.un.org/api//refs/da/bulk?parameters" in the browser and after a while you will be returned the JSON object with thousands of rows of text. This Object could be parsed in R into a dataframe that will show all data available in COMTRADE and all query commands needed to download each data file. 
+Firstly, we run the command "http://comtrade.un.org/api//refs/da/bulk?parameters" in the browser address bar. After a certain loading time due to the large volume of the data, we will be returned the JSON object with thousands of rows of text in the browser. This Object can be parsed in R into a data frame showing all data available in COMTRADE and all query commands needed to download each data file. 
 
-To load this object into R we can do the following:
+To load this object into R we can do the following, using the package `jsonlite`:
 
 ```{r chunck2, eval=FALSE}
 install.packages("jsonlite")
-```{r }
+```{r cache=TRUE}
 library(jsonlite)
 availableCtData_1 <- jsonlite::fromJSON("http://comtrade.un.org/api/refs/da/bulk?parameters") %>% tbl_df()
 availableCtData_1
 ```
 
-This table allows us to see what the reporters are ('r' variable) with the available data and what data exactly is available. 
+This table illustrates the reporters ('r' variable), classification ('px'), period ('ps') of each data file, and what data files exist.  
 
-```{r }
+```{r cache=TRUE}
 glimpse(availableCtData_1)
 ```
 
 The variable `downloadUri` provides a COMTRADE query (such as "/api/get/bulk/C/A/2016/428/H0") 
-that can be combined into one command together with http://comtrade.un.org/. 
+that can be combined into one command with http://comtrade.un.org/. 
+
 The result would look something like "http://comtrade.un.org/api/get/bulk/C/A/2016/428/H0"
-and will return a zipped data file.
+and will return a zipped data file if run in the browser address bar.
 
-The same list of available bulk data in COMTRADE can be accessed with `getCTParameters()`
-This approach makes some of the variables more user friendly. 
+The same list of available bulk data in COMTRADE can be accessed using the `getCTParameters()` function of the `tradeAnalysis` package, making some of the variables look more user friendly. 
 
-```{r eval=FALSE}
+```{r cache=TRUE}
 library(tradeAnalysis)
-# availableCtData_2 <- getCTParameters()
+availableCtData_2 <- getCTParameters()
+glimpse(availableCtData_2)
 ```
 
-## Downloading CT bulk data using CT API, R and intrnet connection
+---------------
 
-To download CT bulk ZIP data with R, we can use a function available in the `tradeAnalysis` package.
+## Downloading CT bulk data using CT API, R and an internet connection
 
-To do the download, you need the data table of available data, loaded with `getCTParameters()`, selection of one particular row out of it with the exact name of the country that you want to download, and the destination folder.
+After checking for data availability we may want to download some of this data. 
+
+To do the download, after loading the table of available data with `tradeAnalysis::getCTParameters()`, we need to select the row containing the name of the country that we want to download and the destination folder where we want to save it.
 
 See the following example. 
 
-We want to download data about all annual trade of commodities by Ukriane (reporter code 804) in 2014 in the HS ‘As reported’ classification. To see an extensive list of reporters and their codes, use `tradeAnalysis::getCTReporters()`
+We want to download data about all annual trade of commodities by Ukraine (reporter code 804), in 2014, in the HS ‘As reported’ classification. To see an extensive list of reporters and their codes, run `tradeAnalysis::getCTReporters()`
 
 ```{r }
 library(tidyverse) 
 ```
 
-Creating one line: (In one of the following lessons the usage of the 'filter' function will be discussed with more details)
+Let's first create `oneLine`, containing all the specifications for our query (the usage of the 'filter()' function will be discussed with more detail in the following lesson):
 
 ```{r eval=FALSE}
 oneLine <-
@@ -172,17 +199,17 @@ oneLine <-
          px == "HS")
 ```
 
-Loading one data file:
-
-Explore more about the `token` parameter with `?downloadCTZIP`.
+To load the data file:
 
 ```{r eval=FALSE}
 downloadCTZIP(df = oneLine, toFolder = "01-data-import/", token = NA)
 ```
 
-Parameter `token` is an important one, when you try to access to the COMTRADE data from outside of the FAO. If you want to access data from the outside, you need to register your email from the FAO in the COMTRADE system first and them save your token on the computer. Inserting your token to the filed `token` in the function ` downloadCTZIP()` will ensure that you can download CT data from the outside of FAO.  
+Explore more about the `token` parameter with `?downloadCTZIP`.
 
-To generate token, you need first to go to the page https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk and incert your email into the `Sign in using:` `IP Authentication:` field. Press `Authenticate my IP` and the system will register you. Then you need to go the page https://comtrade.un.org/api/swagger/ui/index#/ and select the subsection `/getSubUserToken` - To get authentication token when the request is originated from registered IP range. Email parameters required. Insert your email into the corresponding field and press "try it out". In the "Response body" there will be a token with the length of around 128 symbols. Copy this token to the secure place and use it to access data as following:
+`token` is an important parameter, necessary to access COMTRADE data from outside FAO headquarters. To access the data from the outside, it is first necessary to register our FAO e-mail address in the COMTRADE system and then save the token provided on the computer. Inserting the token in the function `downloadCTZIP()` will ensure CT data can be downloaded from outside headquarters.  
+
+To generate an authentication token from the registered IP range (i.e. from within headquarters), we first need to go to https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk and insert our email into the `Sign in using:` `IP Authentication:` field. Pressing `Authenticate my IP` will ensure we are registered in the system. Subsequently we need to go to https://comtrade.un.org/api/swagger/ui/index#/ and select `/getSubUserToken` in the `Auth` section. After inserting our email into the corresponding field we press "try it out". In "Response body" the token will appear as a long string of symbols and characters. This token is to be copied to a secure place and used to access data as follows:
 
 ```{r eval=FALSE}
 downloadCTZIP(df = oneLine, toFolder = "01-data-import/", token = "token_content_as_it_is_in_comtrade")

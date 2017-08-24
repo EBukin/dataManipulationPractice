@@ -11,7 +11,7 @@
 
 <meta name="author" content="Eduard Bukin" />
 
-<meta name="date" content="2017-08-23" />
+<meta name="date" content="2017-08-24" />
 
 <title>Using COMTRADE bulk/regular downloads and loading data into R</title>
 
@@ -177,7 +177,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2,h3",
+      selectors: "h1,h2,h3,h4",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
@@ -332,15 +332,25 @@ div.tocify {
 
 <h1 class="title toc-ignore">Using COMTRADE bulk/regular downloads and loading data into R</h1>
 <h4 class="author"><em>Eduard Bukin</em></h4>
-<h4 class="date"><em>2017-08-23</em></h4>
+<h4 class="date"><em>2017-08-24</em></h4>
 
 </div>
 
 
+<hr />
+<div id="comtrade" class="section level2">
+<h2>COMTRADE</h2>
+<p>There are two main options of data download in COMTRADE (CT):</p>
+<ul>
+<li><p>Regular - manually insert a query in the browser and get a <code>.csv</code> file response</p></li>
+<li><p>Bulk - manually insert short query on a web page, or use the browser command line (API) to pass arguments to the server. In return, consumer downloads a zip archive with data that covers trade of at least one country in one time period in a specified coding system. Bulk download has an option to download data of all reporters for one period/coding system in file.</p></li>
+</ul>
+<hr />
+</div>
 <div id="regular-ct-download" class="section level2">
 <h2>Regular CT download</h2>
-<p>Regular download is available at <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a>. This is a query / (API call not covered here) based approach to load CT data selecting a specific range of parameters. It returns a CSV file, could be made manually and inserted in the R code manually.</p>
-<p>Using <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a>, load the following data:</p>
+<p>Regular downloads are available at <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a>. This is a query based approach to load CT data selecting a specific range of parameters (API calls are covered for bulk downloads). The downloaded CSV file can then be inserted into the R code.</p>
+<p>On <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a>, submit a query and download the following data:</p>
 <ul>
 <li>Type of product: Goods</li>
 <li>Frequency: Annual</li>
@@ -353,10 +363,11 @@ div.tocify {
 </ul>
 <div id="loading-regular-ct-data-in-r" class="section level3">
 <h3>Loading regular CT data in R</h3>
-<p>Load this data in R using the tools available in the <code>base</code> package. We can use base package, but sometimes, it is not efficient. Try to always use <code>stringsAsFactors = FALSE</code> because having too many factors variables may complicate your work.</p>
+<p>Before starting practicing in R, make sure that you have setup a proper working directly. Best option would be to create an R project <a href="http://r4ds.had.co.nz/workflow-projects.html">see</a> and use the project folder as your working directory. To check what is your working directory use <code>getwd()</code>.</p>
+<p>After downloading the CSV file, it’s time to load the data in R, using the tools available in the <code>base</code> package. It’s good to always use the <code>stringsAsFactors = FALSE</code> argument to avoid having too many factors variables, which may complicate your work.</p>
 <pre class="r"><code>file &lt;- &quot;01-data-import/ct_regular_extraction.csv&quot;
-ctData &lt;- read.csv(file, stringsAsFactors = FALSE) # No extra parameters; generally works fine.
-names(ctData)     # See the names of all variables</code></pre>
+ctData &lt;- read.csv(file, stringsAsFactors = FALSE) 
+names(ctData)     # See the names of all variables  </code></pre>
 <pre><code>##  [1] &quot;Classification&quot;         &quot;Year&quot;                  
 ##  [3] &quot;Period&quot;                 &quot;Period.Desc.&quot;          
 ##  [5] &quot;Aggregate.Level&quot;        &quot;Is.Leaf.Code&quot;          
@@ -379,11 +390,12 @@ names(ctData)     # See the names of all variables</code></pre>
 tail(ctData)     # See the last 4 rows of the data frame
 str(ctData)     # See the structure of the data object
 class(ctData)     # See the class of the data object</code></pre>
-<p>Doing the same using user friendly tools from the <code>tidyverse</code></p>
+<p>Attention: when assigning the <code>.csv</code> file to <code>file</code> specify the path leading to the <code>.csv</code> file from the working directory. To find out what the working directory is run <code>getwd()</code>. In the example above the <code>.csv</code> file is situated in the <code>01-data-directory</code>, which itself is in the working directory.</p>
+<p>There are more efficient packages than the <code>base</code> package to load data in R. We can, for example, do the same using the more user friendly tools from the <code>tidyverse</code> package:</p>
 <pre class="r"><code>library(tidyverse)  # Setups
-library(readr)      # Setups
-ctData &lt;- read_csv(file) </code></pre>
-<p>Using <code>read_csv()</code> returns a tbl_df() or tibble object that allows you to explore all variables of the dataframe without printing it all in the console. No need to use <code>head()</code>, <code>tail()</code>, <code>str()</code>.</p>
+library(readr)      # Setups</code></pre>
+<pre class="r"><code>ctData &lt;- read_csv(file) </code></pre>
+<p>Using <code>read_csv()</code> returns a tbl_df(), or tibble, object that allows you to explore all variables of the data frame without printing it all in the console. There is no need to use <code>head()</code>, <code>tail()</code>, <code>str()</code>.</p>
 <pre class="r"><code>ctData  </code></pre>
 <pre><code>## # A tibble: 24 x 35
 ##    Classification  Year Period `Period Desc.` `Aggregate Level`
@@ -409,23 +421,27 @@ ctData &lt;- read_csv(file) </code></pre>
 ## #   `Alt Qty Unit` &lt;int&gt;, `Alt Qty` &lt;chr&gt;, `Netweight (kg)` &lt;int&gt;, `Gross
 ## #   weight (kg)` &lt;chr&gt;, `Trade Value (US$)` &lt;dbl&gt;, `CIF Trade Value
 ## #   (US$)` &lt;chr&gt;, `FOB Trade Value (US$)` &lt;chr&gt;, Flag &lt;int&gt;</code></pre>
+<hr />
 </div>
 </div>
 <div id="bulk-ct-download" class="section level2">
 <h2>Bulk CT download</h2>
-<p>Bulk download is available using the web page <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a>.</p>
-<p>There are two options how to access data here: * Web based query with the help of the mouse in the browser <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a> * API call based approach to load CT data. Used constructs a query such as “<a href="http://comtrade.un.org/api/get/bulk/C/A/1994/251/HS" class="uri">http://comtrade.un.org/api/get/bulk/C/A/1994/251/HS</a>” following the guidelines are here <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a>. To request a bulk data file we need to use the following specific format explained in the COMTRADE: <a href="http://comtrade.un.org/api/get/bulk/%7Btype%7D/%7Bfreq%7D/%7Bps%7D/%7Br%7D/%7Bpx%7D" class="uri">http://comtrade.un.org/api/get/bulk/{type}/{freq}/{ps}/{r}/{px}</a>?{token=}, where type (trade type), freq (frequency), ps (period), r (reporter), px (classification), and optionally token (see authentication).</p>
-<p>Using the web interface download data for Franceâ€™s annual trade of commodities in 1994.</p>
-<p>The file returned by the COMTRADE has name “type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.zip”. The zip archive contains the file “type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.csv” with data. Attention! Data files could be VERY HEAVY (up to 9-10 GB). This may lead to difficulties in loading them.</p>
-<p>The same file could have been obtained from the query “<a href="http://comtrade.un.org/api/get/bulk/C/A/1994/251/H" class="uri">http://comtrade.un.org/api/get/bulk/C/A/1994/251/H</a>”.</p>
+<p>Bulk downloads are available using the web page <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a>.</p>
+<p>There are two options how to access data here:</p>
+<ul>
+<li><p>Web based query in the browser <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a> as we have just seen.</p></li>
+<li><p>API call based approach to load CT data. In this case the user constructs a query such as “<a href="http://comtrade.un.org/api/get/bulk/C/A/1994/251/HS" class="uri">http://comtrade.un.org/api/get/bulk/C/A/1994/251/HS</a>” following the guidelines outlined on <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a>. To request a bulk data file we need to use the specific format explained on COMTRADE, as follows: <code>http://comtrade.un.org/api/get/bulk/{type}/{freq}/{ps}/{r}/{px}?{token=}</code>, with <code>type</code> (trade type), <code>freq</code> (frequency), <code>ps</code> (period), <code>r</code> (reporter), <code>px</code> (classification), and optionally token (see authentication).</p></li>
+</ul>
+<p>Using the web query approach let’s download data for France’s annual trade of commodities in 1994.</p>
+<p>The zip archive returned by COMTRADE is named “type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.zip”, and contains the file “type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.csv” with data. <strong>Attention!</strong> Data files can be VERY HEAVY (up to 9-10 GB), which may lead to difficulties while loading them.</p>
+<p>The same file can be obtained through the API call “<a href="http://comtrade.un.org/api/get/bulk/C/A/1994/251/H" class="uri">http://comtrade.un.org/api/get/bulk/C/A/1994/251/H</a>”.</p>
 <div id="loading-zipped-bulk-download-data-into-r" class="section level3">
 <h3>Loading zipped bulk download data into R</h3>
-<p>Here we learn how to load data into R.</p>
-<div id="manual-unziping" class="section level4">
-<h4>Manual unziping</h4>
-<p>Here we Manually unzip bulk COMTRADE data file into the same folder and read in the way as it was done before.</p>
+<div id="manual-unzipping" class="section level4">
+<h4>Manual unzipping</h4>
+<p>Manually unzipping the bulk COMTRADE data file into the same folder and reading it is done in the same way as before.</p>
 <pre class="r"><code>file &lt;- &quot;01-data-import/type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.csv&quot;
-ctFranceData &lt;- read_csv(file, guess_max = 1000000) # guess_max = 1000000 is used to avoid useless warninggs.</code></pre>
+ctFranceData &lt;- read_csv(file, guess_max = 1000000) # guess_max = 1000000 is used to avoid useless warnings.</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   .default = col_integer(),
@@ -463,13 +479,14 @@ ctFranceData &lt;- read_csv(file, guess_max = 1000000) # guess_max = 1000000 is 
 ## #   Partner &lt;chr&gt;, `Partner ISO` &lt;chr&gt;, `Commodity Code` &lt;chr&gt;,
 ## #   Commodity &lt;chr&gt;, `Qty Unit Code` &lt;int&gt;, `Qty Unit` &lt;chr&gt;, Qty &lt;dbl&gt;,
 ## #   `Netweight (kg)` &lt;dbl&gt;, `Trade Value (US$)` &lt;dbl&gt;, Flag &lt;int&gt;</code></pre>
-<p>To speed up the reading process, in the package <code>tradeAnalysis</code> there is a function <code>readCTCSV()</code> which does reading of the bulk downloaded COMTRADE data file and convert all columns into proper format as well as remove all irrelevant columns and formats. The package <code>tradeAnalysis</code> could be installed in the following way:</p>
-<pre class="r"><code># install.packages(&quot;devtools&quot;) # Run if needed
+<p>To speed up the reading process, in the package <code>tradeAnalysis</code> there is a function <code>readCTCSV()</code> which reads the bulk downloaded COMTRADE data file and converts all columns into a readable format, as well as removing all irrelevant columns and formats.</p>
+<p>To install the <code>tradeAnalysis</code> package:</p>
+<pre class="r"><code>install.packages(&quot;devtools&quot;) # Run if needed
 devtools::install_github(&quot;EBukin/tradeAnalysis-pack&quot;)</code></pre>
 <pre class="r"><code>library(tradeAnalysis)</code></pre>
-<p>Reading files is done as:</p>
+<p>And to read the file using the new <code>readCTCSV()</code> function:</p>
 <pre class="r"><code>ctData_2 &lt;- readCTCSV(file)</code></pre>
-<p>The file is slightly lighter and is loaded faster. It is especially important when loaded files are 4 or more GB in volume.</p>
+<p>Using <code>tradeAnalysis</code> the file is slightly lighter and loads faster. This is especially important when loaded files are 4 Gb or more in volume.</p>
 <pre class="r"><code>ctData_2</code></pre>
 <pre><code>## # A tibble: 465,137 x 12
 ##    Classification  Year Period Trade.Flow.Code Reporter.Code Partner.Code
@@ -488,9 +505,9 @@ devtools::install_github(&quot;EBukin/tradeAnalysis-pack&quot;)</code></pre>
 ## #   Qty.Unit.Code &lt;int&gt;, Qty &lt;dbl&gt;, Netweight..kg. &lt;dbl&gt;,
 ## #   Trade.Value..US.. &lt;dbl&gt;, Flag &lt;int&gt;</code></pre>
 </div>
-<div id="use-r-for-unziping" class="section level4">
-<h4>use R for unziping</h4>
-<p>To load bulk CT data file into R directly from the ZIP archive, we need to use the <code>tradeAnalysis</code> package. In the <code>tradeAnalysis</code> library, we use the function <code>readCTZIP()</code>. To learn more about the syntax of the <code>readCTZIP()</code>function run <code>?readCTZIP</code>, to see the source code run <code>readCTZIP</code>, or select <code>readCTZIP</code> with the mouse and press <code>F2</code>.</p>
+<div id="unzipping-files-using-r" class="section level4">
+<h4>Unzipping files using R</h4>
+<p>To load bulk CT data files into R directly from the .zip archive we need to use the <code>tradeAnalysis</code> package. In the <code>tradeAnalysis</code> library we use the function <code>readCTZIP()</code>. To learn more about the syntax of the <code>readCTZIP()</code>function run <code>?readCTZIP</code>, to see the source code run <code>readCTZIP</code>, or select <code>readCTZIP</code> with the mouse and press <code>F2</code>.</p>
 <pre class="r"><code>ctData_3 &lt;-
   readCTZIP(folder = &quot;01-data-import/&quot;,
             file = &quot;type-C_r-804_ps-2014_freq-A_px-HS_pub-20150317_fmt-csv_ex-20150609.zip&quot;)
@@ -511,59 +528,85 @@ ctData_3</code></pre>
 ## # ... with 193,005 more rows, and 6 more variables: Commodity.Code &lt;chr&gt;,
 ## #   Qty.Unit.Code &lt;int&gt;, Qty &lt;dbl&gt;, Netweight..kg. &lt;dbl&gt;,
 ## #   Trade.Value..US.. &lt;dbl&gt;, Flag &lt;int&gt;</code></pre>
+<p>Attention: if the .zip file we want to open is placed in the home directory, specify <code>folder = &quot;.&quot;</code> in the function.</p>
+<hr />
 </div>
 </div>
 </div>
 <div id="ct-data-availability-and-api-commands-for-data-download" class="section level2">
 <h2>CT data availability and API commands for data download</h2>
-<p>In R we can see all available in COMTRADE bulk download data files. To do that we use the COMTRADE API interface (<a href="https://comtrade.un.org/data/doc/api/bulk/#DataRequests" class="uri">https://comtrade.un.org/data/doc/api/bulk/#DataRequests</a>).</p>
-<p>Run the command “<a href="http://comtrade.un.org/api//refs/da/bulk?parameters" class="uri">http://comtrade.un.org/api//refs/da/bulk?parameters</a>” in the browser and after a while you will be returned the JSON object with thousands of rows of text. This Object could be parsed in R into a dataframe that will show all data available in COMTRADE and all query commands needed to download each data file.</p>
-<p>To load this object into R we can do the following:</p>
+<p>In R it is possible to see all the data available in the COMTRADE bulk download data files. This is achieved by using the COMTRADE API interface (<a href="https://comtrade.un.org/data/doc/api/bulk/#DataRequests" class="uri">https://comtrade.un.org/data/doc/api/bulk/#DataRequests</a>).</p>
+<p>Firstly, we run the command “<a href="http://comtrade.un.org/api//refs/da/bulk?parameters" class="uri">http://comtrade.un.org/api//refs/da/bulk?parameters</a>” in the browser address bar. After a certain loading time due to the large volume of the data, we will be returned the JSON object with thousands of rows of text in the browser. This Object can be parsed in R into a data frame showing all data available in COMTRADE and all query commands needed to download each data file.</p>
+<p>To load this object into R we can do the following, using the package <code>jsonlite</code>:</p>
 <pre class="r"><code>install.packages(&quot;jsonlite&quot;)</code></pre>
-<pre class="r"><code>library(jsonlite)
-availableCtData_1 &lt;- jsonlite::fromJSON(&quot;http://comtrade.un.org/api/refs/da/bulk?parameters&quot;) %&gt;% tbl_df()
+<pre class="r"><code>library(jsonlite)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;jsonlite&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     flatten</code></pre>
+<pre class="r"><code>availableCtData_1 &lt;- jsonlite::fromJSON(&quot;http://comtrade.un.org/api/refs/da/bulk?parameters&quot;) %&gt;% tbl_df()
 availableCtData_1</code></pre>
 <pre><code>## # A tibble: 51,262 x 10
-##                                                                       name     r    px    ps        type   freq     publicationDate
-##  *                                                                   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;               &lt;chr&gt;
-##  1 type-C_r-428_ps-2016_freq-A_px-BEC_pub-20170812_fmt-csv_ex-20170817.zip   428   BEC  2016 COMMODITIES ANNUAL 2017-08-12T00:00:00
-##  2  type-C_r-428_ps-2016_freq-A_px-H0_pub-20170812_fmt-csv_ex-20170817.zip   428    H0  2016 COMMODITIES ANNUAL 2017-08-12T00:00:00
-##  3  type-C_r-428_ps-2016_freq-A_px-H1_pub-20170812_fmt-csv_ex-20170817.zip   428    H1  2016 COMMODITIES ANNUAL 2017-08-12T00:00:00
-##  4  type-C_r-428_ps-2016_freq-A_px-H2_pub-20170812_fmt-csv_ex-20170817.zip   428    H2  2016 COMMODITIES ANNUAL 2017-08-12T00:00:00
-##  5  type-C_r-428_ps-2016_freq-A_px-H3_pub-20170812_fmt-csv_ex-20170817.zip   428    H3  2016 COMMODITIES ANNUAL 2017-08-12T00:00:00
-##  6  type-C_r-428_ps-2016_freq-A_px-H4_pub-20170812_fmt-csv_ex-20170817.zip   428    H4  2016 COMMODITIES ANNUAL 2017-08-12T00:00:00
-##  7  type-C_r-428_ps-2016_freq-A_px-HS_pub-20170812_fmt-csv_ex-20170817.zip   428    HS  2016 COMMODITIES ANNUAL 2017-08-12T00:00:00
-##  8  type-C_r-428_ps-2016_freq-A_px-S1_pub-20170812_fmt-csv_ex-20170817.zip   428    S1  2016 COMMODITIES ANNUAL 2017-08-12T00:00:00
-##  9  type-C_r-428_ps-2016_freq-A_px-S2_pub-20170812_fmt-csv_ex-20170817.zip   428    S2  2016 COMMODITIES ANNUAL 2017-08-12T00:00:00
-## 10  type-C_r-428_ps-2016_freq-A_px-S3_pub-20170812_fmt-csv_ex-20170817.zip   428    S3  2016 COMMODITIES ANNUAL 2017-08-12T00:00:00
-## # ... with 51,252 more rows, and 3 more variables: extractDate &lt;chr&gt;, filesize &lt;int&gt;, downloadUri &lt;chr&gt;</code></pre>
-<p>This table allows us to see what the reporters are (‘r’ variable) with the available data and what data exactly is available.</p>
+##                                                                       name
+##  *                                                                   &lt;chr&gt;
+##  1 type-C_r-428_ps-2016_freq-A_px-BEC_pub-20170812_fmt-csv_ex-20170817.zip
+##  2  type-C_r-428_ps-2016_freq-A_px-H0_pub-20170812_fmt-csv_ex-20170817.zip
+##  3  type-C_r-428_ps-2016_freq-A_px-H1_pub-20170812_fmt-csv_ex-20170817.zip
+##  4  type-C_r-428_ps-2016_freq-A_px-H2_pub-20170812_fmt-csv_ex-20170817.zip
+##  5  type-C_r-428_ps-2016_freq-A_px-H3_pub-20170812_fmt-csv_ex-20170817.zip
+##  6  type-C_r-428_ps-2016_freq-A_px-H4_pub-20170812_fmt-csv_ex-20170817.zip
+##  7  type-C_r-428_ps-2016_freq-A_px-HS_pub-20170812_fmt-csv_ex-20170817.zip
+##  8  type-C_r-428_ps-2016_freq-A_px-S1_pub-20170812_fmt-csv_ex-20170817.zip
+##  9  type-C_r-428_ps-2016_freq-A_px-S2_pub-20170812_fmt-csv_ex-20170817.zip
+## 10  type-C_r-428_ps-2016_freq-A_px-S3_pub-20170812_fmt-csv_ex-20170817.zip
+## # ... with 51,252 more rows, and 9 more variables: r &lt;chr&gt;, px &lt;chr&gt;,
+## #   ps &lt;chr&gt;, type &lt;chr&gt;, freq &lt;chr&gt;, publicationDate &lt;chr&gt;,
+## #   extractDate &lt;chr&gt;, filesize &lt;int&gt;, downloadUri &lt;chr&gt;</code></pre>
+<p>This table illustrates the reporters (‘r’ variable), classification (‘px’), period (‘ps’) of each data file, and what data files exist.</p>
 <pre class="r"><code>glimpse(availableCtData_1)</code></pre>
 <pre><code>## Observations: 51,262
 ## Variables: 10
-## $ name            &lt;chr&gt; &quot;type-C_r-428_ps-2016_freq-A_px-BEC_pub-20170812_fmt-csv_ex-20170817.zip&quot;, &quot;type-C_r-428_ps-2016_freq-A_px-H0_p...
-## $ r               &lt;chr&gt; &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;76&quot;, &quot;222&quot;, &quot;352&quot;, &quot;392&quot;, &quot;499&quot;, ...
-## $ px              &lt;chr&gt; &quot;BEC&quot;, &quot;H0&quot;, &quot;H1&quot;, &quot;H2&quot;, &quot;H3&quot;, &quot;H4&quot;, &quot;HS&quot;, &quot;S1&quot;, &quot;S2&quot;, &quot;S3&quot;, &quot;S4&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;H...
-## $ ps              &lt;chr&gt; &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;201707&quot;, &quot;201706&quot;, &quot;20...
-## $ type            &lt;chr&gt; &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;COMMO...
-## $ freq            &lt;chr&gt; &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;...
-## $ publicationDate &lt;chr&gt; &quot;2017-08-12T00:00:00&quot;, &quot;2017-08-12T00:00:00&quot;, &quot;2017-08-12T00:00:00&quot;, &quot;2017-08-12T00:00:00&quot;, &quot;2017-08-12T00:00:0...
-## $ extractDate     &lt;chr&gt; &quot;2017-08-17T00:00:00&quot;, &quot;2017-08-17T00:00:00&quot;, &quot;2017-08-17T00:00:00&quot;, &quot;2017-08-17T00:00:00&quot;, &quot;2017-08-17T00:00:0...
-## $ filesize        &lt;int&gt; 66434, 2107342, 2338442, 1282126, 3087622, 3761820, 2769529, 1068975, 1449200, 2076428, 4720117, 1967178, 65700...
-## $ downloadUri     &lt;chr&gt; &quot;/api/get/bulk/C/A/2016/428/BEC&quot;, &quot;/api/get/bulk/C/A/2016/428/H0&quot;, &quot;/api/get/bulk/C/A/2016/428/H1&quot;, &quot;/api/get/b...</code></pre>
-<p>The variable <code>downloadUri</code> provides a COMTRADE query (such as “/api/get/bulk/C/A/2016/428/H0”) that can be combined into one command together with <a href="http://comtrade.un.org/" class="uri">http://comtrade.un.org/</a>. The result would look something like “<a href="http://comtrade.un.org/api/get/bulk/C/A/2016/428/H0" class="uri">http://comtrade.un.org/api/get/bulk/C/A/2016/428/H0</a>” and will return a zipped data file.</p>
-<p>The same list of available bulk data in COMTRADE can be accessed with <code>getCTParameters()</code> This approach makes some of the variables more user friendly.</p>
+## $ name            &lt;chr&gt; &quot;type-C_r-428_ps-2016_freq-A_px-BEC_pub-201708...
+## $ r               &lt;chr&gt; &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428...
+## $ px              &lt;chr&gt; &quot;BEC&quot;, &quot;H0&quot;, &quot;H1&quot;, &quot;H2&quot;, &quot;H3&quot;, &quot;H4&quot;, &quot;HS&quot;, &quot;S1...
+## $ ps              &lt;chr&gt; &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;...
+## $ type            &lt;chr&gt; &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;...
+## $ freq            &lt;chr&gt; &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUA...
+## $ publicationDate &lt;chr&gt; &quot;2017-08-12T00:00:00&quot;, &quot;2017-08-12T00:00:00&quot;, ...
+## $ extractDate     &lt;chr&gt; &quot;2017-08-17T00:00:00&quot;, &quot;2017-08-17T00:00:00&quot;, ...
+## $ filesize        &lt;int&gt; 66434, 2107342, 2338442, 1282126, 3087622, 376...
+## $ downloadUri     &lt;chr&gt; &quot;/api/get/bulk/C/A/2016/428/BEC&quot;, &quot;/api/get/bu...</code></pre>
+<p>The variable <code>downloadUri</code> provides a COMTRADE query (such as “/api/get/bulk/C/A/2016/428/H0”) that can be combined into one command with <a href="http://comtrade.un.org/" class="uri">http://comtrade.un.org/</a>.</p>
+<p>The result would look something like “<a href="http://comtrade.un.org/api/get/bulk/C/A/2016/428/H0" class="uri">http://comtrade.un.org/api/get/bulk/C/A/2016/428/H0</a>” and will return a zipped data file if run in the browser address bar.</p>
+<p>The same list of available bulk data in COMTRADE can be accessed using the <code>getCTParameters()</code> function of the <code>tradeAnalysis</code> package, making some of the variables look more user friendly.</p>
 <pre class="r"><code>library(tradeAnalysis)
-# availableCtData_2 &lt;- getCTParameters()</code></pre>
+availableCtData_2 &lt;- getCTParameters()
+glimpse(availableCtData_2)</code></pre>
+<pre><code>## Observations: 51,262
+## Variables: 12
+## $ name            &lt;chr&gt; &quot;type-C_r-428_ps-2016_freq-A_px-BEC_pub-201708...
+## $ r               &lt;chr&gt; &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428...
+## $ px              &lt;chr&gt; &quot;BEC&quot;, &quot;H0&quot;, &quot;H1&quot;, &quot;H2&quot;, &quot;H3&quot;, &quot;H4&quot;, &quot;HS&quot;, &quot;S1...
+## $ ps              &lt;chr&gt; &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;...
+## $ type            &lt;chr&gt; &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;...
+## $ freq            &lt;chr&gt; &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUA...
+## $ publicationDate &lt;date&gt; 2017-08-12, 2017-08-12, 2017-08-12, 2017-08-1...
+## $ extractDate     &lt;date&gt; 2017-08-17, 2017-08-17, 2017-08-17, 2017-08-1...
+## $ filesize        &lt;int&gt; 66434, 2107342, 2338442, 1282126, 3087622, 376...
+## $ downloadUri     &lt;chr&gt; &quot;/api/get/bulk/C/A/2016/428/BEC&quot;, &quot;/api/get/bu...
+## $ year            &lt;chr&gt; &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;...
+## $ month           &lt;chr&gt; &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;...</code></pre>
+<hr />
 </div>
-<div id="downloading-ct-bulk-data-using-ct-api-r-and-intrnet-connection" class="section level2">
-<h2>Downloading CT bulk data using CT API, R and intrnet connection</h2>
-<p>To download CT bulk ZIP data with R, we can use a function available in the <code>tradeAnalysis</code> package.</p>
-<p>To do the download, you need the data table of available data, loaded with <code>getCTParameters()</code>, selection of one particular row out of it with the exact name of the country that you want to download, and the destination folder.</p>
+<div id="downloading-ct-bulk-data-using-ct-api-r-and-an-internet-connection" class="section level2">
+<h2>Downloading CT bulk data using CT API, R and an internet connection</h2>
+<p>After checking for data availability we may want to download some of this data.</p>
+<p>To do the download, after loading the table of available data with <code>tradeAnalysis::getCTParameters()</code>, we need to select the row containing the name of the country that we want to download and the destination folder where we want to save it.</p>
 <p>See the following example.</p>
-<p>We want to download data about all annual trade of commodities by Ukriane (reporter code 804) in 2014 in the HS â€˜As reportedâ€™ classification. To see an extensive list of reporters and their codes, use <code>tradeAnalysis::getCTReporters()</code></p>
+<p>We want to download data about all annual trade of commodities by Ukraine (reporter code 804), in 2014, in the HS ‘As reported’ classification. To see an extensive list of reporters and their codes, run <code>tradeAnalysis::getCTReporters()</code></p>
 <pre class="r"><code>library(tidyverse) </code></pre>
-<p>Creating one line: (In one of the following lessons the usage of the ‘filter’ function will be discussed with more details)</p>
+<p>Let’s first create <code>oneLine</code>, containing all the specifications for our query (the usage of the ‘filter()’ function will be discussed with more detail in the following lesson):</p>
 <pre class="r"><code>oneLine &lt;-
   filter(availableCtData_2,
          r == 804,
@@ -571,11 +614,11 @@ availableCtData_1</code></pre>
          freq == &quot;ANNUAL&quot;,
          year == 2014,
          px == &quot;HS&quot;)</code></pre>
-<p>Loading one data file:</p>
-<p>Explore more about the <code>token</code> parameter with <code>?downloadCTZIP</code>.</p>
+<p>To load the data file:</p>
 <pre class="r"><code>downloadCTZIP(df = oneLine, toFolder = &quot;01-data-import/&quot;, token = NA)</code></pre>
-<p>Parameter <code>token</code> is an important one, when you try to access to the COMTRADE data from outside of the FAO. If you want to access data from the outside, you need to register your email from the FAO in the COMTRADE system first and them save your token on the computer. Inserting your token to the filed <code>token</code> in the function <code>downloadCTZIP()</code> will ensure that you can download CT data from the outside of FAO.</p>
-<p>To generate token, you need first to go to the page <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk</a> and incert your email into the <code>Sign in using:</code> <code>IP Authentication:</code> field. Press <code>Authenticate my IP</code> and the system will register you. Then you need to go the page <a href="https://comtrade.un.org/api/swagger/ui/index#/" class="uri">https://comtrade.un.org/api/swagger/ui/index#/</a> and select the subsection <code>/getSubUserToken</code> - To get authentication token when the request is originated from registered IP range. Email parameters required. Insert your email into the corresponding field and press “try it out”. In the “Response body” there will be a token with the length of around 128 symbols. Copy this token to the secure place and use it to access data as following:</p>
+<p>Explore more about the <code>token</code> parameter with <code>?downloadCTZIP</code>.</p>
+<p><code>token</code> is an important parameter, necessary to access COMTRADE data from outside FAO headquarters. To access the data from the outside, it is first necessary to register our FAO e-mail address in the COMTRADE system and then save the token provided on the computer. Inserting the token in the function <code>downloadCTZIP()</code> will ensure CT data can be downloaded from outside headquarters.</p>
+<p>To generate an authentication token from the registered IP range (i.e. from within headquarters), we first need to go to <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk</a> and insert our email into the <code>Sign in using:</code> <code>IP Authentication:</code> field. Pressing <code>Authenticate my IP</code> will ensure we are registered in the system. Subsequently we need to go to <a href="https://comtrade.un.org/api/swagger/ui/index#/" class="uri">https://comtrade.un.org/api/swagger/ui/index#/</a> and select <code>/getSubUserToken</code> in the <code>Auth</code> section. After inserting our email into the corresponding field we press “try it out”. In “Response body” the token will appear as a long string of symbols and characters. This token is to be copied to a secure place and used to access data as follows:</p>
 <pre class="r"><code>downloadCTZIP(df = oneLine, toFolder = &quot;01-data-import/&quot;, token = &quot;token_content_as_it_is_in_comtrade&quot;)</code></pre>
 </div>
 

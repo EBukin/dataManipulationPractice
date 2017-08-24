@@ -9,8 +9,90 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Main packages
+# Subsetting observations and variables 
+
+Main goal of this exersise is to try subsetting observations and variables in the trade data in R. For doing that, use R package `dplyr` and particularly commands [filter()](http://r4ds.had.co.nz/transform.html#filter-rows-with-filter) and [select()](http://r4ds.had.co.nz/transform.html#select-columns-with-select).
+
+Following the previous example, use the same working directory and donwload [this data file](https://unfao-my.sharepoint.com/personal/eduard_bukin_fao_org/_layouts/15/guestaccess.aspx?docid=01bedb1cf326148049ab4b5e3f6bcc3cc&authkey=AarI3iY12Uw9QVfQVITPAdU) to the folder `02-filter-ct-data` whithin your working directory. This data file contains a compress subset of the WTO data for the years 2014-2016, for all countries available in the CT and for all most aggregated comodities listed in the [Annex 1 of the WTO Agreement on Agriculture](https://www.wto.org/english/docs_e/legal_e/14-ag_02_e.htm#annI). We will be using this data in the current and other exersizes. 
+
+To load this data into the R session use `readr` package and the function `read_rds()`.
+
+```{r loadin_data}
+library(tidyverse)
+library(readr)
+ctData <- read_rds("02-filter-ct-data/subsetting-data.rds")
+```
 
 ## dplyr::filter()
 
+Practicing with the dplyr `filter()` function.
+
+Here you may need to use datasets available in the `tradeAnalysis` package together with the `dplyr` function for data filtering in order to generate the results that are.
+
+Loade `tradeAnalysis` package and explore built in datasets. Those are: 
+
+1.  `wtoAgFood`
+1.  `wtoAgFoodFull` What are the difference between the previous one?
+1.  `classes`
+1.  `reporters`
+1.  `partners`
+1.  `regimes`
+1.  `units`
+
+If any of these datasets is not working try to access to the dataset using the namespace specification such as `tradeAnalysis::units`.
+
+```{r}
+library(tradeAnalysis)
+tradeAnalysis::units
+```
+
+### Exersize 1. 
+
+Export a timeseries for wheat (HS 1001) import and export values only in 1000 USD from all EU countries to the world for all available years. Save the time series in an object and then in the `.csv` file.
+
+To see what are the EU countries either use the full list of reporters `reporters` and manully record all EU countries of substract EU country codes from the output of the function `getEU()` in the `tradeAnalysis` package.
+
+#### Solution
+```{r}
+ctSubset <- 
+  ctData %>% 
+  filter(
+    Commodity.Code %in% c("1001"),
+    Reporter.Code %in% getEU()$Partner.Code,
+    Partner.Code %in% "0"
+    )
+```{r eval=FALSE}
+write_csv(ctSubset, "02-filter-ct-data/ex1-subset.csv")
+```
+
 ## dplyr::select()
+
+Practicing with the dplyr `select()` function.
+
+In order to make results from the Exersize 1 more user friendly, we need to be able to select different set of columns for presentation using `dplyr::select()` and other "Select helpers" see `?everything()`.
+
+### Exersize 2. 
+
+Use the output of the previous exersize in order to create to objects tables:
+
+*  one with the trade quantities expressed in 1000 MT.
+*  second with the trade values expressed in 1000 USD.
+
+```{r}
+ctSubsetQuant <- 
+  ctSubset %>% 
+  select(Reporter.Code, Partner.Code, Trade.Flow.Code, 
+         Commodity.Code, Netweight..kg.) %>% 
+  mutate(Netweight..kg. = Netweight..kg. / 10^6)
+ctSubsetVal <- 
+  ctSubset %>% 
+  select(Reporter.Code, Partner.Code, Trade.Flow.Code, 
+         Commodity.Code, Trade.Value..US..) %>% 
+  mutate(Trade.Value..US.. = Trade.Value..US.. / 10^3)
+```
+
+Here you need to use datasets available in the `tradeAnalysis` package together with the `dplyr` function for data filtering in order to generate the results that are.
+
+
+
+

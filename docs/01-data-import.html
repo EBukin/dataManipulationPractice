@@ -28,6 +28,16 @@
 <link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105220597-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -432,7 +442,7 @@ library(readr)      # Setups</code></pre>
 <li><p>Web based query in the browser <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a> as we have just seen.</p></li>
 <li><p>API call based approach to load CT data. In this case the user constructs a query such as “<a href="http://comtrade.un.org/api/get/bulk/C/A/1994/251/HS" class="uri">http://comtrade.un.org/api/get/bulk/C/A/1994/251/HS</a>” following the guidelines outlined on <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a>. To request a bulk data file we need to use the specific format explained on COMTRADE, as follows: <code>http://comtrade.un.org/api/get/bulk/{type}/{freq}/{ps}/{r}/{px}?{token=}</code>, with <code>type</code> (trade type), <code>freq</code> (frequency), <code>ps</code> (period), <code>r</code> (reporter), <code>px</code> (classification), and optionally token (see authentication).</p></li>
 </ul>
-<p>Using the web query approach let’s download data for France’s annual trade of commodities in 1994.</p>
+<p>Using the web query approach let’s download data for Franceâ€™s annual trade of commodities in 1994.</p>
 <p>The zip archive returned by COMTRADE is named “type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.zip”, and contains the file “type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.csv” with data. <strong>Attention!</strong> Data files can be VERY HEAVY (up to 9-10 GB), which may lead to difficulties while loading them.</p>
 <p>The same file can be obtained through the API call “<a href="http://comtrade.un.org/api/get/bulk/C/A/1994/251/H" class="uri">http://comtrade.un.org/api/get/bulk/C/A/1994/251/H</a>”.</p>
 <div id="loading-zipped-bulk-download-data-into-r" class="section level3">
@@ -539,13 +549,8 @@ ctData_3</code></pre>
 <p>Firstly, we run the command “<a href="http://comtrade.un.org/api//refs/da/bulk?parameters" class="uri">http://comtrade.un.org/api//refs/da/bulk?parameters</a>” in the browser address bar. After a certain loading time due to the large volume of the data, we will be returned the JSON object with thousands of rows of text in the browser. This Object can be parsed in R into a data frame showing all data available in COMTRADE and all query commands needed to download each data file.</p>
 <p>To load this object into R we can do the following, using the package <code>jsonlite</code>:</p>
 <pre class="r"><code>install.packages(&quot;jsonlite&quot;)</code></pre>
-<pre class="r"><code>library(jsonlite)</code></pre>
-<pre><code>## 
-## Attaching package: &#39;jsonlite&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:purrr&#39;:
-## 
-##     flatten</code></pre>
-<pre class="r"><code>availableCtData_1 &lt;- jsonlite::fromJSON(&quot;http://comtrade.un.org/api/refs/da/bulk?parameters&quot;) %&gt;% tbl_df()
+<pre class="r"><code>library(jsonlite)
+availableCtData_1 &lt;- jsonlite::fromJSON(&quot;http://comtrade.un.org/api/refs/da/bulk?parameters&quot;) %&gt;% tbl_df()
 availableCtData_1</code></pre>
 <pre><code>## # A tibble: 51,262 x 10
 ##                                                                       name
@@ -604,7 +609,7 @@ glimpse(availableCtData_2)</code></pre>
 <p>After checking for data availability we may want to download some of this data.</p>
 <p>To do the download, after loading the table of available data with <code>tradeAnalysis::getCTParameters()</code>, we need to select the row containing the name of the country that we want to download and the destination folder where we want to save it.</p>
 <p>See the following example.</p>
-<p>We want to download data about all annual trade of commodities by Ukraine (reporter code 804), in 2014, in the HS ‘As reported’ classification. To see an extensive list of reporters and their codes, run <code>tradeAnalysis::getCTReporters()</code></p>
+<p>We want to download data about all annual trade of commodities by Ukraine (reporter code 804), in 2014, in the HS â€˜As reportedâ€™ classification. To see an extensive list of reporters and their codes, run <code>tradeAnalysis::getCTReporters()</code></p>
 <pre class="r"><code>library(tidyverse) </code></pre>
 <p>Let’s first create <code>oneLine</code>, containing all the specifications for our query (the usage of the ‘filter()’ function will be discussed with more detail in the following lesson):</p>
 <pre class="r"><code>oneLine &lt;-

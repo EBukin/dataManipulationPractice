@@ -1,6 +1,6 @@
 name: "dataManipulationPractice"
 output_dir: "docs"
-exclude: ["*.csv", "*.zip"]
+exclude: ["*.csv", "*.zip", "*.rds"]
 navbar:
   title: "Trade data sources and practice"
   left:
@@ -34,4 +34,5 @@ output:
     theme: cerulean
     highlight: default
     include:
+      in_header: google-analytics-script.html
       after_body: footer.html

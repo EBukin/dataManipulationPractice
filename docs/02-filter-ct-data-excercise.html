@@ -13,7 +13,7 @@
 
 <meta name="date" content="2017-08-23" />
 
-<title>Filtering CT data in R</title>
+<title>Main data manipulation commands in R</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -319,7 +319,7 @@ div.tocify {
       <a href="01-load-ct-data-excercise.html">Load data</a>
     </li>
     <li>
-      <a href="02-filter-ct-data-excercise.html">Filter data</a>
+      <a href="02-filter-ct-data-excercise.html">filter / select / arrange / distinct (with answers)</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Answers</li>
@@ -340,26 +340,32 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Filtering CT data in R</h1>
+<h1 class="title toc-ignore">Main data manipulation commands in R</h1>
 <h4 class="author"><em>Eduard Bukin</em></h4>
 <h4 class="date"><em>August 23, 2017</em></h4>
 
 </div>
 
 
-<div id="subsetting-observations-and-variables" class="section level1">
-<h1>Subsetting observations and variables</h1>
-<p>Main goal of this exersise is to try subsetting observations and variables in the trade data in R. For doing that, use R package <code>dplyr</code> and particularly commands <a href="http://r4ds.had.co.nz/transform.html#filter-rows-with-filter">filter()</a> and <a href="http://r4ds.had.co.nz/transform.html#select-columns-with-select">select()</a>.</p>
-<p>Following the previous example, use the same working directory and donwload <a href="https://unfao-my.sharepoint.com/personal/eduard_bukin_fao_org/_layouts/15/guestaccess.aspx?docid=01bedb1cf326148049ab4b5e3f6bcc3cc&amp;authkey=AarI3iY12Uw9QVfQVITPAdU">this data file</a> to the folder <code>02-filter-ct-data</code> whithin your working directory. This data file contains a compress subset of the WTO data for the years 2014-2016, for all countries available in the CT and for all most aggregated comodities listed in the <a href="https://www.wto.org/english/docs_e/legal_e/14-ag_02_e.htm#annI">Annex 1 of the WTO Agreement on Agriculture</a>. We will be using this data in the current and other exersizes.</p>
+<div id="subsetting-and-sorting-observations-and-variables" class="section level1">
+<h1>Subsetting and sorting observations and variables</h1>
+<p>Main goal of this exercise is to try subsetting and arranging observations and variables in the trade data in R. For doing that, use R package <code>dplyr</code> and <a href="http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange">data transformation</a> related functions particularly commands:</p>
+<ul>
+<li><a href="http://r4ds.had.co.nz/transform.html#filter-rows-with-filter">filter()</a>;</li>
+<li><a href="http://r4ds.had.co.nz/transform.html#select-columns-with-select">select()</a>;</li>
+<li><a href="http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange">arrange()</a>;</li>
+<li><a href="https://rdrr.io/cran/dplyr/man/distinct.html">distinct()</a></li>
+</ul>
+<p>Following the previous example, use the same working directory and download <a href="https://unfao-my.sharepoint.com/personal/eduard_bukin_fao_org/_layouts/15/guestaccess.aspx?docid=01bedb1cf326148049ab4b5e3f6bcc3cc&amp;authkey=AarI3iY12Uw9QVfQVITPAdU">this data file</a> to the folder <code>02-filter-ct-data</code> within your working directory. This data file contains a compress subset of the WTO data for the years 2014-2016, for all countries available in the CT and for all most aggregated commodities listed in the <a href="https://www.wto.org/english/docs_e/legal_e/14-ag_02_e.htm#annI">Annex 1 of the WTO Agreement on Agriculture</a>. We will be using this data in the current and other exercises.</p>
 <p>To load this data into the R session use <code>readr</code> package and the function <code>read_rds()</code>.</p>
 <pre class="r"><code>library(tidyverse)
-library(readr)
-ctData &lt;- read_rds(&quot;02-filter-ct-data/subsetting-data.rds&quot;)</code></pre>
+library(readr)</code></pre>
+<pre class="r"><code>ctData &lt;- read_rds(&quot;02-filter-ct-data/subsetting-data.rds&quot;)</code></pre>
 <div id="dplyrfilter" class="section level2">
 <h2>dplyr::filter()</h2>
 <p>Practicing with the dplyr <code>filter()</code> function.</p>
 <p>Here you may need to use datasets available in the <code>tradeAnalysis</code> package together with the <code>dplyr</code> function for data filtering in order to generate the results that are.</p>
-<p>Loade <code>tradeAnalysis</code> package and explore built in datasets. Those are:</p>
+<p>Load <code>tradeAnalysis</code> package and explore built in datasets. Those are:</p>
 <ol style="list-style-type: decimal">
 <li><code>wtoAgFood</code></li>
 <li><code>wtoAgFoodFull</code> What are the difference between the previous one?</li>
@@ -372,47 +378,48 @@ ctData &lt;- read_rds(&quot;02-filter-ct-data/subsetting-data.rds&quot;)</code><
 <p>If any of these datasets is not working try to access to the dataset using the namespace specification such as <code>tradeAnalysis::units</code>.</p>
 <pre class="r"><code>library(tradeAnalysis)
 tradeAnalysis::units</code></pre>
-<pre><code>##    Qty.Unit.Code         Unit
-## 1              1            -
-## 2              2           m2
-## 3              3     1000 kWh
-## 4              4            m
-## 5              5            u
-## 6              6           2u
-## 7              7            l
-## 8              8           kg
-## 9              9        1000U
+<pre><code>## # A tibble: 13 x 3
+##    Qty.Unit.Code         Unit
+##            &lt;int&gt;        &lt;chr&gt;
+##  1             1            -
+##  2             2           m2
+##  3             3     1000 kWh
+##  4             4            m
+##  5             5            u
+##  6             6           2u
+##  7             7            l
+##  8             8           kg
+##  9             9        1000U
 ## 10            10 U (jeu/pack)
 ## 11            11          12u
 ## 12            12           m3
 ## 13            13        carat
-##                                    Unit.Description
-## 1                                       No quantity
-## 2                             Area in square meters
-## 3  Electrical energy in thousands of kilowatt-hours
-## 4                                  Length in meters
-## 5                                   Number of items
-## 6                                   Number of pairs
-## 7                                  Volume in liters
-## 8                               Weight in kilograms
-## 9                                 Thousand of items
-## 10                               Number of packages
-## 11                                   Dozen of items
-## 12                           Volume in cubic meters
-## 13                                 Weight in carats</code></pre>
-<div id="exersize-1." class="section level3">
-<h3>Exersize 1.</h3>
-<p>Export a timeseries for wheat (HS 1001) import and export values only in 1000 USD from all EU countries to the world for all available years. Save the time series in an object and then in the <code>.csv</code> file.</p>
-<p>To see what are the EU countries either use the full list of reporters <code>reporters</code> and manully record all EU countries of substract EU country codes from the output of the function <code>getEU()</code> in the <code>tradeAnalysis</code> package.</p>
+## # ... with 1 more variables: Unit.Description &lt;chr&gt;</code></pre>
+<div id="exercise-1." class="section level3">
+<h3>Exercise 1.</h3>
+<p>Export a timeseries for wheat and barley (HS 1001 and 1003) import and export values only in 1000 USD from all EU countries to the world for all available years. Save the time series in an object and then in the <code>.csv</code> file.</p>
+<p>To see what are the EU countries either use the full list of reporters <code>reporters</code> and manually record all EU countries of subtract EU country codes from the output of the function <code>getEU()</code> in the <code>tradeAnalysis</code> package.</p>
 <div id="solution" class="section level4">
 <h4>Solution</h4>
-<pre class="r"><code>ctSubset &lt;- 
+<pre class="r"><code>hsCodes &lt;- c(&quot;1001&quot;, &quot;1003&quot;)
+ctSubset &lt;- 
   ctData %&gt;% 
   filter(
-    Commodity.Code %in% c(&quot;1001&quot;),
+    Commodity.Code %in% hsCodes,
     Reporter.Code %in% getEU()$Partner.Code,
     Partner.Code %in% &quot;0&quot;
     )</code></pre>
+<p><strong>Note:</strong> filtering arguments must be supplied in the for of atomic vectors only. Thus, you cannot specify <code>hsCodesDF &lt;- as_data_frame(list(Commodity.Code = hsCodes))</code> and filter with the call <code>filter(Commodity.Code %in% hsCodesDF)</code>. The argument <code>hsCodesDF</code> should always me either an atomic vector, or a single value or a logical argument.</p>
+<p>The same filtering exercise could be rewritten as:</p>
+<pre class="r"><code>ctData %&gt;% 
+  mutate(Commodity.Code.Filter = ifelse(Commodity.Code %in% hsCodes, TRUE, FALSE)) %&gt;% 
+  filter(
+    Commodity.Code.Filter,
+    Reporter.Code %in% getEU()$Partner.Code,
+    Partner.Code %in% &quot;0&quot;
+    ) %&gt;% 
+  select(-Commodity.Code.Filter)</code></pre>
+<p>When we are done with filtering, we can record everything in a data frame.</p>
 <pre class="r"><code>write_csv(ctSubset, &quot;02-filter-ct-data/ex1-subset.csv&quot;)</code></pre>
 </div>
 </div>
@@ -420,25 +427,122 @@ tradeAnalysis::units</code></pre>
 <div id="dplyrselect" class="section level2">
 <h2>dplyr::select()</h2>
 <p>Practicing with the dplyr <code>select()</code> function.</p>
-<p>In order to make results from the Exersize 1 more user friendly, we need to be able to select different set of columns for presentation using <code>dplyr::select()</code> and other “Select helpers” see <code>?everything()</code>.</p>
-<div id="exersize-2." class="section level3">
-<h3>Exersize 2.</h3>
-<p>Use the output of the previous exersize in order to create to objects tables:</p>
+<p>In order to make results from the exercise 1 more user friendly, we need to be able to select different set of columns for presentation using <code>dplyr::select()</code> and other “Select helpers” see <code>?everything()</code>.</p>
+<div id="exercise-2." class="section level3">
+<h3>Exercise 2.</h3>
+<p>Use the output of the previous exercise in order to create to objects tables:</p>
 <ul>
 <li>one with the trade quantities expressed in 1000 MT.</li>
 <li>second with the trade values expressed in 1000 USD.</li>
 </ul>
+<div id="solution-1" class="section level4">
+<h4>Solution</h4>
+<p>One approach is to select those variables that we need:</p>
 <pre class="r"><code>ctSubsetQuant &lt;- 
   ctSubset %&gt;% 
-  select(Reporter.Code, Partner.Code, Trade.Flow.Code, 
+  select(Reporter.Code, Partner.Code, Trade.Flow.Code, Year,
          Commodity.Code, Netweight..kg.) %&gt;% 
   mutate(Netweight..kg. = Netweight..kg. / 10^6)
 ctSubsetVal &lt;- 
   ctSubset %&gt;% 
-  select(Reporter.Code, Partner.Code, Trade.Flow.Code, 
+  select(Reporter.Code, Partner.Code, Trade.Flow.Code, Year,
          Commodity.Code, Trade.Value..US..) %&gt;% 
   mutate(Trade.Value..US.. = Trade.Value..US.. / 10^3)</code></pre>
-<p>Here you need to use datasets available in the <code>tradeAnalysis</code> package together with the <code>dplyr</code> function for data filtering in order to generate the results that are.</p>
+<p>Another approach is in removing those variables that we do not need:</p>
+<pre class="r"><code>ctSubsetQuant &lt;- 
+  ctSubset %&gt;% 
+  select(-Trade.Value..US.., -Classification) %&gt;% 
+  mutate(Netweight..kg. = Netweight..kg. / 10^6)
+ctSubsetVal &lt;- 
+  ctSubset %&gt;% 
+  select(-Netweight..kg., -Classification) %&gt;% 
+  mutate(Trade.Value..US.. = Trade.Value..US.. / 10^3)</code></pre>
+</div>
+</div>
+</div>
+<div id="dplyrarrange" class="section level2">
+<h2>dplyr::arrange()</h2>
+<p>Sometimes it is necessary to be able to arrange data in the user-friendly way. To do so, use function <code>arrange()</code> and <code>desc()</code> (to revert order withing the function <code>arrange()</code>). For more information see <a href="http://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange">arrange()</a>.</p>
+<div id="exercise-3." class="section level3">
+<h3>Exercise 3.</h3>
+<p>Use the output <code>ctSubsetQuant</code>, to arrange all observations in the way that you can see data in the following way:</p>
+<ol style="list-style-type: decimal">
+<li>one reporter, one Partner, one commodity, Export (Import), years in the reverse order (2016, 2015, 2014)</li>
+<li>one reporter, one Partner, one commodity,Import, years in the reverse order (2016, 2015, 2014)</li>
+<li>one reporter, one Partner, second commodity, Export (Import), years in the reverse order (2016, 2015, 2014)</li>
+<li>one reporter, one Partner, second commodity, Import, years in the reverse order (2016, 2015, 2014)</li>
+<li>one reporter, second Partner, one commodity, Export (Import), years in the reverse order (2016, 2015, 2014)</li>
+<li>one reporter, second Partner, one commodity, Import, years in the reverse order (2016, 2015, 2014)</li>
+</ol>
+<div id="solution-2" class="section level4">
+<h4>Solution</h4>
+<pre class="r"><code>ctSubsetQuant %&gt;% 
+  arrange(Reporter.Code, Partner.Code, Commodity.Code, 
+          desc(Trade.Flow.Code), desc(Year), desc(Year))
+## # A tibble: 328 x 6
+##     Year Trade.Flow.Code Reporter.Code Partner.Code Commodity.Code
+##    &lt;int&gt;           &lt;int&gt;         &lt;int&gt;        &lt;int&gt;          &lt;chr&gt;
+##  1  2014               1            20            0           1001
+##  2  2014               1            20            0           1003
+##  3  2015               2            40            0           1001
+##  4  2014               2            40            0           1001
+##  5  2015               1            40            0           1001
+##  6  2014               1            40            0           1001
+##  7  2015               2            40            0           1003
+##  8  2014               2            40            0           1003
+##  9  2015               1            40            0           1003
+## 10  2014               1            40            0           1003
+## # ... with 318 more rows, and 1 more variables: Netweight..kg. &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</div>
+<div id="dplyrdisitnct" class="section level2">
+<h2>dplyr::disitnct()</h2>
+<p>Sometimes it is very important to see what are the unique values existing in the data. For finding this, we can use function <code>disitnct()</code> from <code>dplyr</code>.</p>
+<div id="exercise-4." class="section level3">
+<h3>Exercise 4.</h3>
+<p>Find all unique partners of French (Reporter code 251) export and import of wheat and indicate, what are the differences.</p>
+<div id="solution-3" class="section level4">
+<h4>Solution</h4>
+<p>Finding all unique reporters and partners.</p>
+<pre class="r"><code>franceExpImpPartn &lt;- 
+  ctData %&gt;% 
+  filter(Reporter.Code == &quot;251&quot;, 
+         Commodity.Code == &quot;1001&quot;) %&gt;% 
+  distinct(Trade.Flow.Code, Partner.Code)</code></pre>
+<p>Unique destinations of export, where from France does not import any wheat:</p>
+<pre class="r"><code>franceExpImpPartn %&gt;% 
+  filter(Trade.Flow.Code == 2, 
+         !Partner.Code %in% 
+           filter(franceExpImpPartn, Trade.Flow.Code == 1)$Partner.Code)
+## # A tibble: 63 x 2
+##    Trade.Flow.Code Partner.Code
+##              &lt;int&gt;        &lt;int&gt;
+##  1               2           92
+##  2               2          112
+##  3               2          116
+##  4               2          120
+##  5               2          132
+##  6               2          178
+##  7               2          180
+##  8               2          191
+##  9               2          192
+## 10               2          196
+## # ... with 53 more rows</code></pre>
+<p>Unique sources of import, where France does not export any wheat:</p>
+<pre class="r"><code>franceExpImpPartn %&gt;% 
+  filter(Trade.Flow.Code == 1, 
+         !Partner.Code %in% 
+           filter(franceExpImpPartn, Trade.Flow.Code == 2)$Partner.Code)</code></pre>
+<pre><code>## # A tibble: 5 x 2
+##   Trade.Flow.Code Partner.Code
+##             &lt;int&gt;        &lt;int&gt;
+## 1               1          251
+## 2               1          404
+## 3               1          899
+## 4               1          604
+## 5               1          398</code></pre>
+</div>
 </div>
 </div>
 </div>

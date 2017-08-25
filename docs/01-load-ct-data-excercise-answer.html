@@ -319,7 +319,7 @@ div.tocify {
       <a href="01-load-ct-data-excercise.html">Load data</a>
     </li>
     <li>
-      <a href="02-filter-ct-data-excercise.html">Filter data</a>
+      <a href="02-filter-ct-data-excercise.html">filter / select / arrange / distinct (with answers)</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Answers</li>
@@ -467,7 +467,7 @@ div.tocify {
 ## $ `Reporter Income Group`  &lt;chr&gt; &quot;High income&quot;, &quot;High income&quot;, &quot;High i...
 ## $ `Partner Region`         &lt;chr&gt; &quot;Latin America &amp; Caribbean&quot;, &quot;Latin A...
 ## $ `Partner Income Group`   &lt;chr&gt; &quot;High income&quot;, &quot;High income&quot;, &quot;Low in...</code></pre>
-<p>It is clear, that both tables have dfferent number of rows as well as sets of columns. Therefore, we need to go one step ahead and use <code>dplyr</code> package and comands <code>select()</code> and <code>rename()</code> to clean and unify variables across two dataframes.</p>
+<p>It is clear, that both tables have different number of rows as well as sets of columns. Therefore, we need to go one step ahead and use <code>dplyr</code> package and commands <code>select()</code> and <code>rename()</code> to clean and unify variables across two data frames.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Cleaning WITS data frame.</li>
 </ol>
@@ -508,7 +508,7 @@ glimpse(ctPolandTotals)</code></pre>
 ## $ TradeFlowName            &lt;chr&gt; &quot;Import&quot;, &quot;Export&quot;, &quot;Import&quot;, &quot;Export...
 ## $ `TradeValue in 1000 USD` &lt;dbl&gt; 216687292345, 214476794173, 482913, 1...</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>The differences are in the units of the <code>TradeValue</code> in both data sets, different number of rows, and codings for <code>ProductCode</code>.</li>
+<li>The differences are in the units of the <code>TradeValue</code> in both data sets, different number of rows, and coding for <code>ProductCode</code>.</li>
 </ol>
 </div>
 

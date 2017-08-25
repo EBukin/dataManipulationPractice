@@ -63,6 +63,40 @@ Export a timeseries for wheat and barley (HS 1001 and 1003) import and export va
 
 To see what are the EU countries either use the full list of reporters `reporters` and manually record all EU countries of subtract EU country codes from the output of the function `getEU()` in the `tradeAnalysis` package.
 
+#### Solution
+
+```{r collapse=TRUE}
+hsCodes <- c("1001", "1003")
+ctSubset <- 
+  ctData %>% 
+  filter(
+    Commodity.Code %in% hsCodes,
+    Reporter.Code %in% getEU()$Partner.Code,
+    Partner.Code %in% "0"
+    )
+```
+
+**Note:** filtering arguments must be supplied in the for of atomic vectors only. Thus, you cannot specify `hsCodesDF <- as_data_frame(list(Commodity.Code = hsCodes))` and filter with the call `filter(Commodity.Code %in% hsCodesDF)`. The argument `hsCodesDF` should always me either an atomic vector, or a single value or a logical argument.
+
+The same filtering exercise could be rewritten as:
+
+```{r eval=FALSE, collapse=TRUE}
+ctData %>% 
+  mutate(Commodity.Code.Filter = ifelse(Commodity.Code %in% hsCodes, TRUE, FALSE)) %>% 
+  filter(
+    Commodity.Code.Filter,
+    Reporter.Code %in% getEU()$Partner.Code,
+    Partner.Code %in% "0"
+    ) %>% 
+  select(-Commodity.Code.Filter)
+```
+
+When we are done with filtering, we can record everything in a data frame.
+
+```{r eval=FALSE, collapse=TRUE}
+write_csv(ctSubset, "02-filter-ct-data/ex1-subset.csv")
+```
+
 ## dplyr::select()
 
 Practicing with the dplyr `select()` function.
@@ -75,6 +109,37 @@ Use the output of the previous exercise in order to create to objects tables:
 
 *  one with the trade quantities expressed in 1000 MT.
 *  second with the trade values expressed in 1000 USD.
+
+#### Solution
+
+One approach is to select those variables that we need:
+
+```{r collapse=TRUE}
+ctSubsetQuant <- 
+  ctSubset %>% 
+  select(Reporter.Code, Partner.Code, Trade.Flow.Code, Year,
+         Commodity.Code, Netweight..kg.) %>% 
+  mutate(Netweight..kg. = Netweight..kg. / 10^6)
+ctSubsetVal <- 
+  ctSubset %>% 
+  select(Reporter.Code, Partner.Code, Trade.Flow.Code, Year,
+         Commodity.Code, Trade.Value..US..) %>% 
+  mutate(Trade.Value..US.. = Trade.Value..US.. / 10^3)
+```
+
+Another approach is in removing those variables that we do not need:
+
+```{r collapse=TRUE}
+ctSubsetQuant <- 
+  ctSubset %>% 
+  select(-Trade.Value..US.., -Classification) %>% 
+  mutate(Netweight..kg. = Netweight..kg. / 10^6)
+ctSubsetVal <- 
+  ctSubset %>% 
+  select(-Netweight..kg., -Classification) %>% 
+  mutate(Trade.Value..US.. = Trade.Value..US.. / 10^3)
+```
+
 
 ## dplyr::arrange()
 
@@ -91,6 +156,14 @@ Use the output `ctSubsetQuant`, to arrange all observations in the way that you 
 1.  one reporter, second Partner, one commodity, Export (Import), years in the reverse order (2016, 2015, 2014)
 1.  one reporter, second Partner, one commodity, Import, years in the reverse order (2016, 2015, 2014)
 
+#### Solution
+
+```{r collapse=TRUE}
+ctSubsetQuant %>% 
+  arrange(Reporter.Code, Partner.Code, Commodity.Code, 
+          desc(Trade.Flow.Code), desc(Year), desc(Year))
+```
+
 ## dplyr::disitnct()
 
 Sometimes it is very important to see what are the unique values existing in the data. For finding this, we can use function `disitnct()` from `dplyr`.
@@ -98,4 +171,36 @@ Sometimes it is very important to see what are the unique values existing in the
 ### Exercise 4. 
 
 Find all unique partners of French (Reporter code 251) export and import of wheat and indicate, what are the differences.
+
+#### Solution
+
+Finding all unique reporters and partners.
+
+```{r collapse=TRUE}
+franceExpImpPartn <- 
+  ctData %>% 
+  filter(Reporter.Code == "251", 
+         Commodity.Code == "1001") %>% 
+  distinct(Trade.Flow.Code, Partner.Code)
+```
+
+Unique destinations of export, where from France does not import any wheat:
+
+```{r collapse=TRUE}
+franceExpImpPartn %>% 
+  filter(Trade.Flow.Code == 2, 
+         !Partner.Code %in% 
+           filter(franceExpImpPartn, Trade.Flow.Code == 1)$Partner.Code)
+```
+
+Unique sources of import, where France does not export any wheat:
+
+```{r}
+franceExpImpPartn %>% 
+  filter(Trade.Flow.Code == 1, 
+         !Partner.Code %in% 
+           filter(franceExpImpPartn, Trade.Flow.Code == 2)$Partner.Code)
+```
+
+
 

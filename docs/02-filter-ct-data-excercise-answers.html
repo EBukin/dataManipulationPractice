@@ -402,6 +402,29 @@ tradeAnalysis::units</code></pre>
 <h3>Exercise 1.</h3>
 <p>Export a timeseries for wheat and barley (HS 1001 and 1003) import and export values only in 1000 USD from all EU countries to the world for all available years. Save the time series in an object and then in the <code>.csv</code> file.</p>
 <p>To see what are the EU countries either use the full list of reporters <code>reporters</code> and manually record all EU countries of subtract EU country codes from the output of the function <code>getEU()</code> in the <code>tradeAnalysis</code> package.</p>
+<div id="solution" class="section level4">
+<h4>Solution</h4>
+<pre class="r"><code>hsCodes &lt;- c(&quot;1001&quot;, &quot;1003&quot;)
+ctSubset &lt;- 
+  ctData %&gt;% 
+  filter(
+    Commodity.Code %in% hsCodes,
+    Reporter.Code %in% getEU()$Partner.Code,
+    Partner.Code %in% &quot;0&quot;
+    )</code></pre>
+<p><strong>Note:</strong> filtering arguments must be supplied in the for of atomic vectors only. Thus, you cannot specify <code>hsCodesDF &lt;- as_data_frame(list(Commodity.Code = hsCodes))</code> and filter with the call <code>filter(Commodity.Code %in% hsCodesDF)</code>. The argument <code>hsCodesDF</code> should always me either an atomic vector, or a single value or a logical argument.</p>
+<p>The same filtering exercise could be rewritten as:</p>
+<pre class="r"><code>ctData %&gt;% 
+  mutate(Commodity.Code.Filter = ifelse(Commodity.Code %in% hsCodes, TRUE, FALSE)) %&gt;% 
+  filter(
+    Commodity.Code.Filter,
+    Reporter.Code %in% getEU()$Partner.Code,
+    Partner.Code %in% &quot;0&quot;
+    ) %&gt;% 
+  select(-Commodity.Code.Filter)</code></pre>
+<p>When we are done with filtering, we can record everything in a data frame.</p>
+<pre class="r"><code>write_csv(ctSubset, &quot;02-filter-ct-data/ex1-subset.csv&quot;)</code></pre>
+</div>
 </div>
 </div>
 <div id="dplyrselect" class="section level2">
@@ -415,6 +438,29 @@ tradeAnalysis::units</code></pre>
 <li>one with the trade quantities expressed in 1000 MT.</li>
 <li>second with the trade values expressed in 1000 USD.</li>
 </ul>
+<div id="solution-1" class="section level4">
+<h4>Solution</h4>
+<p>One approach is to select those variables that we need:</p>
+<pre class="r"><code>ctSubsetQuant &lt;- 
+  ctSubset %&gt;% 
+  select(Reporter.Code, Partner.Code, Trade.Flow.Code, Year,
+         Commodity.Code, Netweight..kg.) %&gt;% 
+  mutate(Netweight..kg. = Netweight..kg. / 10^6)
+ctSubsetVal &lt;- 
+  ctSubset %&gt;% 
+  select(Reporter.Code, Partner.Code, Trade.Flow.Code, Year,
+         Commodity.Code, Trade.Value..US..) %&gt;% 
+  mutate(Trade.Value..US.. = Trade.Value..US.. / 10^3)</code></pre>
+<p>Another approach is in removing those variables that we do not need:</p>
+<pre class="r"><code>ctSubsetQuant &lt;- 
+  ctSubset %&gt;% 
+  select(-Trade.Value..US.., -Classification) %&gt;% 
+  mutate(Netweight..kg. = Netweight..kg. / 10^6)
+ctSubsetVal &lt;- 
+  ctSubset %&gt;% 
+  select(-Netweight..kg., -Classification) %&gt;% 
+  mutate(Trade.Value..US.. = Trade.Value..US.. / 10^3)</code></pre>
+</div>
 </div>
 </div>
 <div id="dplyrarrange" class="section level2">
@@ -431,6 +477,26 @@ tradeAnalysis::units</code></pre>
 <li>one reporter, second Partner, one commodity, Export (Import), years in the reverse order (2016, 2015, 2014)</li>
 <li>one reporter, second Partner, one commodity, Import, years in the reverse order (2016, 2015, 2014)</li>
 </ol>
+<div id="solution-2" class="section level4">
+<h4>Solution</h4>
+<pre class="r"><code>ctSubsetQuant %&gt;% 
+  arrange(Reporter.Code, Partner.Code, Commodity.Code, 
+          desc(Trade.Flow.Code), desc(Year), desc(Year))
+## # A tibble: 328 x 6
+##     Year Trade.Flow.Code Reporter.Code Partner.Code Commodity.Code
+##    &lt;int&gt;           &lt;int&gt;         &lt;int&gt;        &lt;int&gt;          &lt;chr&gt;
+##  1  2014               1            20            0           1001
+##  2  2014               1            20            0           1003
+##  3  2015               2            40            0           1001
+##  4  2014               2            40            0           1001
+##  5  2015               1            40            0           1001
+##  6  2014               1            40            0           1001
+##  7  2015               2            40            0           1003
+##  8  2014               2            40            0           1003
+##  9  2015               1            40            0           1003
+## 10  2014               1            40            0           1003
+## # ... with 318 more rows, and 1 more variables: Netweight..kg. &lt;dbl&gt;</code></pre>
+</div>
 </div>
 </div>
 <div id="dplyrdisitnct" class="section level2">
@@ -439,6 +505,47 @@ tradeAnalysis::units</code></pre>
 <div id="exercise-4." class="section level3">
 <h3>Exercise 4.</h3>
 <p>Find all unique partners of French (Reporter code 251) export and import of wheat and indicate, what are the differences.</p>
+<div id="solution-3" class="section level4">
+<h4>Solution</h4>
+<p>Finding all unique reporters and partners.</p>
+<pre class="r"><code>franceExpImpPartn &lt;- 
+  ctData %&gt;% 
+  filter(Reporter.Code == &quot;251&quot;, 
+         Commodity.Code == &quot;1001&quot;) %&gt;% 
+  distinct(Trade.Flow.Code, Partner.Code)</code></pre>
+<p>Unique destinations of export, where from France does not import any wheat:</p>
+<pre class="r"><code>franceExpImpPartn %&gt;% 
+  filter(Trade.Flow.Code == 2, 
+         !Partner.Code %in% 
+           filter(franceExpImpPartn, Trade.Flow.Code == 1)$Partner.Code)
+## # A tibble: 63 x 2
+##    Trade.Flow.Code Partner.Code
+##              &lt;int&gt;        &lt;int&gt;
+##  1               2           92
+##  2               2          112
+##  3               2          116
+##  4               2          120
+##  5               2          132
+##  6               2          178
+##  7               2          180
+##  8               2          191
+##  9               2          192
+## 10               2          196
+## # ... with 53 more rows</code></pre>
+<p>Unique sources of import, where France does not export any wheat:</p>
+<pre class="r"><code>franceExpImpPartn %&gt;% 
+  filter(Trade.Flow.Code == 1, 
+         !Partner.Code %in% 
+           filter(franceExpImpPartn, Trade.Flow.Code == 2)$Partner.Code)</code></pre>
+<pre><code>## # A tibble: 5 x 2
+##   Trade.Flow.Code Partner.Code
+##             &lt;int&gt;        &lt;int&gt;
+## 1               1          251
+## 2               1          404
+## 3               1          899
+## 4               1          604
+## 5               1          398</code></pre>
+</div>
 </div>
 </div>
 </div>

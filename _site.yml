@@ -1,6 +1,6 @@
 name: "dataManipulationPractice"
 output_dir: "docs"
-exclude: ["*.csv", "*.zip", "*.rds"]
+exclude: ["*.csv", "*.zip", "*.rds", "*.R"]
 navbar:
   title: "Trade data sources and practice"
   left:
@@ -20,12 +20,14 @@ navbar:
         - text: "Excercises"
         - text: "Load data"
           href: 01-load-ct-data-excercise.html
-        - text: "filter / select / arrange / distinct (with answers)"
+        - text: "filter / select / arrange / distinct"
           href: 02-filter-ct-data-excercise.html
         - text: "---------"
         - text: "Answers"
         - text: "Load data"
           href: 01-load-ct-data-excercise-answer.html
+        - text: "filter / select / arrange / distinct"
+          href: 02-filter-ct-data-excercise-answers.html
 output:
   html_document:
     toc: true

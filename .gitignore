@@ -26,6 +26,11 @@
 vignettes/*.html
 vignettes/*.pdf
 
+# Website ireelevant content
+docs/*/*.rds
+docs/*/*.R
+docs/*/*.csv
+
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
 

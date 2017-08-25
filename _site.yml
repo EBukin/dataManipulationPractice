@@ -20,7 +20,7 @@ navbar:
         - text: "Excercises"
         - text: "Load data"
           href: 01-load-ct-data-excercise.html
-        - text: "Filter data"
+        - text: "filter / select / arrange / distinct (with answers)"
           href: 02-filter-ct-data-excercise.html
         - text: "---------"
         - text: "Answers"

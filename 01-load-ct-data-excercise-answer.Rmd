@@ -45,7 +45,7 @@ witsPolandTotals <- read_csv("01-data-import/wits_poland_data.csv")
 glimpse(witsPolandTotals)
 ```
 
-It is clear, that both tables have dfferent number of rows as well as sets of columns. Therefore, we need to go one step ahead and use `dplyr` package and comands `select()` and `rename()` to clean and unify variables across two dataframes.
+It is clear, that both tables have different number of rows as well as sets of columns. Therefore, we need to go one step ahead and use `dplyr` package and commands `select()` and `rename()` to clean and unify variables across two data frames.
 
 2. Cleaning WITS data frame.
 
@@ -74,4 +74,4 @@ ctPolandTotals <-
 glimpse(ctPolandTotals)
 ```
 
-3. The differences are in the units of the `TradeValue` in both data sets, different number of rows, and codings for `ProductCode`.
+3. The differences are in the units of the `TradeValue` in both data sets, different number of rows, and coding for `ProductCode`.

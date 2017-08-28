@@ -11,9 +11,9 @@
 
 <meta name="author" content="Eduard Bukin" />
 
-<meta name="date" content="2017-08-23" />
+<meta name="date" content="2017-08-28" />
 
-<title>Loading COMTRADE/WITS data</title>
+<title>Joints and tidy data with dplyr and tidyr</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -349,26 +349,73 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Loading COMTRADE/WITS data</h1>
+<h1 class="title toc-ignore">Joints and tidy data with dplyr and tidyr</h1>
 <h4 class="author"><em>Eduard Bukin</em></h4>
-<h4 class="date"><em>August 23, 2017</em></h4>
+<h4 class="date"><em>August 28, 2017</em></h4>
 
 </div>
 
 
-<div id="ex" class="section level2">
-<h2>1. Ex</h2>
-<p>Load according to the following predefined parameters from two different sources (WITS and COMTRADE) and compare the results:</p>
+<div id="concetp-of-relational-data" class="section level1">
+<h1>Concetp of relational data</h1>
+<p>Main goal of this exercise is to show main applications of the relational data concept with the <code>dplyr</code> package.</p>
+<p>For more information, see <a href="http://r4ds.had.co.nz/relational-data.html">relational data</a>:</p>
 <ul>
-<li>Reporter: Poland</li>
-<li>Partner: All available partners</li>
-<li>Trade Flow: Import, Export</li>
-<li>Year: 2014</li>
-<li>Commodities: TOTAL</li>
+<li><a href="http://r4ds.had.co.nz/relational-data.html#mutating-joins">mutating joints</a>;</li>
+<li><a href="http://r4ds.had.co.nz/relational-data.html#mutating-joins">filtering joints</a>.</li>
 </ul>
-<p>Questions:<br />
-1. Load both data sets to R under the names <code>ctPolandTotals</code> and <code>witsPolandTotals</code><br />
-2. Compare two data sets using different functions such as: <code>glimpse()</code>, <code>str()</code>, <code>nrows()</code>, <code>all_equal()</code> or more from <code>dplyr</code> package. 3. Briefly describe what is the difference between two data sets.</p>
+<p>Following the previous example, use the same working directory and download <a href="https://unfao-my.sharepoint.com/personal/eduard_bukin_fao_org/_layouts/15/guestaccess.aspx?docid=01bedb1cf326148049ab4b5e3f6bcc3cc&amp;authkey=AarI3iY12Uw9QVfQVITPAdU">this data file</a> to the folder <code>03-joints-exercise</code> within your working directory (see previous examples for more information).</p>
+<div id="mutating-joint" class="section level2">
+<h2>Mutating joint</h2>
+<p>Add columns with the explanation of the variables <code>Trade.Flow.Code</code>, <code>Reporter.Code</code> and <code>Partner.Code</code> using the <code>left_join()</code> or <code>right_join()</code> and the mapping tables from the package <code>tradeAnalysis</code> explained in the previous exercise. Use the subset of 20 rows of the data <code>ctData</code>, loaded as in the previous exercise.</p>
+<div id="solution" class="section level3">
+<h3>Solution</h3>
+<pre class="r"><code>library(tidyverse)
+library(readr)
+library(tradeAnalysis)</code></pre>
+<pre class="r"><code>ctData &lt;- read_rds(&quot;03-joints-exercise/subsetting-data.rds&quot;)</code></pre>
+<p>Do the same with the help of the <code>tradeAnalysis</code> package.</p>
+</div>
+<div id="solution-1" class="section level3">
+<h3>Solution</h3>
+<p>Do the same with the help of the <code>tradeAnalysis</code> package in one line.</p>
+</div>
+<div id="solution-2" class="section level3">
+<h3>Solution</h3>
+</div>
+</div>
+<div id="filtering-joints" class="section level2">
+<h2>Filtering joints</h2>
+<p>Sometimes, when you need to filter a big data set, using multiple arguments, it is better to use <code>join()</code> functions then <code>filter()</code>.</p>
+<p>From <code>ctData</code> filter all EU countries import of wheat (1001) with the world. (Not the best example because it is easier to make it with the help of the filter function)</p>
+<div id="solution-3" class="section level3">
+<h3>Solution</h3>
+<p>Filtering joints are very useful, when there are multiple combinations of the variables that need to be filtered. for examples, use the following filtering data frame for sub-setting the data set. The data frame generated below represents 12 reporters and their trade with the 3 random partners.</p>
+</div>
+<div id="solution-4" class="section level3">
+<h3>Solution</h3>
+<pre class="r"><code>set.seed(1)
+fltDF &lt;-
+  tibble(Reporter.Code = c(getFSR()$Partner.Code)) %&gt;% 
+  group_by(Reporter.Code) %&gt;% 
+  do({tibble(Partner.Code = sample_n(partners, 3)$Partner.Code)}) %&gt;% 
+  ungroup() %&gt;% 
+  mutate(Commodity.Code = &quot;01&quot;) %&gt;% 
+  expand(Commodity.Code = c(&quot;01&quot;, &quot;02&quot;, &quot;03&quot;), Partner.Code, Reporter.Code)</code></pre>
+<p>Use <code>semi_join()</code> and compare the results with the <code>right_join()</code>.</p>
+</div>
+<div id="solution-5" class="section level3">
+<h3>Solution</h3>
+</div>
+</div>
+<div id="tidy-data" class="section level2">
+<h2>Tidy data</h2>
+<p>The main idea of the <code>tidy</code> data concept is that we store and use data in the way that we can apply to it any analysis easily and without problems. We can easily split it subset it and re-arrange it any suitable way. For that purpose we use two main verbs: <code>spread()</code> and <code>gather()</code>. Also there are <code>unite()</code>, <code>separate()</code> and others, see <a href="http://r4ds.had.co.nz/tidy-data.html">tidy data</a>.</p>
+<p>Use the previously loaded data in order to return a table with the columns: Commodity.Code, Commodity, Reporter, Partner, Trade.Flow, 2014, 2015, 2016 and Trade Values on intersection only for EU countries trade with the world and commodity code is <code>1001</code>.</p>
+<div id="solution-6" class="section level3">
+<h3>Solution</h3>
+</div>
+</div>
 </div>
 
 <p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>

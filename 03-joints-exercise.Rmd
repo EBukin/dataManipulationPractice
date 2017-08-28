@@ -1,0 +1,84 @@
+---
+title: "Joints and tidy data with dplyr and tidyr"
+author: "Eduard Bukin"
+date: "August 28, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Concetp of relational data
+
+Main goal of this exercise is to show main applications of the relational data concept with the `dplyr` package.
+
+For more information, see [relational data](http://r4ds.had.co.nz/relational-data.html):
+
+*  [mutating joints](http://r4ds.had.co.nz/relational-data.html#mutating-joins);
+*  [filtering joints](http://r4ds.had.co.nz/relational-data.html#mutating-joins).
+
+Following the previous example, use the same working directory and download [this data file](https://unfao-my.sharepoint.com/personal/eduard_bukin_fao_org/_layouts/15/guestaccess.aspx?docid=01bedb1cf326148049ab4b5e3f6bcc3cc&authkey=AarI3iY12Uw9QVfQVITPAdU) to the folder `03-joints-exercise` within your working directory (see previous examples for more information). 
+
+## Mutating joint
+
+Add columns with the explanation of the variables `Trade.Flow.Code`, `Reporter.Code` and `Partner.Code` using the `left_join()` or `right_join()` and the mapping tables from the package `tradeAnalysis` explained in the previous exercise. Use the subset of 20 rows of the data `ctData`, loaded as in the previous exercise.
+
+### Solution
+
+```{r warning=FALSE}
+library(tidyverse)
+library(readr)
+library(tradeAnalysis)
+```
+```{r loadin_data, cache=TRUE}
+ctData <- read_rds("03-joints-exercise/subsetting-data.rds")
+```
+
+Do the same with the help of the `tradeAnalysis` package.
+
+### Solution
+
+Do the same with the help of the `tradeAnalysis` package in one line.
+
+### Solution
+
+## Filtering joints
+
+Sometimes, when you need to filter a big data set, using multiple arguments, it is better to use `join()` functions then `filter()`. 
+
+From `ctData` filter all EU countries import of wheat (1001) with the world. (Not the best example because it is easier to make it with the help of the filter function)
+
+### Solution
+
+Filtering joints are very useful, when there are multiple combinations of the variables that need to be filtered. for examples, use the following filtering data frame for sub-setting the data set. The data frame generated below represents 12 reporters and their trade with the 3 random partners.
+
+### Solution
+```{r}
+set.seed(1)
+fltDF <-
+  tibble(Reporter.Code = c(getFSR()$Partner.Code)) %>% 
+  group_by(Reporter.Code) %>% 
+  do({tibble(Partner.Code = sample_n(partners, 3)$Partner.Code)}) %>% 
+  ungroup() %>% 
+  mutate(Commodity.Code = "01") %>% 
+  expand(Commodity.Code = c("01", "02", "03"), Partner.Code, Reporter.Code)
+```
+
+Use `semi_join()` and compare the results with the `right_join()`.
+
+### Solution
+
+## Tidy data
+
+The main idea of the `tidy` data concept is that we store and use data in the way that we can apply to it any analysis easily and without problems. We can easily split it subset it and re-arrange it any suitable way. For that purpose we use two main verbs: `spread()` and `gather()`. Also there are `unite()`, `separate()` and others, see [tidy data](http://r4ds.had.co.nz/tidy-data.html).
+
+Use the previously loaded data in order to return a table with the columns: Commodity.Code, Commodity, Reporter, Partner, Trade.Flow, 2014, 2015, 2016 and Trade Values on intersection only for EU countries trade with the world and commodity code is `1001`.
+
+### Solution
+
+
+
+
+
+

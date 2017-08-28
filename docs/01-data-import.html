@@ -11,7 +11,7 @@
 
 <meta name="author" content="Eduard Bukin" />
 
-<meta name="date" content="2017-08-25" />
+<meta name="date" content="2017-08-28" />
 
 <title>Using COMTRADE bulk/regular downloads and loading data into R</title>
 
@@ -321,6 +321,9 @@ div.tocify {
     <li>
       <a href="02-filter-ct-data-excercise.html">filter / select / arrange / distinct</a>
     </li>
+    <li>
+      <a href="03-joints-exercise.html">Relational and tidy data</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">Answers</li>
     <li>
@@ -328,6 +331,9 @@ div.tocify {
     </li>
     <li>
       <a href="02-filter-ct-data-excercise-answers.html">filter / select / arrange / distinct</a>
+    </li>
+    <li>
+      <a href="03-joints-exercise-answers.html">Relational and tidy data</a>
     </li>
   </ul>
 </li>
@@ -345,7 +351,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Using COMTRADE bulk/regular downloads and loading data into R</h1>
 <h4 class="author"><em>Eduard Bukin</em></h4>
-<h4 class="date"><em>2017-08-25</em></h4>
+<h4 class="date"><em>2017-08-28</em></h4>
 
 </div>
 
@@ -552,59 +558,64 @@ ctData_3</code></pre>
 <p>Firstly, we run the command “<a href="http://comtrade.un.org/api//refs/da/bulk?parameters" class="uri">http://comtrade.un.org/api//refs/da/bulk?parameters</a>” in the browser address bar. After a certain loading time due to the large volume of the data, we will be returned the JSON object with thousands of rows of text in the browser. This Object can be parsed in R into a data frame showing all data available in COMTRADE and all query commands needed to download each data file.</p>
 <p>To load this object into R we can do the following, using the package <code>jsonlite</code>:</p>
 <pre class="r"><code>install.packages(&quot;jsonlite&quot;)</code></pre>
-<pre class="r"><code>library(jsonlite)
-availableCtData_1 &lt;- jsonlite::fromJSON(&quot;http://comtrade.un.org/api/refs/da/bulk?parameters&quot;) %&gt;% tbl_df()
+<pre class="r"><code>library(jsonlite)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;jsonlite&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     flatten</code></pre>
+<pre class="r"><code>availableCtData_1 &lt;- jsonlite::fromJSON(&quot;http://comtrade.un.org/api/refs/da/bulk?parameters&quot;) %&gt;% tbl_df()
 availableCtData_1</code></pre>
-<pre><code>## # A tibble: 51,262 x 10
-##                                                                       name
-##  *                                                                   &lt;chr&gt;
-##  1 type-C_r-428_ps-2016_freq-A_px-BEC_pub-20170812_fmt-csv_ex-20170817.zip
-##  2  type-C_r-428_ps-2016_freq-A_px-H0_pub-20170812_fmt-csv_ex-20170817.zip
-##  3  type-C_r-428_ps-2016_freq-A_px-H1_pub-20170812_fmt-csv_ex-20170817.zip
-##  4  type-C_r-428_ps-2016_freq-A_px-H2_pub-20170812_fmt-csv_ex-20170817.zip
-##  5  type-C_r-428_ps-2016_freq-A_px-H3_pub-20170812_fmt-csv_ex-20170817.zip
-##  6  type-C_r-428_ps-2016_freq-A_px-H4_pub-20170812_fmt-csv_ex-20170817.zip
-##  7  type-C_r-428_ps-2016_freq-A_px-HS_pub-20170812_fmt-csv_ex-20170817.zip
-##  8  type-C_r-428_ps-2016_freq-A_px-S1_pub-20170812_fmt-csv_ex-20170817.zip
-##  9  type-C_r-428_ps-2016_freq-A_px-S2_pub-20170812_fmt-csv_ex-20170817.zip
-## 10  type-C_r-428_ps-2016_freq-A_px-S3_pub-20170812_fmt-csv_ex-20170817.zip
-## # ... with 51,252 more rows, and 9 more variables: r &lt;chr&gt;, px &lt;chr&gt;,
+<pre><code>## # A tibble: 51,288 x 10
+##                                                                        name
+##  *                                                                    &lt;chr&gt;
+##  1 type-C_r-ALL_ps-201706_freq-M_px-HS_pub-20170818_fmt-csv_ex-20170825.zip
+##  2 type-C_r-ALL_ps-201705_freq-M_px-HS_pub-20170818_fmt-csv_ex-20170825.zip
+##  3 type-C_r-ALL_ps-201704_freq-M_px-HS_pub-20170818_fmt-csv_ex-20170825.zip
+##  4 type-C_r-124_ps-201706_freq-M_px-HS_pub-20170818_fmt-csv_ex-20170824.zip
+##  5 type-C_r-152_ps-201706_freq-M_px-HS_pub-20170818_fmt-csv_ex-20170824.zip
+##  6 type-C_r-203_ps-201706_freq-M_px-HS_pub-20170818_fmt-csv_ex-20170824.zip
+##  7 type-C_r-208_ps-201706_freq-M_px-HS_pub-20170818_fmt-csv_ex-20170824.zip
+##  8 type-C_r-233_ps-201706_freq-M_px-HS_pub-20170818_fmt-csv_ex-20170824.zip
+##  9  type-C_r-31_ps-201706_freq-M_px-HS_pub-20170818_fmt-csv_ex-20170824.zip
+## 10  type-C_r-32_ps-201706_freq-M_px-HS_pub-20170818_fmt-csv_ex-20170824.zip
+## # ... with 51,278 more rows, and 9 more variables: r &lt;chr&gt;, px &lt;chr&gt;,
 ## #   ps &lt;chr&gt;, type &lt;chr&gt;, freq &lt;chr&gt;, publicationDate &lt;chr&gt;,
 ## #   extractDate &lt;chr&gt;, filesize &lt;int&gt;, downloadUri &lt;chr&gt;</code></pre>
 <p>This table illustrates the reporters (‘r’ variable), classification (‘px’), period (‘ps’) of each data file, and what data files exist.</p>
 <pre class="r"><code>glimpse(availableCtData_1)</code></pre>
-<pre><code>## Observations: 51,262
+<pre><code>## Observations: 51,288
 ## Variables: 10
-## $ name            &lt;chr&gt; &quot;type-C_r-428_ps-2016_freq-A_px-BEC_pub-201708...
-## $ r               &lt;chr&gt; &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428...
-## $ px              &lt;chr&gt; &quot;BEC&quot;, &quot;H0&quot;, &quot;H1&quot;, &quot;H2&quot;, &quot;H3&quot;, &quot;H4&quot;, &quot;HS&quot;, &quot;S1...
-## $ ps              &lt;chr&gt; &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;...
+## $ name            &lt;chr&gt; &quot;type-C_r-ALL_ps-201706_freq-M_px-HS_pub-20170...
+## $ r               &lt;chr&gt; &quot;ALL&quot;, &quot;ALL&quot;, &quot;ALL&quot;, &quot;124&quot;, &quot;152&quot;, &quot;203&quot;, &quot;208...
+## $ px              &lt;chr&gt; &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;...
+## $ ps              &lt;chr&gt; &quot;201706&quot;, &quot;201705&quot;, &quot;201704&quot;, &quot;201706&quot;, &quot;20170...
 ## $ type            &lt;chr&gt; &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;...
-## $ freq            &lt;chr&gt; &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUA...
-## $ publicationDate &lt;chr&gt; &quot;2017-08-12T00:00:00&quot;, &quot;2017-08-12T00:00:00&quot;, ...
-## $ extractDate     &lt;chr&gt; &quot;2017-08-17T00:00:00&quot;, &quot;2017-08-17T00:00:00&quot;, ...
-## $ filesize        &lt;int&gt; 66434, 2107342, 2338442, 1282126, 3087622, 376...
-## $ downloadUri     &lt;chr&gt; &quot;/api/get/bulk/C/A/2016/428/BEC&quot;, &quot;/api/get/bu...</code></pre>
+## $ freq            &lt;chr&gt; &quot;MONTHLY&quot;, &quot;MONTHLY&quot;, &quot;MONTHLY&quot;, &quot;MONTHLY&quot;, &quot;M...
+## $ publicationDate &lt;chr&gt; &quot;2017-08-18T00:00:00&quot;, &quot;2017-08-18T00:00:00&quot;, ...
+## $ extractDate     &lt;chr&gt; &quot;2017-08-25T00:00:00&quot;, &quot;2017-08-25T00:00:00&quot;, ...
+## $ filesize        &lt;int&gt; 45392464, 58406789, 109458248, 2837034, 113915...
+## $ downloadUri     &lt;chr&gt; &quot;/api/get/bulk/C/M/201706/ALL/HS&quot;, &quot;/api/get/b...</code></pre>
 <p>The variable <code>downloadUri</code> provides a COMTRADE query (such as “/api/get/bulk/C/A/2016/428/H0”) that can be combined into one command with <a href="http://comtrade.un.org/" class="uri">http://comtrade.un.org/</a>.</p>
 <p>The result would look something like “<a href="http://comtrade.un.org/api/get/bulk/C/A/2016/428/H0" class="uri">http://comtrade.un.org/api/get/bulk/C/A/2016/428/H0</a>” and will return a zipped data file if run in the browser address bar.</p>
 <p>The same list of available bulk data in COMTRADE can be accessed using the <code>getCTParameters()</code> function of the <code>tradeAnalysis</code> package, making some of the variables look more user friendly.</p>
 <pre class="r"><code>library(tradeAnalysis)
 availableCtData_2 &lt;- getCTParameters()
 glimpse(availableCtData_2)</code></pre>
-<pre><code>## Observations: 51,262
+<pre><code>## Observations: 51,288
 ## Variables: 12
-## $ name            &lt;chr&gt; &quot;type-C_r-428_ps-2016_freq-A_px-BEC_pub-201708...
-## $ r               &lt;chr&gt; &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428&quot;, &quot;428...
-## $ px              &lt;chr&gt; &quot;BEC&quot;, &quot;H0&quot;, &quot;H1&quot;, &quot;H2&quot;, &quot;H3&quot;, &quot;H4&quot;, &quot;HS&quot;, &quot;S1...
-## $ ps              &lt;chr&gt; &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;...
+## $ name            &lt;chr&gt; &quot;type-C_r-ALL_ps-201706_freq-M_px-HS_pub-20170...
+## $ r               &lt;chr&gt; &quot;ALL&quot;, &quot;ALL&quot;, &quot;ALL&quot;, &quot;124&quot;, &quot;152&quot;, &quot;203&quot;, &quot;208...
+## $ px              &lt;chr&gt; &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;, &quot;HS&quot;...
+## $ ps              &lt;chr&gt; &quot;201706&quot;, &quot;201705&quot;, &quot;201704&quot;, &quot;201706&quot;, &quot;20170...
 ## $ type            &lt;chr&gt; &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;COMMODITIES&quot;, &quot;...
-## $ freq            &lt;chr&gt; &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUAL&quot;, &quot;ANNUA...
-## $ publicationDate &lt;date&gt; 2017-08-12, 2017-08-12, 2017-08-12, 2017-08-1...
-## $ extractDate     &lt;date&gt; 2017-08-17, 2017-08-17, 2017-08-17, 2017-08-1...
-## $ filesize        &lt;int&gt; 66434, 2107342, 2338442, 1282126, 3087622, 376...
-## $ downloadUri     &lt;chr&gt; &quot;/api/get/bulk/C/A/2016/428/BEC&quot;, &quot;/api/get/bu...
-## $ year            &lt;chr&gt; &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;, &quot;2016&quot;...
-## $ month           &lt;chr&gt; &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;, &quot;AN&quot;...</code></pre>
+## $ freq            &lt;chr&gt; &quot;MONTHLY&quot;, &quot;MONTHLY&quot;, &quot;MONTHLY&quot;, &quot;MONTHLY&quot;, &quot;M...
+## $ publicationDate &lt;date&gt; 2017-08-18, 2017-08-18, 2017-08-18, 2017-08-1...
+## $ extractDate     &lt;date&gt; 2017-08-25, 2017-08-25, 2017-08-25, 2017-08-2...
+## $ filesize        &lt;int&gt; 45392464, 58406789, 109458248, 2837034, 113915...
+## $ downloadUri     &lt;chr&gt; &quot;/api/get/bulk/C/M/201706/ALL/HS&quot;, &quot;/api/get/b...
+## $ year            &lt;chr&gt; &quot;2017&quot;, &quot;2017&quot;, &quot;2017&quot;, &quot;2017&quot;, &quot;2017&quot;, &quot;2017&quot;...
+## $ month           &lt;chr&gt; &quot;06&quot;, &quot;05&quot;, &quot;04&quot;, &quot;06&quot;, &quot;06&quot;, &quot;06&quot;, &quot;06&quot;, &quot;06&quot;...</code></pre>
 <hr />
 </div>
 <div id="downloading-ct-bulk-data-using-ct-api-r-and-an-internet-connection" class="section level2">

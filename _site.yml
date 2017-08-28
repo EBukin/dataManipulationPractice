@@ -22,12 +22,16 @@ navbar:
           href: 01-load-ct-data-excercise.html
         - text: "filter / select / arrange / distinct"
           href: 02-filter-ct-data-excercise.html
+        - text: "Relational and tidy data"
+          href: 03-joints-exercise.html
         - text: "---------"
         - text: "Answers"
         - text: "Load data"
           href: 01-load-ct-data-excercise-answer.html
         - text: "filter / select / arrange / distinct"
           href: 02-filter-ct-data-excercise-answers.html
+        - text: "Relational and tidy data"
+          href: 03-joints-exercise-answers.html
 output:
   html_document:
     toc: true

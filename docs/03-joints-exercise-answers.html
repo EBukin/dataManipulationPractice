@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Eduard Bukin" />
+
+<meta name="date" content="2017-08-28" />
+
+<title>Joints and tidy data with dplyr and tidyr</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105220597-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Trade data sources and practice</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="00-data-sources.html">
+    <span class="fa fa-info"></span>
+     
+    Trade data sources
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    Data manipulation practice in R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R practice</li>
+    <li>
+      <a href="01-data-import.html">Loading COMTRADE data in R</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Excercises</li>
+    <li>
+      <a href="01-load-ct-data-excercise.html">Load data</a>
+    </li>
+    <li>
+      <a href="02-filter-ct-data-excercise.html">filter / select / arrange / distinct</a>
+    </li>
+    <li>
+      <a href="03-joints-exercise.html">Relational and tidy data</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Answers</li>
+    <li>
+      <a href="01-load-ct-data-excercise-answer.html">Load data</a>
+    </li>
+    <li>
+      <a href="02-filter-ct-data-excercise-answers.html">filter / select / arrange / distinct</a>
+    </li>
+    <li>
+      <a href="03-joints-exercise-answers.html">Relational and tidy data</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Joints and tidy data with dplyr and tidyr</h1>
+<h4 class="author"><em>Eduard Bukin</em></h4>
+<h4 class="date"><em>August 28, 2017</em></h4>
+
+</div>
+
+
+<div id="concetp-of-relational-data" class="section level1">
+<h1>Concetp of relational data</h1>
+<p>Main goal of this exercise is to show main applications of the relational data concept with the <code>dplyr</code> package.</p>
+<p>For more information, see <a href="http://r4ds.had.co.nz/relational-data.html">relational data</a>:</p>
+<ul>
+<li><a href="http://r4ds.had.co.nz/relational-data.html#mutating-joins">mutating joints</a>;</li>
+<li><a href="http://r4ds.had.co.nz/relational-data.html#mutating-joins">filtering joints</a>.</li>
+</ul>
+<p>Following the previous example, use the same working directory and download <a href="https://unfao-my.sharepoint.com/personal/eduard_bukin_fao_org/_layouts/15/guestaccess.aspx?docid=01bedb1cf326148049ab4b5e3f6bcc3cc&amp;authkey=AarI3iY12Uw9QVfQVITPAdU">this data file</a> to the folder <code>03-joints-exercise</code> within your working directory (see previous examples for more information).</p>
+<div id="mutating-joint" class="section level2">
+<h2>Mutating joint</h2>
+<p>Add columns with the explanation of the variables <code>Trade.Flow.Code</code>, <code>Reporter.Code</code> and <code>Partner.Code</code> using the <code>left_join()</code> or <code>right_join()</code> and the mapping tables from the package <code>tradeAnalysis</code> explained in the previous exercise. Use the subset of 20 rows of the data <code>ctData</code>, loaded as in the previous exercise.</p>
+<div id="solution" class="section level3">
+<h3>Solution</h3>
+<pre class="r"><code>library(tidyverse)
+library(readr)
+library(tradeAnalysis)</code></pre>
+<pre class="r"><code>ctData &lt;- read_rds(&quot;03-joints-exercise/subsetting-data.rds&quot;)</code></pre>
+<pre class="r"><code>ctData %&gt;% 
+  sample_n(100) %&gt;% 
+  left_join(x = ., y = partners, by = &quot;Partner.Code&quot;) %&gt;% 
+  left_join(x = ., y = reporters, by = &quot;Reporter.Code&quot;) %&gt;% 
+  left_join(x = ., y = tradeAnalysis::regimes, by = &quot;Trade.Flow.Code&quot;)</code></pre>
+<pre><code>## # A tibble: 100 x 11
+##    Classification  Year Trade.Flow.Code Reporter.Code Partner.Code
+##             &lt;chr&gt; &lt;int&gt;           &lt;dbl&gt;         &lt;int&gt;        &lt;int&gt;
+##  1             H2  2014               1           504          251
+##  2             H3  2014               2           498          392
+##  3             H4  2015               2           124          666
+##  4             H4  2016               1           586          842
+##  5             H4  2016               1           470          144
+##  6             H4  2015               1           512          528
+##  7             H4  2016               1           218          724
+##  8             H4  2016               1           784          392
+##  9             H4  2015               1            36          702
+## 10             H4  2016               1            36          704
+## # ... with 90 more rows, and 6 more variables: Commodity.Code &lt;chr&gt;,
+## #   Netweight..kg. &lt;dbl&gt;, Trade.Value..US.. &lt;dbl&gt;, Partner &lt;chr&gt;,
+## #   Reporter &lt;chr&gt;, Trade.Flow &lt;chr&gt;</code></pre>
+<p>Do the same with the help of the <code>tradeAnalysis</code> package.</p>
+</div>
+<div id="solution-1" class="section level3">
+<h3>Solution</h3>
+<pre class="r"><code>ctData %&gt;% 
+  sample_n(100) %&gt;% 
+  join_labels_flows() %&gt;% 
+  join_labels_par() %&gt;% 
+  join_labels_rep()</code></pre>
+<pre><code>## # A tibble: 100 x 11
+##    Classification  Year Trade.Flow.Code Reporter.Code Partner.Code
+##             &lt;chr&gt; &lt;int&gt;           &lt;int&gt;         &lt;int&gt;        &lt;int&gt;
+##  1             H4  2016               2           442          540
+##  2             H4  2015               2           381          504
+##  3             H4  2015               2            48          458
+##  4             H4  2016               1           600            0
+##  5             H4  2015               1            44          381
+##  6             H4  2016               2           124          392
+##  7             H4  2015               1           682          422
+##  8             H4  2016               2           616          392
+##  9             H4  2014               2            56          470
+## 10             H4  2014               2           381          434
+## # ... with 90 more rows, and 6 more variables: Commodity.Code &lt;chr&gt;,
+## #   Netweight..kg. &lt;dbl&gt;, Trade.Value..US.. &lt;dbl&gt;, Trade.Flow &lt;chr&gt;,
+## #   Partner &lt;chr&gt;, Reporter &lt;chr&gt;</code></pre>
+<p>Do the same with the help of the <code>tradeAnalysis</code> package in one line.</p>
+</div>
+<div id="solution-2" class="section level3">
+<h3>Solution</h3>
+<pre class="r"><code>ctData %&gt;% 
+  sample_n(100) %&gt;% 
+  join_labs()</code></pre>
+<pre><code>## # A tibble: 100 x 12
+##    Classification  Year Trade.Flow.Code Reporter.Code Partner.Code
+##             &lt;chr&gt; &lt;int&gt;           &lt;int&gt;         &lt;int&gt;        &lt;int&gt;
+##  1             H4  2015               1           688          208
+##  2             H4  2014               1           752          566
+##  3             H4  2014               2           784          838
+##  4             H4  2014               2            76          124
+##  5             H4  2014               2           554          804
+##  6             H4  2014               1            36           50
+##  7             H4  2015               1           458          608
+##  8             H4  2016               2           208          478
+##  9             H4  2014               2           818          414
+## 10             H4  2015               2           360           50
+## # ... with 90 more rows, and 7 more variables: Commodity.Code &lt;chr&gt;,
+## #   Netweight..kg. &lt;dbl&gt;, Trade.Value..US.. &lt;dbl&gt;, Commodity &lt;chr&gt;,
+## #   Partner &lt;chr&gt;, Reporter &lt;chr&gt;, Trade.Flow &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div id="filtering-joints" class="section level2">
+<h2>Filtering joints</h2>
+<p>Sometimes, when you need to filter a big data set, using multiple arguments, it is better to use <code>join()</code> functions then <code>filter()</code>.</p>
+<p>From <code>ctData</code> filter all EU countries import of wheat (1001) with the world. (Not the best example because it is easier to make it with the help of the filter function)</p>
+<div id="solution-3" class="section level3">
+<h3>Solution</h3>
+<pre class="r"><code>ctData %&gt;% 
+  right_join(getEU() %&gt;% 
+               select(-Partner) %&gt;% 
+               mutate(Commodity.Code = &quot;1001&quot;,
+                      Trade.Flow.Code = 1), 
+             by = c(&quot;Reporter.Code&quot; = &quot;Partner.Code&quot;))</code></pre>
+<pre><code>## # A tibble: 1,265,298 x 10
+##    Classification  Year Trade.Flow.Code.x Reporter.Code Partner.Code
+##             &lt;chr&gt; &lt;int&gt;             &lt;int&gt;         &lt;int&gt;        &lt;int&gt;
+##  1             H4  2014                 1            20            0
+##  2             H4  2014                 2            20            0
+##  3             H4  2014                 1            20          251
+##  4             H4  2014                 2            20          251
+##  5             H4  2014                 1            20          724
+##  6             H4  2014                 2            20          724
+##  7             H4  2014                 1            20          899
+##  8             H4  2014                 1            20            0
+##  9             H4  2014                 2            20            0
+## 10             H4  2014                 1            20          251
+## # ... with 1,265,288 more rows, and 5 more variables:
+## #   Commodity.Code.x &lt;chr&gt;, Netweight..kg. &lt;dbl&gt;, Trade.Value..US.. &lt;dbl&gt;,
+## #   Commodity.Code.y &lt;chr&gt;, Trade.Flow.Code.y &lt;dbl&gt;</code></pre>
+<p>Filtering joints are very useful, when there are multiple combinations of the variables that need to be filtered. for examples, use the following filtering data frame for sub-setting the data set. The data frame generated below represents 12 reporters and their trade with the 3 random partners.</p>
+</div>
+<div id="solution-4" class="section level3">
+<h3>Solution</h3>
+<pre class="r"><code>set.seed(1)
+fltDF &lt;-
+  tibble(Reporter.Code = c(getFSR()$Partner.Code)) %&gt;% 
+  group_by(Reporter.Code) %&gt;% 
+  do({tibble(Partner.Code = sample_n(partners, 3)$Partner.Code)}) %&gt;% 
+  ungroup() %&gt;% 
+  mutate(Commodity.Code = &quot;01&quot;) %&gt;% 
+  expand(Commodity.Code = c(&quot;01&quot;, &quot;02&quot;, &quot;03&quot;), Partner.Code, Reporter.Code)</code></pre>
+<p>Use <code>semi_join()</code> and compare the results with the <code>right_join()</code>.</p>
+</div>
+<div id="solution-5" class="section level3">
+<h3>Solution</h3>
+<pre class="r"><code>semi_join(ctData, fltDF, by = c(&quot;Reporter.Code&quot;, &quot;Partner.Code&quot;, &quot;Commodity.Code&quot;))</code></pre>
+<pre><code>## # A tibble: 469 x 8
+##    Classification  Year Trade.Flow.Code Reporter.Code Partner.Code
+##             &lt;chr&gt; &lt;int&gt;           &lt;int&gt;         &lt;int&gt;        &lt;int&gt;
+##  1             H4  2014               1           804          178
+##  2             H4  2014               1           643          188
+##  3             H4  2015               1           643          188
+##  4             H4  2016               1           643          188
+##  5             H4  2015               2           643          344
+##  6             H4  2014               2           804          344
+##  7             H4  2015               2           804          344
+##  8             H4  2014               1           112          381
+##  9             H4  2016               1           112          381
+## 10             H4  2014               1           268          381
+## # ... with 459 more rows, and 3 more variables: Commodity.Code &lt;chr&gt;,
+## #   Netweight..kg. &lt;dbl&gt;, Trade.Value..US.. &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div id="tidy-data" class="section level2">
+<h2>Tidy data</h2>
+<p>The main idea of the <code>tidy</code> data concept is that we store and use data in the way that we can apply to it any analysis easily and without problems. We can easily split it subset it and re-arrange it any suitable way. For that purpose we use two main verbs: <code>spread()</code> and <code>gather()</code>. Also there are <code>unite()</code>, <code>separate()</code> and others, see <a href="http://r4ds.had.co.nz/tidy-data.html">tidy data</a>.</p>
+<p>Use the previously loaded data in order to return a table with the columns: Commodity.Code, Commodity, Reporter, Partner, Trade.Flow, 2014, 2015, 2016 and Trade Values on intersection only for EU countries trade with the world and commodity code is <code>1001</code>.</p>
+<div id="solution-6" class="section level3">
+<h3>Solution</h3>
+<pre class="r"><code>ctData %&gt;% 
+  filter(Partner.Code == 0, 
+         Reporter.Code %in% getEU()$Partner.Code, 
+         Commodity.Code == &quot;1001&quot;) %&gt;% 
+  join_labs() %&gt;% 
+  select(Year, Commodity.Code, Commodity, Reporter, 
+         Partner, Trade.Flow, Trade.Value..US..) %&gt;% 
+  spread(Year, Trade.Value..US..)</code></pre>
+<pre><code>## # A tibble: 59 x 8
+##    Commodity.Code               Commodity Reporter Partner Trade.Flow
+##  *          &lt;chr&gt;                   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;
+##  1           1001 1001 - Wheat and meslin  Andorra   World     Import
+##  2           1001 1001 - Wheat and meslin  Austria   World     Export
+##  3           1001 1001 - Wheat and meslin  Austria   World     Import
+##  4           1001 1001 - Wheat and meslin  Belgium   World     Export
+##  5           1001 1001 - Wheat and meslin  Belgium   World     Import
+##  6           1001 1001 - Wheat and meslin Bulgaria   World     Export
+##  7           1001 1001 - Wheat and meslin Bulgaria   World     Import
+##  8           1001 1001 - Wheat and meslin  Croatia   World     Export
+##  9           1001 1001 - Wheat and meslin  Croatia   World     Import
+## 10           1001 1001 - Wheat and meslin   Cyprus   World     Export
+## # ... with 49 more rows, and 3 more variables: `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;,
+## #   `2016` &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</div>
+
+<p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

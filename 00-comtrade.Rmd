@@ -1,0 +1,35 @@
+---
+title: "Trade data sources"
+date: '2017-08-28'
+output: html_document
+---
+  
+
+# COMTRADE
+
+Is a UN based comprehansive trade data colletion and dissemination pltaform maintained by UNSD. From the FAO building, everyone has full access to all COMTRADE (CT) services. All information is available on the COMTRADE website [https://comtrade.un.org/](https://comtrade.un.org/).
+
+In CT there are two main options of data access:
+
+*  Regular - manually insert a query in the browser and get a table in the browser or download a `.csv` file with selected data;
+
+*  Bulk - manually insert short query on a web page, or use the browser command line (adress line in the browser) to pass arguments to the server. In return, user will download a zip archive with data that covers trade of selected country (or all countreis) in one time period (year or month) and specified coding system (HS as reported, HS2007, HS2012, etc.). Bulk download has an option to download data of all reporters for one period/coding system in file.  
+
+---------------
+
+## Regular CT download
+
+Regular downloads is available here: [https://comtrade.un.org/data/](https://comtrade.un.org/data/). This is a query based approach to load CT data selecting a specific range of parameters. With the regular download is it possible ot obtain a CSV file, which can be analyzes in excel, R, Stata and other tools.
+
+For an extensive overview, see the tutorial video below ([https://www.youtube.com/watch?v=oflKZUj2BgE](https://www.youtube.com/watch?v=oflKZUj2BgE)).
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oflKZUj2BgE" frameborder="0" allowfullscreen></iframe>
+
+
+## Regular download
+
+<video id="Video1" controls="" loop="" height="450">
+<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Advanced Query - Trade Data.mp4" type="video/mp4">
+</video>
+
+## Bulk download

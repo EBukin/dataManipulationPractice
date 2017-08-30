@@ -1,6 +1,6 @@
 ---
 title: "Trade data sources"
-date: "`r Sys.Date()`"
+date: "2017-08-28"
 output: html_document
 ---
 

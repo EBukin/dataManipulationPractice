@@ -7,29 +7,152 @@ output: html_document
 
 # COMTRADE
 
-Is a UN based comprehansive trade data colletion and dissemination pltaform maintained by UNSD. From the FAO building, everyone has full access to all COMTRADE (CT) services. All information is available on the COMTRADE website [https://comtrade.un.org/](https://comtrade.un.org/).
+Is a UN based comprehensive trade data collection and dissemination platform maintained and owned by UNSD. From the FAO building, everyone has full access to all COMTRADE (CT) services. All information is available on the COMTRADE website [https://comtrade.un.org/](https://comtrade.un.org/).
 
-In CT there are two main options of data access:
+In CT there are few main options of data access:
 
-*  Regular - manually insert a query in the browser and get a table in the browser or download a `.csv` file with selected data;
+*  Regular download - manually insert a query in the browser and get a table in the browser or download a `.csv` file with selected data;
 
-*  Bulk - manually insert short query on a web page, or use the browser command line (adress line in the browser) to pass arguments to the server. In return, user will download a zip archive with data that covers trade of selected country (or all countreis) in one time period (year or month) and specified coding system (HS as reported, HS2007, HS2012, etc.). Bulk download has an option to download data of all reporters for one period/coding system in file.  
+*  Bulk download - manually insert short query on a web page, or use the browser command line (address line in the browser) to pass arguments to the server. In return, user will download a zip archive with data that covers trade of selected country (or all countries) in one time period (year or month) and specified coding system (HS as reported, HS2007, HS2012, etc.). Bulk download has an option to download data of all reporters for one period/coding system in file;
 
----------------
+*  Official and not official data visualization solutions.
 
-## Regular CT download
+---
 
-Regular downloads is available here: [https://comtrade.un.org/data/](https://comtrade.un.org/data/). This is a query based approach to load CT data selecting a specific range of parameters. With the regular download is it possible ot obtain a CSV file, which can be analyzes in excel, R, Stata and other tools.
+## In detail: Regular download in CT
+
+**Source**
+
+Regular downloads is available here: [https://comtrade.un.org/data/](https://comtrade.un.org/data/). This is a query based approach to load CT data selecting a specific range of parameters. With the regular download is it possible to obtain a CSV file, which can be analyzes in excel, R, Stata and other tools.
+
+**How to access data**
 
 For an extensive overview, see the tutorial video below ([https://www.youtube.com/watch?v=oflKZUj2BgE](https://www.youtube.com/watch?v=oflKZUj2BgE)).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oflKZUj2BgE" frameborder="0" allowfullscreen></iframe>
 
+The most common query that will return data that we need in 90% of our analysis is the following:
 
-## Regular download
+*  Type of product: Goods;
+*  Frequency: Annual;
+*  HS: As reported (Most frequently used because it combines all codes that were ever recorded);
+*  Period: 2014-2016 (Limited up to 5 in regular download);
+*  Reporter: All, or anything needed;
+*  Partners: World, or anything needed;
+*  Trade flow: Import and Export (select Import and Export instead of all to not receive data about re-export and re-import);
+*  HS (as reported) commodity codes: Total, any 2, 4 and 6 digits code (11, 1101, 110100).
 
-<video id="Video1" controls="" loop="" height="450">
-<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Advanced Query - Trade Data.mp4" type="video/mp4">
-</video>
+```{r echo=FALSE}
+knitr::include_graphics("diagrams/ct-page.png")
+```
 
-## Bulk download
+**Data response**
+
+Normally, data is returned in the long format with the variables describing main data dimensions selected above and variables with Trade quantities, Trade value, and units of measurement.
+
+---
+
+## In detail: Bulk download in CT
+
+CT bulk download is available at the web page [https://comtrade.un.org/data/bulk](https://comtrade.un.org/data/bulk).
+
+There are two options how to access bulk data in CT:
+
+*  Web based query in the browser. Link: [https://comtrade.un.org/data/bulk](https://comtrade.un.org/data/bulk);
+*  API call based approach to load CT data. 
+
+### Web based bulk querry
+
+**Source**
+
+Web based query for accessing CT bulk data in the browser is available here: [https://comtrade.un.org/data/bulk](https://comtrade.un.org/data/bulk). 
+
+First time you need to access it from the FAO buildings in order to authorize your email. Insert your email in the "Enter your email" field and press "Authenticate my IP". After that your email will be saved in the COMTRADE database and you will be grated with the access to the bulk download interface (same address [https://comtrade.un.org/data/bulk](https://comtrade.un.org/data/bulk)).
+
+```{r echo=FALSE}
+knitr::include_graphics("diagrams/ct-auth-page.png")
+```
+
+**How to access data**
+
+In order to access CT bulk data on the bulk data access page select required set of parameters. For example, to download bulk commodity statistics for France, select:
+
+*  Type of product: Goods;
+*  Frequency: Annual;
+*  HS: As reported;
+*  Period: All;
+*  Reporter: France (or All - all reporters in one file or any single reporter that you needed);
+*  Publication data: keep unchanged.
+
+```{r echo=FALSE}
+knitr::include_graphics("diagrams/ct-bulk-page.png")
+```
+
+After clicking "Preview" yo will be returned with the list of all bulk data files available for your selection. Clicking on any of them will run the file, clicing on "Show API link" will provide you with the API data request command (see the next subsection) for returning a bulk data file. Be aware that any bulk data file could range in size from 1 to 500 megabyte. 
+
+```{r echo=FALSE}
+knitr::include_graphics("diagrams/ct-bulk-page-results.png")
+```
+
+**Data response**
+
+Your browser will download one `zip` archive with data for a selected country (all countries), period and classification.
+
+### API bulk query
+
+**Source**
+
+If you do not want to click in the browser, you can use the API for accessing CT data. Extensive explanation about the CT API tools is available here [https://comtrade.un.org/data/doc/api/bulk/](https://comtrade.un.org/data/doc/api/bulk/).
+
+In this case the user constructs a query such as `"http://comtrade.un.org/api/get/bulk/C/A/1994/251/HS"` following the guidelines outlined on `https://comtrade.un.org/data/doc/api/bulk/`. To request a bulk data file we need to use the specific format explained on COMTRADE, as follows: `http://comtrade.un.org/api/get/bulk/{type}/{freq}/{ps}/{r}/{px}?{token=}`, with `type` (trade type), `freq` (frequency), `ps` (period), `r` (reporter), `px` (classification), and optionally token (see authentication).
+
+Using the web query approach let's download data for France’s annual trade of commodities in 1994. 
+ 
+The zip archive returned by COMTRADE is named `"type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.zip"`, and contains the file `"type-C_r-251_ps-1994_freq-A_px-HS_pub-20020901_fmt-csv_ex-20150310.csv"` with data. **Attention!** Data files can be VERY HEAVY (up to 9-10 GB), which may lead to difficulties while loading them. 
+
+The same file can be obtained through the API call `"http://comtrade.un.org/api/get/bulk/C/A/1994/251/H"`.
+
+---
+
+## Data visualisation options
+
+COMTRADE Officially recognisees several various visualisation platforms listed on the page [https://comtrade.un.org/labs/](https://comtrade.un.org/labs/). Here, we will discuss some of them with more details.
+
+### CT data-explorer
+
+[https://comtrade.un.org/labs/data-explorer/](https://comtrade.un.org/labs/data-explorer/)
+
+.pdf guidelines on [how to use](https://comtrade.un.org/labs/data-explorer/UserGuide%20UN%20Comtrade%20Analytics.pdf) CT data-explorer.
+
+
+---
+
+
+## General CT related information
+
+Official introduction in how to use COMTRADE [https://unstats.un.org/unsd/tradekb/Knowledgebase/50049/How-to-use-UN-Comtrade](https://unstats.un.org/unsd/tradekb/Knowledgebase/50049/How-to-use-UN-Comtrade).
+
+Official "What is COMTRADE" page [https://unstats.un.org/unsd/tradekb/Knowledgebase/What-is-UN-Comtrade](https://unstats.un.org/unsd/tradekb/Knowledgebase/What-is-UN-Comtrade). 
+
+Old COMTRADE data access interface [https://comtrade.un.org/db/default.aspx](https://comtrade.un.org/db/default.aspx).
+
+### Metadata and documentation
+
+Generally, all inforamtion related to COMTRADE metadata is organised here: [https://unstats.un.org/unsd/tradekb/Knowledgebase/](https://unstats.un.org/unsd/tradekb/Knowledgebase/). 
+
+If you are looking for the country specific data puclibation notes, they are available at [https://comtrade.un.org/db/mr/daPubNoteDetail.aspx](https://comtrade.un.org/db/mr/daPubNoteDetail.aspx) with more information [here](https://unstats.un.org/unsd/tradekb/Knowledgebase/50127/Introduction-of-Publication-Notes-?Keywords=notes). API interface for accessing publication notes is explained [here](https://unstats.un.org/unsd/tradekb/Knowledgebase/50118/Publication-Notes-Via-Web-Service?Keywords=notes) and [here](https://unstats.un.org/unsd/tradekb/Knowledgebase/50117/Explanatory-Notes-Via-Web-Service?Keywords=notes).
+
+#### Commodity mapping tables
+
+Mapping tables for conversion between different coding systems (HS 2012 to HS 2002 or SITC) are here: [https://unstats.un.org/unsd/trade/classifications/correspondence-tables.asp](https://unstats.un.org/unsd/trade/classifications/correspondence-tables.asp).Please note, that conversions are only available from the most recent coding system to the older version because most of the new coding systems are dis-aggregating previously existing ones.
+
+Detailed information on the statistical classification of the commodities could be found here [https://unstats.un.org/unsd/class/default.asp](https://unstats.un.org/unsd/class/default.asp).
+
+To convert between the FAOSTAT commodities and HS/SICT classification, see official FAOSTAT conversion tables [http://www.fao.org/economic/ess/ess-standards/commodity/en/](http://www.fao.org/economic/ess/ess-standards/commodity/en/) or contact ESS division. 
+
+#### Country classification
+
+Please note COMTRADE, FAOSTAT and UNSD all have different country classification. Although, all of them might be similar, there are some peculiarities in classifying some European countries as well as politically sensitive countries. Clear data classification tables are available at [https://comtrade.un.org/db/mr/rfReportersList.aspx](https://comtrade.un.org/db/mr/rfReportersList.aspx) and [http://www.fao.org/faostat/en/#definitions](http://www.fao.org/faostat/en/#definitions).
+
+
+

@@ -4,70 +4,33 @@ date: "2017-08-28"
 output: html_document
 ---
 
-# COMTRADE
+## Described data
 
-## Regular download
+1.  [UN Comtrade overview](00-comtrade.html)
 
-## Bulk download
+1.  [World Bank WITS, Tarriffs, TCdata360 overview](00-wits.html)
 
-# World Bank
+    1.  WITS Trade data
 
-## WITS Trade data
+        *  Customizing county aggregates
+        *  Customizing commodity aggregates
+        
+    1.  WITS Tarriffs data
 
-### Customizing county aggregates
+    1.  TCdata360 overview `http://tcdata360.worldbank.org/`
 
-### Customizing commodity aggregates
+1.  [ITC Trade Map overview](00-itc-trademap.html) `http://www.trademap.org/`
 
-## WITS Tarriffs data
+1.  [Observatory of Economic Complexity](00-observatory-econ-complex.html) `http://atlas.media.mit.edu/en/`
 
-## TCdata360
+1.  [Atlas of economic complexity](00-atlas-econ-complex.html) `http://atlas.cid.harvard.edu`
 
-http://tcdata360.worldbank.org/
+1.  [Globe of economic complexity](00-globe-econ-complex.html) `http://globe.cid.harvard.edu/`
 
-# Observatory of Economic Complexity (powerful data exploration tool)
+1.  [WTO](00-wto-data.html)
 
-http://atlas.media.mit.edu/en/ 
-
-# ITC Trade Map
-
-http://www.trademap.org/
-
-# WTO data
-
-## Trade time series
-
-http://stat.wto.org/Home/WSDBHome.aspx?Language=
-
-## WTO Tarrifs database
-
-http://tariffdata.wto.org/ that’s the website I also used for tariff data.
-
-This is an extract of what Katia sent me, regarding a request for leave at the end of September I made: 
-
-“you should work very intensively with Eduard until that time in order to complete the transfer of know-how regarding data extraction and analysis. Please ensure that he can dedicate time to this until your leave”
-
-I could also try to postpone my leave by one week, when is it that you leave FAO?
-
-Also, regarding the new computer:
-
-“Regarding the computer, we can certainly ask to purchase one, but keep in mind that these orders take a long time. Can you not keep the machine that Eduard uses now after he leaves?”
-
-I imagine this is not really an option as I need a new computer to learn, no? Or how is it exactly?
-
-
-```{r knitr_init, echo=FALSE, cache=FALSE}
-library(knitr)
-library(rmdformats)
-
-## Global options
-options(max.print="75")
-opts_chunk$set(echo=FALSE,
-	             cache=TRUE,
-               prompt=FALSE,
-               tidy=TRUE,
-               comment=NA,
-               message=FALSE,
-               warning=FALSE)
-opts_knit$set(width=75)
-```
-
+    1.  Trade time series `http://stat.wto.org/Home/WSDBHome.aspx?Language=`
+    
+    1.  WTO Tarrifs database `http://tariffdata.wto.org/`
+    
+1.  [CEPI](00-cepii.html) http://www.cepii.fr/

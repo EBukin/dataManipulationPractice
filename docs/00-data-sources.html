@@ -292,12 +292,24 @@ div.tocify {
     Home
   </a>
 </li>
-<li>
-  <a href="00-data-sources.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-info"></span>
      
     Trade data sources
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="00-data-sources.html">Overview</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Data sources</li>
+    <li>
+      <a href="00-comtrade.html">UN Comtrade data</a>
+    </li>
+  </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -318,7 +330,7 @@ div.tocify {
       <a href="01-load-ct-data-excercise.html">Load data</a>
     </li>
     <li>
-      <a href="02-filter-ct-data-excercise.html">filter / select / arrange / distinct</a>
+      <a href="02-filter-ct-data-excercise.html">Manipulate (filter|select|arrange|distinct)</a>
     </li>
     <li>
       <a href="03-joints-exercise.html">Relational and tidy data</a>
@@ -329,10 +341,10 @@ div.tocify {
       <a href="01-load-ct-data-excercise-answer.html">Load data</a>
     </li>
     <li>
-      <a href="02-filter-ct-data-excercise-answers.html">filter / select / arrange / distinct</a>
+      <a href="02-filter-ct-data-excercise-answers.html">Manipulate (filter|select|arrange|distinct)</a>
     </li>
     <li>
-      <a href="03-joints-exercise-answers.html">Relational and tidy data</a>
+      <a href="03-joints-exercise-answers.html">Relational and tidy data (joints)</a>
     </li>
   </ul>
 </li>
@@ -354,58 +366,31 @@ div.tocify {
 </div>
 
 
-<div id="comtrade" class="section level1">
-<h1>COMTRADE</h1>
-<div id="regular-download" class="section level2">
-<h2>Regular download</h2>
-</div>
-<div id="bulk-download" class="section level2">
-<h2>Bulk download</h2>
-</div>
-</div>
-<div id="world-bank" class="section level1">
-<h1>World Bank</h1>
-<div id="wits-trade-data" class="section level2">
-<h2>WITS Trade data</h2>
-<div id="customizing-county-aggregates" class="section level3">
-<h3>Customizing county aggregates</h3>
-</div>
-<div id="customizing-commodity-aggregates" class="section level3">
-<h3>Customizing commodity aggregates</h3>
-</div>
-</div>
-<div id="wits-tarriffs-data" class="section level2">
-<h2>WITS Tarriffs data</h2>
-</div>
-<div id="tcdata360" class="section level2">
-<h2>TCdata360</h2>
-<p><a href="http://tcdata360.worldbank.org/" class="uri">http://tcdata360.worldbank.org/</a></p>
-</div>
-</div>
-<div id="observatory-of-economic-complexity-powerful-data-exploration-tool" class="section level1">
-<h1>Observatory of Economic Complexity (powerful data exploration tool)</h1>
-<p><a href="http://atlas.media.mit.edu/en/" class="uri">http://atlas.media.mit.edu/en/</a></p>
-</div>
-<div id="itc-trade-map" class="section level1">
-<h1>ITC Trade Map</h1>
-<p><a href="http://www.trademap.org/" class="uri">http://www.trademap.org/</a></p>
-</div>
-<div id="wto-data" class="section level1">
-<h1>WTO data</h1>
-<div id="trade-time-series" class="section level2">
-<h2>Trade time series</h2>
-<p><a href="http://stat.wto.org/Home/WSDBHome.aspx?Language" class="uri">http://stat.wto.org/Home/WSDBHome.aspx?Language</a>=</p>
-</div>
-<div id="wto-tarrifs-database" class="section level2">
-<h2>WTO Tarrifs database</h2>
-<p><a href="http://tariffdata.wto.org/" class="uri">http://tariffdata.wto.org/</a> thatâ€™s the website I also used for tariff data.</p>
-<p>This is an extract of what Katia sent me, regarding a request for leave at the end of September I made:</p>
-<p>â€œyou should work very intensively with Eduard until that time in order to complete the transfer of know-how regarding data extraction and analysis. Please ensure that he can dedicate time to this until your leaveâ€</p>
-<p>I could also try to postpone my leave by one week, when is it that you leave FAO?</p>
-<p>Also, regarding the new computer:</p>
-<p>â€œRegarding the computer, we can certainly ask to purchase one, but keep in mind that these orders take a long time. Can you not keep the machine that Eduard uses now after he leaves?â€</p>
-<p>I imagine this is not really an option as I need a new computer to learn, no? Or how is it exactly?</p>
-</div>
+<div id="described-data" class="section level2">
+<h2>Described data</h2>
+<ol style="list-style-type: decimal">
+<li><p><a href="00-comtrade.html">UN Comtrade overview</a></p></li>
+<li><p><a href="00-wits.html">World Bank WITS, Tarriffs, TCdata360 overview</a></p>
+<ol style="list-style-type: decimal">
+<li><p>WITS Trade data</p>
+<ul>
+<li>Customizing county aggregates</li>
+<li>Customizing commodity aggregates</li>
+</ul></li>
+<li><p>WITS Tarriffs data</p></li>
+<li><p>TCdata360 overview <code>http://tcdata360.worldbank.org/</code></p></li>
+</ol></li>
+<li><p><a href="00-itc-trademap.html">ITC Trade Map overview</a> <code>http://www.trademap.org/</code></p></li>
+<li><p><a href="00-observatory-econ-complex.html">Observatory of Economic Complexity</a> <code>http://atlas.media.mit.edu/en/</code></p></li>
+<li><p><a href="00-atlas-econ-complex.html">Atlas of economic complexity</a> <code>http://atlas.cid.harvard.edu</code></p></li>
+<li><p><a href="00-globe-econ-complex.html">Globe of economic complexity</a> <code>http://globe.cid.harvard.edu/</code></p></li>
+<li><p><a href="00-wto-data.html">WTO</a></p>
+<ol style="list-style-type: decimal">
+<li><p>Trade time series <code>http://stat.wto.org/Home/WSDBHome.aspx?Language=</code></p></li>
+<li><p>WTO Tarrifs database <code>http://tariffdata.wto.org/</code></p></li>
+</ol></li>
+<li><p><a href="00-cepii.html">CEPI</a> <a href="http://www.cepii.fr/" class="uri">http://www.cepii.fr/</a></p></li>
+</ol>
 </div>
 
 <p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>

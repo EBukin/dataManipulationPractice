@@ -293,12 +293,24 @@ div.tocify {
     Home
   </a>
 </li>
-<li>
-  <a href="00-data-sources.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-info"></span>
      
     Trade data sources
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="00-data-sources.html">Overview</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Data sources</li>
+    <li>
+      <a href="00-comtrade.html">UN Comtrade data</a>
+    </li>
+  </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -319,7 +331,7 @@ div.tocify {
       <a href="01-load-ct-data-excercise.html">Load data</a>
     </li>
     <li>
-      <a href="02-filter-ct-data-excercise.html">filter / select / arrange / distinct</a>
+      <a href="02-filter-ct-data-excercise.html">Manipulate (filter|select|arrange|distinct)</a>
     </li>
     <li>
       <a href="03-joints-exercise.html">Relational and tidy data</a>
@@ -330,10 +342,10 @@ div.tocify {
       <a href="01-load-ct-data-excercise-answer.html">Load data</a>
     </li>
     <li>
-      <a href="02-filter-ct-data-excercise-answers.html">filter / select / arrange / distinct</a>
+      <a href="02-filter-ct-data-excercise-answers.html">Manipulate (filter|select|arrange|distinct)</a>
     </li>
     <li>
-      <a href="03-joints-exercise-answers.html">Relational and tidy data</a>
+      <a href="03-joints-exercise-answers.html">Relational and tidy data (joints)</a>
     </li>
   </ul>
 </li>
@@ -382,16 +394,16 @@ library(tradeAnalysis)</code></pre>
 <pre><code>## # A tibble: 100 x 11
 ##    Classification  Year Trade.Flow.Code Reporter.Code Partner.Code
 ##             &lt;chr&gt; &lt;int&gt;           &lt;dbl&gt;         &lt;int&gt;        &lt;int&gt;
-##  1             H2  2014               1           504          251
-##  2             H3  2014               2           498          392
-##  3             H4  2015               2           124          666
-##  4             H4  2016               1           586          842
-##  5             H4  2016               1           470          144
-##  6             H4  2015               1           512          528
-##  7             H4  2016               1           218          724
-##  8             H4  2016               1           784          392
-##  9             H4  2015               1            36          702
-## 10             H4  2016               1            36          704
+##  1             H4  2016               2            36          598
+##  2             H4  2015               2           214          332
+##  3             H4  2015               1           604          862
+##  4             H3  2015               2           780          826
+##  5             H4  2016               1           699          703
+##  6             H4  2016               2           702          156
+##  7             H4  2015               2           818          706
+##  8             H4  2014               2           512          381
+##  9             H4  2015               1           682          156
+## 10             H4  2016               1           191          203
 ## # ... with 90 more rows, and 6 more variables: Commodity.Code &lt;chr&gt;,
 ## #   Netweight..kg. &lt;dbl&gt;, Trade.Value..US.. &lt;dbl&gt;, Partner &lt;chr&gt;,
 ## #   Reporter &lt;chr&gt;, Trade.Flow &lt;chr&gt;</code></pre>
@@ -407,16 +419,16 @@ library(tradeAnalysis)</code></pre>
 <pre><code>## # A tibble: 100 x 11
 ##    Classification  Year Trade.Flow.Code Reporter.Code Partner.Code
 ##             &lt;chr&gt; &lt;int&gt;           &lt;int&gt;         &lt;int&gt;        &lt;int&gt;
-##  1             H4  2016               2           442          540
-##  2             H4  2015               2           381          504
-##  3             H4  2015               2            48          458
-##  4             H4  2016               1           600            0
-##  5             H4  2015               1            44          381
-##  6             H4  2016               2           124          392
-##  7             H4  2015               1           682          422
-##  8             H4  2016               2           616          392
-##  9             H4  2014               2            56          470
-## 10             H4  2014               2           381          434
+##  1             H4  2015               1           528          591
+##  2             H4  2015               1           376          804
+##  3             H4  2015               1           579          842
+##  4             H4  2016               2           466          384
+##  5             H4  2015               1           702          642
+##  6             H4  2014               2           616          834
+##  7             H4  2014               1           558          604
+##  8             H4  2015               1           440          100
+##  9             H4  2015               2           604          188
+## 10             H4  2016               2           710          616
 ## # ... with 90 more rows, and 6 more variables: Commodity.Code &lt;chr&gt;,
 ## #   Netweight..kg. &lt;dbl&gt;, Trade.Value..US.. &lt;dbl&gt;, Trade.Flow &lt;chr&gt;,
 ## #   Partner &lt;chr&gt;, Reporter &lt;chr&gt;</code></pre>
@@ -430,16 +442,16 @@ library(tradeAnalysis)</code></pre>
 <pre><code>## # A tibble: 100 x 12
 ##    Classification  Year Trade.Flow.Code Reporter.Code Partner.Code
 ##             &lt;chr&gt; &lt;int&gt;           &lt;int&gt;         &lt;int&gt;        &lt;int&gt;
-##  1             H4  2015               1           688          208
-##  2             H4  2014               1           752          566
-##  3             H4  2014               2           784          838
-##  4             H4  2014               2            76          124
-##  5             H4  2014               2           554          804
-##  6             H4  2014               1            36           50
-##  7             H4  2015               1           458          608
-##  8             H4  2016               2           208          478
-##  9             H4  2014               2           818          414
-## 10             H4  2015               2           360           50
+##  1             H4  2015               2           372          724
+##  2             H4  2016               1           124          604
+##  3             H4  2016               1           410          792
+##  4             H4  2014               2           208            4
+##  5             H4  2015               2           388          796
+##  6             H3  2014               1           690          784
+##  7             H4  2014               1           834          381
+##  8             H4  2015               1           376          188
+##  9             H4  2016               1           222           32
+## 10             H4  2014               2           191          705
 ## # ... with 90 more rows, and 7 more variables: Commodity.Code &lt;chr&gt;,
 ## #   Netweight..kg. &lt;dbl&gt;, Trade.Value..US.. &lt;dbl&gt;, Commodity &lt;chr&gt;,
 ## #   Partner &lt;chr&gt;, Reporter &lt;chr&gt;, Trade.Flow &lt;chr&gt;</code></pre>

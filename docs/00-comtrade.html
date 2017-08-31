@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Eduard Bukin" />
+
+<meta name="date" content="2017-08-28" />
+
+<title>UN Comtrade data</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105220597-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3,h4",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Trade data sources and practice</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-info"></span>
+     
+    Trade data sources
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="00-data-sources.html">Overview</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Data sources</li>
+    <li>
+      <a href="00-comtrade.html">UN Comtrade data</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    Data manipulation practice in R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R practice</li>
+    <li>
+      <a href="01-data-import.html">Loading COMTRADE data in R</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Excercises</li>
+    <li>
+      <a href="01-load-ct-data-excercise.html">Load data</a>
+    </li>
+    <li>
+      <a href="02-filter-ct-data-excercise.html">Manipulate (filter|select|arrange|distinct)</a>
+    </li>
+    <li>
+      <a href="03-joints-exercise.html">Relational and tidy data</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Answers</li>
+    <li>
+      <a href="01-load-ct-data-excercise-answer.html">Load data</a>
+    </li>
+    <li>
+      <a href="02-filter-ct-data-excercise-answers.html">Manipulate (filter|select|arrange|distinct)</a>
+    </li>
+    <li>
+      <a href="03-joints-exercise-answers.html">Relational and tidy data (joints)</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">UN Comtrade data</h1>
+<h4 class="author"><em>Eduard Bukin</em></h4>
+<h4 class="date"><em>2017-08-28</em></h4>
+
+</div>
+
+
+<hr />
+<p>Comtrade is a UN based comprehensive trade data collection and dissemination platform maintained and owned by The United Nations Statistics Division (UNSD). From the FAO building, everyone has full access to all Comtrade services. All information is available on the Comtrade website <a href="https://comtrade.un.org/" class="uri">https://comtrade.un.org/</a>.</p>
+<p>In Comtrade there are few main options of data access:</p>
+<ul>
+<li><p>Regular download - manually insert a query in the browser and get a table in the browser or download a <code>.csv</code> file with selected data;</p></li>
+<li><p>Bulk download - manually insert short query on a web page, or use the browser command line (address line in the browser) to pass arguments to the server. In return, user will download a zip archive with data that covers trade of selected country (or all countries) in one time period (year or month) and specified coding system (HS as reported, HS2007, HS2012, etc.). Bulk download has an option to download data of all reporters for one period/coding system in file;</p></li>
+<li><p>Official and not official data visualization solutions.</p></li>
+</ul>
+<hr />
+<div id="data-availability-in-comtrade" class="section level2">
+<h2>Data availability in Comtrade</h2>
+<p>To save time before starting analysis, it is always good to know data availability in Comtrade. There are two interfaces for data availability analysis:</p>
+<ul>
+<li><p>New trade availability visualization tool <a href="https://comtrade.un.org/data/da" class="uri">https://comtrade.un.org/data/da</a>, where it is possible to explore one country availability or download (clicking <code>Download</code> button) an extensive <code>.csv</code> file with information about all available data.</p></li>
+<li><p>Old outdated interface for data availability per country, commodity, year and other parameters is available at <a href="https://comtrade.un.org/db/mr/daReportersResults.aspx" class="uri">https://comtrade.un.org/db/mr/daReportersResults.aspx</a>.</p></li>
+</ul>
+<p>It is also possible to access data availability for the Bulk download. This data is available at the address line call: <a href="http://comtrade.un.org/api//refs/da/view?parameters" class="uri">http://comtrade.un.org/api//refs/da/view?parameters</a>. More information <a href="https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests">here</a>.</p>
+<hr />
+</div>
+<div id="regular-download-in-comtrade" class="section level2">
+<h2>Regular download in Comtrade</h2>
+<p><strong>Source</strong></p>
+<p>Regular downloads is available here: <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a>. This is a query based approach to load Comtrade data selecting a specific range of parameters. With the regular download is it possible to obtain a CSV file, which can be analyzes in excel, R, Stata and other tools.</p>
+<p><strong>How to access data</strong></p>
+<p>For an extensive overview, see the tutorial video below (<a href="https://www.youtube.com/watch?v=oflKZUj2BgE" class="uri">https://www.youtube.com/watch?v=oflKZUj2BgE</a>).</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oflKZUj2BgE" frameborder="0" allowfullscreen>
+</iframe>
+<p>The most common query that will return data that we need in 90% of our analysis is the following:</p>
+<ul>
+<li>Type of product: Goods;</li>
+<li>Frequency: Annual;</li>
+<li>HS: As reported (Most frequently used because it combines all codes that were ever recorded);</li>
+<li>Period: 2014-2016 (Limited up to 5 in regular download);</li>
+<li>Reporter: All, or anything needed;</li>
+<li>Partners: World, or anything needed;</li>
+<li>Trade flow: Import and Export (select Import and Export instead of all to not receive data about re-export and re-import);</li>
+<li>HS (as reported) commodity codes: Total, any 2, 4 and 6 digits code (11, 1101, 110100).</li>
+</ul>
+<p><img src="diagrams/ct-page.png" /><!-- --></p>
+<p><strong>Data response</strong></p>
+<p>Normally, data is returned in the long format with the variables describing main data dimensions selected above and variables with Trade quantities, Trade value, and units of measurement.</p>
+<hr />
+</div>
+<div id="bulk-download-in-comtrade" class="section level2">
+<h2>Bulk download in Comtrade</h2>
+<p>Comtrade bulk download is available at the web page <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a>.</p>
+<p>There are two options how to access bulk data in Comtrade:</p>
+<ul>
+<li>Web based query in the browser. Link: <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a>;</li>
+<li>API call based approach to load Comtrade data. Link: <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a>.</li>
+</ul>
+<div id="web-based-bulk-query" class="section level3">
+<h3>Web based bulk query</h3>
+<p><strong>Source</strong></p>
+<p>Web based query for accessing Comtrade bulk data in the browser is available here: <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a>.</p>
+<p>First time you need to access it from the FAO buildings in order to authorize your email. Insert your email in the “Enter your email” field and press “Authenticate my IP”. After that your email will be saved in the Comtrade database and you will be grated with the access to the bulk download interface (same address <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a>).</p>
+<p><img src="diagrams/ct-auth-page.png" /><!-- --></p>
+<p><strong>How to access data</strong></p>
+<p>In order to access Comtrade bulk data on the bulk data access page select required set of parameters. For example, to download bulk commodity statistics for France, select:</p>
+<ul>
+<li>Type of product: Goods;</li>
+<li>Frequency: Annual;</li>
+<li>HS: As reported;</li>
+<li>Period: All;</li>
+<li>Reporter: France (or All - all reporters in one file or any single reporter that you needed);</li>
+<li>Publication data: keep unchanged.</li>
+</ul>
+<p><img src="diagrams/ct-bulk-page.png" /><!-- --></p>
+<p>After clicking “Preview” yo will be returned with the list of all bulk data files available for your selection. Clicking on any of them will run the file, clicking on “Show API link” will provide you with the API data request command (see the next subsection) for returning a bulk data file. Be aware that any bulk data file could range in size from 1 to 500 megabyte.</p>
+<p><img src="diagrams/ct-bulk-page-results.png" /><!-- --></p>
+<p><strong>Data response</strong></p>
+<p>Your browser will download one <code>zip</code> archive with data for a selected country (all countries), period and classification.</p>
+<p><strong>Attention!</strong> Data files could be very. In zipped format file size may range from 1 to 500 megabyte. Un extracted format, file size could be up to 9 gigabytes.</p>
+</div>
+<div id="api-bulk-query" class="section level3">
+<h3>API bulk query</h3>
+<p><strong>Source</strong></p>
+<p>If you do not want to click in the browser, you can use the API for accessing Comtrade data. Extensive explanation about the Comtrade API tools is available here <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a>.</p>
+<p><strong>How to access data</strong></p>
+<p>To access Comtrade bulk data with API, we need to construct a request, insert it to the browser command line and run it.</p>
+<p>To request a bulk data file we need to use the specific format explained <a href="https://comtrade.un.org/data/doc/api/bulk/#DataRequestsDwn">here</a>. The main idea is to construct a request based on the template <code>http://comtrade.un.org/api/get/bulk/{type}/{freq}/{ps}/{r}/{px}?{token=}</code> specifying correct <a href="https://comtrade.un.org/data/doc/api/bulk/#DataRequests">parameters</a>:</p>
+<ul>
+<li><code>type</code> - trade type C - Commodities of S - Services;</li>
+<li><code>freq</code> - frequency A - Annual or M - Monthly;</li>
+<li><code>ps</code> - period coverage for annual data <code>ps=YYYY</code> - e.g. <code>ps=2010</code>, for monthly <code>ps=YYYY</code> or <code>ps=YYYYMM</code>;</li>
+<li><code>r</code> - reporter area code - e.g. <code>r=804</code> or <code>r=All</code>. Extensive list available <a href="https://comtrade.un.org/data/cache/reporterAreas.json">here</a>;</li>
+<li><code>px</code> - classification, available values are: HS - Harmonized System (HS) as reported, H0-HS 1992, H1-HS 1996, H2-HS 2002, H3-HS 2007, H4-HS 2012 and others <a href="https://comtrade.un.org/data/doc/api/bulk/">see</a>;</li>
+<li><code>token</code> - optional parameter for data from outside of the authorized network.</li>
+</ul>
+<p>For example, we want to request monthly data <code>freq=M</code> of commodities trade <code>type=C</code> for All reporters <code>r=ALL</code> for period January, 2017 <code>ps=201701</code>, in the HS as reporter classification <code>px=HS</code>. The request is <a href="http://comtrade.un.org/api/get/bulk/C/M/201701/ALL/HS"><code>http://comtrade.un.org/api/get/bulk/C/M/201701/ALL/HS</code></a>. We insert this request to the browser adders line and download the file.</p>
+<p><img src="diagrams/ct-bulk-command.png" /><!-- --></p>
+<p><strong>Data response</strong></p>
+<p>Your browser will download one <code>zip</code> archive with data for a selected country (all countries), period and classification.</p>
+<p><strong>Attention!</strong> Data files could be very. In zipped format file size may range from 1 to 500 megabyte. Un extracted format, file size could be up to 9 gigabytes.</p>
+<hr />
+</div>
+</div>
+<div id="data-visualization-options" class="section level2">
+<h2>Data visualization options</h2>
+<p>UN Comtrade lists several visualization platforms on the page <a href="https://comtrade.un.org/labs/" class="uri">https://comtrade.un.org/labs/</a>. Here, we will discuss some of them in more details.</p>
+<div id="comtrade-data-explorer" class="section level3">
+<h3>Comtrade data-explorer</h3>
+<p>Comtrade data explorer <a href="https://comtrade.un.org/labs/data-explorer/" class="uri">https://comtrade.un.org/labs/data-explorer/</a> (unfortunately was not working on 2017-08-31). A tool for visualization of the main trade flows between selected reporters and partners of the selected commodity. Here, you will find a <code>.pdf</code> guidelines on <a href="https://comtrade.un.org/labs/data-explorer/UserGuide%20UN%20Comtrade%20Analytics.pdf">how to use</a> Comtrade data-explorer.</p>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li>Commodities are not defined using the HS commodity codes, but as a free text, therefor, it is difficult to understand the meaning behind some commodity names.</li>
+<li>Options of custom-defined aggregates of countries or commodities are not available.</li>
+</ul>
+</div>
+<div id="bilateral-trade-exploration-tool" class="section level3">
+<h3>Bilateral trade exploration tool</h3>
+<p>BIS trade in goods tool is available at <a href="https://comtrade.un.org/labs/BIS-trade-in-goods/" class="uri">https://comtrade.un.org/labs/BIS-trade-in-goods/</a> it allow to visualize trade of a selected good from a selected reporter to all or selected partner.</p>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li>Commodity coverage is limited to the 2 digits HS commodity description;</li>
+<li>Options of custom-defined aggregates of countries or commodities are not available.</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="general-comtrade-related-information" class="section level2">
+<h2>General Comtrade related information</h2>
+<p>Official introduction in how to use Comtrade <a href="https://unstats.un.org/unsd/tradekb/Knowledgebase/50049/How-to-use-UN-Comtrade" class="uri">https://unstats.un.org/unsd/tradekb/Knowledgebase/50049/How-to-use-UN-Comtrade</a>.</p>
+<p>Official “What is Comtrade” page <a href="https://unstats.un.org/unsd/tradekb/Knowledgebase/What-is-UN-Comtrade" class="uri">https://unstats.un.org/unsd/tradekb/Knowledgebase/What-is-UN-Comtrade</a>.</p>
+<p>Old Comtrade data access interface <a href="https://comtrade.un.org/db/default.aspx" class="uri">https://comtrade.un.org/db/default.aspx</a>.</p>
+<div id="metadata-and-documentation" class="section level3">
+<h3>Metadata and documentation</h3>
+<p>Generally, all information related to Comtrade metadata is organised here: <a href="https://unstats.un.org/unsd/tradekb/Knowledgebase/" class="uri">https://unstats.un.org/unsd/tradekb/Knowledgebase/</a>.</p>
+<p>If you are looking for the country specific data publication notes, they are available at <a href="https://comtrade.un.org/db/mr/daPubNoteDetail.aspx" class="uri">https://comtrade.un.org/db/mr/daPubNoteDetail.aspx</a> with more information <a href="https://unstats.un.org/unsd/tradekb/Knowledgebase/50127/Introduction-of-Publication-Notes-?Keywords=notes">here</a>. API interface for accessing publication notes is explained <a href="https://unstats.un.org/unsd/tradekb/Knowledgebase/50118/Publication-Notes-Via-Web-Service?Keywords=notes">here</a> and <a href="https://unstats.un.org/unsd/tradekb/Knowledgebase/50117/Explanatory-Notes-Via-Web-Service?Keywords=notes">here</a>.</p>
+</div>
+<div id="commodity-mapping-tables" class="section level3">
+<h3>Commodity mapping tables</h3>
+<p>Mapping tables for conversion between different coding systems (HS 2012 to HS 2002 or SITC) are here: <a href="https://unstats.un.org/unsd/trade/classifications/correspondence-tables.asp" class="uri">https://unstats.un.org/unsd/trade/classifications/correspondence-tables.asp</a>.Please note, that conversions are only available from the most recent coding system to the older version because most of the new coding systems are dis-aggregating previously existing ones.</p>
+<p>Detailed information on the statistical classification of the commodities could be found here <a href="https://unstats.un.org/unsd/class/default.asp" class="uri">https://unstats.un.org/unsd/class/default.asp</a>.</p>
+<p>To convert between the FAOSTAT commodities and HS/SICT classification, see official FAOSTAT conversion tables <a href="http://www.fao.org/economic/ess/ess-standards/commodity/en/" class="uri">http://www.fao.org/economic/ess/ess-standards/commodity/en/</a> or contact ESS division.</p>
+</div>
+<div id="country-classification" class="section level3">
+<h3>Country classification</h3>
+<p>Please note Comtrade, FAOSTAT and UNSD all have different country classification. Although, all of them might be similar, there are some peculiarities in classifying some European countries as well as politically sensitive countries. Clear data classification tables are available at <a href="https://comtrade.un.org/db/mr/rfReportersList.aspx" class="uri">https://comtrade.un.org/db/mr/rfReportersList.aspx</a> and <a href="http://www.fao.org/faostat/en/#definitions" class="uri">http://www.fao.org/faostat/en/#definitions</a>.</p>
+</div>
+</div>
+
+<p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

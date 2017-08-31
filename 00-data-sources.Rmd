@@ -8,7 +8,7 @@ output: html_document
 
 1.  [UN Comtrade overview](00-comtrade.html)
 
-1.  [World Bank WITS, Tarriffs, TCdata360 overview](00-wits.html)
+1.  [World Bank WITS, Tarriffs, TCdata360 overview](00-worldbank.html)
 
     1.  WITS Trade data
 

@@ -1,0 +1,106 @@
+---
+title: "World Bank"
+author: "Eduard Bukin"
+date: '2017-08-28'
+---
+
+---
+
+World Bank offers great variety of databases on the subject of trade, agriculture and many others. The full list is available [here](https://data.worldbank.org/data-catalog/?tab=topics). We will discuss some selected data sources in more details below. In particular, we will focus on:
+
+*  World Integrated Trade Solution (WITS)
+
+*  __**TC**data**360**__
+
+*  Miscellaneous data sources
+
+
+---
+
+## WITS
+
+**Source**
+
+World Integrated Trade Solution is located here: [http://wits.worldbank.org/](http://wits.worldbank.org/).
+
+WITS database is a website, that uses data from various (UN Comtrade, WTO, World Bank) in order to provide users with the interface for generating own trade statistics and indicators, using the underlying trade and tariff data.The WITS application also provides tools to perform single and multi-market tariff cut simulations.
+
+WITS provides multiple ways to access trade, tariff and non-tariff data. It has the following main sections.
+
+*  TradeStats: Summary trade, tariff, non-tariffs and development indicators
+*  Analytical Databases: Databases derived using official data sources
+*  Global Preferential Trade Access Database (GPTAD): Search across different preferential trade agreements.
+
+For more information, see this introductory overview video.
+
+<video id="Video1" controls="" loop="" height="315">
+<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/tradestats-home.mp4" type="video/mp4">
+</video>
+
+**How to access data**
+
+WITS is a complex tool, however it has a very good set of [learning materials](http://wits.worldbank.org/training.html#). If you have time, you can take an [eLearning](http://wits.worldbank.org/WITS/Training/player.html), otherwise, it is possible to follow [video tutorials from WITS](http://wits.worldbank.org/trainingVideos.aspx?lang=en).
+
+
+### Access trade data 
+
+### Access triffs data
+
+### Access trade indicators
+
+The Trade Outcomes Indicators tool lets you to construct numbers of trade indicators that are classified into four dimensions of trade performance: Orientation and Growth, Export Diversification, Export Sophistication, and Export Survival. All calculations are performed by the WITS, according to the [published methodology](http://wits.worldbank.org/WITS/docs/TradeOutcomes-UserManual.pdf) based on the UN Comtrade data.
+
+To see how to use Trade Outcomes Indicators, see this video: 
+
+<video id="trade-outcome-indicators" controls="" loop="" height="315">
+<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Trade%20-%20View%20and%20export%20tariff-line%20imports.mp4" type="video/mp4">
+</video>
+
+### Developers options
+
+WITS has a developed API interface for direct data access from a programming environment. More information is available [here](http://wits.worldbank.org/witsapiintro.aspx). Here is the [WITS-API USER GUIDE](http://wits.worldbank.org/data/public/WITSAPI_UserGuide.pdf).
+
+---
+
+## TCdata360
+
+**Source**
+
+**TC**data**360** provides open data on trade and competitiveness. The site aggregates and visualizes data from multiple sources and presents it in tandem with other knowledge and resources. The website is available at [https://tcdata360.worldbank.org/](https://tcdata360.worldbank.org/). At TCdata360 offers a wide range of user friendly instruments for trade data comparison and analysis'. 
+
+See this brief guide video:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EJuEAVyor68?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+**How to access data**
+
+This is a purely analytical tool with very intuitive interface. Unfortunately, there are no guides, which would describe all possibilities of data access options. Some main features are explained here: [https://tcdata360.worldbank.org/faq](https://tcdata360.worldbank.org/faq).
+
+**Developers options**
+
+There are numerous options of data access for developers and different software, so-called API interface. To see more about it visit [https://tcdata360.worldbank.org/tools](https://tcdata360.worldbank.org/tools). 
+
+---
+
+## Miscellaneous
+
+### Most recent WB researches on trade
+
+[This is the website](http://econ.worldbank.org/WBSITE/EXTERNAL/EXTDEC/EXTRESEARCH/EXTPROGRAMS/EXTTRADERESEARCH/0,,menuPK:544860~noSURL:Y~pagePK:64168176~piPK:64168140~theSitePK:544849,00.html) is dedicated to the ongoing researches on trade conducted by of the World Bank.
+
+Comprehensive search over the WB researches [is here](http://documents.worldbank.org/curated/en/docsearch). 
+
+Generic website with the modern interface for searching through the WB researches is [here](https://openknowledge.worldbank.org/browse).
+
+### Temporary Trade Barriers Database 
+
+The Temporary Trade Barriers Database (TTBD) contains detailed data on more than thirty different national governments’ use of policies such as [antidumping (AD)](http://econ.worldbank.org/ttbd/gad/), global safeguards (SG), China-specific transitional safeguard (CSG) measures, and countervailing duties (CVD). 
+
+For more information, see the [Temporary Trade Barriers Database and Global Antidumping Database](http://econ.worldbank.org/WBSITE/EXTERNAL/EXTDEC/EXTRESEARCH/EXTPROGRAMS/EXTTRADERESEARCH/0,,contentMDK:22561572~pagePK:64168182~piPK:64168060~theSitePK:544849,00.html).
+
+
+### Trade costs database
+
+The Trade Costs database provides estimates of bilateral trade costs in agriculture and manufactured goods for the 1995-2015 period. It is built on trade and production data collected in 178 countries.
+
+The database is available [here](http://databank.worldbank.org/data/reports.aspx?source=escap-world-bank-international-trade-costs).

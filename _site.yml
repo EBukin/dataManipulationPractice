@@ -9,7 +9,14 @@ navbar:
       href: index.html
     - text: "Trade data sources"
       icon: fa-info
-      href: 00-data-sources.html
+      menu:
+        - text: "Overview"
+          href: 00-data-sources.html
+        - text: "---------"
+        - text: "Data sources"
+        - text: "UN Comtrade data"
+          href: 00-comtrade.html
+          
     - text: "Data manipulation practice in R"
       icon: fa-gear
       menu:
@@ -20,7 +27,7 @@ navbar:
         - text: "Excercises"
         - text: "Load data"
           href: 01-load-ct-data-excercise.html
-        - text: "filter / select / arrange / distinct"
+        - text: "Manipulate (filter|select|arrange|distinct)"
           href: 02-filter-ct-data-excercise.html
         - text: "Relational and tidy data"
           href: 03-joints-exercise.html
@@ -28,9 +35,9 @@ navbar:
         - text: "Answers"
         - text: "Load data"
           href: 01-load-ct-data-excercise-answer.html
-        - text: "filter / select / arrange / distinct"
+        - text: "Manipulate (filter|select|arrange|distinct)"
           href: 02-filter-ct-data-excercise-answers.html
-        - text: "Relational and tidy data"
+        - text: "Relational and tidy data (joints)"
           href: 03-joints-exercise-answers.html
 output:
   html_document:

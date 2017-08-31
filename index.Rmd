@@ -5,3 +5,4 @@ title: "Trade Data Manipulation practice"
 Hello, this is the website with the extensive guidelines on trade data download from various sources and manipulation.
 
 Here, you can learn how to download data from various sources and process it with R.
+

@@ -5,6 +5,10 @@ author: Eduard Bukin
 output: html_document
 ---
 
+```{r echo=FALSE}
+knitr::opts_chunk$set(cache.path = 'cache/')
+```
+
 ---------------
 
 ## COMTRADE

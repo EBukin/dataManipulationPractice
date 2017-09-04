@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Eduard Bukin" />
+
+<meta name="date" content="2017-08-28" />
+
+<title>World Bank</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105220597-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Trade data sources and practice</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-info"></span>
+     
+    Trade data sources
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="data-sources-compilation.html">Data sources overview</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Data sources</li>
+    <li>
+      <a href="00-comtrade.html">UN Comtrade data</a>
+    </li>
+    <li>
+      <a href="00-worldbank.html">World Bank (WITS/TCdata360/Miscellaneous)</a>
+    </li>
+    <li>
+      <a href="00-wto.html">WTO</a>
+    </li>
+    <li>
+      <a href="00-itc-trademap.html">ITC Trade Map</a>
+    </li>
+    <li>
+      <a href="00-economic-complexity.html">The 'Economic Complexity' Solutions</a>
+    </li>
+    <li>
+      <a href="00-cepi.html">CEPI</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    Data manipulation practice in R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">R practice</li>
+    <li>
+      <a href="01-data-import.html">Loading COMTRADE data in R</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Excercises</li>
+    <li>
+      <a href="01-load-ct-data-excercise.html">Load data</a>
+    </li>
+    <li>
+      <a href="02-filter-ct-data-excercise.html">Manipulate (filter|select|arrange|distinct)</a>
+    </li>
+    <li>
+      <a href="03-joints-exercise.html">Relational and tidy data</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Answers</li>
+    <li>
+      <a href="01-load-ct-data-excercise-answer.html">Load data</a>
+    </li>
+    <li>
+      <a href="02-filter-ct-data-excercise-answers.html">Manipulate (filter|select|arrange|distinct)</a>
+    </li>
+    <li>
+      <a href="03-joints-exercise-answers.html">Relational and tidy data (joints)</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">World Bank</h1>
+<h4 class="author"><em>Eduard Bukin</em></h4>
+<h4 class="date"><em>2017-08-28</em></h4>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#wits">WITS</a><ul>
+<li><a href="#wits-trade-data">WITS Trade data</a><ul>
+<li><a href="#advance-query-for-trade-data-access">Advance query for trade data access</a></li>
+<li><a href="#user-defined-groups-of-commodities-and-countries">User defined groups of commodities and countries</a></li>
+<li><a href="#tariff-line-and-bulk-comtrade-data">Tariff-line and bulk Comtrade data</a></li>
+</ul></li>
+<li><a href="#triffs-data">Triffs data</a></li>
+<li><a href="#trade-indicators">Trade indicators</a></li>
+</ul></li>
+<li><a href="#tcdata360">TCdata360</a></li>
+<li><a href="#miscellaneous">Miscellaneous</a><ul>
+<li><a href="#most-recent-wb-researches-on-trade">Most recent WB researches on trade</a></li>
+<li><a href="#temporary-trade-barriers-database">Temporary Trade Barriers Database</a></li>
+<li><a href="#trade-costs-database">Trade costs database</a></li>
+<li><a href="#interface-to-access-unctad-trains-data">Interface to access UNCTAD TRAINS data</a></li>
+</ul></li>
+</ul>
+</div>
+
+<hr />
+<p>World Bank offers great variety of databases on the subject of trade, agriculture and many others. The full list is available <a href="https://data.worldbank.org/data-catalog/?tab=topics">here</a>. We will discuss some selected data sources in more details below. In particular, we will focus on:</p>
+<ul>
+<li><p>World Integrated Trade Solution (WITS)</p></li>
+<li><p><strong><strong>TC</strong>data<strong>360</strong></strong></p></li>
+<li><p>Miscellaneous data sources</p></li>
+</ul>
+<hr />
+<div id="wits" class="section level2">
+<h2>WITS</h2>
+<p><strong>Source</strong></p>
+<p>World Integrated Trade Solution is located here: <a href="http://wits.worldbank.org/" class="uri">http://wits.worldbank.org/</a>. However, this is the guest users interface with the access to simple summary data. If you need to access full capabilities of WITS database, you need to log-in <a href="https://wits.worldbank.org/WITS/WITS/Restricted/Login.aspx">here</a> (see more details below).</p>
+<p>WITS database is a website, that uses trade and tariff data from various sources (UN Comtrade, WTO, World Bank) in order to provide users with the interface for generating own trade statistics and indicators. WITS application also provides tools to perform single and multi-market tariff cut simulations. Extensive description of the methodology, used by WITS is located here: <a href="http://wits.worldbank.org/methodology.html" class="uri">http://wits.worldbank.org/methodology.html</a>.</p>
+<p>WITS provides multiple ways to access trade, tariff and non-tariff data. It has the following main sections.</p>
+<ul>
+<li>TradeStats: Summary trade, tariff, non-tariffs and development indicators;</li>
+<li>Analytical Databases: Databases derived using official trade data sources;</li>
+<li>Global Preferential Trade Access Database (GPTAD): Search across different preferential trade agreements.</li>
+</ul>
+<p>For more information, see this introductory <a href="http://wits.worldbank.org/videos/tradestatshome.html">overview video</a>.</p>
+<video id="Video1" controls="" loop="" height="315">
+<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/tradestats-home.mp4" type="video/mp4">
+</video>
+<p><strong>How to access data</strong></p>
+<p>WITS is a complex tool, however it has a very good set of <a href="http://wits.worldbank.org/training.html#">learning materials</a>. If you have time, you can take an <a href="http://wits.worldbank.org/WITS/Training/player.html">eLearning course</a>, otherwise, it is possible to follow <a href="http://wits.worldbank.org/trainingVideos.aspx?lang=en">video tutorials from WITS</a>.</p>
+<p><strong>Registration and login</strong></p>
+<p>In order to use full capabilities of the WITS database all users need to log-in. The log in page is located <a href="https://wits.worldbank.org/WITS/WITS/Restricted/Login.aspx">here</a>. You can access this page from the main <a href="http://wits.worldbank.org">WITS website</a>, by clicking first ‘Register’ in the top right corner <img src="diagrams/wits-login-button.PNG" /><!-- -->. Follow all registration instructions. People with the FAO email are allowed to register in WITS and use all available capacities of the database. After you have finished your registration, click ‘log in’ in the same top-right corner of the <a href="http://wits.worldbank.org">WITS website</a>, enter your email and password and you will log into the WITS database:</p>
+<p><img src="diagrams/wits-login-page.png" /><!-- --></p>
+<p><strong>Other important informatoin</strong></p>
+<p>When the user are logged into WITS, the website offer a greater range of documentation and metadata. In particular:</p>
+<ul>
+<li><p>WITS data availability report can be explored and generated <a href="http://wits.worldbank.org/WITS/WITS/Support%20Materials/ComtradeCatalog.aspx?Page=DataCatalog">here</a>, it is only possible after log in;</p></li>
+<li><p>Reference tables for converting countries, commodities and classifications are <a href="http://wits.worldbank.org/referencedata.html">here</a>;</p></li>
+<li><p>Detailed product nomenclature is <a href="http://wits.worldbank.org/WITS/WITS/Support%20Materials/CMTNomenclatureandConcordancesList.aspx?Page=ProductNomenclatureandConcordances">here</a>;</p></li>
+<li><p>Comprehensive WITS guide is <a href="http://wits.worldbank.org/WITS/WITS/WITSHELP/WITSHelp.htm">here</a>;</p></li>
+<li><p>WITS has a developed API interface for direct data access from a programming environment. More information is available <a href="http://wits.worldbank.org/witsapiintro.aspx">here</a>. Here is the <a href="http://wits.worldbank.org/data/public/WITSAPI_UserGuide.pdf">WITS-API USER GUIDE</a>.</p></li>
+</ul>
+<div id="wits-trade-data" class="section level3">
+<h3>WITS Trade data</h3>
+<p>There are two main types of trade data in WITS, (1) UN Comtrade up to 6 digits oh HS classification trade data and (2) UN Comtrade Tariff-line data. To access UN Comtrade data we only need to log in to WITS with our user name (email) and password. However, if we want to extract bulk Comtrade data, we may need to provide our Comtrade data access token (see more details below).</p>
+<div id="advance-query-for-trade-data-access" class="section level4">
+<h4>Advance query for trade data access</h4>
+<p>The main tool of generating user-defined trade data reports from the UN Comtrade data in WITS is in using the <a href="http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData"><code>Home &gt; Advanced Query &gt; Trade Data (UN Comtrade)</code></a>. Here you can select any reporters, partners, commodities, periods, and classification systems in order to generate desirable table with the trade data.</p>
+<p><strong>Important</strong> to note. At this step our queries are limited to the maximum of 100 000 rows. In order to be able to download more than 100 000 rows, you either need to log in from the FAO network, or provide a UN Comtrade token to the WITS database by clicking “click here to activate” on the page <a href="http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData"><code>Home &gt; Advanced Query &gt; Trade Data (UN Comtrade)</code></a> and follow the instructions:</p>
+<p><img src="diagrams/wits-login-ct-token.png" /><!-- --></p>
+<p>A comprehensive instruction on how to use advanced queries is provided in the WITS <a href="http://wits.worldbank.org/videos/advanced-query.html">tutorial video</a>.</p>
+<video id="Video1" controls loop height="315">
+<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Advanced%20Query%20-%20Trade%20Data.mp4" type="video/mp4">
+</video>
+<p><strong>IMPORTANT about ommodity classfication</strong> Selecting the commodity classification is always tricky, when you want to construct a consistent time series they covers multiple years (5 and more)? you may find that more modern HS classifications will not be available in the past. For tackle this problem you need to switch to the old HS classification, such as HS 2002 or even HS 1992. Be ready, that the coding system in the old HS classifications may differ significant. To overcome this problem, check the <a href="http://wits.worldbank.org/WITS/WITS/Support%20Materials/CMTNomenclatureandConcordancesList.aspx?Page=ProductNomenclatureandConcordances">WITS mapping tables</a> or <a href="http://wits.worldbank.org/product_concordance.html">tables of concordance</a>.</p>
+</div>
+<div id="user-defined-groups-of-commodities-and-countries" class="section level4">
+<h4>User defined groups of commodities and countries</h4>
+<p>Tutorial video Highlights both options for user defined grouping of data. The best description of how to create and use the user-defined country and commodity groups is described in the WITS e-learning <a href="http://wits.worldbank.org/WITS/Training/player.html">here</a> in the sections 20 and 21. Please check them for the guided instructions.</p>
+<p>The lists of standard - predefined commodities and country groups are here: <a href="http://wits.worldbank.org/referencedata.html" class="uri">http://wits.worldbank.org/referencedata.html</a> in the sections <code>Products</code> and <code>Countries</code>.</p>
+</div>
+<div id="tariff-line-and-bulk-comtrade-data" class="section level4">
+<h4>Tariff-line and bulk Comtrade data</h4>
+<p>WITS offers a user friendly interface for accessing <a href="http://wits.worldbank.org/WITS/WITS/QuickQuery/Trade-ViewAndExportRawData/ViewAndExportRawData.aspx?Page=TradeViewAndExportRawData">Tariff-line data (link to the interface)</a> and <a href="http://wits.worldbank.org/WITS/WITS/AdvanceQuery/BulkExport/BulkExportQueryDefination.aspx?Page=BulkExport">bulk Comtrade data (link to the interface)</a>. Practically, this interface repeats the one available in the Comtrade. To learn more about how to use it, see:</p>
+<ul>
+<li><a href="http://wits.worldbank.org/videos/trade%20-%20view-and-export-tariff-line-imports.html">Tariff-line tutorial video</a>;</li>
+</ul>
+<video id="witsTariffLine" controls loop height="315">
+<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Trade%20-%20View%20and%20export%20tariff-line%20imports.mp4" type="video/mp4">
+</video>
+<ul>
+<li><a href="http://wits.worldbank.org/videos/bulk-download-un-comtrade.html">WITS bulk donwload tutorial video</a>.</li>
+</ul>
+<video id="witsBulkVideo" controls loop height="315">
+<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Bulk%20Download%20(UN%20Comtrade).mp4" type="video/mp4">
+</video>
+</div>
+</div>
+<div id="triffs-data" class="section level3">
+<h3>Triffs data</h3>
+<p>WITS Trade and Tariffs data offers access to the UNCTAD and WTO databases and the tariffs data in particular. It is available on the <a href="http://wits.worldbank.org/WITS/WITS/AdvanceQuery/TariffAndTradeAnalysis/AdvancedQueryDefinition.aspx?Page=TariffandTradeAnalysis"><code>Home &gt; Advanced Query &gt;Tariff and Trade Analysis</code></a> page. To get to know how to use this data, see <a href="http://wits.worldbank.org/videos/tariff-advanced-query.html">this tutorial video</a>.</p>
+<video id="witsTarrifsVideo" controls loop height="315">
+<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Advanced%20Query%20-%20Tariff%20and%20Trade%20Analysis.mp4">
+</video>
+<p>It is also possible to download bulk tariff data from the UNCTAD TRAINS database directly from WITS. You need to follow <a href="http://wits.worldbank.org/WITS/WITS/AdvanceQuery/TRAINSBulkExport/TRAINSBulkExportQueryDefination.aspx?Page=TRAINSBulkExport"><code>Home &gt; Advanced Query &gt;Bulk Download (TRAINS)</code></a> to access the download interface. For more information, see <a href="http://wits.worldbank.org/data/public/Help_BulkDownload_TRAINS.pdf">tutorial documentation</a> and <a href="http://wits.worldbank.org/videos/bulk-download-unctad-trains.html">tutorial video</a> below:</p>
+<video id="witsTradeProfiles" controls loop height="315">
+<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Bulk%20Download%20(TRAINS).mp4">
+</video>
+</div>
+<div id="trade-indicators" class="section level3">
+<h3>Trade indicators</h3>
+<p>The Trade Outcomes Indicators tool lets you to construct numbers of trade indicators that are classified into four dimensions of trade performance: Orientation and Growth, Export Diversification, Export Sophistication, and Export Survival. All calculations are performed by the WITS, according to the <a href="http://wits.worldbank.org/WITS/docs/TradeOutcomes-UserManual.pdf">published methodology</a> based on the UN Comtrade data.</p>
+<p>To see explicit details on how to use Trade Outcomes Indicators, see <a href="http://wits.worldbank.org/videos/trade-outcomes-indicators.html">this video</a>.</p>
+<video id="trade-outcome-indicators" controls="" loop="" height="315">
+<source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Trade%20-%20View%20and%20export%20tariff-line%20imports.mp4" type="video/mp4">
+</video>
+<hr />
+</div>
+</div>
+<div id="tcdata360" class="section level2">
+<h2>TCdata360</h2>
+<p><strong>Source</strong></p>
+<p><strong>TC</strong>data<strong>360</strong> provides open data on trade and competitiveness. The site aggregates and visualizes data from multiple sources and presents it in tandem with other knowledge and resources. The website is available at <a href="https://tcdata360.worldbank.org/" class="uri">https://tcdata360.worldbank.org/</a>. At TCdata360 offers a wide range of user friendly instruments for trade data comparison and analysis’.</p>
+<p>See this brief guide video:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EJuEAVyor68?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen>
+</iframe>
+<p><strong>How to access data</strong></p>
+<p>This is a purely analytic tool with very intuitive interface. Unfortunately, there are no guides, which would describe all possibilities of data access options. Some main features are explained here: <a href="https://tcdata360.worldbank.org/faq" class="uri">https://tcdata360.worldbank.org/faq</a>.</p>
+<p><strong>Developers options</strong></p>
+<p>There are numerous options of data access for developers and different software, so-called API interface. To see more about it visit <a href="https://tcdata360.worldbank.org/tools" class="uri">https://tcdata360.worldbank.org/tools</a>.</p>
+<hr />
+</div>
+<div id="miscellaneous" class="section level2">
+<h2>Miscellaneous</h2>
+<div id="most-recent-wb-researches-on-trade" class="section level3">
+<h3>Most recent WB researches on trade</h3>
+<ul>
+<li><p>This is the <a href="http://econ.worldbank.org/WBSITE/EXTERNAL/EXTDEC/EXTRESEARCH/EXTPROGRAMS/EXTTRADERESEARCH/0,,menuPK:544860~noSURL:Y~pagePK:64168176~piPK:64168140~theSitePK:544849,00.html">website</a> dedicated to the ongoing researches on trade conducted by of the World Bank.</p></li>
+<li><p>Comprehensive search over the WB researches <a href="http://documents.worldbank.org/curated/en/docsearch">is here</a>.</p></li>
+<li><p>Generic website with the modern interface for searching through the WB researches is <a href="https://openknowledge.worldbank.org/browse">here</a>.</p></li>
+</ul>
+</div>
+<div id="temporary-trade-barriers-database" class="section level3">
+<h3>Temporary Trade Barriers Database</h3>
+<p>The Temporary Trade Barriers Database (TTBD) contains detailed data on more than thirty different national governmentsâ€™ use of policies such as <a href="http://econ.worldbank.org/ttbd/gad/">antidumping (AD)</a>, global safeguards (SG), China-specific transitional safeguard (CSG) measures, and countervailing duties (CVD).</p>
+<p>For more information, see the <a href="http://econ.worldbank.org/WBSITE/EXTERNAL/EXTDEC/EXTRESEARCH/EXTPROGRAMS/EXTTRADERESEARCH/0,,contentMDK:22561572~pagePK:64168182~piPK:64168060~theSitePK:544849,00.html">Temporary Trade Barriers Database and Global Antidumping Database</a>.</p>
+</div>
+<div id="trade-costs-database" class="section level3">
+<h3>Trade costs database</h3>
+<p>The Trade Costs database provides estimates of bilateral trade costs in agriculture and manufactured goods for the 1995-2015 period. It is built on trade and production data collected in 178 countries.</p>
+<p>The database is available <a href="http://databank.worldbank.org/data/reports.aspx?source=escap-world-bank-international-trade-costs">here</a>.</p>
+</div>
+<div id="interface-to-access-unctad-trains-data" class="section level3">
+<h3>Interface to access UNCTAD TRAINS data</h3>
+<p>The <a href="http://unctad.org/en/Pages/DITC/Trade-Analysis/Non-Tariff-Measures/NTMs-trains.aspx">UNCTAD Trade Analysis Information System (TRAINS)</a> is a comprehensive computerized information system at the HS-based tariff line level (HS 6-digit). The database provides data on trade control measures, including:</p>
+<ul>
+<li>Tariffs;</li>
+<li>Para-tariffs;</li>
+<li>Non-tariff measures;</li>
+<li>Imports by suppliers at HS 6-digit level.</li>
+</ul>
+<p>The interface is available <a href="http://databank.worldbank.org/data/reports.aspx?source=UNCTAD-~-Trade-Analysis-Information-System-(TRAINS)">here</a>.</p>
+</div>
+</div>
+
+<p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

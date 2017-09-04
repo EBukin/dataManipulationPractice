@@ -17,15 +17,12 @@
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
-<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
-<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 <script>
@@ -113,34 +110,34 @@ button.code-folding-btn:focus {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 45px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 50px;
+  margin-top: -50px;
 }
 </style>
 
@@ -177,101 +174,6 @@ $(document).ready(function () {
 
 
 
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3,h4",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
-
-<style type="text/css">
-
-#TOC {
-  margin: 25px 0px 20px 0px;
-}
-@media (max-width: 768px) {
-#TOC {
-  position: relative;
-  width: 100%;
-}
-}
-
-
-.toc-content {
-  padding-left: 30px;
-  padding-right: 40px;
-}
-
-div.main-container {
-  max-width: 1200px;
-}
-
-div.tocify {
-  width: 20%;
-  max-width: 260px;
-  max-height: 85%;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-  div.tocify {
-    width: 25%;
-  }
-}
-
-@media (max-width: 767px) {
-  div.tocify {
-    width: 100%;
-    max-width: none;
-  }
-}
-
-.tocify ul, .tocify li {
-  line-height: 20px;
-}
-
-.tocify-subheader .tocify-item {
-  font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
-}
-
-.tocify .list-group-item {
-  border-radius: 0px;
-}
-
-
-</style>
-
-<!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
-<div class="col-xs-12 col-sm-4 col-md-3">
-<div id="TOC" class="tocify">
-</div>
-</div>
-
-<div class="toc-content col-xs-12 col-sm-8 col-md-9">
-
-
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -303,12 +205,27 @@ div.tocify {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="00-data-sources.html">Overview</a>
+      <a href="data-sources-compilation.html">Data sources overview</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Data sources</li>
     <li>
       <a href="00-comtrade.html">UN Comtrade data</a>
+    </li>
+    <li>
+      <a href="00-worldbank.html">World Bank (WITS/TCdata360/Miscellaneous)</a>
+    </li>
+    <li>
+      <a href="00-wto.html">WTO</a>
+    </li>
+    <li>
+      <a href="00-itc-trademap.html">ITC Trade Map</a>
+    </li>
+    <li>
+      <a href="00-economic-complexity.html">The 'Economic Complexity' Solutions</a>
+    </li>
+    <li>
+      <a href="00-cepi.html">CEPI</a>
     </li>
   </ul>
 </li>
@@ -367,6 +284,26 @@ div.tocify {
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#data-availability-in-comtrade">Data availability in Comtrade</a></li>
+<li><a href="#regular-download-in-comtrade">Regular download in Comtrade</a></li>
+<li><a href="#bulk-download-in-comtrade">Bulk download in Comtrade</a><ul>
+<li><a href="#web-based-bulk-query">Web based bulk query</a></li>
+<li><a href="#api-bulk-query">API bulk query</a></li>
+<li><a href="#token-for-data-access">Token for data access</a></li>
+</ul></li>
+<li><a href="#data-visualization-options">Data visualization options</a><ul>
+<li><a href="#comtrade-data-explorer">Comtrade data-explorer</a></li>
+<li><a href="#bilateral-trade-exploration-tool">Bilateral trade exploration tool</a></li>
+</ul></li>
+<li><a href="#general-comtrade-related-information">General Comtrade related information</a><ul>
+<li><a href="#metadata-and-documentation">Metadata and documentation</a></li>
+<li><a href="#commodity-mapping-tables">Commodity mapping tables</a></li>
+<li><a href="#country-classification">Country classification</a></li>
+</ul></li>
+</ul>
+</div>
 
 <hr />
 <p>Comtrade is a UN based comprehensive trade data collection and dissemination platform maintained and owned by The United Nations Statistics Division (UNSD). From the FAO building, everyone has full access to all Comtrade services. All information is available on the Comtrade website <a href="https://comtrade.un.org/" class="uri">https://comtrade.un.org/</a>.</p>
@@ -462,6 +399,14 @@ div.tocify {
 <p><strong>Data response</strong></p>
 <p>Your browser will download one <code>zip</code> archive with data for a selected country (all countries), period and classification.</p>
 <p><strong>Attention!</strong> Data files could be very. In zipped format file size may range from 1 to 500 megabyte. Un extracted format, file size could be up to 9 gigabytes.</p>
+</div>
+<div id="token-for-data-access" class="section level3">
+<h3>Token for data access</h3>
+<p>To generate an authentication token for the UN Comtrade from the registered IP range (i.e. from the FAO headquarters), we first need to go to the UN Comtrade <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">autentication page</a> and insert our email into the <code>Sign in using: &gt; IP Authentication:</code> field. Pressing <code>Authenticate my IP</code> will ensure we are registered in the UN Comtrade system. Please note, you need to do this only once.</p>
+<p>Subsequently we need to go to <a href="https://comtrade.un.org/api/swagger/ui/index#/">comtradePlus.API</a>and select <code>/getSubUserToken</code> in the <code>Auth</code> section <img src="diagrams/ct-get-token.png" /><!-- -->. After inserting the email, which you used to register above, into the corresponding field, press “try it out”:</p>
+<p><img src="diagrams/ct-get-token-email.png" /><!-- --></p>
+<p>In <code>Response Headers</code> the token will appear as a long string of symbols and characters. This token is to be copied to a secure place and used to access data in some programming cases or in the World Bank WITS database.</p>
+<p><img src="diagrams/ct-get-token-resp.png" /><!-- --></p>
 <hr />
 </div>
 </div>
@@ -513,8 +458,6 @@ div.tocify {
 <p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>
 
 
-</div>
-</div>
 
 </div>
 

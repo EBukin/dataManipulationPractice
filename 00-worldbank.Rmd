@@ -14,7 +14,6 @@ World Bank offers great variety of databases on the subject of trade, agricultur
 
 *  Miscellaneous data sources
 
-
 ---
 
 ## WITS
@@ -23,7 +22,7 @@ World Bank offers great variety of databases on the subject of trade, agricultur
 
 World Integrated Trade Solution is located here: [http://wits.worldbank.org/](http://wits.worldbank.org/). However, this is the guest users interface with the access to simple summary data. If you need to access full capabilities of WITS database, you need to log-in [here](https://wits.worldbank.org/WITS/WITS/Restricted/Login.aspx) (see more details below). 
 
-WITS database is a website, that uses trade and tariff data from various sources (UN Comtrade, WTO, World Bank) in order to provide users with the interface for generating own trade statistics and indicators. WITS application also provides tools to perform single and multi-market tariff cut simulations.
+WITS database is a website, that uses trade and tariff data from various sources (UN Comtrade, WTO, World Bank) in order to provide users with the interface for generating own trade statistics and indicators. WITS application also provides tools to perform single and multi-market tariff cut simulations. Extensive description of the methodology, used by WITS is located here: [http://wits.worldbank.org/methodology.html](http://wits.worldbank.org/methodology.html).
 
 WITS provides multiple ways to access trade, tariff and non-tariff data. It has the following main sections.
 
@@ -63,15 +62,15 @@ When the user are logged into WITS, the website offer a greater range of documen
 
 *  WITS has a developed API interface for direct data access from a programming environment. More information is available [here](http://wits.worldbank.org/witsapiintro.aspx). Here is the [WITS-API USER GUIDE](http://wits.worldbank.org/data/public/WITSAPI_UserGuide.pdf).
 
-### Trade data 
+### WITS Trade data 
 
-There are two main types of trade data in WITS, (1) UN Comtrade up to 6 digits trade data and (2) UN Comtrade Tariff-line data. To access UN Comtrade data we only need to log in to WITS with our user name (email) and password. However, if we want to extract bulk Comtrade data, we may need to provide our Comtrade data access token (see more details below).
+There are two main types of trade data in WITS, (1) UN Comtrade up to 6 digits oh HS classification trade data and (2) UN Comtrade Tariff-line data. To access UN Comtrade data we only need to log in to WITS with our user name (email) and password. However, if we want to extract bulk Comtrade data, we may need to provide our Comtrade data access token (see more details below).
 
 #### Advance query for trade data access
 
 The main tool of generating user-defined trade data reports from the UN Comtrade data in WITS is in using the [`Home > Advanced Query > Trade Data (UN Comtrade)`](http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData). Here you can select any reporters, partners, commodities, periods, and classification systems in order to generate desirable table with the trade data.
 
-**Important** to note. At this step our queries are limited to the maximum of 100 000 rows. In order to be able to download more than that, you either need to log in from the FAO network, or provide a UN Comtrade token to the WITS database by clicking "click here to activate" on the page [`Home > Advanced Query > Trade Data (UN Comtrade)`](http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData) and follow the instructions: 
+**Important** to note. At this step our queries are limited to the maximum of 100 000 rows. In order to be able to download more than 100 000 rows, you either need to log in from the FAO network, or provide a UN Comtrade token to the WITS database by clicking "click here to activate" on the page [`Home > Advanced Query > Trade Data (UN Comtrade)`](http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData) and follow the instructions: 
 
 ```{r echo=FALSE}
 knitr::include_graphics("diagrams/wits-login-ct-token.png")
@@ -81,13 +80,35 @@ A comprehensive instruction on how to use advanced queries is provided in the WI
 
 <video id="Video1" controls="" loop="" height="315"> <source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Advanced%20Query%20-%20Trade%20Data.mp4" type="video/mp4"> </video>
 
-**IMPORTANT!** Selecting the commodity classfication is always tricky, when you want to construct a consistent time series. If you want to do so, 
+**IMPORTANT about ommodity classfication** Selecting the commodity classification is always tricky, when you want to construct a consistent time series they covers multiple years (5 and more)? you may find that more modern HS classifications will not be available in the past. For tackle this problem you need to switch to the old HS classification, such as HS 2002 or even HS 1992. Be ready, that the coding system in the old HS classifications may differ significant. To overcome this problem, check the [WITS mapping tables](http://wits.worldbank.org/WITS/WITS/Support%20Materials/CMTNomenclatureandConcordancesList.aspx?Page=ProductNomenclatureandConcordances) or [tables of concordance](http://wits.worldbank.org/product_concordance.html). 
 
-#### User defined groups of commodities
+#### User defined groups of commodities and countries
 
-#### User defined groups of countries.
+Tutorial video Highlights both options for user defined grouping of data. The best description of how to create and use the user-defined country and commodity groups is described in the WITS e-learning [here](http://wits.worldbank.org/WITS/Training/player.html) in the sections 20 and 21. Please check them for the guided instructions.
+
+The lists of standard - predefined commodities and country groups are here:  [http://wits.worldbank.org/referencedata.html](http://wits.worldbank.org/referencedata.html) in the sections `Products` and `Countries`.
+
+#### Tariff-line and bulk Comtrade data
+
+WITS offers a user friendly interface for accessing [Tariff-line data (link to the interface)](http://wits.worldbank.org/WITS/WITS/QuickQuery/Trade-ViewAndExportRawData/ViewAndExportRawData.aspx?Page=TradeViewAndExportRawData) and [bulk Comtrade data (link to the interface)](http://wits.worldbank.org/WITS/WITS/AdvanceQuery/BulkExport/BulkExportQueryDefination.aspx?Page=BulkExport). Practically, this interface repeats the one available in the Comtrade. To learn more about how to use it, see:
+
+*  [Tariff-line tutorial video](http://wits.worldbank.org/videos/trade%20-%20view-and-export-tariff-line-imports.html);
+
+<video id="witsTariffLine" controls="" loop="" height="315"> <source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Trade%20-%20View%20and%20export%20tariff-line%20imports.mp4" type="video/mp4"> </video>
+
+*  [WITS bulk donwload tutorial video](http://wits.worldbank.org/videos/bulk-download-un-comtrade.html).
+
+<video id="witsBulkVideo" controls="" loop="" height="315"> <source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Bulk%20Download%20(UN%20Comtrade).mp4" type="video/mp4"> </video>
 
 ### Triffs data
+
+WITS Trade and Tariffs data offers access to the UNCTAD and WTO databases and the tariffs data in particular. It is available on the [`Home > Advanced Query >Tariff and Trade Analysis`](http://wits.worldbank.org/WITS/WITS/AdvanceQuery/TariffAndTradeAnalysis/AdvancedQueryDefinition.aspx?Page=TariffandTradeAnalysis) page.  To get to know how to use this data, see [this tutorial video](http://wits.worldbank.org/videos/tariff-advanced-query.html).
+
+<video id="witsTarrifsVideo" controls="" loop="" height="315"> <source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Advanced%20Query%20-%20Tariff%20and%20Trade%20Analysis.mp4"> </video>
+
+It is also possible to download bulk tariff data from the UNCTAD TRAINS database directly from WITS. You need to follow [`Home > Advanced Query >Bulk Download (TRAINS)`](http://wits.worldbank.org/WITS/WITS/AdvanceQuery/TRAINSBulkExport/TRAINSBulkExportQueryDefination.aspx?Page=TRAINSBulkExport) to access the download interface. For more information, see [tutorial documentation](http://wits.worldbank.org/data/public/Help_BulkDownload_TRAINS.pdf) and [tutorial video](http://wits.worldbank.org/videos/bulk-download-unctad-trains.html) below:
+
+<video id="witsTradeProfiles" controls="" loop="" height="315"> <source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Bulk%20Download%20(TRAINS).mp4"> </video>
 
 ### Trade indicators
 
@@ -125,11 +146,11 @@ There are numerous options of data access for developers and different software,
 
 ### Most recent WB researches on trade
 
-[This is the website](http://econ.worldbank.org/WBSITE/EXTERNAL/EXTDEC/EXTRESEARCH/EXTPROGRAMS/EXTTRADERESEARCH/0,,menuPK:544860~noSURL:Y~pagePK:64168176~piPK:64168140~theSitePK:544849,00.html) is dedicated to the ongoing researches on trade conducted by of the World Bank.
+*  This is the [website](http://econ.worldbank.org/WBSITE/EXTERNAL/EXTDEC/EXTRESEARCH/EXTPROGRAMS/EXTTRADERESEARCH/0,,menuPK:544860~noSURL:Y~pagePK:64168176~piPK:64168140~theSitePK:544849,00.html) dedicated to the ongoing researches on trade conducted by of the World Bank.
 
-Comprehensive search over the WB researches [is here](http://documents.worldbank.org/curated/en/docsearch). 
+*  Comprehensive search over the WB researches [is here](http://documents.worldbank.org/curated/en/docsearch). 
 
-Generic website with the modern interface for searching through the WB researches is [here](https://openknowledge.worldbank.org/browse).
+*  Generic website with the modern interface for searching through the WB researches is [here](https://openknowledge.worldbank.org/browse).
 
 ### Temporary Trade Barriers Database 
 
@@ -143,3 +164,15 @@ For more information, see the [Temporary Trade Barriers Database and Global Anti
 The Trade Costs database provides estimates of bilateral trade costs in agriculture and manufactured goods for the 1995-2015 period. It is built on trade and production data collected in 178 countries.
 
 The database is available [here](http://databank.worldbank.org/data/reports.aspx?source=escap-world-bank-international-trade-costs).
+
+### Interface to access UNCTAD TRAINS data
+
+The [UNCTAD Trade Analysis Information System (TRAINS)](http://unctad.org/en/Pages/DITC/Trade-Analysis/Non-Tariff-Measures/NTMs-trains.aspx) is a comprehensive computerized information system at the HS-based tariff line level (HS 6-digit). The database provides data on trade control measures, including:
+
+*  Tariffs;
+*  Para-tariffs;
+*  Non-tariff measures;
+*  Imports by suppliers at HS 6-digit level.
+
+The interface is available [here](http://databank.worldbank.org/data/reports.aspx?source=UNCTAD-~-Trade-Analysis-Information-System-(TRAINS)).
+

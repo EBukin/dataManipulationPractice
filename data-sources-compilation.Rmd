@@ -1,0 +1,49 @@
+---
+title: "Trade data sources overview" 
+author: "Eduard Bukin"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+---
+
+To download entire report in a file, select the format: <a target="_blank" href="data-sources-compilation.pdf" class="btn btn-primary">PDF Report</a> or <a href="data-sources-compilation.docx" download="data-sources-compilation.docx" class="btn btn-primary">Word report</a>.
+
+\newpage
+
+# UN Comtrade
+
+```{r child = '00-comtrade.Rmd'}
+```
+
+\pagebreak
+
+# World Bank
+
+```{r child = '00-worldbank.Rmd'}
+```
+
+\pagebreak
+
+# WTO
+
+```{r child = '00-wto.Rmd'}
+```
+
+\pagebreak
+
+# ITC Trade Map
+
+```{r child = '00-itc-trademap.Rmd'}
+```
+
+\pagebreak
+
+# Economic Complexity solutions (Harvard/MIT)
+
+```{r child = '00-economic-complexity.Rmd'}
+```
+\pagebreak
+
+# CEPI
+
+```{r child = '00-cepi.Rmd'}
+```
+

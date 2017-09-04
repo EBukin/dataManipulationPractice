@@ -1,0 +1,24 @@
+---
+title: "ITC Trade Map"
+author: "Eduard Bukin"
+date: '2017-09-03'
+---
+
+---
+
+# WTO 
+
+1.  [WTO](00-wto-data.html)
+
+    1.  Overview of the [WTO soureces](https://www.wto.org/english/res_e/statis_e/itip_e.htm)
+
+    1.  Trade time series `http://stat.wto.org/Home/WSDBHome.aspx?Language=`
+    
+    1.  WTO Tariffs database `http://tariffdata.wto.org/`
+  
+
+**Source**
+
+**How to access data**
+
+**Registration and login**

@@ -4,33 +4,31 @@ date: "2017-08-28"
 output: html_document
 ---
 
-## Described data
+
+
+
 
 1.  [UN Comtrade overview](00-comtrade.html)
 
-1.  [World Bank WITS, Tarriffs, TCdata360 overview](00-worldbank.html)
+1.  [World Bank WITS, Tariffs, TCdata360 overview](00-worldbank.html)
 
     1.  WITS Trade data
-
-        *  Customizing county aggregates
-        *  Customizing commodity aggregates
+    
+        *  WITS Trade data 
         
-    1.  WITS Tarriffs data
+            *  Advance query for trade data access
+            *  User defined groups of commodities and countries
+            *  Tariff-line and bulk Comtrade data
+            
+        *  WITS Tarriffs data
+        
+        *  Trade indicators
 
     1.  TCdata360 overview `http://tcdata360.worldbank.org/`
+    
+    1.  Miscellaneous data sources
 
 1.  [ITC Trade Map overview](00-itc-trademap.html) `http://www.trademap.org/`
 
-1.  [Observatory of Economic Complexity](00-observatory-econ-complex.html) `http://atlas.media.mit.edu/en/`
 
-1.  [Atlas of economic complexity](00-atlas-econ-complex.html) `http://atlas.cid.harvard.edu`
 
-1.  [Globe of economic complexity](00-globe-econ-complex.html) `http://globe.cid.harvard.edu/`
-
-1.  [WTO](00-wto-data.html)
-
-    1.  Trade time series `http://stat.wto.org/Home/WSDBHome.aspx?Language=`
-    
-    1.  WTO Tarrifs database `http://tariffdata.wto.org/`
-    
-1.  [CEPI](00-cepii.html) http://www.cepii.fr/

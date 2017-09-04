@@ -10,13 +10,22 @@ navbar:
     - text: "Trade data sources"
       icon: fa-info
       menu:
-        - text: "Overview"
-          href: 00-data-sources.html
+        - text: "Data sources overview"
+          href: data-sources-compilation.html
         - text: "---------"
         - text: "Data sources"
         - text: "UN Comtrade data"
           href: 00-comtrade.html
-          
+        - text: "World Bank (WITS/TCdata360/Miscellaneous)"
+          href: 00-worldbank.html
+        - text: "WTO"
+          href: 00-wto.html
+        - text: "ITC Trade Map"
+          href: 00-itc-trademap.html
+        - text: "The 'Economic Complexity' Solutions"
+          href: 00-economic-complexity.html
+        - text: "CEPI"
+          href: 00-cepi.html
     - text: "Data manipulation practice in R"
       icon: fa-gear
       menu:
@@ -33,7 +42,7 @@ navbar:
           href: 03-joints-exercise.html
         - text: "---------"
         - text: "Answers"
-        - text: "Load data"
+        - text: "Load data" 
           href: 01-load-ct-data-excercise-answer.html
         - text: "Manipulate (filter|select|arrange|distinct)"
           href: 02-filter-ct-data-excercise-answers.html
@@ -42,10 +51,9 @@ navbar:
 output:
   html_document:
     toc: true
-    toc_float: true
     toc_depth: 4
-    theme: cerulean
-    highlight: default
+    theme: yeti
+    highlight: textmate
     include:
       in_header: google-analytics-script.html
       after_body: footer.html

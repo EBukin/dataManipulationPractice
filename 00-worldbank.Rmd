@@ -43,7 +43,7 @@ WITS is a complex tool, however it has a very good set of [learning materials](h
 
 **Registration and login**
 
-In order to use full capabilities of the WITS database all users need to log-in. The log in page is located [here](https://wits.worldbank.org/WITS/WITS/Restricted/Login.aspx). You can access this from the main [WITS website](http://wits.worldbank.org), by clicking first 'Register' in the top right corner `r knitr::include_graphics("diagrams/wits-login-button.PNG")`. Follow all registration instructions. People with the FAO email are allowed to register in WITS and use all available capacities of the database. After you have finished your registration, click 'log in' in the same top-right corner of the [WITS website](http://wits.worldbank.org), enter your email and password and you will log into the WITS database:
+In order to use full capabilities of the WITS database all users need to log-in. The log in page is located [here](https://wits.worldbank.org/WITS/WITS/Restricted/Login.aspx). You can access this page from the main [WITS website](http://wits.worldbank.org), by clicking first 'Register' in the top right corner `r knitr::include_graphics("diagrams/wits-login-button.PNG")`. Follow all registration instructions. People with the FAO email are allowed to register in WITS and use all available capacities of the database. After you have finished your registration, click 'log in' in the same top-right corner of the [WITS website](http://wits.worldbank.org), enter your email and password and you will log into the WITS database:
 
 ```{r echo=FALSE}
 knitr::include_graphics("diagrams/wits-login-page.png")
@@ -65,13 +65,13 @@ When the user are logged into WITS, the website offer a greater range of documen
 
 ### Trade data 
 
-There are two main types of trade data in WITS, (1) UN Comtrade up to 6 digits trade data and (2) UN Comtrade Tariff-line data. To access UN Comtrade data we only need to log in to WITS with our user name and password. However, it we want to extract bulk Comtrade data, we may need to provide the Comtrade data access token (see more details below).
+There are two main types of trade data in WITS, (1) UN Comtrade up to 6 digits trade data and (2) UN Comtrade Tariff-line data. To access UN Comtrade data we only need to log in to WITS with our user name (email) and password. However, if we want to extract bulk Comtrade data, we may need to provide our Comtrade data access token (see more details below).
 
 #### Advance query for trade data access
 
-The main tool of generating user-defined trade data reports is in using the [`Home > Advanced Query > Trade Data (UN Comtrade)`](http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData). Here you can select any reporters, partners, commodities, periods, and classification systems in order to generate desirable table with the trade data.
+The main tool of generating user-defined trade data reports from the UN Comtrade data in WITS is in using the [`Home > Advanced Query > Trade Data (UN Comtrade)`](http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData). Here you can select any reporters, partners, commodities, periods, and classification systems in order to generate desirable table with the trade data.
 
-Important to note. At this step our queries are limited to the maximum of 100 000 rows. In order to be able to download more than that, you either need to log in from the FAO network, or provide a UN Comtrade token to the WITS database by clicking "click here to activate" on the page [`Home > Advanced Query > Trade Data (UN Comtrade)`](http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData) and follow the instructions: 
+**Important** to note. At this step our queries are limited to the maximum of 100 000 rows. In order to be able to download more than that, you either need to log in from the FAO network, or provide a UN Comtrade token to the WITS database by clicking "click here to activate" on the page [`Home > Advanced Query > Trade Data (UN Comtrade)`](http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData) and follow the instructions: 
 
 ```{r echo=FALSE}
 knitr::include_graphics("diagrams/wits-login-ct-token.png")
@@ -81,6 +81,7 @@ A comprehensive instruction on how to use advanced queries is provided in the WI
 
 <video id="Video1" controls="" loop="" height="315"> <source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Advanced%20Query%20-%20Trade%20Data.mp4" type="video/mp4"> </video>
 
+**IMPORTANT!** Selecting the commodity classfication is always tricky, when you want to construct a consistent time series. If you want to do so, 
 
 #### User defined groups of commodities
 

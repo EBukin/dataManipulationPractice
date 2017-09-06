@@ -9,10 +9,11 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Eduard Bukin" />
 
-<meta name="date" content="2017-08-28" />
+<meta name="date" content="2017-09-06" />
 
-<title>Trade data sources</title>
+<title>Local data storage</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -280,32 +281,42 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Trade data sources</h1>
-<h4 class="date"><em>2017-08-28</em></h4>
+<h1 class="title toc-ignore">Local data storage</h1>
+<h4 class="author"><em>Eduard Bukin</em></h4>
+<h4 class="date"><em>2017-09-06</em></h4>
 
 </div>
 
+<div id="TOC">
+<ul>
+<li><a href="#local-data-storage">Local data storage</a></li>
+</ul>
+</div>
 
-<ol style="list-style-type: decimal">
-<li><p><a href="00-comtrade.html">UN Comtrade overview</a></p></li>
-<li><p><a href="00-worldbank.html">World Bank WITS, Tariffs, TCdata360 overview</a></p>
-<ol style="list-style-type: decimal">
-<li><p>WITS Trade data</p>
+<hr />
+<div id="local-data-storage" class="section level1">
+<h1>Local data storage</h1>
+<p>In order to simplify loading and working with the Comtrade data with no complications with the databases (relying only on the available RAM) we develop a structure of all data locally in the folders in the <code>~</code> (root) folder of the computer. Function <code>build_ct_storage()</code> from the tradeAnalysis package. This function creates a folder <code>ctData</code> in the <code>Documents</code> folder (on Windows Machine) or in <code>~</code> folder on any other kind of machine.</p>
+<p>Withing this folder there is also an R project created along with the folders for data structure and several R scripts:</p>
 <ul>
-<li><p>WITS Trade data</p>
-<ul>
-<li>Advance query for trade data access</li>
-<li>User defined groups of commodities and countries</li>
-<li>Tariff-line and bulk Comtrade data</li>
-</ul></li>
-<li><p>WITS Tarriffs data</p></li>
-<li><p>Trade indicators</p></li>
-</ul></li>
-<li><p>TCdata360 overview <code>http://tcdata360.worldbank.org/</code></p></li>
-<li><p>Miscellaneous data sources</p></li>
-</ol></li>
-<li><p><a href="00-itc-trademap.html">ITC Trade Map overview</a> <code>http://www.trademap.org/</code></p></li>
+<li><p><code>update_local_CT_data.R</code> Script for updating locally downloaded CT data and downloading new data;</p></li>
+<li><p><code>prepare_shinyApp_data.R</code> Script developed for preparing CT data for the Shiny app structure;</p></li>
+<li><p><code>.CT-token</code> text file with the token for accessing to the Comtrade data (for more information <a href="00-comtrade.html">see</a>).</p></li>
+</ul>
+<p>Order of running:</p>
+<ol style="list-style-type: decimal">
+<li><p>open empty R session;</p></li>
+<li><p>install up to date version of <code>tradeAnalysis</code> package from the git-hub running <code>devtools::install_github(&quot;EBukin/tradeAnalysis-pack&quot;)</code> in the console;</p></li>
+<li><p>load the <code>tradeAnalysis</code> package running <code>library(tradeAnalysis)</code>;</p></li>
+<li><p>run command <code>build_ct_storage()</code>;</p></li>
+<li><p>go to your <code>~</code> folder (Documents) on Windows machine <code>C:\Users\USER_NAME\Documents</code>;</p></li>
+<li><p>find the folder <code>ctData</code> and open the project, which is there;</p></li>
+<li><p>update <code>.CT-token</code> file inserting one line of your CT token without quot marks;</p></li>
+<li><p>open the script <code>update_local_CT_data.R</code> and source it all or run line by line (may take up to several days it this is the first run);</p></li>
+<li><p>open the script <code>prepare_shinyApp_data.R</code> and source it all or run line by line;</p></li>
 </ol>
+<p>Here you go!</p>
+</div>
 
 <p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>
 

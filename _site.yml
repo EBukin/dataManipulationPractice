@@ -29,9 +29,11 @@ navbar:
     - text: "Data manipulation practice in R"
       icon: fa-gear
       menu:
-        - text: "R practice"
+        - text: "Examples and indications"
         - text: "Loading COMTRADE data in R"
           href: 01-data-import.html
+        - text: "Setup local CT data storage structure"
+          href: local-data-storage.html
         - text: "---------"
         - text: "Excercises"
         - text: "Load data"

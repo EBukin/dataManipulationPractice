@@ -1,0 +1,42 @@
+---
+title: "Local data storage"
+author: "Eduard Bukin"
+date: '2017-09-06'
+---
+
+---
+
+# Local data storage
+
+In order to simplify loading and working with the Comtrade data with no complications with the databases (relying only on the available RAM) we develop a structure of all data locally in the folders in the `~` (root) folder of the computer. Function `build_ct_storage()` from the tradeAnalysis package. This function creates a folder `ctData` in the `Documents` folder (on Windows Machine) or in `~` folder on any other kind of machine.
+
+Withing this folder there is also an R project created along with the folders for data structure and several R scripts:
+
+*  `update_local_CT_data.R` Script for updating locally downloaded CT data and downloading new data;
+
+*  `prepare_shinyApp_data.R` Script developed for preparing CT data for the Shiny app structure;
+
+*  `.CT-token` text file with the token for accessing to the Comtrade data (for more information [see](00-comtrade.html)).
+
+Order of running:
+
+1.  open empty R session;
+
+1.  install up to date version of `tradeAnalysis` package from the git-hub running `devtools::install_github("EBukin/tradeAnalysis-pack")` in the console;
+
+1.  load the `tradeAnalysis` package running `library(tradeAnalysis)`;
+
+1.  run command `build_ct_storage()`;
+
+1.  go to your `~` folder (Documents) on Windows machine `C:\Users\USER_NAME\Documents`;
+
+1.  find the folder `ctData` and open the project, which is there;
+
+1.  update `.CT-token` file inserting one line of your CT token without quot marks;
+
+1.  open the script `update_local_CT_data.R` and source it all or run line by line (may take up to several days it this is the first run);
+
+1.  open the script `prepare_shinyApp_data.R` and source it all or run line by line;
+
+
+Here you go!

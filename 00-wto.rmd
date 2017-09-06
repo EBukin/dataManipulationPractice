@@ -1,18 +1,84 @@
 ---
-title: "ITC Trade Map"
+title: "WTO trade data sources"
 author: "Eduard Bukin"
 date: '2017-09-03'
 ---
 
 ---
 
-# WTO 
+## WTO Tariffs data facilities
 
-1.  [WTO](00-wto-data.html)
+The [WTO website](https://www.wto.org/english/tratop_e/tariffs_e/tariff_data_e.htm) offers sophisticated options for researching members’ customs duty rates and in many cases imports. In particular, there are: 
 
-    1.  Overview of the [WTO soureces](https://www.wto.org/english/res_e/statis_e/itip_e.htm)
+*  Tariff Analysis Online tool [http://tao.wto.org/?ui=1](http://tao.wto.org/?ui=1);
 
-    1.  Trade time series `http://stat.wto.org/Home/WSDBHome.aspx?Language=`
+*  Tariff Download Facility [http://tariffdata.wto.org/Default.aspx?culture=en-US](http://tariffdata.wto.org/Default.aspx?culture=en-US).
+
+Both tools allow assess to the same data about the trade policy, collected by WTO. Below, we will discuss both tools in more datails.
+
+### Tariff Analysis Online (TAO)
+
+This facility allows you to access the WTO's Integrated Data Base (IDB) and Consolidated Tariff Schedules (CTS) database on-line, select markets and products, compile reports and download data.
+
+**Source**
+
+The TAO tool, could be accessed here: [http://tao.wto.org/?ui=1](http://tao.wto.org/?ui=1). 
+
+**How to access data**
+
+The data could be accessed after registration and login-in. To register, press `Click here to register` (`r knitr::include_graphics("diagrams/wto-tao-registration.png")`) on the main page of the TAO website. Use registerd login and password to access the database.
+
+The interface of the database is not very intuitive. To understand how to use it, see the [guidlines and help](http://tao.wto.org/help.aspx). 
+
+General procedure of data access are the following:
+
+*  Prepare a querry either in IDB or in CTS databases `r knitr::include_graphics("diagrams/wto-tao-start-query.png")`;
+
+*  Insert main parameters of the querry and save it: 
+
+`r knitr::include_graphics("diagrams/wto-tao-main-par-query.png")`
+
+*  Click `Basic query` and select the query you have saved from the `Saved Query` list.
+
+*  Generate the report based on the selected query: 
+
+`r knitr::include_graphics("diagrams/wto-tao-report-generation.png")`
+
+**Data response**
+
+With the present tool, data could be returned as a report in browser or as an exported excel data file. For more information, try to use it, or see the [help](http://tao.wto.org/Help.aspx).
+
+### Tariff Download Facility
+
+Official guide of how to use the tool is [here](http://tariffdata.wto.org/UserGuide/USERGUIDE_EN.htm)
+
+### Information about measures and notifications
+
+I-TIP Goods provides comprehensive information on non-tariff measures (NTMs) applied by WTO members in merchandise trade. The information includes members' notifications of NTMs as well as information on "specific trade concerns" raised by members at WTO committee meetings. Its aim is to serve the needs of those seeking detailed information on trade policy measures as well as those looking for summary information. It includes links to the WTO's extensive tariff and trade databases, and to DocsOnLine system.
+
+**Source**
+
+The tool is available at [http://i-tip.wto.org/goods/Default.aspx](http://i-tip.wto.org/goods/Default.aspx).
+
+Depends on what you need, select one of GRAPHS over TIME, TABLES by PRODUCTS, TABLES by MEMBERS, or a DETAILED QUERY. See [how to](http://i-tip.wto.org/goods/Forms/HowTo.aspx) for more information.
+
+**Data response**
+
+Data could be downloaded in `pdf` reports about the notificaiton and measures applied by each country to a specific commodity.
+
+### Trade time series 
+
+WTO Statistics Database allows you to retrieve statistical information in the following presentations:
+
+*  The Trade Profiles provide predefined information leaflets on the trade situation of members, observers and other selected economies;
+
+*  The Tariff Profiles provide information on the market access situation of members, observers and other selected economies;
+
+*  The Aid for Trade Profiles provide information on trends of aid for trade, trade costs, trade performance and development for selected Aid for Trade recipients;
+
+*  The Time Series section allows an interactive data retrieval of international trade statistics.
+
+`http://stat.wto.org/Home/WSDBHome.aspx?Language=`
     
     1.  WTO Tariffs database `http://tariffdata.wto.org/`
   

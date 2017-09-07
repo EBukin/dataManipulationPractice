@@ -192,7 +192,7 @@ $(document).ready(function () {
   <a href="index.html">
     <span class="fa fa-home"></span>
      
-    Home
+    Overview
   </a>
 </li>
 <li class="dropdown">
@@ -205,27 +205,29 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="data-sources-compilation.html">Data sources overview</a>
+      <a href="data-sources-compilation.html">Overview of trade data sources</a>
+    </li>
+    <li>
+      <a href="overview-presentation.html">Presentation</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Data sources</li>
     <li>
-      <a href="00-comtrade.html">UN Comtrade data</a>
+      <a href="00-comtrade.html">- UN Comtrade data</a>
     </li>
     <li>
-      <a href="00-worldbank.html">World Bank (WITS/TCdata360/Miscellaneous)</a>
+      <a href="00-worldbank.html">- World Bank data</a>
     </li>
     <li>
-      <a href="00-wto.html">WTO</a>
+      <a href="00-wto.html">- World Trade Organization data</a>
     </li>
     <li>
-      <a href="00-itc-trademap.html">ITC Trade Map</a>
+      <a href="00-itc-trademap.html">- International Trade Center data</a>
     </li>
     <li>
-      <a href="00-economic-complexity.html">The 'Economic Complexity' Solutions</a>
+      <a href="00-economic-complexity.html">- MIT-Harvard 'Economic Complexity' Solutions</a>
     </li>
     <li>
-      <a href="00-cepi.html">CEPI</a>
+      <a href="00-cepi.html">- CEPII</a>
     </li>
   </ul>
 </li>
@@ -271,7 +273,9 @@ $(document).ready(function () {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/EBukin/dataManipulationPractice">GitHub</a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -301,7 +305,7 @@ $(document).ready(function () {
 <ul>
 <li><p><code>update_local_CT_data.R</code> Script for updating locally downloaded CT data and downloading new data;</p></li>
 <li><p><code>prepare_shinyApp_data.R</code> Script developed for preparing CT data for the Shiny app structure;</p></li>
-<li><p><code>.CT-token</code> text file with the token for accessing to the Comtrade data (for more information <a href="00-comtrade.html">see</a>).</p></li>
+<li><p><code>.CT-token</code> text file with the token for accessing to the Comtrade data (for more information about token <a href="00-comtrade.html">see</a>).</p></li>
 </ul>
 <p>Order of running:</p>
 <ol style="list-style-type: decimal">
@@ -311,7 +315,7 @@ $(document).ready(function () {
 <li><p>run command <code>build_ct_storage()</code>;</p></li>
 <li><p>go to your <code>~</code> folder (Documents) on Windows machine <code>C:\Users\USER_NAME\Documents</code>;</p></li>
 <li><p>find the folder <code>ctData</code> and open the project, which is there;</p></li>
-<li><p>update <code>.CT-token</code> file inserting one line of your CT token without quot marks;</p></li>
+<li><p>(only if you are doingt this from the outside of FAO building) copy and paste your token (without the quotation marks) onto <code>.CT-token</code> as text. How to access your token is explained on the “Loading COMTRADE data in R”;</p></li>
 <li><p>open the script <code>update_local_CT_data.R</code> and source it all or run line by line (may take up to several days it this is the first run);</p></li>
 <li><p>open the script <code>prepare_shinyApp_data.R</code> and source it all or run line by line;</p></li>
 </ol>

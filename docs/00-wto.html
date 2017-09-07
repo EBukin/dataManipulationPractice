@@ -13,7 +13,7 @@
 
 <meta name="date" content="2017-09-03" />
 
-<title>ITC Trade Map</title>
+<title>World Trade Organization data</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -192,7 +192,7 @@ $(document).ready(function () {
   <a href="index.html">
     <span class="fa fa-home"></span>
      
-    Home
+    Overview
   </a>
 </li>
 <li class="dropdown">
@@ -205,27 +205,29 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="data-sources-compilation.html">Data sources overview</a>
+      <a href="data-sources-compilation.html">Overview of trade data sources</a>
+    </li>
+    <li>
+      <a href="overview-presentation.html">Presentation</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Data sources</li>
     <li>
-      <a href="00-comtrade.html">UN Comtrade data</a>
+      <a href="00-comtrade.html">- UN Comtrade data</a>
     </li>
     <li>
-      <a href="00-worldbank.html">World Bank (WITS/TCdata360/Miscellaneous)</a>
+      <a href="00-worldbank.html">- World Bank data</a>
     </li>
     <li>
-      <a href="00-wto.html">WTO</a>
+      <a href="00-wto.html">- World Trade Organization data</a>
     </li>
     <li>
-      <a href="00-itc-trademap.html">ITC Trade Map</a>
+      <a href="00-itc-trademap.html">- International Trade Center data</a>
     </li>
     <li>
-      <a href="00-economic-complexity.html">The 'Economic Complexity' Solutions</a>
+      <a href="00-economic-complexity.html">- MIT-Harvard 'Economic Complexity' Solutions</a>
     </li>
     <li>
-      <a href="00-cepi.html">CEPI</a>
+      <a href="00-cepi.html">- CEPII</a>
     </li>
   </ul>
 </li>
@@ -271,7 +273,9 @@ $(document).ready(function () {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/EBukin/dataManipulationPractice">GitHub</a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -281,7 +285,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">ITC Trade Map</h1>
+<h1 class="title toc-ignore">World Trade Organization data</h1>
 <h4 class="author"><em>Eduard Bukin</em></h4>
 <h4 class="date"><em>2017-09-03</em></h4>
 
@@ -289,24 +293,103 @@ $(document).ready(function () {
 
 <div id="TOC">
 <ul>
-<li><a href="#wto">WTO</a></li>
+<li><a href="#tariff-analysis-online-tao">Tariff Analysis Online (TAO)</a></li>
+<li><a href="#tariff-download-facility">Tariff Download Facility</a></li>
+<li><a href="#regional-trade-agreement-information-system-rta-is">Regional Trade Agreement Information System (RTA-IS)</a></li>
+<li><a href="#wto-measures-and-notifications">WTO measures and notifications</a></li>
+<li><a href="#trade-time-series">Trade time series</a></li>
+<li><a href="#miscellaneous-information-sources">Miscellaneous information sources</a></li>
 </ul>
 </div>
 
+<p>The <a href="https://www.wto.org/english/tratop_e/tariffs_e/tariff_data_e.htm">WTO website</a> offers sophisticated options for researching membersâ€™ customs duty rates and in many cases imports. In particular, there are:</p>
+<ul>
+<li><p>Tariff Analysis Online tool <a href="http://tao.wto.org/?ui=1" class="uri">http://tao.wto.org/?ui=1</a>;</p></li>
+<li><p>Tariff Download Facility <a href="http://tariffdata.wto.org/Default.aspx?culture=en-US" class="uri">http://tariffdata.wto.org/Default.aspx?culture=en-US</a>.</p></li>
+<li><p>Regional Trade Agreement Information System (RTA-IS) <a href="http://rtais.wto.org/" class="uri">http://rtais.wto.org/</a>;</p></li>
+<li><p>Trade data time series <a href="http://stat.wto.org/" class="uri">http://stat.wto.org/</a>;</p></li>
+<li><p>Miscellaneous information and overview of the all statistical sources of WTO are here: <a href="https://www.wto.org/english/res_e/statis_e/statis_e.htm" class="uri">https://www.wto.org/english/res_e/statis_e/statis_e.htm</a>.</p></li>
+</ul>
+<p>Both tools allow assess to the same data about the trade policy, collected by WTO. Below, we will discuss both tools in more details.</p>
 <hr />
-<div id="wto" class="section level1">
-<h1>WTO</h1>
-<ol style="list-style-type: decimal">
-<li><p><a href="00-wto-data.html">WTO</a></p>
-<ol style="list-style-type: decimal">
-<li><p>Overview of the <a href="https://www.wto.org/english/res_e/statis_e/itip_e.htm">WTO soureces</a></p></li>
-<li><p>Trade time series <code>http://stat.wto.org/Home/WSDBHome.aspx?Language=</code></p></li>
-<li><p>WTO Tariffs database <code>http://tariffdata.wto.org/</code></p></li>
-</ol></li>
-</ol>
+<div id="tariff-analysis-online-tao" class="section level2">
+<h2>Tariff Analysis Online (TAO)</h2>
+<p>This facility allows you to access the WTO’s Integrated Data Base (IDB) and Consolidated Tariff Schedules (CTS) database on-line, select markets and products, compile reports and download data.</p>
 <p><strong>Source</strong></p>
+<p>The TAO tool, could be accessed here: <a href="http://tao.wto.org/?ui=1" class="uri">http://tao.wto.org/?ui=1</a>.</p>
 <p><strong>How to access data</strong></p>
-<p><strong>Registration and login</strong></p>
+<p>The data could be accessed after registration and log in-in. To register, press <code>Click here to register</code> (<img src="diagrams/wto-tao-registration.png" /><!-- -->) on the main page of the TAO website. Use registers log in and password to access the database.</p>
+<p>The interface of the database is not very intuitive. To understand how to use it, see the <a href="http://tao.wto.org/help.aspx">guidlines and help</a>.</p>
+<p>General procedure of data access are the following:</p>
+<ul>
+<li><p>Prepare a query either in IDB or in CTS databases <img src="diagrams/wto-tao-start-query.png" /><!-- -->;</p></li>
+<li><p>Insert main parameters of the query and save it:</p></li>
+</ul>
+<p><img src="diagrams/wto-tao-main-par-query.png" /><!-- --></p>
+<ul>
+<li><p>Click <code>Basic query</code> and select the query you have saved from the <code>Saved Query</code> list.</p></li>
+<li><p>Generate the report based on the selected query:</p></li>
+</ul>
+<p><img src="diagrams/wto-tao-report-generation.png" /><!-- --></p>
+<p><strong>Data response</strong></p>
+<p>With the present tool, data could be returned as a report in browser or as an exported excel data file. For more information, try to use it, or see the <a href="http://tao.wto.org/Help.aspx">help</a>.</p>
+<hr />
+</div>
+<div id="tariff-download-facility" class="section level2">
+<h2>Tariff Download Facility</h2>
+<p><strong>Source</strong></p>
+<p>Tariff Download Facility is located here: <a href="http://tariffdata.wto.org/Default.aspx?culture=en-US" class="uri">http://tariffdata.wto.org/Default.aspx?culture=en-US</a>.</p>
+<p><strong>How to access data</strong></p>
+<p>Official guide of how to use the tool is <a href="http://tariffdata.wto.org/UserGuide/USERGUIDE_EN.htm">here</a></p>
+<hr />
+</div>
+<div id="regional-trade-agreement-information-system-rta-is" class="section level2">
+<h2>Regional Trade Agreement Information System (RTA-IS)</h2>
+<p>This database contains information on only those agreements that have either been notified, or for which an early announcement has been made, to the WTO.</p>
+<p><strong>Source</strong></p>
+<p>RTA-IS is located here: <a href="http://rtais.wto.org/" class="uri">http://rtais.wto.org/</a></p>
+<p><strong>Data access</strong></p>
+<p>The user interface allows you to access data on RTAs notified to the GATT/WTO in the following way:</p>
+<ul>
+<li>By country/territory;</li>
+<li>By criteria;</li>
+<li>List of all RTAs in force;</li>
+<li>List of early announcements;</li>
+<li>Pre-defined reports and Summary Tables containing WTO Figures on RTAs.</li>
+</ul>
+<p>each of the options offers a list of links with more details on each specific agreement.</p>
+<p>For more information see the <a href="http://rtais.wto.org/UserGuide/RTAIS_USER_GUIDE_EN.html">user guide</a>.</p>
+<hr />
+</div>
+<div id="wto-measures-and-notifications" class="section level2">
+<h2>WTO measures and notifications</h2>
+<p>I-TIP Goods provides comprehensive information on non-tariff measures (NTMs) applied by WTO members in merchandise trade. The information includes members’ notifications of NTMs as well as information on “specific trade concerns” raised by members at WTO committee meetings. Its aim is to serve the needs of those seeking detailed information on trade policy measures as well as those looking for summary information. It includes links to the WTO’s extensive tariff and trade databases, and to DocsOnLine system.</p>
+<p><strong>Source</strong></p>
+<p>The tool is available at <a href="http://i-tip.wto.org/goods/Default.aspx" class="uri">http://i-tip.wto.org/goods/Default.aspx</a>.</p>
+<p>Depends on what you need, select one of GRAPHS over TIME, TABLES by PRODUCTS, TABLES by MEMBERS, or a DETAILED QUERY. See <a href="http://i-tip.wto.org/goods/Forms/HowTo.aspx">how to</a> for more information.</p>
+<p><strong>Data response</strong></p>
+<p>Data could be downloaded in <code>pdf</code> reports about the notification and measures applied by each country to a specific commodity.</p>
+<hr />
+</div>
+<div id="trade-time-series" class="section level2">
+<h2>Trade time series</h2>
+<p>WTO Statistics Database allows you to retrieve statistical information in the following presentations:</p>
+<ul>
+<li><p>The Trade Profiles - provide predefined information leaflets on the trade situation of members, observers and other selected economies;</p></li>
+<li><p>The Tariff Profiles - provide information on the market access situation of members, observers and other selected economies;</p></li>
+<li><p>The Aid for Trade Profiles - provide information on trends of aid for trade, trade costs, trade performance and development for selected Aid for Trade recipients;</p></li>
+<li><p>The Time Series section - allows an interactive data retrieval of international trade statistics.</p></li>
+</ul>
+<p><strong>Sourece</strong></p>
+<p>This data source if available here: <a href="http://stat.wto.org/" class="uri">http://stat.wto.org/</a></p>
+<p><strong>How to access data</strong></p>
+<p>All data is accessed in the similar way, following intuitive step by step process as on the picture below.</p>
+<p><img src="diagrams/wto-stat-steps.png" /><!-- --></p>
+<hr />
+</div>
+<div id="miscellaneous-information-sources" class="section level2">
+<h2>Miscellaneous information sources</h2>
+<p>WTO Trade policy Review <a href="https://www.wto.org/english/tratop_e/tpr_e/tpr_e.htm" class="uri">https://www.wto.org/english/tratop_e/tpr_e/tpr_e.htm</a>.</p>
 </div>
 
 <p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>

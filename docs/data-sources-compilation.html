@@ -191,7 +191,7 @@ $(document).ready(function () {
   <a href="index.html">
     <span class="fa fa-home"></span>
      
-    Home
+    Overview
   </a>
 </li>
 <li class="dropdown">
@@ -204,27 +204,29 @@ $(document).ready(function () {
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="data-sources-compilation.html">Data sources overview</a>
+      <a href="data-sources-compilation.html">Overview of trade data sources</a>
+    </li>
+    <li>
+      <a href="overview-presentation.html">Presentation</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Data sources</li>
     <li>
-      <a href="00-comtrade.html">UN Comtrade data</a>
+      <a href="00-comtrade.html">- UN Comtrade data</a>
     </li>
     <li>
-      <a href="00-worldbank.html">World Bank (WITS/TCdata360/Miscellaneous)</a>
+      <a href="00-worldbank.html">- World Bank data</a>
     </li>
     <li>
-      <a href="00-wto.html">WTO</a>
+      <a href="00-wto.html">- World Trade Organization data</a>
     </li>
     <li>
-      <a href="00-itc-trademap.html">ITC Trade Map</a>
+      <a href="00-itc-trademap.html">- International Trade Center data</a>
     </li>
     <li>
-      <a href="00-economic-complexity.html">The 'Economic Complexity' Solutions</a>
+      <a href="00-economic-complexity.html">- MIT-Harvard 'Economic Complexity' Solutions</a>
     </li>
     <li>
-      <a href="00-cepi.html">CEPI</a>
+      <a href="00-cepi.html">- CEPII</a>
     </li>
   </ul>
 </li>
@@ -270,7 +272,9 @@ $(document).ready(function () {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/EBukin/dataManipulationPractice">GitHub</a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -282,13 +286,13 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Trade data sources overview</h1>
 <h4 class="author"><em>Eduard Bukin</em></h4>
-<h4 class="date"><em>06 September, 2017</em></h4>
+<h4 class="date"><em>07 September, 2017</em></h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#un-comtrade">UN Comtrade</a><ul>
+<li><a href="#un-comtrade-data">UN Comtrade data</a><ul>
 <li><a href="#data-availability-in-comtrade">Data availability in Comtrade</a></li>
 <li><a href="#regular-download-in-comtrade">Regular download in Comtrade</a></li>
 <li><a href="#bulk-download-in-comtrade">Bulk download in Comtrade</a><ul>
@@ -306,7 +310,7 @@ $(document).ready(function () {
 <li><a href="#country-classification">Country classification</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#world-bank">World Bank</a><ul>
+<li><a href="#world-bank-data">World Bank data</a><ul>
 <li><a href="#wits">WITS</a><ul>
 <li><a href="#wits-trade-data">WITS Trade data</a><ul>
 <li><a href="#advance-query-for-trade-data-access">Advance query for trade data access</a></li>
@@ -324,18 +328,31 @@ $(document).ready(function () {
 <li><a href="#interface-to-access-unctad-trains-data">Interface to access UNCTAD TRAINS data</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#wto">WTO</a></li>
-<li><a href="#wto-1">WTO</a></li>
-<li><a href="#itc-trade-map">ITC Trade Map</a></li>
-<li><a href="#economic-complexity-solutions-harvardmit">Economic Complexity solutions (Harvard/MIT)</a></li>
-<li><a href="#cepi">CEPI</a></li>
+<li><a href="#world-trade-organization-data">World Trade Organization data</a><ul>
+<li><a href="#tariff-analysis-online-tao">Tariff Analysis Online (TAO)</a></li>
+<li><a href="#tariff-download-facility">Tariff Download Facility</a></li>
+<li><a href="#regional-trade-agreement-information-system-rta-is">Regional Trade Agreement Information System (RTA-IS)</a></li>
+<li><a href="#wto-measures-and-notifications">WTO measures and notifications</a></li>
+<li><a href="#trade-time-series">Trade time series</a></li>
+<li><a href="#miscellaneous-information-sources">Miscellaneous information sources</a></li>
+</ul></li>
+<li><a href="#international-trade-center-data">International Trade Center data</a></li>
+<li><a href="#mit-harvard-economic-complexity-solutions">MIT-Harvard ‘Economic Complexity’ Solutions</a><ul>
+<li><a href="#economic-complexity">Economic Complexity</a></li>
+</ul></li>
+<li><a href="#cepii">CEPII</a><ul>
+<li><a href="#relevant-data-solutions">Relevant data solutions</a><ul>
+<li><a href="#how-to-access-data-generic">How to access data (Generic)</a></li>
+<li><a href="#baci-database">BACI database</a></li>
+</ul></li>
+</ul></li>
 </ul>
 </div>
 
 <p>To download entire report in a file, select the format: <a target="_blank" href="data-sources-compilation.pdf" class="btn btn-primary">PDF Report</a> or <a href="data-sources-compilation.docx" download="data-sources-compilation.docx" class="btn btn-primary">Word report</a>.</p>
 
-<div id="un-comtrade" class="section level1">
-<h1>UN Comtrade</h1>
+<div id="un-comtrade-data" class="section level1">
+<h1>UN Comtrade data</h1>
 <hr />
 <p>Comtrade is a UN based comprehensive trade data collection and dissemination platform maintained and owned by The United Nations Statistics Division (UNSD). From the FAO building, everyone has full access to all Comtrade services. All information is available on the Comtrade website <a href="https://comtrade.un.org/" class="uri">https://comtrade.un.org/</a>.</p>
 <p>In Comtrade there are few main options of data access:</p>
@@ -483,12 +500,13 @@ $(document).ready(function () {
 <div id="country-classification" class="section level3">
 <h3>Country classification</h3>
 <p>Please note Comtrade, FAOSTAT and UNSD all have different country classification. Although, all of them might be similar, there are some peculiarities in classifying some European countries as well as politically sensitive countries. Clear data classification tables are available at <a href="https://comtrade.un.org/db/mr/rfReportersList.aspx" class="uri">https://comtrade.un.org/db/mr/rfReportersList.aspx</a> and <a href="http://www.fao.org/faostat/en/#definitions" class="uri">http://www.fao.org/faostat/en/#definitions</a>.</p>
+<hr />
 <p></p>
 </div>
 </div>
 </div>
-<div id="world-bank" class="section level1">
-<h1>World Bank</h1>
+<div id="world-bank-data" class="section level1">
+<h1>World Bank data</h1>
 <hr />
 <p>World Bank offers great variety of databases on the subject of trade, agriculture and many others. The full list is available <a href="https://data.worldbank.org/data-catalog/?tab=topics">here</a>. We will discuss some selected data sources in more details below. In particular, we will focus on:</p>
 <ul>
@@ -626,47 +644,225 @@ $(document).ready(function () {
 <li>Imports by suppliers at HS 6-digit level.</li>
 </ul>
 <p>The interface is available <a href="http://databank.worldbank.org/data/reports.aspx?source=UNCTAD-~-Trade-Analysis-Information-System-(TRAINS)">here</a>.</p>
+<hr />
 <p></p>
 </div>
 </div>
 </div>
-<div id="wto" class="section level1">
-<h1>WTO</h1>
+<div id="world-trade-organization-data" class="section level1">
+<h1>World Trade Organization data</h1>
+<p>The <a href="https://www.wto.org/english/tratop_e/tariffs_e/tariff_data_e.htm">WTO website</a> offers sophisticated options for researching membersâ€™ customs duty rates and in many cases imports. In particular, there are:</p>
+<ul>
+<li><p>Tariff Analysis Online tool <a href="http://tao.wto.org/?ui=1" class="uri">http://tao.wto.org/?ui=1</a>;</p></li>
+<li><p>Tariff Download Facility <a href="http://tariffdata.wto.org/Default.aspx?culture=en-US" class="uri">http://tariffdata.wto.org/Default.aspx?culture=en-US</a>.</p></li>
+<li><p>Regional Trade Agreement Information System (RTA-IS) <a href="http://rtais.wto.org/" class="uri">http://rtais.wto.org/</a>;</p></li>
+<li><p>Trade data time series <a href="http://stat.wto.org/" class="uri">http://stat.wto.org/</a>;</p></li>
+<li><p>Miscellaneous information and overview of the all statistical sources of WTO are here: <a href="https://www.wto.org/english/res_e/statis_e/statis_e.htm" class="uri">https://www.wto.org/english/res_e/statis_e/statis_e.htm</a>.</p></li>
+</ul>
+<p>Both tools allow assess to the same data about the trade policy, collected by WTO. Below, we will discuss both tools in more details.</p>
+<hr />
+<div id="tariff-analysis-online-tao" class="section level2">
+<h2>Tariff Analysis Online (TAO)</h2>
+<p>This facility allows you to access the WTO’s Integrated Data Base (IDB) and Consolidated Tariff Schedules (CTS) database on-line, select markets and products, compile reports and download data.</p>
+<p><strong>Source</strong></p>
+<p>The TAO tool, could be accessed here: <a href="http://tao.wto.org/?ui=1" class="uri">http://tao.wto.org/?ui=1</a>.</p>
+<p><strong>How to access data</strong></p>
+<p>The data could be accessed after registration and log in-in. To register, press <code>Click here to register</code> (<img src="diagrams/wto-tao-registration.png" /><!-- -->) on the main page of the TAO website. Use registers log in and password to access the database.</p>
+<p>The interface of the database is not very intuitive. To understand how to use it, see the <a href="http://tao.wto.org/help.aspx">guidlines and help</a>.</p>
+<p>General procedure of data access are the following:</p>
+<ul>
+<li><p>Prepare a query either in IDB or in CTS databases <img src="diagrams/wto-tao-start-query.png" /><!-- -->;</p></li>
+<li><p>Insert main parameters of the query and save it:</p></li>
+</ul>
+<p><img src="diagrams/wto-tao-main-par-query.png" /><!-- --></p>
+<ul>
+<li><p>Click <code>Basic query</code> and select the query you have saved from the <code>Saved Query</code> list.</p></li>
+<li><p>Generate the report based on the selected query:</p></li>
+</ul>
+<p><img src="diagrams/wto-tao-report-generation.png" /><!-- --></p>
+<p><strong>Data response</strong></p>
+<p>With the present tool, data could be returned as a report in browser or as an exported excel data file. For more information, try to use it, or see the <a href="http://tao.wto.org/Help.aspx">help</a>.</p>
 <hr />
 </div>
-<div id="wto-1" class="section level1">
-<h1>WTO</h1>
-<ol style="list-style-type: decimal">
-<li><p><a href="00-wto-data.html">WTO</a></p>
-<ol style="list-style-type: decimal">
-<li><p>Overview of the <a href="https://www.wto.org/english/res_e/statis_e/itip_e.htm">WTO soureces</a></p></li>
-<li><p>Trade time series <code>http://stat.wto.org/Home/WSDBHome.aspx?Language=</code></p></li>
-<li><p>WTO Tariffs database <code>http://tariffdata.wto.org/</code></p></li>
-</ol></li>
-</ol>
+<div id="tariff-download-facility" class="section level2">
+<h2>Tariff Download Facility</h2>
 <p><strong>Source</strong></p>
+<p>Tariff Download Facility is located here: <a href="http://tariffdata.wto.org/Default.aspx?culture=en-US" class="uri">http://tariffdata.wto.org/Default.aspx?culture=en-US</a>.</p>
 <p><strong>How to access data</strong></p>
-<p><strong>Registration and login</strong></p>
+<p>Official guide of how to use the tool is <a href="http://tariffdata.wto.org/UserGuide/USERGUIDE_EN.htm">here</a></p>
+<hr />
+</div>
+<div id="regional-trade-agreement-information-system-rta-is" class="section level2">
+<h2>Regional Trade Agreement Information System (RTA-IS)</h2>
+<p>This database contains information on only those agreements that have either been notified, or for which an early announcement has been made, to the WTO.</p>
+<p><strong>Source</strong></p>
+<p>RTA-IS is located here: <a href="http://rtais.wto.org/" class="uri">http://rtais.wto.org/</a></p>
+<p><strong>Data access</strong></p>
+<p>The user interface allows you to access data on RTAs notified to the GATT/WTO in the following way:</p>
+<ul>
+<li>By country/territory;</li>
+<li>By criteria;</li>
+<li>List of all RTAs in force;</li>
+<li>List of early announcements;</li>
+<li>Pre-defined reports and Summary Tables containing WTO Figures on RTAs.</li>
+</ul>
+<p>each of the options offers a list of links with more details on each specific agreement.</p>
+<p>For more information see the <a href="http://rtais.wto.org/UserGuide/RTAIS_USER_GUIDE_EN.html">user guide</a>.</p>
+<hr />
+</div>
+<div id="wto-measures-and-notifications" class="section level2">
+<h2>WTO measures and notifications</h2>
+<p>I-TIP Goods provides comprehensive information on non-tariff measures (NTMs) applied by WTO members in merchandise trade. The information includes members’ notifications of NTMs as well as information on “specific trade concerns” raised by members at WTO committee meetings. Its aim is to serve the needs of those seeking detailed information on trade policy measures as well as those looking for summary information. It includes links to the WTO’s extensive tariff and trade databases, and to DocsOnLine system.</p>
+<p><strong>Source</strong></p>
+<p>The tool is available at <a href="http://i-tip.wto.org/goods/Default.aspx" class="uri">http://i-tip.wto.org/goods/Default.aspx</a>.</p>
+<p>Depends on what you need, select one of GRAPHS over TIME, TABLES by PRODUCTS, TABLES by MEMBERS, or a DETAILED QUERY. See <a href="http://i-tip.wto.org/goods/Forms/HowTo.aspx">how to</a> for more information.</p>
+<p><strong>Data response</strong></p>
+<p>Data could be downloaded in <code>pdf</code> reports about the notification and measures applied by each country to a specific commodity.</p>
+<hr />
+</div>
+<div id="trade-time-series" class="section level2">
+<h2>Trade time series</h2>
+<p>WTO Statistics Database allows you to retrieve statistical information in the following presentations:</p>
+<ul>
+<li><p>The Trade Profiles - provide predefined information leaflets on the trade situation of members, observers and other selected economies;</p></li>
+<li><p>The Tariff Profiles - provide information on the market access situation of members, observers and other selected economies;</p></li>
+<li><p>The Aid for Trade Profiles - provide information on trends of aid for trade, trade costs, trade performance and development for selected Aid for Trade recipients;</p></li>
+<li><p>The Time Series section - allows an interactive data retrieval of international trade statistics.</p></li>
+</ul>
+<p><strong>Sourece</strong></p>
+<p>This data source if available here: <a href="http://stat.wto.org/" class="uri">http://stat.wto.org/</a></p>
+<p><strong>How to access data</strong></p>
+<p>All data is accessed in the similar way, following intuitive step by step process as on the picture below.</p>
+<p><img src="diagrams/wto-stat-steps.png" /><!-- --></p>
+<hr />
+</div>
+<div id="miscellaneous-information-sources" class="section level2">
+<h2>Miscellaneous information sources</h2>
+<p>WTO Trade policy Review <a href="https://www.wto.org/english/tratop_e/tpr_e/tpr_e.htm" class="uri">https://www.wto.org/english/tratop_e/tpr_e/tpr_e.htm</a>.</p>
+<hr />
 <p></p>
 </div>
-<div id="itc-trade-map" class="section level1">
-<h1>ITC Trade Map</h1>
+</div>
+<div id="international-trade-center-data" class="section level1">
+<h1>International Trade Center data</h1>
 <hr />
 <p>ITC - Trade Map Bank</p>
 <p><strong>Source</strong></p>
 <p><strong>How to access data</strong></p>
 <p><strong>Registration and login</strong></p>
+<hr />
 <p></p>
 </div>
-<div id="economic-complexity-solutions-harvardmit" class="section level1">
-<h1>Economic Complexity solutions (Harvard/MIT)</h1>
-</div>
-<div id="cepi" class="section level1">
-<h1>CEPI</h1>
-<p><a href="00-cepii.html">CEPI</a> <code>http://www.cepii.fr/</code></p>
+<div id="mit-harvard-economic-complexity-solutions" class="section level1">
+<h1>MIT-Harvard ‘Economic Complexity’ Solutions</h1>
+<hr />
+<div id="economic-complexity" class="section level2">
+<h2>Economic Complexity</h2>
+<ol style="list-style-type: decimal">
+<li><p><a href="00-observatory-econ-complex.html">Observatory of Economic Complexity</a> <code>http://atlas.media.mit.edu/en/</code></p></li>
+<li><p><a href="00-atlas-econ-complex.html">Atlas of economic complexity</a> <code>http://atlas.cid.harvard.edu</code></p></li>
+<li><p><a href="00-globe-econ-complex.html">Globe of economic complexity</a> <code>http://globe.cid.harvard.edu/</code></p></li>
+</ol>
 <p><strong>Source</strong></p>
 <p><strong>How to access data</strong></p>
 <p><strong>Registration and login</strong></p>
+<hr />
+<p></p>
+</div>
+</div>
+<div id="cepii" class="section level1">
+<h1>CEPII</h1>
+<hr />
+<p>CEPII is a French research center in international economics which produces studies, research, databases and analyses on the world economy and its evolution. It was founded in 1978 and is part of the network coordinated by the Economic Policy Planning for the Prime Minister. It conducts researches using the databases, models, expertise and international cooperation. CEPII is organized around four research programs. The overview of the CEPII activities is here: <a href="http://www.cepii.fr/CEPII/en/cepii/cepii.asp" class="uri">http://www.cepii.fr/CEPII/en/cepii/cepii.asp</a>. On one of the following links you may find more information about CEPII’s <a href="http://www.cepii.fr/CEPII/en/recherche/programmes_scientifiques.asp">researches</a>, <a href="http://www.cepii.fr/CEPII/en/publications/publicat.asp">publisations</a>, <a href="http://www.cepii.fr/CEPII/en/evenements/conf.asp">events</a> and <a href="http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele.asp">data</a>.</p>
+<p>CEPII gathers and harmonizes data from different sources, produces indicators and statistical measures. Data and figures are available online as well as interactive panorama of 80 countries on <a href="http://www.cepii.fr/">CEPII</a>.</p>
+<div id="relevant-data-solutions" class="section level2">
+<h2>Relevant data solutions</h2>
+<p><strong>HIGHLIGHTS</strong></p>
+<ul>
+<li>Gravity</li>
+<li>EconMap</li>
+<li>EQCHANGE</li>
+<li>Export Sophistication</li>
+<li>ProdComp</li>
+<li>TradeProd</li>
+<li>Profiles Pays / Country Profiles</li>
+<li>BACI - World trade database</li>
+<li>FDIMap - Foreign Direct Investment database</li>
+<li>RCA - revealed comparative advantage database</li>
+<li>Trade Unit Values (TUV)</li>
+<li>Trade Prices</li>
+<li>World Trade Flows Characterization</li>
+</ul>
+<p><strong>In details</strong></p>
+<p>(Please note, below, we describe only relevant data solutions. In the end we provide information how to access this data)</p>
+<ol style="list-style-type: decimal">
+<li><p>CHELEM - Comptes HarmonisÃ©s sur les Echanges et Lâ€™Economie Mondiale - the CHELEM database [International trade flows, balances of payments and world revenues], developed by the CEPII, has been recognized as one of the most useful tools to analyse global economic trends in a framework combining coherence, exhaustiveness and reliability. Available on line by subscription at: <a href="https://chelem.bvdep.com/" class="uri">https://chelem.bvdep.com/</a>.</p></li>
+<li><p>Geography</p>
+<ul>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=6">GeoDist</a> provides several geographical variables, in particular bilateral distances measured using city-level data to account for the geographic distribution of population inside each nation. Different measures of bilateral distances are available for 225 countries. For most of them, different calculations of “intra-national distances’’ are also available.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=8">Gravity</a> - CEPII makes available a “square” gravity dataset for all world pairs of countries, for the period 1948 to 2015, allowing the estimation of international flows as a function of GDP, population and trade costs.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=19">Language</a></p></li>
+<li><p>Market Potentials - Market Potentials offers six distinct indices of proximity to world markets for more than 150 countries from 1960 to 2009. Since the early 1990sâ€™ international trade analyses has emphasized how proximity to large markets determines economic development and shapes international trade patterns.</p></li>
+</ul></li>
+<li><p>Macroeconomics</p>
+<ul>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=11">EconMap</a></p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=34">EQCHANGE</a> - QCHANGE is a global database of annual indicators on effective exchange rates.</p></li>
+<li><p><a href="http://www.cepii.fr/institutions/EN/ipd.asp">Institutional Profiles</a> - The “Institutional Profiles Database” (IPD) provides an original measure of countries’ institutional characteristics through composite indicators built from perception data. The database was designed in order to facilitate and stimulate research on the relationship between institutions, long-term economic growth and development.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/fr/bdd_modele/presentation.asp?id=31">SÃ©ries longues macroÃ©conomiques</a></p></li>
+</ul></li>
+<li><p>Production &amp; Specialization Indicators</p>
+<ul>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=10">Export Sophistication</a></p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=7">ProdComp</a> - The ProdComp database allows price and productivity levels to be compared for several countries in the manufacturing sector.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=5">TradeProd</a> - The TradeProd database proposes bilateral trade, production and protection figures in a compatible industry classification for developed and developing countries.</p></li>
+</ul></li>
+<li><p>Profiles</p>
+<ul>
+<li><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=30">Profils Pays / Country Profiles</a> - Allows to visualise information about countries. so called country profiles. Direct link <a href="http://visualdata.cepii.fr/panorama" class="uri">http://visualdata.cepii.fr/panorama</a>.</li>
+</ul></li>
+<li><p>Trade &amp; International Investments</p>
+<ul>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=1">BACI</a> - BACI is the World trade database developed by the CEPII at a high level of product disaggregation.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=4">FDIMap</a> - The FDI (Foreign Direct Investment) database provides a worldwide coverage (96 countries of the GTAP 6.2 database for stocks and 70 countries for flows) of harmonized bilateral flows and stocks of FDI for 26 sectors, in line with the Eurostat classification.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=27">Network Trade</a> - This dataset explores international trade data through the lenses of Network Analysis, in order to visualize the World Trade Network and describe the topology of the network of world trade. The details of such analysis are provided in a companion paper De Benedictis et al (2013).</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=26">RCA</a> - The new RCA database contains revealed comparative advantage measures (RCA) obtained by using the methodology suggested by Costinot et al. (2012) - adjusted to some extend for a proper worldwide comparison of indexes.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=2">Trade Unit Values (TUV)</a> - The TUV database is a worldwide unit value database developed by the CEPII.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=3">TradePrices</a> - Export and import price indices can be used to analyse terms of trade, inflation or volume/price elasticities in open economies.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=32">TRADHIST</a> - This dataset has been built in order to analyze in historical perspective, using gravity equations, the globalization process through bilateral International trade data (see Fouquin and Hugot Working paper nÂ°2016-13, Mai 2016).</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=29">World Trade Flows Characterization</a> - Trade Unit Values, CEPII’s database providing a world trade matrix of unit values for more than 230 countries and 5 100 products over the period 2000-2015.</p></li>
+</ul></li>
+<li><p>Trade Protection</p>
+<ul>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=33">AVEs-Services</a> - AVE-Services contains ad valorem equivalents of restrictions on cross-border trade in services for 118 countries and 9 sectors, using the GTAP databaseof trade in services for 2011.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=12">MAcMap-HS6</a> - Market Access Map (MAcMap) provides a disaggregated, exhaustive and bilateral measurement of applied tariff duties.</p></li>
+<li><p><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=28">NTM-MAP</a> - The CEPII NTM-MAP (Non-Tariff Measures MAP) database contains indicators measuring the incidence of Non-Tariff Measures by using different methodologies and the UNCTAD TRAINS Database as source data.</p></li>
+</ul></li>
+</ol>
+<div id="how-to-access-data-generic" class="section level3">
+<h3>How to access data (Generic)</h3>
+<p>To log in into any of the above mentioned databases, you need to follow a simple procedure:</p>
+<ol style="list-style-type: decimal">
+<li><p>Go to the page of any database, for example RCA;</p></li>
+<li><p>On the right side, under “Download page” click <code>Register</code> and follow the registration procedure. Tick all databases, which you need:</p>
+<p><img src="diagrams/cepii-generic-reg.png" /><!-- --> <img src="diagrams/cepii-generic-reg-form.png" /><!-- --></p></li>
+<li><p>Confirm your email in the confirmation email received after completing registration;</p></li>
+<li><p>Log in to the database inserting your email under “Download page” on the right side of the page.</p></li>
+<li><p>After log in in, most of the data is downloaded via links in the <code>xls</code> or <code>stat</code> data files.</p></li>
+</ol>
+</div>
+<div id="baci-database" class="section level3">
+<h3>BACI database</h3>
+<p>BACI is the World trade database developed by the CEPII at a high level of product dis aggregation. To access BACI database, you need to do the following:</p>
+<ol style="list-style-type: decimal">
+<li><p>Go to the BACI website at: <a href="http://www.cepii.fr/CEPII/en/bdd_modele/inscription.asp?id=1" class="uri">http://www.cepii.fr/CEPII/en/bdd_modele/inscription.asp?id=1</a></p></li>
+<li><p>Select <code>REGISTER</code> in the right panel:</p>
+<p><img src="diagrams/cepii-baci-reg.png" /><!-- --></p></li>
+<li><p>Insert all information on the <code>BACI</code> registration page including CT token in the field <code>Authorization code</code> (see <a href="00-comtrade.html">Comtrade</a> section for more information). After you have inserted everything, press register.</p>
+<p><img src="diagrams/cepii-baci-reg-info.png" /><!-- --></p></li>
+</ol>
+</div>
+</div>
 </div>
 
 <p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>

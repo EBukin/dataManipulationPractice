@@ -1,100 +1,443 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Eduard Bukin" />
-  <title>Overview of trade data sources</title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-  </style>
-  <link href="site_libs/slidy-2/styles/slidy.css" rel="stylesheet" />
-  <script src="site_libs/slidy-2/scripts/slidy.js"></script>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Eduard Bukin" />
+
+<meta name="date" content="2017-09-22" />
+
+<title>Overview of trade data sources</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105220597-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
 </head>
+
 <body>
-<div class="slide titlepage">
-  <h1 class="title">Overview of trade data sources</h1>
-  <p class="author">
-Eduard Bukin
-  </p>
-  <p class="date">September 7, 2017</p>
-</div>
-<div id="r-markdown" class="slide section level2">
-<h1>R Markdown</h1>
-<p>This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.</p>
-</div>
-<div id="slide-with-bullets" class="slide section level2">
-<h1>Slide with Bullets</h1>
-<ul>
-<li>Bullet 1</li>
-<li>Bullet 2</li>
-<li>Bullet 3</li>
-</ul>
-</div>
-<div id="slide-with-r-output" class="slide section level2">
-<h1>Slide with R Output</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre></div>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
-</div>
-<div id="slide-with-plot" class="slide section level2">
-<h1>Slide with Plot</h1>
-<p><img src="overview-presentation_files/figure-slidy/pressure-1.png" width="768" /></p>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Trade data sources and practice</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Overview
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-info"></span>
+     
+    Trade data sources
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="data-sources-compilation.html">Overview of trade data sources</a>
+    </li>
+    <li>
+      <a href="overview-presentation.html">Presentation</a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a href="00-comtrade.html">- UN Comtrade data</a>
+    </li>
+    <li>
+      <a href="00-worldbank.html">- World Bank data</a>
+    </li>
+    <li>
+      <a href="00-wto.html">- World Trade Organization data</a>
+    </li>
+    <li>
+      <a href="00-itc-trademap.html">- International Trade Center data</a>
+    </li>
+    <li>
+      <a href="00-economic-complexity.html">- MIT-Harvard 'Economic Complexity' Solutions</a>
+    </li>
+    <li>
+      <a href="00-cepi.html">- CEPII</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-gear"></span>
+     
+    Data manipulation practice in R
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Examples and indications</li>
+    <li>
+      <a href="01-data-import.html">Loading COMTRADE data in R</a>
+    </li>
+    <li>
+      <a href="local-data-storage.html">Setup local CT data storage structure</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Excercises</li>
+    <li>
+      <a href="01-load-ct-data-excercise.html">Load data</a>
+    </li>
+    <li>
+      <a href="02-filter-ct-data-excercise.html">Manipulate (filter|select|arrange|distinct)</a>
+    </li>
+    <li>
+      <a href="03-joints-exercise.html">Relational and tidy data</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Answers</li>
+    <li>
+      <a href="01-load-ct-data-excercise-answer.html">Load data</a>
+    </li>
+    <li>
+      <a href="02-filter-ct-data-excercise-answers.html">Manipulate (filter|select|arrange|distinct)</a>
+    </li>
+    <li>
+      <a href="03-joints-exercise-answers.html">Relational and tidy data (joints)</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/EBukin/dataManipulationPractice">GitHub</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Overview of trade data sources</h1>
+<h4 class="author"><em>Eduard Bukin</em></h4>
+<h4 class="date"><em>September 22, 2017</em></h4>
+
 </div>
 
-  <!-- dynamically load mathjax for compatibility with self-contained -->
-  <script>
-    (function () {
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-      document.getElementsByTagName("head")[0].appendChild(script);
-    })();
-  </script>
+<div id="TOC">
+<ul>
+<li><a href="#trade-data-sources-overview">Trade data sources: Overview</a></li>
+<li><a href="#trade-data-sources-overview-1">Trade data sources: Overview</a></li>
+<li><a href="#un-comtrade-data">UN Comtrade data</a></li>
+<li><a href="#world-bank-data">World Bank data</a></li>
+<li><a href="#world-trade-organization-data">World Trade Organization data</a></li>
+<li><a href="#international-trade-center-data">International Trade Center data</a></li>
+<li><a href="#mit-harvard-economic-complexity-solutions">MIT-Harvard <code>Economic Complexity</code> Solutions</a></li>
+<li><a href="#cepii">CEPII</a></li>
+<li><a href="#shiny-trade-analysis-tool">Shiny trade analysis tool</a></li>
+</ul>
+</div>
+
+<div id="trade-data-sources-overview" class="section level2">
+<h2>Trade data sources: Overview</h2>
+<p>Here we will see an overview of the trade data sources, which could be used in the trade data analsys.</p>
+<p>Purposed for the Trade team and EST.</p>
+</div>
+<div id="trade-data-sources-overview-1" class="section level2">
+<h2>Trade data sources: Overview</h2>
+<ul>
+<li>UN Comtrade data
+<ul>
+<li>Data availability in Comtrade</li>
+<li>Regular download in Comtrade</li>
+<li>Bulk download in Comtrade</li>
+<li>Data visualization options</li>
+</ul></li>
+<li>World Bank data
+<ul>
+<li>WITS</li>
+<li>TCdata360</li>
+</ul></li>
+<li>World Trade Organization data
+<ul>
+<li>Tariff data</li>
+<li>WTO measures, notifications, Trade Agreement</li>
+<li>Trade time series</li>
+</ul></li>
+<li>International Trade Center data</li>
+<li>MIT-Harvard <code>Economic Complexity</code> Solutions</li>
+<li>CEPII</li>
+<li>Shiny trade analysis tool</li>
+</ul>
+</div>
+<div id="un-comtrade-data" class="section level2">
+<h2>UN Comtrade data</h2>
+<ul>
+<li>Data availability
+<ul>
+<li>Trade availability visualization tool <a href="https://comtrade.un.org/data/da" class="uri">https://comtrade.un.org/data/da</a></li>
+<li>API interface <a href="https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests" class="uri">https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests</a></li>
+</ul></li>
+<li>Regular download <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a></li>
+<li>Bulk download
+<ul>
+<li>Web based <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a></li>
+<li>API <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a></li>
+<li>Token <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">authentication page</a></li>
+</ul></li>
+<li>Data visualization options <a href="https://comtrade.un.org/labs/" class="uri">https://comtrade.un.org/labs/</a></li>
+</ul>
+</div>
+<div id="world-bank-data" class="section level2">
+<h2>World Bank data</h2>
+<ul>
+<li>WITS
+<ul>
+<li>Registration / Log in <a href="http://wits.worldbank.org/" class="uri">http://wits.worldbank.org/</a></li>
+<li>Advance query</li>
+<li>User defined groups of commodities and countries</li>
+<li>Tarriffs data</li>
+<li>Trade indicators</li>
+</ul></li>
+<li>TCdata360 <a href="https://tcdata360.worldbank.org/" class="uri">https://tcdata360.worldbank.org/</a></li>
+</ul>
+</div>
+<div id="world-trade-organization-data" class="section level2">
+<h2>World Trade Organization data</h2>
+<ul>
+<li>Tariff Analysis Online tool <a href="http://tao.wto.org/" class="uri">http://tao.wto.org/</a>;</li>
+<li>Tariff Download Facility <a href="http://tariffdata.wto.org/" class="uri">http://tariffdata.wto.org/</a>.</li>
+<li>Regional Trade Agreement Information System (RTA-IS) <a href="http://rtais.wto.org/" class="uri">http://rtais.wto.org/</a>;</li>
+<li>Trade data time series <a href="http://stat.wto.org/" class="uri">http://stat.wto.org/</a>;</li>
+</ul>
+</div>
+<div id="international-trade-center-data" class="section level2">
+<h2>International Trade Center data</h2>
+</div>
+<div id="mit-harvard-economic-complexity-solutions" class="section level2">
+<h2>MIT-Harvard <code>Economic Complexity</code> Solutions</h2>
+</div>
+<div id="cepii" class="section level2">
+<h2>CEPII</h2>
+<ul>
+<li>Databases: <a href="http://www.cepii.fr/" class="uri">http://www.cepii.fr/</a>.
+<ul>
+<li>Gravity</li>
+<li>EconMap</li>
+<li>EQCHANGE</li>
+<li>Export Sophistication</li>
+<li>ProdComp</li>
+<li>TradeProd</li>
+<li>Profiles Pays / Country Profiles</li>
+<li>BACI - World trade database</li>
+<li>FDIMap - Foreign Direct Investment database</li>
+<li>RCA - revealed comparative advantage database</li>
+<li>Trade Unit Values (TUV)</li>
+<li>Trade Prices</li>
+<li>World Trade Flows Characterization</li>
+</ul></li>
+</ul>
+</div>
+<div id="shiny-trade-analysis-tool" class="section level2">
+<h2>Shiny trade analysis tool</h2>
+<p><a href="https://tradeanalysis.shinyapps.io/ct-tb-explorer/" class="uri">https://tradeanalysis.shinyapps.io/ct-tb-explorer/</a></p>
+</div>
+
+<p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 </body>
 </html>

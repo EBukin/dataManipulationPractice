@@ -295,38 +295,14 @@ $(document).ready(function () {
 <li><a href="#un-comtrade-data">UN Comtrade data</a><ul>
 <li><a href="#data-availability-in-comtrade">Data availability in Comtrade</a></li>
 <li><a href="#regular-download-in-comtrade">Regular download in Comtrade</a></li>
-<li><a href="#bulk-download-in-comtrade">Bulk download in Comtrade</a><ul>
-<li><a href="#web-based-bulk-query">Web based bulk query</a></li>
-<li><a href="#api-bulk-query">API bulk query</a></li>
-<li><a href="#token-for-data-access">Token for data access</a></li>
-</ul></li>
-<li><a href="#data-visualization-options">Data visualization options</a><ul>
-<li><a href="#comtrade-data-explorer">Comtrade data-explorer</a></li>
-<li><a href="#bilateral-trade-exploration-tool">Bilateral trade exploration tool</a></li>
-</ul></li>
-<li><a href="#general-comtrade-related-information">General Comtrade related information</a><ul>
-<li><a href="#metadata-and-documentation">Metadata and documentation</a></li>
-<li><a href="#commodity-mapping-tables">Commodity mapping tables</a></li>
-<li><a href="#country-classification">Country classification</a></li>
-</ul></li>
+<li><a href="#bulk-download-in-comtrade">Bulk download in Comtrade</a></li>
+<li><a href="#data-visualization-options">Data visualization options</a></li>
+<li><a href="#general-comtrade-related-information">General Comtrade related information</a></li>
 </ul></li>
 <li><a href="#world-bank-data">World Bank data</a><ul>
-<li><a href="#wits">WITS</a><ul>
-<li><a href="#wits-trade-data">WITS Trade data</a><ul>
-<li><a href="#advance-query-for-trade-data-access">Advance query for trade data access</a></li>
-<li><a href="#user-defined-groups-of-commodities-and-countries">User defined groups of commodities and countries</a></li>
-<li><a href="#tariff-line-and-bulk-comtrade-data">Tariff-line and bulk Comtrade data</a></li>
-</ul></li>
-<li><a href="#triffs-data">Triffs data</a></li>
-<li><a href="#trade-indicators">Trade indicators</a></li>
-</ul></li>
+<li><a href="#wits">WITS</a></li>
 <li><a href="#tcdata360">TCdata360</a></li>
-<li><a href="#miscellaneous">Miscellaneous</a><ul>
-<li><a href="#most-recent-wb-researches-on-trade">Most recent WB researches on trade</a></li>
-<li><a href="#temporary-trade-barriers-database">Temporary Trade Barriers Database</a></li>
-<li><a href="#trade-costs-database">Trade costs database</a></li>
-<li><a href="#interface-to-access-unctad-trains-data">Interface to access UNCTAD TRAINS data</a></li>
-</ul></li>
+<li><a href="#miscellaneous">Miscellaneous</a></li>
 </ul></li>
 <li><a href="#world-trade-organization-data">World Trade Organization data</a><ul>
 <li><a href="#tariff-analysis-online-tao">Tariff Analysis Online (TAO)</a></li>
@@ -341,10 +317,7 @@ $(document).ready(function () {
 <li><a href="#economic-complexity">Economic Complexity</a></li>
 </ul></li>
 <li><a href="#cepii">CEPII</a><ul>
-<li><a href="#relevant-data-solutions">Relevant data solutions</a><ul>
-<li><a href="#how-to-access-data-generic">How to access data (Generic)</a></li>
-<li><a href="#baci-database">BACI database</a></li>
-</ul></li>
+<li><a href="#relevant-data-solutions">Relevant data solutions</a></li>
 </ul></li>
 </ul>
 </div>
@@ -450,7 +423,7 @@ $(document).ready(function () {
 </div>
 <div id="token-for-data-access" class="section level3">
 <h3>Token for data access</h3>
-<p>To generate an authentication token for the UN Comtrade from the registered IP range (i.e. from the FAO headquarters), we first need to go to the UN Comtrade <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">autentication page</a> and insert our email into the <code>Sign in using: &gt; IP Authentication:</code> field. Pressing <code>Authenticate my IP</code> will ensure we are registered in the UN Comtrade system. Please note, you need to do this only once.</p>
+<p>To generate an authentication token for the UN Comtrade from the registered IP range (i.e. from the FAO headquarters), we first need to go to the UN Comtrade <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">authentication page</a> and insert our email into the <code>Sign in using: &gt; IP Authentication:</code> field. Pressing <code>Authenticate my IP</code> will ensure we are registered in the UN Comtrade system. Please note, you need to do this only once.</p>
 <p>Subsequently we need to go to <a href="https://comtrade.un.org/api/swagger/ui/index#/">comtradePlus.API</a>and select <code>/getSubUserToken</code> in the <code>Auth</code> section <img src="diagrams/ct-get-token.png" /><!-- -->. After inserting the email, which you used to register above, into the corresponding field, press “try it out”:</p>
 <p><img src="diagrams/ct-get-token-email.png" /><!-- --></p>
 <p>In <code>Response Headers</code> the token will appear as a long string of symbols and characters. This token is to be copied to a secure place and used to access data in some programming cases or in the World Bank WITS database.</p>
@@ -653,8 +626,8 @@ $(document).ready(function () {
 <h1>World Trade Organization data</h1>
 <p>The <a href="https://www.wto.org/english/tratop_e/tariffs_e/tariff_data_e.htm">WTO website</a> offers sophisticated options for researching membersâ€™ customs duty rates and in many cases imports. In particular, there are:</p>
 <ul>
-<li><p>Tariff Analysis Online tool <a href="http://tao.wto.org/?ui=1" class="uri">http://tao.wto.org/?ui=1</a>;</p></li>
-<li><p>Tariff Download Facility <a href="http://tariffdata.wto.org/Default.aspx?culture=en-US" class="uri">http://tariffdata.wto.org/Default.aspx?culture=en-US</a>.</p></li>
+<li><p>Tariff Analysis Online tool <a href="http://tao.wto.org/" class="uri">http://tao.wto.org/</a>;</p></li>
+<li><p>Tariff Download Facility <a href="http://tariffdata.wto.org/" class="uri">http://tariffdata.wto.org/</a>.</p></li>
 <li><p>Regional Trade Agreement Information System (RTA-IS) <a href="http://rtais.wto.org/" class="uri">http://rtais.wto.org/</a>;</p></li>
 <li><p>Trade data time series <a href="http://stat.wto.org/" class="uri">http://stat.wto.org/</a>;</p></li>
 <li><p>Miscellaneous information and overview of the all statistical sources of WTO are here: <a href="https://www.wto.org/english/res_e/statis_e/statis_e.htm" class="uri">https://www.wto.org/english/res_e/statis_e/statis_e.htm</a>.</p></li>

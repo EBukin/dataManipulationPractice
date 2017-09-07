@@ -409,7 +409,7 @@ $(document).ready(function () {
 </div>
 <div id="token-for-data-access" class="section level3">
 <h3>Token for data access</h3>
-<p>To generate an authentication token for the UN Comtrade from the registered IP range (i.e. from the FAO headquarters), we first need to go to the UN Comtrade <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">autentication page</a> and insert our email into the <code>Sign in using: &gt; IP Authentication:</code> field. Pressing <code>Authenticate my IP</code> will ensure we are registered in the UN Comtrade system. Please note, you need to do this only once.</p>
+<p>To generate an authentication token for the UN Comtrade from the registered IP range (i.e. from the FAO headquarters), we first need to go to the UN Comtrade <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">authentication page</a> and insert our email into the <code>Sign in using: &gt; IP Authentication:</code> field. Pressing <code>Authenticate my IP</code> will ensure we are registered in the UN Comtrade system. Please note, you need to do this only once.</p>
 <p>Subsequently we need to go to <a href="https://comtrade.un.org/api/swagger/ui/index#/">comtradePlus.API</a>and select <code>/getSubUserToken</code> in the <code>Auth</code> section <img src="diagrams/ct-get-token.png" /><!-- -->. After inserting the email, which you used to register above, into the corresponding field, press “try it out”:</p>
 <p><img src="diagrams/ct-get-token-email.png" /><!-- --></p>
 <p>In <code>Response Headers</code> the token will appear as a long string of symbols and characters. This token is to be copied to a secure place and used to access data in some programming cases or in the World Bank WITS database.</p>

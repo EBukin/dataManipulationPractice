@@ -1,0 +1,89 @@
+---
+title: "Overview of trade data sources"
+author: "Eduard Bukin"
+date: "September 22, 2017"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Trade data sources: Overview
+
+Here we will see an overview of the trade data sources, which could be used in the trade data analsys. 
+
+Purposed for the Trade team and EST.
+
+## Trade data sources: Overview
+
+*  UN Comtrade data
+    -  Data availability in Comtrade
+    -  Regular download in Comtrade
+    -  Bulk download in Comtrade
+    -  Data visualization options
+*  World Bank data
+    -  WITS
+    -  TCdata360
+*  World Trade Organization data
+    -  Tariff data
+    -  WTO measures, notifications, Trade Agreement 
+    -  Trade time series
+*  International Trade Center data
+*  MIT-Harvard `Economic Complexity` Solutions
+*  CEPII
+*  Shiny trade analysis tool
+
+## UN Comtrade data
+-  Data availability
+    *  Trade availability visualization tool [https://comtrade.un.org/data/da](https://comtrade.un.org/data/da)
+    *  API interface [https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests](https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests)
+-  Regular download [https://comtrade.un.org/data/](https://comtrade.un.org/data/)
+-  Bulk download 
+    *  Web based [https://comtrade.un.org/data/bulk](https://comtrade.un.org/data/bulk)
+    *  API [https://comtrade.un.org/data/doc/api/bulk/](https://comtrade.un.org/data/doc/api/bulk/)
+    *  Token [authentication page](https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk)
+-  Data visualization options [https://comtrade.un.org/labs/](https://comtrade.un.org/labs/)
+
+## World Bank data
+-  WITS
+    *  Registration / Log in [http://wits.worldbank.org/](http://wits.worldbank.org/)
+    *  Advance query
+    *  User defined groups of commodities and countries
+    *  Tarriffs data
+    *  Trade indicators
+-  TCdata360 [https://tcdata360.worldbank.org/](https://tcdata360.worldbank.org/)
+
+## World Trade Organization data
+
+-  Tariff Analysis Online tool [http://tao.wto.org/](http://tao.wto.org/);
+-  Tariff Download Facility [http://tariffdata.wto.org/](http://tariffdata.wto.org/).
+-  Regional Trade Agreement Information System (RTA-IS) [http://rtais.wto.org/](http://rtais.wto.org/);
+-  Trade data time series [http://stat.wto.org/](http://stat.wto.org/);
+
+##  International Trade Center data
+
+
+##  MIT-Harvard `Economic Complexity` Solutions
+
+
+##  CEPII
+
+-  Databases: [http://www.cepii.fr/](http://www.cepii.fr/).
+    *  Gravity
+    *  EconMap
+    *  EQCHANGE
+    *  Export Sophistication
+    *  ProdComp
+    *  TradeProd
+    *  Profiles Pays / Country Profiles
+    *  BACI - World trade database
+    *  FDIMap - Foreign Direct Investment database 
+    *  RCA - revealed comparative advantage database
+    *  Trade Unit Values (TUV)
+    *  Trade Prices 
+    *  World Trade Flows Characterization
+
+##  Shiny trade analysis tool
+
+[https://tradeanalysis.shinyapps.io/ct-tb-explorer/](https://tradeanalysis.shinyapps.io/ct-tb-explorer/)
+

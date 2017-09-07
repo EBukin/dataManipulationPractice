@@ -144,7 +144,7 @@ Your browser will download one `zip` archive with data for a selected country (a
 
 ### Token for data access
 
-To generate an authentication token for the UN Comtrade from the registered IP range (i.e. from the FAO headquarters), we first need to go to the UN Comtrade [autentication page](https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk) and insert our email into the `Sign in using: > IP Authentication:` field. Pressing `Authenticate my IP` will ensure we are registered in the UN Comtrade system. Please note, you need to do this only once. 
+To generate an authentication token for the UN Comtrade from the registered IP range (i.e. from the FAO headquarters), we first need to go to the UN Comtrade [authentication page](https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk) and insert our email into the `Sign in using: > IP Authentication:` field. Pressing `Authenticate my IP` will ensure we are registered in the UN Comtrade system. Please note, you need to do this only once. 
 
 Subsequently we need to go to [comtradePlus.API](https://comtrade.un.org/api/swagger/ui/index#/)and select `/getSubUserToken` in the `Auth` section `r knitr::include_graphics("diagrams/ct-get-token.png")`. After inserting the email, which you used to register above, into the corresponding field, press "try it out":
 

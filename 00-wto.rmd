@@ -6,9 +6,9 @@ date: '2017-09-03'
 
 The [WTO website](https://www.wto.org/english/tratop_e/tariffs_e/tariff_data_e.htm) offers sophisticated options for researching members’ customs duty rates and in many cases imports. In particular, there are: 
 
-*  Tariff Analysis Online tool [http://tao.wto.org/?ui=1](http://tao.wto.org/?ui=1);
+*  Tariff Analysis Online tool [http://tao.wto.org/](http://tao.wto.org/);
 
-*  Tariff Download Facility [http://tariffdata.wto.org/Default.aspx?culture=en-US](http://tariffdata.wto.org/Default.aspx?culture=en-US).
+*  Tariff Download Facility [http://tariffdata.wto.org/](http://tariffdata.wto.org/).
 
 *  Regional Trade Agreement Information System (RTA-IS) [http://rtais.wto.org/](http://rtais.wto.org/);
 

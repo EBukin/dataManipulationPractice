@@ -1,11 +1,12 @@
 ---
-title: "ITC Trade Map"
+title: "MIT-Harvard 'Economic Complexity' Solutions"
 author: "Eduard Bukin"
 date: '2017-09-03'
 ---
 
 ---
-# Economic Complexity 
+
+## Economic Complexity 
 
 1.  [Observatory of Economic Complexity](00-observatory-econ-complex.html) `http://atlas.media.mit.edu/en/`
 

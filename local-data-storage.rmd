@@ -16,7 +16,7 @@ Withing this folder there is also an R project created along with the folders fo
 
 *  `prepare_shinyApp_data.R` Script developed for preparing CT data for the Shiny app structure;
 
-*  `.CT-token` text file with the token for accessing to the Comtrade data (for more information [see](00-comtrade.html)).
+*  `.CT-token` text file with the token for accessing to the Comtrade data (for more information about token [see](00-comtrade.html)).
 
 Order of running:
 
@@ -32,7 +32,7 @@ Order of running:
 
 1.  find the folder `ctData` and open the project, which is there;
 
-1.  update `.CT-token` file inserting one line of your CT token without quot marks;
+1.  (only if you are doingt this from the outside of FAO building) copy and paste your token (without the quotation marks) onto `.CT-token` as text. How to access your token is explained on the "Loading COMTRADE data in R";
 
 1.  open the script `update_local_CT_data.R` and source it all or run line by line (may take up to several days it this is the first run);
 

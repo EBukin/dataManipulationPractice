@@ -1,5 +1,5 @@
 ---
-title: "ITC Trade Map"
+title: "International Trade Center data"
 author: "Eduard Bukin"
 date: '2017-09-03'
 ---

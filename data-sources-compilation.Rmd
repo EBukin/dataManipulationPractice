@@ -8,41 +8,52 @@ To download entire report in a file, select the format: <a target="_blank" href=
 
 \newpage
 
-# UN Comtrade
+# UN Comtrade data
 
 ```{r child = '00-comtrade.Rmd'}
 ```
 
+---
+
 \pagebreak
 
-# World Bank
+# World Bank data
 
 ```{r child = '00-worldbank.Rmd'}
 ```
 
+---
+
 \pagebreak
 
-# WTO
+# World Trade Organization data
 
 ```{r child = '00-wto.Rmd'}
 ```
 
+---
+
 \pagebreak
 
-# ITC Trade Map
+# International Trade Center data
 
 ```{r child = '00-itc-trademap.Rmd'}
 ```
 
+---
+
 \pagebreak
 
-# Economic Complexity solutions (Harvard/MIT)
+# MIT-Harvard 'Economic Complexity' Solutions
 
 ```{r child = '00-economic-complexity.Rmd'}
 ```
+
+---
+
 \pagebreak
 
-# CEPI
+# CEPII
 
 ```{r child = '00-cepi.Rmd'}
 ```

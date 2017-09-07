@@ -1,10 +1,24 @@
 ---
-title: "Trade Data Manipulation practice"
+title: "Trade data sources and practice"
+output:
+  html_document:
+    toc: false
 ---
 
-Hello, this is the website with the extensive guidelines on trade data download from various sources and manipulation.
+Hi! 
 
-Here, you can learn how to download data from various sources and process it with R.
+Here you will find extensive guidelines and some information about trade data sources and for to get this trade data with R. 
+
+To download [entire report](data-sources-compilation.html) on trade data sources in one file, select desired format: 
+
+<a target="_blank" href="data-sources-compilation.pdf" class="btn btn-primary">PDF Report</a> 
+
+<a href="data-sources-compilation.docx" download="data-sources-compilation.docx" class="btn btn-success">Word report</a>
+
+For some more information, quickly brows through 
+
+<a target="_blank" href="overview-presentation.html" class="btn btn-info">Overview presentation</a>
+
 
 ```{r rnderPDF, include=FALSE}
 library(rmarkdown)
@@ -12,6 +26,8 @@ rmarkdown::render(input = "data-sources-compilation.Rmd",
        output_format = rmarkdown::word_document(toc = TRUE, toc_depth = 5))
 rmarkdown::render(input = "data-sources-compilation.Rmd",
        output_format = rmarkdown::pdf_document(toc = TRUE, toc_depth = 5, number_sections = TRUE))
+rmarkdown::render(input = "overview-presentation.Rmd",
+       output_format = rmarkdown::ioslides_presentation(footer = "(c) Eduard Bukin @ FAO 2017", self_contained = TRUE))
 ```
 
 

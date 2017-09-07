@@ -3,28 +3,32 @@ output_dir: "docs"
 exclude: ["*.csv", "*.zip", "*.rds", "*.R"]
 navbar:
   title: "Trade data sources and practice"
+  right:  
+    - text: "GitHub"
+      href: https://github.com/EBukin/dataManipulationPractice
   left:
-    - text: "Home"
+    - text: "Overview"
       icon: fa-home
       href: index.html
     - text: "Trade data sources"
       icon: fa-info
       menu:
-        - text: "Data sources overview"
+        - text: "Overview of trade data sources"
           href: data-sources-compilation.html
+        - text: "Presentation"
+          href: overview-presentation.html
         - text: "---------"
-        - text: "Data sources"
-        - text: "UN Comtrade data"
+        - text: "- UN Comtrade data"
           href: 00-comtrade.html
-        - text: "World Bank (WITS/TCdata360/Miscellaneous)"
+        - text: "- World Bank data"
           href: 00-worldbank.html
-        - text: "WTO"
+        - text: "- World Trade Organization data"
           href: 00-wto.html
-        - text: "ITC Trade Map"
+        - text: "- International Trade Center data"
           href: 00-itc-trademap.html
-        - text: "The 'Economic Complexity' Solutions"
+        - text: "- MIT-Harvard 'Economic Complexity' Solutions"
           href: 00-economic-complexity.html
-        - text: "CEPI"
+        - text: "- CEPII"
           href: 00-cepi.html
     - text: "Data manipulation practice in R"
       icon: fa-gear

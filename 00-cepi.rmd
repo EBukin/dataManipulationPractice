@@ -1,17 +1,125 @@
 ---
-title: "ITC Trade Map"
+title: "CEPII"
 author: "Eduard Bukin"
 date: '2017-09-03'
 ---
 
 ---
 
-# CEPI 
+CEPII is a French research center in international economics which produces studies, research, databases and analyses on the world economy and its evolution. It was founded in 1978 and is part of the network coordinated by the Economic Policy Planning for the Prime Minister. It conducts researches using the databases, models, expertise and international cooperation. CEPII is organized around four research programs. The overview of the CEPII activities is here: [http://www.cepii.fr/CEPII/en/cepii/cepii.asp](http://www.cepii.fr/CEPII/en/cepii/cepii.asp). On  one of the following links you may find more information about CEPII's [researches](http://www.cepii.fr/CEPII/en/recherche/programmes_scientifiques.asp), [publisations](http://www.cepii.fr/CEPII/en/publications/publicat.asp), [events](http://www.cepii.fr/CEPII/en/evenements/conf.asp) and [data](http://www.cepii.fr/CEPII/en/bdd_modele/bdd_modele.asp).
 
-[CEPI](00-cepii.html) `http://www.cepii.fr/`
+CEPII gathers and  harmonizes data from different sources, produces indicators and statistical measures. Data and figures are available online as well as interactive panorama of 80 countries on [CEPII](http://www.cepii.fr/).
 
-**Source**
+## Relevant data solutions
 
-**How to access data**
+**HIGHLIGHTS**
 
-**Registration and login**
+*  Gravity
+*  EconMap
+*  EQCHANGE
+*  Export Sophistication
+*  ProdComp
+*  TradeProd
+*  Profiles Pays / Country Profiles
+*  BACI - World trade database
+*  FDIMap - Foreign Direct Investment database 
+*  RCA - revealed comparative advantage database
+*  Trade Unit Values (TUV)
+*  Trade Prices 
+*  World Trade Flows Characterization
+
+
+**In details**
+
+(Please note, below, we describe only relevant data solutions. In the end we provide information how to access this data)
+
+1.  CHELEM - Comptes Harmonisés sur les Echanges et L’Economie Mondiale - the CHELEM database [International trade flows, balances of payments and world revenues], developed by the CEPII, has been recognized as one of the most useful tools to analyse global economic trends in a framework combining coherence, exhaustiveness and reliability. Available on line by subscription at: [https://chelem.bvdep.com/](https://chelem.bvdep.com/).
+
+1.  Geography
+
+      *  [GeoDist](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=6) provides several geographical variables, in particular bilateral distances measured using city-level data to account for the geographic distribution of population inside each nation. Different measures of bilateral distances are available for 225 countries. For most of them, different calculations of "intra-national distances'' are also available.
+      
+      *  [Gravity](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=8) - CEPII makes available a "square" gravity dataset for all world pairs of countries, for the period 1948 to 2015, allowing the estimation of international flows as a function of GDP, population and trade costs.
+      
+      *  [Language](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=19) 
+      
+      *  Market Potentials - Market Potentials offers six distinct indices of proximity to world markets for more than 150 countries from 1960 to 2009. Since the early 1990s’ international trade analyses has emphasized how proximity to large markets determines economic development and shapes international trade patterns.
+      
+1.  Macroeconomics
+
+      *  [EconMap](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=11)
+      
+      *  [EQCHANGE](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=34) - QCHANGE is a global database of annual indicators on effective exchange rates.
+      
+      *  [Institutional Profiles](http://www.cepii.fr/institutions/EN/ipd.asp) - The "Institutional Profiles Database" (IPD) provides an original measure of countries' institutional characteristics through composite indicators built from perception data. The database was designed in order to facilitate and stimulate research on the relationship between institutions, long-term economic growth and development.
+      
+      *  [Séries longues macroéconomiques](http://www.cepii.fr/CEPII/fr/bdd_modele/presentation.asp?id=31)
+
+1.  Production & Specialization Indicators
+
+      *  [Export Sophistication](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=10)
+      
+      *  [ProdComp](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=7) - The ProdComp database allows price and productivity levels to be compared for several countries in the manufacturing sector.
+      
+      *  [TradeProd](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=5) - The TradeProd database proposes bilateral trade, production and protection figures in a compatible industry classification for developed and developing countries.
+
+1.  Profiles
+
+      *  [Profils Pays / Country Profiles](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=30) - Allows to visualise information about countries. so called country profiles. Direct link [http://visualdata.cepii.fr/panorama](http://visualdata.cepii.fr/panorama).
+
+1.  Trade & International Investments
+
+      *  [BACI](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=1) - BACI is the World trade database developed by the CEPII at a high level of product disaggregation.
+      
+      *  [FDIMap](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=4) - The FDI (Foreign Direct Investment) database provides a worldwide coverage (96 countries of the GTAP 6.2 database for stocks and 70 countries for flows) of harmonized bilateral flows and stocks of FDI for 26 sectors, in line with the Eurostat classification.
+      
+      *  [Network Trade](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=27) - This dataset explores international trade data through the lenses of Network Analysis, in order to visualize the World Trade Network and describe the topology of the network of world trade. The details of such analysis are provided in a companion paper De Benedictis et al (2013).
+      
+      *  [RCA](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=26) - The new RCA database contains revealed comparative advantage measures (RCA) obtained by using the methodology suggested by Costinot et al. (2012) - adjusted to some extend for a proper worldwide comparison of indexes.
+      
+      *  [Trade Unit Values (TUV)](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=2) - The TUV database is a worldwide unit value database developed by the CEPII.
+      
+      *  [TradePrices](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=3) - Export and import price indices can be used to analyse terms of trade, inflation or volume/price elasticities in open economies. 
+      
+      *  [TRADHIST](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=32) - This dataset has been built in order to analyze in historical perspective, using gravity equations, the globalization process through bilateral International trade data (see Fouquin and Hugot Working paper n°2016-13, Mai 2016).
+      
+      *  [World Trade Flows Characterization](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=29) - Trade Unit Values, CEPII's database providing a world trade matrix of unit values for more than 230 countries and 5 100 products over the period 2000-2015.
+
+1.  Trade Protection
+
+      *  [AVEs-Services](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=33) - AVE-Services contains ad valorem equivalents of restrictions on cross-border trade in services for 118 countries and 9 sectors, using the GTAP databaseof trade in services for 2011. 
+      
+      *  [MAcMap-HS6](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=12) - Market Access Map (MAcMap) provides a disaggregated, exhaustive and bilateral measurement of applied tariff duties.
+      
+      *  [NTM-MAP](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=28) - The CEPII NTM-MAP (Non-Tariff Measures MAP) database contains indicators measuring the incidence of Non-Tariff Measures by using different methodologies and the UNCTAD TRAINS Database as source data.
+
+### How to access data (Generic)
+
+To log in into any of the above mentioned databases, you need to follow a simple procedure:
+
+1.  Go to the page of any database, for example RCA;
+
+1.  On the right side, under "Download page" click `Register` and follow the registration procedure. Tick all databases, which you need: 
+    
+    `r knitr::include_graphics('diagrams/cepii-generic-reg.png')` `r knitr::include_graphics('diagrams/cepii-generic-reg-form.png')`
+
+1.  Confirm your email in the confirmation email received after completing registration;
+
+1.  Log in to the database inserting your email under "Download page" on the right side of the page.
+
+1.  After log in in, most of the data is downloaded via links in the `xls` or `stat` data files. 
+
+### BACI database
+
+BACI is the World trade database developed by the CEPII at a high level of product dis aggregation. To access BACI database, you need to do the following:
+
+1.  Go to the BACI website at: [http://www.cepii.fr/CEPII/en/bdd_modele/inscription.asp?id=1](http://www.cepii.fr/CEPII/en/bdd_modele/inscription.asp?id=1)
+
+1.  Select `REGISTER` in the right panel:
+
+    `r knitr::include_graphics('diagrams/cepii-baci-reg.png')`
+
+1.  Insert all information on the `BACI` registration page including CT token in the field `Authorization code` (see [Comtrade](00-comtrade.html) section for more information). After you have inserted everything, press register.
+
+    `r knitr::include_graphics('diagrams/cepii-baci-reg-info.png')`
+

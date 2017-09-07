@@ -1,5 +1,5 @@
 ---
-title: "World Bank"
+title: "World Bank data"
 author: "Eduard Bukin"
 date: '2017-08-28'
 ---

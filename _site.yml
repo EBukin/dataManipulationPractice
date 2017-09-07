@@ -16,7 +16,7 @@ navbar:
         - text: "Overview of trade data sources"
           href: data-sources-compilation.html
         - text: "Presentation"
-          href: overview-presentation.html
+          href: verview-presentation-full.htm
         - text: "---------"
         - text: "- UN Comtrade data"
           href: 00-comtrade.html

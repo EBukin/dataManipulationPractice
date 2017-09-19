@@ -1,0 +1,32 @@
+---
+title: "Trade data classificaion systems"
+author: "Eduard Bukin"
+date: '2017-09-183'
+---
+
+---
+
+## HS system
+
+Officially, World Customs Organisation (WCO) is responsible for maintenance of the HS classification up to 6 digits. Any extension of the HS classifications beyond 6 digits - so called Tariff - line classification is developed by each country individually.  
+
+*  [non WCO HS classification search tool](https://www.foreign-trade.com/reference/hscode.htm)
+
+*  [another non WCO HS search tool](http://www.findhs.codes/)
+
+*  [HS 2017 - definitions and descriptions](http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx)
+
+*  [Previous HS classifications](http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs_nomenclature_previous_editions.aspx)
+
+## UN SITC and BEC classifications
+
+United Nations Statistics Division is responsible for maintenance of several classification systems for trade and products. Among them there are Central Product Classification (CPC), Standard International Trade Classification (SITC), Classification by Broad Economic Categories (BEC) and International Standard Industrial Classification of All Economic Activities (ISIC).
+
+*  [UN SITC Rev. 3 Detailed structure and explanatory notes](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14)
+
+*  [List of all UN classifications](https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1)
+
+*  [UN Correspondancy tables between HS, SITC and BEC](https://unstats.un.org/unsd/trade/classifications/correspondence-tables.asp)
+
+*  [Methodology for mapping classifications](https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf)
+

@@ -6,17 +6,29 @@ date: '2017-09-03'
 
 ---
 
-## Economic Complexity 
+MIT-Harvard 'Economic Complexity' Solutions are rather similar tools for visualizing trade data by reporters, Partners, Commodities and trade flows. Added values of these tools is in their suggestive nature. For example, Observatory of Economic Complexity suggests to the user examples of the research questions and how to answer them. All these tools evolved from the master thesis of Alexander Simoes and a collaborative work at MIT and Harvard 
 
-1.  [Observatory of Economic Complexity](00-observatory-econ-complex.html) `http://atlas.media.mit.edu/en/`
+**IMPORTANT!** Data used in the Economic Complexity tools is sourced from the Centre d'Etudes Prospectives et d'Informations Internationales (CEPII) in the BACI Data-set. Economic Complexity Data processing methodology is explained [here](https://github.com/cid-harvard/atlas-data). CEPII BACI methodology of data processing is explained [here](http://www.cepii.fr/CEPII/fr/publications/wp/abstract.asp?NoDoc=2726)
 
-1.  [Atlas of economic complexity](00-atlas-econ-complex.html) `http://atlas.cid.harvard.edu`
+---
 
-1.  [Globe of economic complexity](00-globe-econ-complex.html) `http://globe.cid.harvard.edu/`
+## [The Observatory of Economic Complexity](http://atlas.media.mit.edu/en/)
 
+[The Observatory of Economic Complexity](http://atlas.media.mit.edu/en/) is a tool that allows users to quickly compose a visual narrative about countries and the products they exchange. It was Alexander Simoes' Master Thesis in Media Arts and Sciences at the MIT Media Lab, which you can read here. Source code for the OEC is [here](https://github.com/alexandersimoes/oec).
 
-**Source**
+Introductory Video is available [here](https://vimeo.com/141271203).
 
-**How to access data**
+<iframe src="https://player.vimeo.com/video/141271203?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/141271203">The Observatory of Economic Complexity</a> from <a href="https://vimeo.com/user10937098">Lupa Productora</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
 
-**Registration and login**
+---
+
+## [Atlas of economic complexity](http://atlas.cid.harvard.edu)
+
+The Atlas of economic complexity is a powerful interactive tool that enables users to visualize a country’s total trade, track how these dynamics change over time and explore growth opportunities for more than a hundred countries worldwide. The Atlas online was originally conceived of as a versatile, interactive tool to make trade data not only available, but also usable and to synthesize insights from [research on Economic Complexity](http://atlas.cid.harvard.edu/about/glossary/#economiccomplexity). 
+
+---
+
+## [Globe of economic complexity](http://globe.cid.harvard.edu/)
+
+The Globe is an interactive visualization of economics data. It uses a dot-based representation, where each dot encodes a segment of `$100` million worth of exports by countries. As total world exports accumulated to $15.3 trillion in 2012, it plots and animates 153,000 dots to generate geographical maps, node link diagrams and various stacked graphs.

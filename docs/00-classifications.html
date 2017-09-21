@@ -11,9 +11,8 @@
 
 <meta name="author" content="Eduard Bukin" />
 
-<meta name="date" content="2017-09-22" />
 
-<title>Overview of trade data sources</title>
+<title>Trade data classification systems</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -291,140 +290,47 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Overview of trade data sources</h1>
+<h1 class="title toc-ignore">Trade data classification systems</h1>
 <h4 class="author"><em>Eduard Bukin</em></h4>
-<h4 class="date"><em>September 22, 2017</em></h4>
+<h4 class="date"><em>2017-09-183</em></h4>
 
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#trade-data-sources-overview">Trade data sources: Overview</a></li>
-<li><a href="#general-information">General information</a></li>
-<li><a href="#un-comtrade-data">UN Comtrade data</a></li>
-<li><a href="#world-bank">World Bank</a></li>
-<li><a href="#world-trade-organization-data">World Trade Organization data</a></li>
-<li><a href="#international-trade-center-data">International Trade Center data</a></li>
-<li><a href="#mit-harvard-economic-complexity-solutions">MIT-Harvard <code>Economic Complexity</code> Solutions</a></li>
-<li><a href="#cepii">CEPII</a></li>
-<li><a href="#shiny-trade-analysis-tool">Shiny trade analysis tool</a></li>
-<li><a href="#r-package-for-trade-data-analysis">R package for trade data analysis</a></li>
+<li><a href="#harmonized-system---hs">Harmonized System - HS</a></li>
+<li><a href="#un-sitc-and-bec-classifications">UN SITC and BEC classifications</a></li>
+<li><a href="#fao-commodity-list">FAO Commodity List</a></li>
 </ul>
 </div>
 
-<div id="trade-data-sources-overview" class="section level2">
-<h2>Trade data sources: Overview</h2>
-<p>Today, we will go through the main sources of trade data, which could be used in the trade data analysis.</p>
-<p>All information presented here is shown here:</p>
-<p><a href="https://ebukin.github.io/dataManipulationPractice/" class="uri">https://ebukin.github.io/dataManipulationPractice/</a></p>
-<p>Content:</p>
+<hr />
+<div id="harmonized-system---hs" class="section level2">
+<h2>Harmonized System - HS</h2>
+<p>Officially, World Customs Organisation (WCO) is responsible for maintenance of the HS classification up to 6 digits. Any extension of the HS classifications beyond 6 digits - so called Tariff - line classification is developed by each country individually.</p>
 <ul>
-<li>General information about commodities classifications</li>
-<li>UN Comtrade data</li>
-<li>World Bank data</li>
-<li>World Trade Organization data</li>
-<li>International Trade Center data</li>
-<li>MIT-Harvard <code>Economic Complexity</code> Solutions</li>
-<li>CEPII</li>
-<li>Shiny trade analysis tool</li>
-<li>R package for trade data analysis</li>
+<li><p><a href="https://www.foreign-trade.com/reference/hscode.htm">non WCO HS classification search tool</a></p></li>
+<li><p><a href="http://www.findhs.codes/">another non WCO HS search tool</a></p></li>
+<li><p><a href="http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx">HS 2017 - definitions and descriptions</a></p></li>
+<li><p><a href="http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs_nomenclature_previous_editions.aspx">Previous HS classifications</a></p></li>
 </ul>
 </div>
-<div id="general-information" class="section level2">
-<h2>General information</h2>
+<div id="un-sitc-and-bec-classifications" class="section level2">
+<h2>UN SITC and BEC classifications</h2>
+<p>United Nations Statistics Division is responsible for maintenance of several classification systems for trade and products. Among them there are Central Product Classification (CPC), Standard International Trade Classification (SITC), Classification by Broad Economic Categories (BEC) and International Standard Industrial Classification of All Economic Activities (ISIC).</p>
 <ul>
-<li><p>Trade classifications (What are those? Why those are different? Where to find them?)</p>
-<ul>
-<li><p><a href="http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx">Harmonized System - HS</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=28&amp;Lg=1">Standard International Trade Classification - SITC</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=10&amp;Lg=1">Broad Economic Categories - BEC</a></p></li>
-</ul></li>
-<li><p>Other products classifications</p>
-<ul>
-<li><p><a href="http://www.fao.org/economic/ess/ess-standards/commodity/en/">FAO Commodity list - FCL</a>.</p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14">Central Product Classification - CPC</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1">List of all UNSD classifications</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf">UN Methodology for mapping classifications</a></p></li>
-</ul></li>
+<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14">UN SITC Rev. 3 Detailed structure and explanatory notes</a></p></li>
+<li><p><a href="https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1">List of all UN classifications</a></p></li>
+<li><p><a href="https://unstats.un.org/unsd/trade/classifications/correspondence-tables.asp">UN Correspondancy tables between HS, SITC and BEC</a></p></li>
+<li><p><a href="https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf">Methodology for mapping classifications</a></p></li>
 </ul>
 </div>
-<div id="un-comtrade-data" class="section level2">
-<h2>UN Comtrade data</h2>
+<div id="fao-commodity-list" class="section level2">
+<h2>FAO Commodity List</h2>
+<p>Withing the FAOSTAT FAO uses own system for classifying all commodities. It is called FAO Commodities List (FCL).</p>
 <ul>
-<li><p>Data availability</p>
-<ul>
-<li><p><a href="https://comtrade.un.org/data/da">Trade availability visualization tool</a></p></li>
-<li><p><a href="https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests">API interface</a></p></li>
-</ul></li>
-<li><p>Regular download <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a></p></li>
-<li><p>Bulk download</p>
-<ul>
-<li><p>Web based <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a></p></li>
-<li><p>API <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a></p></li>
-</ul></li>
-<li><p>Restricted access and token</p>
-<ul>
-<li><a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">Token authentication</a></li>
-</ul></li>
-<li><p>Data visualization options <a href="https://comtrade.un.org/labs/" class="uri">https://comtrade.un.org/labs/</a></p></li>
+<li><a href="http://www.fao.org/economic/ess/ess-standards/commodity/en/">Overview of all FCL codes</a>.</li>
 </ul>
-</div>
-<div id="world-bank" class="section level2">
-<h2>World Bank</h2>
-<ul>
-<li><p>WITS <a href="http://wits.worldbank.org/" class="uri">http://wits.worldbank.org/</a></p>
-<ul>
-<li>Registration / Log in</li>
-<li>Advance query - Trade Data</li>
-<li>User defined groups of commodities and countries</li>
-<li>Tarriffs data</li>
-<li>Trade indicators</li>
-</ul></li>
-<li><p>TCdata360 <a href="https://tcdata360.worldbank.org/" class="uri">https://tcdata360.worldbank.org/</a></p></li>
-</ul>
-</div>
-<div id="world-trade-organization-data" class="section level2">
-<h2>World Trade Organization data</h2>
-<ul>
-<li>Tariff Analysis Online tool <a href="http://tao.wto.org/" class="uri">http://tao.wto.org/</a>;</li>
-<li>Tariff Download Facility <a href="http://tariffdata.wto.org/" class="uri">http://tariffdata.wto.org/</a>.</li>
-<li>Regional Trade Agreement Information System (RTA-IS) <a href="http://rtais.wto.org/" class="uri">http://rtais.wto.org/</a>;</li>
-<li>Trade data time series <a href="http://stat.wto.org/" class="uri">http://stat.wto.org/</a>;</li>
-</ul>
-</div>
-<div id="international-trade-center-data" class="section level2">
-<h2>International Trade Center data</h2>
-</div>
-<div id="mit-harvard-economic-complexity-solutions" class="section level2">
-<h2>MIT-Harvard <code>Economic Complexity</code> Solutions</h2>
-<ul>
-<li><p><a href="http://atlas.media.mit.edu/en/">The Observatory of Economic Complexity</a></p></li>
-<li><p><a href="http://atlas.cid.harvard.edu">Atlas of economic complexity</a></p></li>
-<li><p><a href="http://globe.cid.harvard.edu/">Globe of economic complexity</a></p></li>
-</ul>
-</div>
-<div id="cepii" class="section level2">
-<h2>CEPII</h2>
-<ul>
-<li><p>Databases: <a href="http://www.cepii.fr/" class="uri">http://www.cepii.fr/</a>.</p>
-<ul>
-<li><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=1">BACI</a></li>
-<li>Other data bases.</li>
-</ul></li>
-</ul>
-</div>
-<div id="shiny-trade-analysis-tool" class="section level2">
-<h2>Shiny trade analysis tool</h2>
-<p><a href="https://tradeanalysis.shinyapps.io/trade-data-explorer/" class="uri">https://tradeanalysis.shinyapps.io/trade-data-explorer/</a></p>
-</div>
-<div id="r-package-for-trade-data-analysis" class="section level2">
-<h2>R package for trade data analysis</h2>
-<p>In order to simplify trade data analysis work, an R package was developed to tacle with some basic operations.</p>
-<p><code>tradeAnalysis</code> package could be found here: <a href="https://github.com/EBukin/tradeAnalysis-pack" class="uri">https://github.com/EBukin/tradeAnalysis-pack</a></p>
-<p>Installation in R is the following:</p>
-<pre><code>install.packages(&quot;devtools&quot;)
-devtools::install_github(&quot;EBukin/tradeAnalysis-pack&quot;)
-library(tradeAnalysis)</code></pre>
 </div>
 
 <p>Copyright &copy; 2017 Eduard Bukin. All rights reserved.</p>

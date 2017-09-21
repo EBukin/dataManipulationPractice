@@ -207,9 +207,12 @@ $(document).ready(function () {
       <a href="data-sources-compilation.html">Overview of trade data sources</a>
     </li>
     <li>
-      <a href="overview-presentation.html">Presentation</a>
+      <a href="overview-presentation-full.html">Presentation</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="00-classifications.html">- Classification tables</a>
+    </li>
     <li>
       <a href="00-comtrade.html">- UN Comtrade data</a>
     </li>
@@ -223,10 +226,13 @@ $(document).ready(function () {
       <a href="00-itc-trademap.html">- International Trade Center data</a>
     </li>
     <li>
+      <a href="00-cepi.html">- CEPII data</a>
+    </li>
+    <li>
       <a href="00-economic-complexity.html">- MIT-Harvard 'Economic Complexity' Solutions</a>
     </li>
     <li>
-      <a href="00-cepi.html">- CEPII</a>
+      <a href="00-other-data-sources.html">- Miscellaneous data sources</a>
     </li>
   </ul>
 </li>
@@ -286,12 +292,17 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Trade data sources overview</h1>
 <h4 class="author"><em>Eduard Bukin</em></h4>
-<h4 class="date"><em>07 September, 2017</em></h4>
+<h4 class="date"><em>21 September, 2017</em></h4>
 
 </div>
 
 <div id="TOC">
 <ul>
+<li><a href="#trade-classifications">Trade classifications</a><ul>
+<li><a href="#harmonized-system---hs">Harmonized System - HS</a></li>
+<li><a href="#un-sitc-and-bec-classifications">UN SITC and BEC classifications</a></li>
+<li><a href="#fao-commodity-list">FAO Commodity List</a></li>
+</ul></li>
 <li><a href="#un-comtrade-data">UN Comtrade data</a><ul>
 <li><a href="#data-availability-in-comtrade">Data availability in Comtrade</a></li>
 <li><a href="#regular-download-in-comtrade">Regular download in Comtrade</a></li>
@@ -313,17 +324,57 @@ $(document).ready(function () {
 <li><a href="#miscellaneous-information-sources">Miscellaneous information sources</a></li>
 </ul></li>
 <li><a href="#international-trade-center-data">International Trade Center data</a></li>
-<li><a href="#mit-harvard-economic-complexity-solutions">MIT-Harvard ‘Economic Complexity’ Solutions</a><ul>
-<li><a href="#economic-complexity">Economic Complexity</a></li>
-</ul></li>
 <li><a href="#cepii">CEPII</a><ul>
 <li><a href="#relevant-data-solutions">Relevant data solutions</a></li>
+</ul></li>
+<li><a href="#mit-harvard-economic-complexity-solutions">MIT-Harvard ‘Economic Complexity’ Solutions</a><ul>
+<li><a href="#the-observatory-of-economic-complexity"><a href="http://atlas.media.mit.edu/en/">The Observatory of Economic Complexity</a></a></li>
+<li><a href="#atlas-of-economic-complexity"><a href="http://atlas.cid.harvard.edu">Atlas of economic complexity</a></a></li>
+<li><a href="#globe-of-economic-complexity"><a href="http://globe.cid.harvard.edu/">Globe of economic complexity</a></a></li>
+</ul></li>
+<li><a href="#miscellaneous-data-sources">Miscellaneous data sources</a><ul>
+<li><a href="#global-trade-atlas-gta"><a href="https://www.ihs.com/products/maritime-global-trade-atlas.html">Global Trade Atlas (GTA)</a></a></li>
+<li><a href="#unctar-stat"><a href="http://unctadstat.unctad.org/EN/">UNCTAR STAT</a></a></li>
+<li><a href="#eu-customs-data"><a href="http://ec.europa.eu/ecip/information_resources/databases/index_en.htm">EU Customs data</a></a></li>
 </ul></li>
 </ul>
 </div>
 
 <p>To download entire report in a file, select the format: <a target="_blank" href="data-sources-compilation.pdf" class="btn btn-primary">PDF Report</a> or <a href="data-sources-compilation.docx" download="data-sources-compilation.docx" class="btn btn-primary">Word report</a>.</p>
 
+<div id="trade-classifications" class="section level1">
+<h1>Trade classifications</h1>
+<hr />
+<div id="harmonized-system---hs" class="section level2">
+<h2>Harmonized System - HS</h2>
+<p>Officially, World Customs Organisation (WCO) is responsible for maintenance of the HS classification up to 6 digits. Any extension of the HS classifications beyond 6 digits - so called Tariff - line classification is developed by each country individually.</p>
+<ul>
+<li><p><a href="https://www.foreign-trade.com/reference/hscode.htm">non WCO HS classification search tool</a></p></li>
+<li><p><a href="http://www.findhs.codes/">another non WCO HS search tool</a></p></li>
+<li><p><a href="http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx">HS 2017 - definitions and descriptions</a></p></li>
+<li><p><a href="http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs_nomenclature_previous_editions.aspx">Previous HS classifications</a></p></li>
+</ul>
+</div>
+<div id="un-sitc-and-bec-classifications" class="section level2">
+<h2>UN SITC and BEC classifications</h2>
+<p>United Nations Statistics Division is responsible for maintenance of several classification systems for trade and products. Among them there are Central Product Classification (CPC), Standard International Trade Classification (SITC), Classification by Broad Economic Categories (BEC) and International Standard Industrial Classification of All Economic Activities (ISIC).</p>
+<ul>
+<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14">UN SITC Rev. 3 Detailed structure and explanatory notes</a></p></li>
+<li><p><a href="https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1">List of all UN classifications</a></p></li>
+<li><p><a href="https://unstats.un.org/unsd/trade/classifications/correspondence-tables.asp">UN Correspondancy tables between HS, SITC and BEC</a></p></li>
+<li><p><a href="https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf">Methodology for mapping classifications</a></p></li>
+</ul>
+</div>
+<div id="fao-commodity-list" class="section level2">
+<h2>FAO Commodity List</h2>
+<p>Withing the FAOSTAT FAO uses own system for classifying all commodities. It is called FAO Commodities List (FCL).</p>
+<ul>
+<li><a href="http://www.fao.org/economic/ess/ess-standards/commodity/en/">Overview of all FCL codes</a>.</li>
+</ul>
+<hr />
+<p></p>
+</div>
+</div>
 <div id="un-comtrade-data" class="section level1">
 <h1>UN Comtrade data</h1>
 <hr />
@@ -364,7 +415,7 @@ $(document).ready(function () {
 <li>Trade flow: Import and Export (select Import and Export instead of all to not receive data about re-export and re-import);</li>
 <li>HS (as reported) commodity codes: Total, any 2, 4 and 6 digits code (11, 1101, 110100).</li>
 </ul>
-<p><img src="diagrams/ct-page.png" /><!-- --></p>
+<p><img src="diagrams/ct-page.png" width="580" /></p>
 <p><strong>Data response</strong></p>
 <p>Normally, data is returned in the long format with the variables describing main data dimensions selected above and variables with Trade quantities, Trade value, and units of measurement.</p>
 <hr />
@@ -382,7 +433,7 @@ $(document).ready(function () {
 <p><strong>Source</strong></p>
 <p>Web based query for accessing Comtrade bulk data in the browser is available here: <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a>.</p>
 <p>First time you need to access it from the FAO buildings in order to authorize your email. Insert your email in the “Enter your email” field and press “Authenticate my IP”. After that your email will be saved in the Comtrade database and you will be grated with the access to the bulk download interface (same address <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a>).</p>
-<p><img src="diagrams/ct-auth-page.png" /><!-- --></p>
+<p><img src="diagrams/ct-auth-page.png" width="465" /></p>
 <p><strong>How to access data</strong></p>
 <p>In order to access Comtrade bulk data on the bulk data access page select required set of parameters. For example, to download bulk commodity statistics for France, select:</p>
 <ul>
@@ -393,9 +444,9 @@ $(document).ready(function () {
 <li>Reporter: France (or All - all reporters in one file or any single reporter that you needed);</li>
 <li>Publication data: keep unchanged.</li>
 </ul>
-<p><img src="diagrams/ct-bulk-page.png" /><!-- --></p>
+<p><img src="diagrams/ct-bulk-page.png" width="574" /></p>
 <p>After clicking “Preview” yo will be returned with the list of all bulk data files available for your selection. Clicking on any of them will run the file, clicking on “Show API link” will provide you with the API data request command (see the next subsection) for returning a bulk data file. Be aware that any bulk data file could range in size from 1 to 500 megabyte.</p>
-<p><img src="diagrams/ct-bulk-page-results.png" /><!-- --></p>
+<p><img src="diagrams/ct-bulk-page-results.png" width="578" /></p>
 <p><strong>Data response</strong></p>
 <p>Your browser will download one <code>zip</code> archive with data for a selected country (all countries), period and classification.</p>
 <p><strong>Attention!</strong> Data files could be very. In zipped format file size may range from 1 to 500 megabyte. Un extracted format, file size could be up to 9 gigabytes.</p>
@@ -416,7 +467,7 @@ $(document).ready(function () {
 <li><code>token</code> - optional parameter for data from outside of the authorized network.</li>
 </ul>
 <p>For example, we want to request monthly data <code>freq=M</code> of commodities trade <code>type=C</code> for All reporters <code>r=ALL</code> for period January, 2017 <code>ps=201701</code>, in the HS as reporter classification <code>px=HS</code>. The request is <a href="http://comtrade.un.org/api/get/bulk/C/M/201701/ALL/HS"><code>http://comtrade.un.org/api/get/bulk/C/M/201701/ALL/HS</code></a>. We insert this request to the browser adders line and download the file.</p>
-<p><img src="diagrams/ct-bulk-command.png" /><!-- --></p>
+<p><img src="diagrams/ct-bulk-command.png" width="220" /></p>
 <p><strong>Data response</strong></p>
 <p>Your browser will download one <code>zip</code> archive with data for a selected country (all countries), period and classification.</p>
 <p><strong>Attention!</strong> Data files could be very. In zipped format file size may range from 1 to 500 megabyte. Un extracted format, file size could be up to 9 gigabytes.</p>
@@ -424,10 +475,10 @@ $(document).ready(function () {
 <div id="token-for-data-access" class="section level3">
 <h3>Token for data access</h3>
 <p>To generate an authentication token for the UN Comtrade from the registered IP range (i.e. from the FAO headquarters), we first need to go to the UN Comtrade <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">authentication page</a> and insert our email into the <code>Sign in using: &gt; IP Authentication:</code> field. Pressing <code>Authenticate my IP</code> will ensure we are registered in the UN Comtrade system. Please note, you need to do this only once.</p>
-<p>Subsequently we need to go to <a href="https://comtrade.un.org/api/swagger/ui/index#/">comtradePlus.API</a>and select <code>/getSubUserToken</code> in the <code>Auth</code> section <img src="diagrams/ct-get-token.png" /><!-- -->. After inserting the email, which you used to register above, into the corresponding field, press “try it out”:</p>
-<p><img src="diagrams/ct-get-token-email.png" /><!-- --></p>
+<p>Subsequently we need to go to <a href="https://comtrade.un.org/api/swagger/ui/index#/">comtradePlus.API</a>and select <code>/getSubUserToken</code> in the <code>Auth</code> section <img src="diagrams/ct-get-token.png" width="207" />. After inserting the email, which you used to register above, into the corresponding field, press “try it out”:</p>
+<p><img src="diagrams/ct-get-token-email.png" width="214" /></p>
 <p>In <code>Response Headers</code> the token will appear as a long string of symbols and characters. This token is to be copied to a secure place and used to access data in some programming cases or in the World Bank WITS database.</p>
-<p><img src="diagrams/ct-get-token-resp.png" /><!-- --></p>
+<p><img src="diagrams/ct-get-token-resp.png" width="478" /></p>
 <hr />
 </div>
 </div>
@@ -506,8 +557,8 @@ $(document).ready(function () {
 <p><strong>How to access data</strong></p>
 <p>WITS is a complex tool, however it has a very good set of <a href="http://wits.worldbank.org/training.html#">learning materials</a>. If you have time, you can take an <a href="http://wits.worldbank.org/WITS/Training/player.html">eLearning course</a>, otherwise, it is possible to follow <a href="http://wits.worldbank.org/trainingVideos.aspx?lang=en">video tutorials from WITS</a>.</p>
 <p><strong>Registration and login</strong></p>
-<p>In order to use full capabilities of the WITS database all users need to log-in. The log in page is located <a href="https://wits.worldbank.org/WITS/WITS/Restricted/Login.aspx">here</a>. You can access this page from the main <a href="http://wits.worldbank.org">WITS website</a>, by clicking first ‘Register’ in the top right corner <img src="diagrams/wits-login-button.PNG" /><!-- -->. Follow all registration instructions. People with the FAO email are allowed to register in WITS and use all available capacities of the database. After you have finished your registration, click ‘log in’ in the same top-right corner of the <a href="http://wits.worldbank.org">WITS website</a>, enter your email and password and you will log into the WITS database:</p>
-<p><img src="diagrams/wits-login-page.png" /><!-- --></p>
+<p>In order to use full capabilities of the WITS database all users need to log-in. The log in page is located <a href="https://wits.worldbank.org/WITS/WITS/Restricted/Login.aspx">here</a>. You can access this page from the main <a href="http://wits.worldbank.org">WITS website</a>, by clicking first ‘Register’ in the top right corner <img src="diagrams/wits-login-button.PNG" width="266" />. Follow all registration instructions. People with the FAO email are allowed to register in WITS and use all available capacities of the database. After you have finished your registration, click ‘log in’ in the same top-right corner of the <a href="http://wits.worldbank.org">WITS website</a>, enter your email and password and you will log into the WITS database:</p>
+<p><img src="diagrams/wits-login-page.png" width="458" /></p>
 <p><strong>Other important informatoin</strong></p>
 <p>When the user are logged into WITS, the website offer a greater range of documentation and metadata. In particular:</p>
 <ul>
@@ -524,7 +575,7 @@ $(document).ready(function () {
 <h4>Advance query for trade data access</h4>
 <p>The main tool of generating user-defined trade data reports from the UN Comtrade data in WITS is in using the <a href="http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData"><code>Home &gt; Advanced Query &gt; Trade Data (UN Comtrade)</code></a>. Here you can select any reporters, partners, commodities, periods, and classification systems in order to generate desirable table with the trade data.</p>
 <p><strong>Important</strong> to note. At this step our queries are limited to the maximum of 100 000 rows. In order to be able to download more than 100 000 rows, you either need to log in from the FAO network, or provide a UN Comtrade token to the WITS database by clicking “click here to activate” on the page <a href="http://wits.worldbank.org/WITS/WITS/AdvanceQuery/RawTradeData/QueryDefinition.aspx?Page=RawTradeData"><code>Home &gt; Advanced Query &gt; Trade Data (UN Comtrade)</code></a> and follow the instructions:</p>
-<p><img src="diagrams/wits-login-ct-token.png" /><!-- --></p>
+<p><img src="diagrams/wits-login-ct-token.png" width="288" /></p>
 <p>A comprehensive instruction on how to use advanced queries is provided in the WITS <a href="http://wits.worldbank.org/videos/advanced-query.html">tutorial video</a>.</p>
 <video id="Video1" controls loop height="315">
 <source src="http://wits.worldbank.org/data/public/WITS_videos/wits/Advanced%20Query%20-%20Trade%20Data.mp4" type="video/mp4">
@@ -640,19 +691,19 @@ $(document).ready(function () {
 <p><strong>Source</strong></p>
 <p>The TAO tool, could be accessed here: <a href="http://tao.wto.org/?ui=1" class="uri">http://tao.wto.org/?ui=1</a>.</p>
 <p><strong>How to access data</strong></p>
-<p>The data could be accessed after registration and log in-in. To register, press <code>Click here to register</code> (<img src="diagrams/wto-tao-registration.png" /><!-- -->) on the main page of the TAO website. Use registers log in and password to access the database.</p>
+<p>The data could be accessed after registration and log in-in. To register, press <code>Click here to register</code> (<img src="diagrams/wto-tao-registration.png" width="674" />) on the main page of the TAO website. Use registers log in and password to access the database.</p>
 <p>The interface of the database is not very intuitive. To understand how to use it, see the <a href="http://tao.wto.org/help.aspx">guidlines and help</a>.</p>
 <p>General procedure of data access are the following:</p>
 <ul>
-<li><p>Prepare a query either in IDB or in CTS databases <img src="diagrams/wto-tao-start-query.png" /><!-- -->;</p></li>
+<li><p>Prepare a query either in IDB or in CTS databases <img src="diagrams/wto-tao-start-query.png" width="213" />;</p></li>
 <li><p>Insert main parameters of the query and save it:</p></li>
 </ul>
-<p><img src="diagrams/wto-tao-main-par-query.png" /><!-- --></p>
+<p><img src="diagrams/wto-tao-main-par-query.png" width="1329" /></p>
 <ul>
 <li><p>Click <code>Basic query</code> and select the query you have saved from the <code>Saved Query</code> list.</p></li>
 <li><p>Generate the report based on the selected query:</p></li>
 </ul>
-<p><img src="diagrams/wto-tao-report-generation.png" /><!-- --></p>
+<p><img src="diagrams/wto-tao-report-generation.png" width="375" /></p>
 <p><strong>Data response</strong></p>
 <p>With the present tool, data could be returned as a report in browser or as an exported excel data file. For more information, try to use it, or see the <a href="http://tao.wto.org/Help.aspx">help</a>.</p>
 <hr />
@@ -706,12 +757,13 @@ $(document).ready(function () {
 <p>This data source if available here: <a href="http://stat.wto.org/" class="uri">http://stat.wto.org/</a></p>
 <p><strong>How to access data</strong></p>
 <p>All data is accessed in the similar way, following intuitive step by step process as on the picture below.</p>
-<p><img src="diagrams/wto-stat-steps.png" /><!-- --></p>
+<p><img src="diagrams/wto-stat-steps.png" width="167" /></p>
 <hr />
 </div>
 <div id="miscellaneous-information-sources" class="section level2">
 <h2>Miscellaneous information sources</h2>
 <p>WTO Trade policy Review <a href="https://www.wto.org/english/tratop_e/tpr_e/tpr_e.htm" class="uri">https://www.wto.org/english/tratop_e/tpr_e/tpr_e.htm</a>.</p>
+<p>E-ping SPS &amp; TBT notification alert and notification system <a href="http://www.epingalert.org/en" class="uri">http://www.epingalert.org/en</a></p>
 <hr />
 <p></p>
 </div>
@@ -719,29 +771,12 @@ $(document).ready(function () {
 <div id="international-trade-center-data" class="section level1">
 <h1>International Trade Center data</h1>
 <hr />
-<p>ITC - Trade Map Bank</p>
+<p>Trade Map - <a href="http://www.trademap.org/" class="uri">http://www.trademap.org/</a> - provides - in the form of tables, graphs and maps - indicators on export performance, international demand, alternative markets and competitive markets, as well as a directory of importing and exporting companies. Trade Map covers 220 countries and territories and 5300 products of the Harmonized System. The monthly, quarterly and yearly trade flows are available from the most aggregated level to the tariff line level.</p>
 <p><strong>Source</strong></p>
 <p><strong>How to access data</strong></p>
 <p><strong>Registration and login</strong></p>
 <hr />
 <p></p>
-</div>
-<div id="mit-harvard-economic-complexity-solutions" class="section level1">
-<h1>MIT-Harvard ‘Economic Complexity’ Solutions</h1>
-<hr />
-<div id="economic-complexity" class="section level2">
-<h2>Economic Complexity</h2>
-<ol style="list-style-type: decimal">
-<li><p><a href="00-observatory-econ-complex.html">Observatory of Economic Complexity</a> <code>http://atlas.media.mit.edu/en/</code></p></li>
-<li><p><a href="00-atlas-econ-complex.html">Atlas of economic complexity</a> <code>http://atlas.cid.harvard.edu</code></p></li>
-<li><p><a href="00-globe-econ-complex.html">Globe of economic complexity</a> <code>http://globe.cid.harvard.edu/</code></p></li>
-</ol>
-<p><strong>Source</strong></p>
-<p><strong>How to access data</strong></p>
-<p><strong>Registration and login</strong></p>
-<hr />
-<p></p>
-</div>
 </div>
 <div id="cepii" class="section level1">
 <h1>CEPII</h1>
@@ -818,7 +853,7 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li><p>Go to the page of any database, for example RCA;</p></li>
 <li><p>On the right side, under “Download page” click <code>Register</code> and follow the registration procedure. Tick all databases, which you need:</p>
-<p><img src="diagrams/cepii-generic-reg.png" /><!-- --> <img src="diagrams/cepii-generic-reg-form.png" /><!-- --></p></li>
+<p><img src="diagrams/cepii-generic-reg.png" width="221" /> <img src="diagrams/cepii-generic-reg-form.png" width="572" /></p></li>
 <li><p>Confirm your email in the confirmation email received after completing registration;</p></li>
 <li><p>Log in to the database inserting your email under “Download page” on the right side of the page.</p></li>
 <li><p>After log in in, most of the data is downloaded via links in the <code>xls</code> or <code>stat</code> data files.</p></li>
@@ -830,11 +865,58 @@ $(document).ready(function () {
 <ol style="list-style-type: decimal">
 <li><p>Go to the BACI website at: <a href="http://www.cepii.fr/CEPII/en/bdd_modele/inscription.asp?id=1" class="uri">http://www.cepii.fr/CEPII/en/bdd_modele/inscription.asp?id=1</a></p></li>
 <li><p>Select <code>REGISTER</code> in the right panel:</p>
-<p><img src="diagrams/cepii-baci-reg.png" /><!-- --></p></li>
+<p><img src="diagrams/cepii-baci-reg.png" width="226" /></p></li>
 <li><p>Insert all information on the <code>BACI</code> registration page including CT token in the field <code>Authorization code</code> (see <a href="00-comtrade.html">Comtrade</a> section for more information). After you have inserted everything, press register.</p>
-<p><img src="diagrams/cepii-baci-reg-info.png" /><!-- --></p></li>
+<p><img src="diagrams/cepii-baci-reg-info.png" width="578" /></p></li>
 </ol>
+<hr />
+<p></p>
 </div>
+</div>
+</div>
+<div id="mit-harvard-economic-complexity-solutions" class="section level1">
+<h1>MIT-Harvard ‘Economic Complexity’ Solutions</h1>
+<hr />
+<p>MIT-Harvard ‘Economic Complexity’ Solutions are rather similar tools for visualizing trade data by reporters, Partners, Commodities and trade flows. Added values of these tools is in their suggestive nature. For example, Observatory of Economic Complexity suggests to the user examples of the research questions and how to answer them. All these tools evolved from the master thesis of Alexander Simoes and a collaborative work at MIT and Harvard</p>
+<p><strong>IMPORTANT!</strong> Data used in the Economic Complexity tools is sourced from the Centre d’Etudes Prospectives et d’Informations Internationales (CEPII) in the BACI Data-set. Economic Complexity Data processing methodology is explained <a href="https://github.com/cid-harvard/atlas-data">here</a>. CEPII BACI methodology of data processing is explained <a href="http://www.cepii.fr/CEPII/fr/publications/wp/abstract.asp?NoDoc=2726">here</a></p>
+<hr />
+<div id="the-observatory-of-economic-complexity" class="section level2">
+<h2><a href="http://atlas.media.mit.edu/en/">The Observatory of Economic Complexity</a></h2>
+<p>The Observatory of Economic Complexity - <a href="http://atlas.media.mit.edu/en/" class="uri">http://atlas.media.mit.edu/en/</a> is a tool that allows users to quickly compose a visual narrative about countries and the products they exchange. It was Alexander Simoes’ Master Thesis in Media Arts and Sciences at the MIT Media Lab, which you can read here. Source code for the OEC is <a href="https://github.com/alexandersimoes/oec">here</a>.</p>
+<p>Introductory Video is available <a href="https://vimeo.com/141271203">here</a>.</p>
+<iframe src="https://player.vimeo.com/video/141271203?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+</iframe>
+<p>
+<a href="https://vimeo.com/141271203">The Observatory of Economic Complexity</a> from <a href="https://vimeo.com/user10937098">Lupa Productora</a> on <a href="https://vimeo.com">Vimeo</a>.
+</p>
+<hr />
+</div>
+<div id="atlas-of-economic-complexity" class="section level2">
+<h2><a href="http://atlas.cid.harvard.edu">Atlas of economic complexity</a></h2>
+<p>The Atlas of economic complexity - <a href="http://atlas.cid.harvard.edu" class="uri">http://atlas.cid.harvard.edu</a> is a powerful interactive tool that enables users to visualize a countryâ€™s total trade, track how these dynamics change over time and explore growth opportunities for more than a hundred countries worldwide. The Atlas online was originally conceived of as a versatile, interactive tool to make trade data not only available, but also usable and to synthesize insights from <a href="http://atlas.cid.harvard.edu/about/glossary/#economiccomplexity">research on Economic Complexity</a>.</p>
+<hr />
+</div>
+<div id="globe-of-economic-complexity" class="section level2">
+<h2><a href="http://globe.cid.harvard.edu/">Globe of economic complexity</a></h2>
+<p>The Globe - <a href="http://globe.cid.harvard.edu/" class="uri">http://globe.cid.harvard.edu/</a> is an interactive visualization of economics data. It uses a dot-based representation, where each dot encodes a segment of <code>$100</code> million worth of exports by countries. As total world exports accumulated to $15.3 trillion in 2012, it plots and animates 153,000 dots to generate geographical maps, node link diagrams and various stacked graphs.</p>
+<hr />
+<p></p>
+</div>
+</div>
+<div id="miscellaneous-data-sources" class="section level1">
+<h1>Miscellaneous data sources</h1>
+<hr />
+<div id="global-trade-atlas-gta" class="section level2">
+<h2><a href="https://www.ihs.com/products/maritime-global-trade-atlas.html">Global Trade Atlas (GTA)</a></h2>
+<p>This is a trade data sources (formerly) purchased by FAO and available to the users with the ligin creditentials. To find more information about it, please contact to Adam Prakash.</p>
+</div>
+<div id="unctar-stat" class="section level2">
+<h2><a href="http://unctadstat.unctad.org/EN/">UNCTAR STAT</a></h2>
+<p>Statistical tools maintained and supported by UNCTAD. It gives access to basic and derived indicators built upon common rules, harmonized environment and clear methodology supported by powerful data browsing system.</p>
+</div>
+<div id="eu-customs-data" class="section level2">
+<h2><a href="http://ec.europa.eu/ecip/information_resources/databases/index_en.htm">EU Customs data</a></h2>
+<p>The Commission develops and operates several databases in conjunction with Member States’ Customs and Taxation Services. The databases are part of the information systems of Taxation and Customs Union. Although VIES has been developed and is operated at a national level, it can also be accessed via this site.</p>
 </div>
 </div>
 

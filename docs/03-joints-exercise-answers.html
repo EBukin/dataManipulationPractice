@@ -208,9 +208,12 @@ $(document).ready(function () {
       <a href="data-sources-compilation.html">Overview of trade data sources</a>
     </li>
     <li>
-      <a href="overview-presentation.html">Presentation</a>
+      <a href="overview-presentation-full.html">Presentation</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="00-classifications.html">- Classification tables</a>
+    </li>
     <li>
       <a href="00-comtrade.html">- UN Comtrade data</a>
     </li>
@@ -224,10 +227,13 @@ $(document).ready(function () {
       <a href="00-itc-trademap.html">- International Trade Center data</a>
     </li>
     <li>
+      <a href="00-cepi.html">- CEPII data</a>
+    </li>
+    <li>
       <a href="00-economic-complexity.html">- MIT-Harvard 'Economic Complexity' Solutions</a>
     </li>
     <li>
-      <a href="00-cepi.html">- CEPII</a>
+      <a href="00-other-data-sources.html">- Miscellaneous data sources</a>
     </li>
   </ul>
 </li>
@@ -448,15 +454,15 @@ fltDF &lt;-
 <pre><code>## # A tibble: 469 x 8
 ##    Classification  Year Trade.Flow.Code Reporter.Code Partner.Code
 ##             &lt;chr&gt; &lt;int&gt;           &lt;int&gt;         &lt;int&gt;        &lt;int&gt;
-##  1             H4  2014               1           804          178
-##  2             H4  2014               1           643          188
-##  3             H4  2015               1           643          188
-##  4             H4  2016               1           643          188
-##  5             H4  2015               2           643          344
-##  6             H4  2014               2           804          344
-##  7             H4  2015               2           804          344
-##  8             H4  2014               1           112          381
-##  9             H4  2016               1           112          381
+##  1             H4  2014               1            31          528
+##  2             H4  2014               1            31          792
+##  3             H4  2014               1            31          804
+##  4             H4  2014               1            51          528
+##  5             H4  2014               1            51          792
+##  6             H4  2014               1            51          804
+##  7             H4  2014               1           112          381
+##  8             H4  2014               1           112          528
+##  9             H4  2014               1           112          804
 ## 10             H4  2014               1           268          381
 ## # ... with 459 more rows, and 3 more variables: Commodity.Code &lt;chr&gt;,
 ## #   Netweight..kg. &lt;dbl&gt;, Trade.Value..US.. &lt;dbl&gt;</code></pre>

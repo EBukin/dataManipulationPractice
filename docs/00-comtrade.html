@@ -208,9 +208,12 @@ $(document).ready(function () {
       <a href="data-sources-compilation.html">Overview of trade data sources</a>
     </li>
     <li>
-      <a href="overview-presentation.html">Presentation</a>
+      <a href="overview-presentation-full.html">Presentation</a>
     </li>
     <li class="divider"></li>
+    <li>
+      <a href="00-classifications.html">- Classification tables</a>
+    </li>
     <li>
       <a href="00-comtrade.html">- UN Comtrade data</a>
     </li>
@@ -224,10 +227,13 @@ $(document).ready(function () {
       <a href="00-itc-trademap.html">- International Trade Center data</a>
     </li>
     <li>
+      <a href="00-cepi.html">- CEPII data</a>
+    </li>
+    <li>
       <a href="00-economic-complexity.html">- MIT-Harvard 'Economic Complexity' Solutions</a>
     </li>
     <li>
-      <a href="00-cepi.html">- CEPII</a>
+      <a href="00-other-data-sources.html">- Miscellaneous data sources</a>
     </li>
   </ul>
 </li>
@@ -350,7 +356,7 @@ $(document).ready(function () {
 <li>Trade flow: Import and Export (select Import and Export instead of all to not receive data about re-export and re-import);</li>
 <li>HS (as reported) commodity codes: Total, any 2, 4 and 6 digits code (11, 1101, 110100).</li>
 </ul>
-<p><img src="diagrams/ct-page.png" /><!-- --></p>
+<p><img src="diagrams/ct-page.png" width="580" /></p>
 <p><strong>Data response</strong></p>
 <p>Normally, data is returned in the long format with the variables describing main data dimensions selected above and variables with Trade quantities, Trade value, and units of measurement.</p>
 <hr />
@@ -368,7 +374,7 @@ $(document).ready(function () {
 <p><strong>Source</strong></p>
 <p>Web based query for accessing Comtrade bulk data in the browser is available here: <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a>.</p>
 <p>First time you need to access it from the FAO buildings in order to authorize your email. Insert your email in the “Enter your email” field and press “Authenticate my IP”. After that your email will be saved in the Comtrade database and you will be grated with the access to the bulk download interface (same address <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a>).</p>
-<p><img src="diagrams/ct-auth-page.png" /><!-- --></p>
+<p><img src="diagrams/ct-auth-page.png" width="465" /></p>
 <p><strong>How to access data</strong></p>
 <p>In order to access Comtrade bulk data on the bulk data access page select required set of parameters. For example, to download bulk commodity statistics for France, select:</p>
 <ul>
@@ -379,9 +385,9 @@ $(document).ready(function () {
 <li>Reporter: France (or All - all reporters in one file or any single reporter that you needed);</li>
 <li>Publication data: keep unchanged.</li>
 </ul>
-<p><img src="diagrams/ct-bulk-page.png" /><!-- --></p>
+<p><img src="diagrams/ct-bulk-page.png" width="574" /></p>
 <p>After clicking “Preview” yo will be returned with the list of all bulk data files available for your selection. Clicking on any of them will run the file, clicking on “Show API link” will provide you with the API data request command (see the next subsection) for returning a bulk data file. Be aware that any bulk data file could range in size from 1 to 500 megabyte.</p>
-<p><img src="diagrams/ct-bulk-page-results.png" /><!-- --></p>
+<p><img src="diagrams/ct-bulk-page-results.png" width="578" /></p>
 <p><strong>Data response</strong></p>
 <p>Your browser will download one <code>zip</code> archive with data for a selected country (all countries), period and classification.</p>
 <p><strong>Attention!</strong> Data files could be very. In zipped format file size may range from 1 to 500 megabyte. Un extracted format, file size could be up to 9 gigabytes.</p>
@@ -402,7 +408,7 @@ $(document).ready(function () {
 <li><code>token</code> - optional parameter for data from outside of the authorized network.</li>
 </ul>
 <p>For example, we want to request monthly data <code>freq=M</code> of commodities trade <code>type=C</code> for All reporters <code>r=ALL</code> for period January, 2017 <code>ps=201701</code>, in the HS as reporter classification <code>px=HS</code>. The request is <a href="http://comtrade.un.org/api/get/bulk/C/M/201701/ALL/HS"><code>http://comtrade.un.org/api/get/bulk/C/M/201701/ALL/HS</code></a>. We insert this request to the browser adders line and download the file.</p>
-<p><img src="diagrams/ct-bulk-command.png" /><!-- --></p>
+<p><img src="diagrams/ct-bulk-command.png" width="220" /></p>
 <p><strong>Data response</strong></p>
 <p>Your browser will download one <code>zip</code> archive with data for a selected country (all countries), period and classification.</p>
 <p><strong>Attention!</strong> Data files could be very. In zipped format file size may range from 1 to 500 megabyte. Un extracted format, file size could be up to 9 gigabytes.</p>
@@ -410,10 +416,10 @@ $(document).ready(function () {
 <div id="token-for-data-access" class="section level3">
 <h3>Token for data access</h3>
 <p>To generate an authentication token for the UN Comtrade from the registered IP range (i.e. from the FAO headquarters), we first need to go to the UN Comtrade <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">authentication page</a> and insert our email into the <code>Sign in using: &gt; IP Authentication:</code> field. Pressing <code>Authenticate my IP</code> will ensure we are registered in the UN Comtrade system. Please note, you need to do this only once.</p>
-<p>Subsequently we need to go to <a href="https://comtrade.un.org/api/swagger/ui/index#/">comtradePlus.API</a>and select <code>/getSubUserToken</code> in the <code>Auth</code> section <img src="diagrams/ct-get-token.png" /><!-- -->. After inserting the email, which you used to register above, into the corresponding field, press “try it out”:</p>
-<p><img src="diagrams/ct-get-token-email.png" /><!-- --></p>
+<p>Subsequently we need to go to <a href="https://comtrade.un.org/api/swagger/ui/index#/">comtradePlus.API</a>and select <code>/getSubUserToken</code> in the <code>Auth</code> section <img src="diagrams/ct-get-token.png" width="207" />. After inserting the email, which you used to register above, into the corresponding field, press “try it out”:</p>
+<p><img src="diagrams/ct-get-token-email.png" width="214" /></p>
 <p>In <code>Response Headers</code> the token will appear as a long string of symbols and characters. This token is to be copied to a secure place and used to access data in some programming cases or in the World Bank WITS database.</p>
-<p><img src="diagrams/ct-get-token-resp.png" /><!-- --></p>
+<p><img src="diagrams/ct-get-token-resp.png" width="478" /></p>
 <hr />
 </div>
 </div>

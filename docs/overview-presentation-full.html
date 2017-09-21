@@ -23,66 +23,73 @@ Eduard Bukin
 </div>
 <div id="trade-data-sources-overview" class="slide section level2">
 <h1>Trade data sources: Overview</h1>
-<p>Here we will see an overview of the trade data sources, which could be used in the trade data analsys.</p>
-<p>Purposed for the Trade team and EST.</p>
-</div>
-<div id="trade-data-sources-overview-1" class="slide section level2">
-<h1>Trade data sources: Overview</h1>
+<p>Today, we will go through the main sources of trade data, which could be used in the trade data analysis.</p>
+<p>All information presented here is shown here:</p>
+<p><a href="https://ebukin.github.io/dataManipulationPractice/" class="uri">https://ebukin.github.io/dataManipulationPractice/</a></p>
+<p>Content:</p>
 <ul>
-<li>UN Comtrade data
-<ul>
-<li>Data availability in Comtrade</li>
-<li>Regular download in Comtrade</li>
-<li>Bulk download in Comtrade</li>
-<li>Data visualization options</li>
-</ul></li>
-<li>World Bank data
-<ul>
-<li>WITS</li>
-<li>TCdata360</li>
-</ul></li>
-<li>World Trade Organization data
-<ul>
-<li>Tariff data</li>
-<li>WTO measures, notifications, Trade Agreement</li>
-<li>Trade time series</li>
-</ul></li>
+<li>General information about commodities classifications</li>
+<li>UN Comtrade data</li>
+<li>World Bank data</li>
+<li>World Trade Organization data</li>
 <li>International Trade Center data</li>
 <li>MIT-Harvard <code>Economic Complexity</code> Solutions</li>
 <li>CEPII</li>
 <li>Shiny trade analysis tool</li>
+<li>R package for trade data analysis</li>
+</ul>
+</div>
+<div id="general-information" class="slide section level2">
+<h1>General information</h1>
+<ul>
+<li><p>Trade classifications (What are those? Why those are different? Where to find them?)</p>
+<ul>
+<li><p><a href="http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx">Harmonized System - HS</a></p></li>
+<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=28&amp;Lg=1">Standard International Trade Classification - SITC</a></p></li>
+<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=10&amp;Lg=1">Broad Economic Categories - BEC</a></p></li>
+</ul></li>
+<li><p>Other products classifications</p>
+<ul>
+<li><p><a href="http://www.fao.org/economic/ess/ess-standards/commodity/en/">FAO Commodity list - FCL</a>.</p></li>
+<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14">Central Product Classification - CPC</a></p></li>
+<li><p><a href="https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1">List of all UNSD classifications</a></p></li>
+<li><p><a href="https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf">UN Methodology for mapping classifications</a></p></li>
+</ul></li>
 </ul>
 </div>
 <div id="un-comtrade-data" class="slide section level2">
 <h1>UN Comtrade data</h1>
 <ul>
-<li>Data availability
+<li><p>Data availability</p>
 <ul>
-<li>Trade availability visualization tool <a href="https://comtrade.un.org/data/da" class="uri">https://comtrade.un.org/data/da</a></li>
-<li>API interface <a href="https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests" class="uri">https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests</a></li>
+<li><p><a href="https://comtrade.un.org/data/da">Trade availability visualization tool</a></p></li>
+<li><p><a href="https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests">API interface</a></p></li>
 </ul></li>
-<li>Regular download <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a></li>
-<li>Bulk download
+<li><p>Regular download <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a></p></li>
+<li><p>Bulk download</p>
 <ul>
-<li>Web based <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a></li>
-<li>API <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a></li>
-<li>Token <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">authentication page</a></li>
+<li><p>Web based <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a></p></li>
+<li><p>API <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a></p></li>
 </ul></li>
-<li>Data visualization options <a href="https://comtrade.un.org/labs/" class="uri">https://comtrade.un.org/labs/</a></li>
+<li><p>Restricted access and token</p>
+<ul>
+<li><a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">Token authentication</a></li>
+</ul></li>
+<li><p>Data visualization options <a href="https://comtrade.un.org/labs/" class="uri">https://comtrade.un.org/labs/</a></p></li>
 </ul>
 </div>
-<div id="world-bank-data" class="slide section level2">
-<h1>World Bank data</h1>
+<div id="world-bank" class="slide section level2">
+<h1>World Bank</h1>
 <ul>
-<li>WITS
+<li><p>WITS <a href="http://wits.worldbank.org/" class="uri">http://wits.worldbank.org/</a></p>
 <ul>
-<li>Registration / Log in <a href="http://wits.worldbank.org/" class="uri">http://wits.worldbank.org/</a></li>
-<li>Advance query</li>
+<li>Registration / Log in</li>
+<li>Advance query - Trade Data</li>
 <li>User defined groups of commodities and countries</li>
 <li>Tarriffs data</li>
 <li>Trade indicators</li>
 </ul></li>
-<li>TCdata360 <a href="https://tcdata360.worldbank.org/" class="uri">https://tcdata360.worldbank.org/</a></li>
+<li><p>TCdata360 <a href="https://tcdata360.worldbank.org/" class="uri">https://tcdata360.worldbank.org/</a></p></li>
 </ul>
 </div>
 <div id="world-trade-organization-data" class="slide section level2">
@@ -99,31 +106,34 @@ Eduard Bukin
 </div>
 <div id="mit-harvard-economic-complexity-solutions" class="slide section level2">
 <h1>MIT-Harvard <code>Economic Complexity</code> Solutions</h1>
+<ul>
+<li><p><a href="http://atlas.media.mit.edu/en/">The Observatory of Economic Complexity</a></p></li>
+<li><p><a href="http://atlas.cid.harvard.edu">Atlas of economic complexity</a></p></li>
+<li><p><a href="http://globe.cid.harvard.edu/">Globe of economic complexity</a></p></li>
+</ul>
 </div>
 <div id="cepii" class="slide section level2">
 <h1>CEPII</h1>
 <ul>
-<li>Databases: <a href="http://www.cepii.fr/" class="uri">http://www.cepii.fr/</a>.
+<li><p>Databases: <a href="http://www.cepii.fr/" class="uri">http://www.cepii.fr/</a>.</p>
 <ul>
-<li>Gravity</li>
-<li>EconMap</li>
-<li>EQCHANGE</li>
-<li>Export Sophistication</li>
-<li>ProdComp</li>
-<li>TradeProd</li>
-<li>Profiles Pays / Country Profiles</li>
-<li>BACI - World trade database</li>
-<li>FDIMap - Foreign Direct Investment database</li>
-<li>RCA - revealed comparative advantage database</li>
-<li>Trade Unit Values (TUV)</li>
-<li>Trade Prices</li>
-<li>World Trade Flows Characterization</li>
+<li><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=1">BACI</a></li>
+<li>Other data bases.</li>
 </ul></li>
 </ul>
 </div>
 <div id="shiny-trade-analysis-tool" class="slide section level2">
 <h1>Shiny trade analysis tool</h1>
-<p><a href="https://tradeanalysis.shinyapps.io/ct-tb-explorer/" class="uri">https://tradeanalysis.shinyapps.io/ct-tb-explorer/</a></p>
+<p><a href="https://tradeanalysis.shinyapps.io/trade-data-explorer/" class="uri">https://tradeanalysis.shinyapps.io/trade-data-explorer/</a></p>
+</div>
+<div id="r-package-for-trade-data-analysis" class="slide section level2">
+<h1>R package for trade data analysis</h1>
+<p>In order to simplify trade data analysis work, an R package was developed to tacle with some basic operations.</p>
+<p><code>tradeAnalysis</code> package could be found here: <a href="https://github.com/EBukin/tradeAnalysis-pack" class="uri">https://github.com/EBukin/tradeAnalysis-pack</a></p>
+<p>Installation in R is the following:</p>
+<pre><code>install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;EBukin/tradeAnalysis-pack&quot;)
+library(tradeAnalysis)</code></pre>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

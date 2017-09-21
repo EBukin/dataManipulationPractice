@@ -1,0 +1,13 @@
+---
+title: "Other trade data sources"
+author: "Eduard Bukin"
+date: '2017-09-03'
+---
+
+---
+
+
+## [Global Trade Atlas (GTA)](https://www.ihs.com/products/maritime-global-trade-atlas.html)
+
+This is a trade data sources (formerly) purchased by FAO and available to the users with the ligin creditentials. To find more information about it, please contact to Adam Prakash. 
+

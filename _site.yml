@@ -18,6 +18,8 @@ navbar:
         - text: "Presentation"
           href: verview-presentation-full.htm
         - text: "---------"
+        - text: "- Classification tables"
+          href: 00-classifications.html
         - text: "- UN Comtrade data"
           href: 00-comtrade.html
         - text: "- World Bank data"
@@ -26,10 +28,13 @@ navbar:
           href: 00-wto.html
         - text: "- International Trade Center data"
           href: 00-itc-trademap.html
-        - text: "- MIT-Harvard 'Economic Complexity' Solutions"
-          href: 00-economic-complexity.html
         - text: "- CEPII"
           href: 00-cepi.html
+        - text: "- MIT-Harvard 'Economic Complexity' Solutions"
+          href: 00-economic-complexity.html
+        - text: "- Miscellaneous data sources"
+          href: 00-other-data-sources.html
+          
     - text: "Data manipulation practice in R"
       icon: fa-gear
       menu:

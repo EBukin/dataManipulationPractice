@@ -16,7 +16,7 @@ navbar:
         - text: "Overview of trade data sources"
           href: data-sources-compilation.html
         - text: "Presentation"
-          href: verview-presentation-full.htm
+          href: overview-presentation-full.html
         - text: "---------"
         - text: "- Classification tables"
           href: 00-classifications.html
@@ -28,7 +28,7 @@ navbar:
           href: 00-wto.html
         - text: "- International Trade Center data"
           href: 00-itc-trademap.html
-        - text: "- CEPII"
+        - text: "- CEPII data"
           href: 00-cepi.html
         - text: "- MIT-Harvard 'Economic Complexity' Solutions"
           href: 00-economic-complexity.html

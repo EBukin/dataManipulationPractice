@@ -11,7 +11,7 @@ Here you will find extensive guidelines and some information about trade data so
 
 # You can:
 
-*  Explore the trade data sources in the mavigation bar, selecting `Trade data sources`
+*  Explore the trade data sources in the navigation bar, selecting `Trade data sources`
 
     <a href="data-sources-compilation.html" class="btn btn-warning">Go to the full report page</a>
     <a target="_blank" href="data-sources-compilation.pdf" class="btn btn-primary">Download report in PDF</a>

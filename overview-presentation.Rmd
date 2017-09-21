@@ -10,47 +10,76 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Trade data sources: Overview
 
-Here we will see an overview of the trade data sources, which could be used in the trade data analsys. 
+Today, we will go through the main sources of trade data, which could be used in the trade data analysis. 
 
-Purposed for the Trade team and EST.
+All information presented here is shown here:
 
-## Trade data sources: Overview
+[https://ebukin.github.io/dataManipulationPractice/](https://ebukin.github.io/dataManipulationPractice/)
 
+Content: 
+
+*  General information about commodities classifications
 *  UN Comtrade data
-    -  Data availability in Comtrade
-    -  Regular download in Comtrade
-    -  Bulk download in Comtrade
-    -  Data visualization options
 *  World Bank data
-    -  WITS
-    -  TCdata360
 *  World Trade Organization data
-    -  Tariff data
-    -  WTO measures, notifications, Trade Agreement 
-    -  Trade time series
 *  International Trade Center data
 *  MIT-Harvard `Economic Complexity` Solutions
 *  CEPII
 *  Shiny trade analysis tool
+*  R package for trade data analysis
 
+## General information
+
+*  Trade classifications (What are those? Why those are different? Where to find them?)
+
+    -  [Harmonized System - HS](http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx)
+    
+    -  [Standard International Trade Classification - SITC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=28&Lg=1)
+    
+    -  [Broad Economic Categories - BEC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=10&Lg=1)
+
+*  Other products classifications
+    
+    -  [FAO Commodity list - FCL](http://www.fao.org/economic/ess/ess-standards/commodity/en/).
+    
+    -  [Central Product Classification - CPC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14)
+    
+    -  [List of all UNSD classifications](https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1)
+    
+    -  [UN Methodology for mapping classifications](https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf)
+    
 ## UN Comtrade data
+    
 -  Data availability
-    *  Trade availability visualization tool [https://comtrade.un.org/data/da](https://comtrade.un.org/data/da)
-    *  API interface [https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests](https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests)
+    
+    *  [Trade availability visualization tool](https://comtrade.un.org/data/da)
+    
+    *  [API interface](https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests)
+    
 -  Regular download [https://comtrade.un.org/data/](https://comtrade.un.org/data/)
+
 -  Bulk download 
+    
     *  Web based [https://comtrade.un.org/data/bulk](https://comtrade.un.org/data/bulk)
+    
     *  API [https://comtrade.un.org/data/doc/api/bulk/](https://comtrade.un.org/data/doc/api/bulk/)
-    *  Token [authentication page](https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk)
+    
+-  Restricted access and token
+    
+    *  [Token authentication](https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk)
+    
 -  Data visualization options [https://comtrade.un.org/labs/](https://comtrade.un.org/labs/)
 
-## World Bank data
--  WITS
-    *  Registration / Log in [http://wits.worldbank.org/](http://wits.worldbank.org/)
-    *  Advance query
+## World Bank
+
+-  WITS [http://wits.worldbank.org/](http://wits.worldbank.org/)
+    
+    *  Registration / Log in 
+    *  Advance query - Trade Data
     *  User defined groups of commodities and countries
     *  Tarriffs data
     *  Trade indicators
+    
 -  TCdata360 [https://tcdata360.worldbank.org/](https://tcdata360.worldbank.org/)
 
 ## World Trade Organization data
@@ -63,27 +92,37 @@ Purposed for the Trade team and EST.
 ##  International Trade Center data
 
 
+
 ##  MIT-Harvard `Economic Complexity` Solutions
 
+*  [The Observatory of Economic Complexity](http://atlas.media.mit.edu/en/)
+
+*  [Atlas of economic complexity](http://atlas.cid.harvard.edu)
+
+*  [Globe of economic complexity](http://globe.cid.harvard.edu/)
 
 ##  CEPII
 
 -  Databases: [http://www.cepii.fr/](http://www.cepii.fr/).
-    *  Gravity
-    *  EconMap
-    *  EQCHANGE
-    *  Export Sophistication
-    *  ProdComp
-    *  TradeProd
-    *  Profiles Pays / Country Profiles
-    *  BACI - World trade database
-    *  FDIMap - Foreign Direct Investment database 
-    *  RCA - revealed comparative advantage database
-    *  Trade Unit Values (TUV)
-    *  Trade Prices 
-    *  World Trade Flows Characterization
+    
+    *  [BACI](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=1)
+    *  Other data bases.
 
 ##  Shiny trade analysis tool
 
-[https://tradeanalysis.shinyapps.io/ct-tb-explorer/](https://tradeanalysis.shinyapps.io/ct-tb-explorer/)
+[https://tradeanalysis.shinyapps.io/trade-data-explorer/](https://tradeanalysis.shinyapps.io/trade-data-explorer/)
+
+## R package for trade data analysis
+
+In order to simplify trade data analysis work, an R package was developed to tacle with some basic operations. 
+
+`tradeAnalysis` package could be found here: [https://github.com/EBukin/tradeAnalysis-pack](https://github.com/EBukin/tradeAnalysis-pack)
+
+Installation in R is the following:
+
+```
+install.packages("devtools")
+devtools::install_github("EBukin/tradeAnalysis-pack")
+library(tradeAnalysis)
+```
 

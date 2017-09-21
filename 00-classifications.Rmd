@@ -1,12 +1,12 @@
 ---
-title: "Trade data classificaion systems"
+title: "Trade data classification systems"
 author: "Eduard Bukin"
 date: '2017-09-183'
 ---
 
 ---
 
-## HS system
+## Harmonized System - HS
 
 Officially, World Customs Organisation (WCO) is responsible for maintenance of the HS classification up to 6 digits. Any extension of the HS classifications beyond 6 digits - so called Tariff - line classification is developed by each country individually.  
 
@@ -30,3 +30,8 @@ United Nations Statistics Division is responsible for maintenance of several cla
 
 *  [Methodology for mapping classifications](https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf)
 
+## FAO Commodity List
+
+Withing the FAOSTAT FAO uses own system for classifying all commodities. It is called FAO Commodities List (FCL). 
+
+*  [Overview of all FCL codes](http://www.fao.org/economic/ess/ess-standards/commodity/en/).

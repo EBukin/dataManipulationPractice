@@ -30,29 +30,29 @@ Content:
 
 ## General information
 
-*  Trade classifications (What are those? Why those are different? Where to find them?)
+### Trade classifications (What are those? Why those are different? Where to find them?)
 
-    -  [Harmonized System - HS](http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx)
-    -  [Standard International Trade Classification - SITC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=28&Lg=1)
-    -  [Broad Economic Categories - BEC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=10&Lg=1)
+-  [Harmonized System - HS](http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx)
+-  [Standard International Trade Classification - SITC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=28&Lg=1)
+-  [Broad Economic Categories - BEC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=10&Lg=1)
 
-*  Other products classifications
+### Other products classifications
     
-    -  [FAO Commodity list - FCL](http://www.fao.org/economic/ess/ess-standards/commodity/en/)
-    -  [Central Product Classification - CPC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14)
-    -  [List of all UNSD classifications](https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1)
-    -  [UN Methodology for mapping classifications](https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf)
+-  [FAO Commodity list - FCL](http://www.fao.org/economic/ess/ess-standards/commodity/en/)
+-  [Central Product Classification - CPC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14)
+-  [List of all UNSD classifications](https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1)
+-  [UN Methodology for mapping classifications](https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf)
     
-*  Areas Classification
+### Areas Classification
     
-    -  [m49 - UNSD classification](https://unstats.un.org/unsd/methodology/m49/)
-    -  [FAOSTAT - Country List](http://www.fao.org/faostat/)
-    -  [Other FAO classifications](http://www.fao.org/countryprofiles/iso3list/en/)
+-  [m49 - UNSD classification](https://unstats.un.org/unsd/methodology/m49/)
+-  [FAOSTAT - Country List](http://www.fao.org/faostat/)
+-  [Other FAO classifications](http://www.fao.org/countryprofiles/iso3list/en/)
     
-*   Asymmetry of information
+### Asymmetry of information
 
-    -  CIF vs FOB values
-    -  Data Availability and data sources.
+-  CIF vs FOB values
+-  Data Availability and data sources.
     
 ## One exercise/example
 
@@ -73,42 +73,38 @@ Analyze trade by regions:
     
 ## UN Comtrade data
     
--  Data availability
+### Data availability
     
-    *  [Trade availability visualization tool](https://comtrade.un.org/data/da)
+*  Trade availability visualization tool [https://comtrade.un.org/data/da](https://comtrade.un.org/data/da)
+*  [API interface](https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests)
     
-    *  [API interface](https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests)
-    
--  Regular download [https://comtrade.un.org/data/](https://comtrade.un.org/data/)
+### Regular download [https://comtrade.un.org/data/](https://comtrade.un.org/data/)
 
--  Bulk download 
+### Bulk download 
     
-    *  Web based [https://comtrade.un.org/data/bulk](https://comtrade.un.org/data/bulk)
+*  Web based [https://comtrade.un.org/data/bulk](https://comtrade.un.org/data/bulk)
+*  API [https://comtrade.un.org/data/doc/api/bulk/](https://comtrade.un.org/data/doc/api/bulk/)
     
-    *  API [https://comtrade.un.org/data/doc/api/bulk/](https://comtrade.un.org/data/doc/api/bulk/)
+### Restricted access and [Token authentication](https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk)
     
--  Restricted access and token
-    
-    *  [Token authentication](https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk)
-    
--  Data visualization options [https://comtrade.un.org/labs/](https://comtrade.un.org/labs/)
+### Data visualization options [https://comtrade.un.org/labs/](https://comtrade.un.org/labs/)
 
--  Metadata [https://unstats.un.org/unsd/tradekb/Knowledgebase/13](https://unstats.un.org/unsd/tradekb/Knowledgebase/13)
+### Metadata [https://unstats.un.org/unsd/tradekb/Knowledgebase/13](https://unstats.un.org/unsd/tradekb/Knowledgebase/13)
 
--  Country publication notes [https://comtrade.un.org/db/mr/daPubNoteDetail.aspx](https://comtrade.un.org/db/mr/daPubNoteDetail.aspx)
+### Country publication notes [https://comtrade.un.org/db/mr/daPubNoteDetail.aspx](https://comtrade.un.org/db/mr/daPubNoteDetail.aspx)
 
 ## World Bank
 
--  WITS [http://wits.worldbank.org/](http://wits.worldbank.org/)
+### WITS [http://wits.worldbank.org/](http://wits.worldbank.org/)
     
-    *  Registration / Log in 
-    *  Advance query - Trade Data
-    *  Advance query - Trade Data
-    *  User defined groups of commodities and countries
-    *  Tariffs data
-    *  Trade indicators
+*  Registration / Log in 
+*  Advance query - Trade Data
+*  Advance query - Trade Data
+*  User defined groups of commodities and countries
+*  Tariffs data
+*  Trade indicators
     
--  TCdata360 [https://tcdata360.worldbank.org/](https://tcdata360.worldbank.org/)
+### TCdata360 [https://tcdata360.worldbank.org/](https://tcdata360.worldbank.org/)
 
 ## World Trade Organization data
 
@@ -117,9 +113,19 @@ Analyze trade by regions:
 -  Regional Trade Agreement Information System (RTA-IS) [http://rtais.wto.org/](http://rtais.wto.org/);
 -  Trade data time series [http://stat.wto.org/](http://stat.wto.org/);
 
-##  International Trade Center data
+##  International Trade Center data [- some overview]https://ebukin.github.io/dataManipulationPractice/00-itc-trademap.html
 
+*  Trade Map [http://www.trademap.org/Index.aspx](http://www.trademap.org/Index.aspx)
+*  Market Access Map [http://www.macmap.org/Main.aspx](http://www.macmap.org/Main.aspx)
+*  Standards Map [http://www.standardsmap.org](http://www.standardsmap.org)
+*  Investment Map [http://www.investmentmap.org](http://www.investmentmap.org)
+*  Trade competitiveness Map [http://tradecompetitivenessmap.intracen.org/](http://tradecompetitivenessmap.intracen.org/) 
 
+##  CEPII
+
+-  Databases: [http://www.cepii.fr/](http://www.cepii.fr/).
+    *  [BACI](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=1)
+    *  Other data bases.
 
 ##  MIT-Harvard `Economic Complexity` Solutions
 
@@ -129,14 +135,9 @@ Analyze trade by regions:
 
 *  [Globe of economic complexity](http://globe.cid.harvard.edu/)
 
-##  CEPII
-
--  Databases: [http://www.cepii.fr/](http://www.cepii.fr/).
-    
-    *  [BACI](http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=1)
-    *  Other data bases.
-
 ##  Shiny trade analysis tool
+
+Own development:
 
 [https://tradeanalysis.shinyapps.io/trade-data-explorer/](https://tradeanalysis.shinyapps.io/trade-data-explorer/)
 

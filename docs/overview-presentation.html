@@ -300,13 +300,30 @@ $(document).ready(function () {
 <div id="TOC">
 <ul>
 <li><a href="#trade-data-sources-overview">Trade data sources: Overview</a></li>
-<li><a href="#general-information">General information</a></li>
-<li><a href="#un-comtrade-data">UN Comtrade data</a></li>
-<li><a href="#world-bank">World Bank</a></li>
+<li><a href="#general-information">General information</a><ul>
+<li><a href="#trade-classifications-what-are-those-why-those-are-different-where-to-find-them">Trade classifications (What are those? Why those are different? Where to find them?)</a></li>
+<li><a href="#other-products-classifications">Other products classifications</a></li>
+<li><a href="#areas-classification">Areas Classification</a></li>
+<li><a href="#asymmetry-of-information">Asymmetry of information</a></li>
+</ul></li>
+<li><a href="#one-exerciseexample">One exercise/example</a></li>
+<li><a href="#un-comtrade-data">UN Comtrade data</a><ul>
+<li><a href="#data-availability">Data availability</a></li>
+<li><a href="#regular-download-httpscomtrade.un.orgdata">Regular download <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a></a></li>
+<li><a href="#bulk-download">Bulk download</a></li>
+<li><a href="#restricted-access-and-token-authentication">Restricted access and <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">Token authentication</a></a></li>
+<li><a href="#data-visualization-options-httpscomtrade.un.orglabs">Data visualization options <a href="https://comtrade.un.org/labs/" class="uri">https://comtrade.un.org/labs/</a></a></li>
+<li><a href="#metadata-httpsunstats.un.orgunsdtradekbknowledgebase13">Metadata <a href="https://unstats.un.org/unsd/tradekb/Knowledgebase/13" class="uri">https://unstats.un.org/unsd/tradekb/Knowledgebase/13</a></a></li>
+<li><a href="#country-publication-notes-httpscomtrade.un.orgdbmrdapubnotedetail.aspx">Country publication notes <a href="https://comtrade.un.org/db/mr/daPubNoteDetail.aspx" class="uri">https://comtrade.un.org/db/mr/daPubNoteDetail.aspx</a></a></li>
+</ul></li>
+<li><a href="#world-bank">World Bank</a><ul>
+<li><a href="#wits-httpwits.worldbank.org">WITS <a href="http://wits.worldbank.org/" class="uri">http://wits.worldbank.org/</a></a></li>
+<li><a href="#tcdata360-httpstcdata360.worldbank.org">TCdata360 <a href="https://tcdata360.worldbank.org/" class="uri">https://tcdata360.worldbank.org/</a></a></li>
+</ul></li>
 <li><a href="#world-trade-organization-data">World Trade Organization data</a></li>
-<li><a href="#international-trade-center-data">International Trade Center data</a></li>
-<li><a href="#mit-harvard-economic-complexity-solutions">MIT-Harvard <code>Economic Complexity</code> Solutions</a></li>
+<li><a href="#international-trade-center-data---some-overviewhttpsebukin.github.iodatamanipulationpractice00-itc-trademap.html">International Trade Center data [- some overview]<a href="https://ebukin.github.io/dataManipulationPractice/00-itc-trademap.html" class="uri">https://ebukin.github.io/dataManipulationPractice/00-itc-trademap.html</a></a></li>
 <li><a href="#cepii">CEPII</a></li>
+<li><a href="#mit-harvard-economic-complexity-solutions">MIT-Harvard <code>Economic Complexity</code> Solutions</a></li>
 <li><a href="#shiny-trade-analysis-tool">Shiny trade analysis tool</a></li>
 <li><a href="#r-package-for-trade-data-analysis">R package for trade data analysis</a></li>
 </ul>
@@ -315,15 +332,15 @@ $(document).ready(function () {
 <div id="trade-data-sources-overview" class="section level2">
 <h2>Trade data sources: Overview</h2>
 <p>Today, we will go through the main sources of trade data, which could be used in the trade data analysis.</p>
-<p>All information presented here is shown here:</p>
-<p><a href="https://ebukin.github.io/dataManipulationPractice/" class="uri">https://ebukin.github.io/dataManipulationPractice/</a></p>
+<p>All information presented today is on the website:</p>
+<p><strong><a href="https://ebukin.github.io/dataManipulationPractice/" class="uri">https://ebukin.github.io/dataManipulationPractice/</a></strong></p>
 <p>Content:</p>
 <ul>
-<li>General information about commodities classifications</li>
-<li>UN Comtrade data</li>
-<li>World Bank data</li>
-<li>World Trade Organization data</li>
-<li>International Trade Center data</li>
+<li>General information</li>
+<li>UN Comtrade</li>
+<li>World Bank</li>
+<li>World Trade Organization</li>
+<li>International Trade Center</li>
 <li>MIT-Harvard <code>Economic Complexity</code> Solutions</li>
 <li>CEPII</li>
 <li>Shiny trade analysis tool</li>
@@ -332,56 +349,104 @@ $(document).ready(function () {
 </div>
 <div id="general-information" class="section level2">
 <h2>General information</h2>
+<div id="trade-classifications-what-are-those-why-those-are-different-where-to-find-them" class="section level3">
+<h3>Trade classifications (What are those? Why those are different? Where to find them?)</h3>
 <ul>
-<li><p>Trade classifications (What are those? Why those are different? Where to find them?)</p>
+<li><a href="http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx">Harmonized System - HS</a></li>
+<li><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=28&amp;Lg=1">Standard International Trade Classification - SITC</a></li>
+<li><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=10&amp;Lg=1">Broad Economic Categories - BEC</a></li>
+</ul>
+</div>
+<div id="other-products-classifications" class="section level3">
+<h3>Other products classifications</h3>
 <ul>
-<li><p><a href="http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx">Harmonized System - HS</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=28&amp;Lg=1">Standard International Trade Classification - SITC</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=10&amp;Lg=1">Broad Economic Categories - BEC</a></p></li>
-</ul></li>
-<li><p>Other products classifications</p>
+<li><a href="http://www.fao.org/economic/ess/ess-standards/commodity/en/">FAO Commodity list - FCL</a></li>
+<li><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14">Central Product Classification - CPC</a></li>
+<li><a href="https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1">List of all UNSD classifications</a></li>
+<li><a href="https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf">UN Methodology for mapping classifications</a></li>
+</ul>
+</div>
+<div id="areas-classification" class="section level3">
+<h3>Areas Classification</h3>
 <ul>
-<li><p><a href="http://www.fao.org/economic/ess/ess-standards/commodity/en/">FAO Commodity list - FCL</a>.</p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14">Central Product Classification - CPC</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1">List of all UNSD classifications</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf">UN Methodology for mapping classifications</a></p></li>
-</ul></li>
+<li><a href="https://unstats.un.org/unsd/methodology/m49/">m49 - UNSD classification</a></li>
+<li><a href="http://www.fao.org/faostat/">FAOSTAT - Country List</a></li>
+<li><a href="http://www.fao.org/countryprofiles/iso3list/en/">Other FAO classifications</a></li>
+</ul>
+</div>
+<div id="asymmetry-of-information" class="section level3">
+<h3>Asymmetry of information</h3>
+<ul>
+<li>CIF vs FOB values</li>
+<li>Data Availability and data sources.</li>
+</ul>
+</div>
+</div>
+<div id="one-exerciseexample" class="section level2">
+<h2>One exercise/example</h2>
+<p>Select data for:</p>
+<ul>
+<li>Ukraine</li>
+<li>Annual</li>
+<li>Commodities</li>
+<li>HS Code 1001 - Wheat</li>
+<li>2010-2015</li>
+<li>Trade with the world and some</li>
+</ul>
+<p>Analyze trade by regions:</p>
+<ul>
+<li>Use All Agrifood trade according to WTO classification</li>
+<li>Analyse this trade by Country groups (LDC and LIC)</li>
 </ul>
 </div>
 <div id="un-comtrade-data" class="section level2">
 <h2>UN Comtrade data</h2>
+<div id="data-availability" class="section level3">
+<h3>Data availability</h3>
 <ul>
-<li><p>Data availability</p>
-<ul>
-<li><p><a href="https://comtrade.un.org/data/da">Trade availability visualization tool</a></p></li>
-<li><p><a href="https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests">API interface</a></p></li>
-</ul></li>
-<li><p>Regular download <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a></p></li>
-<li><p>Bulk download</p>
-<ul>
-<li><p>Web based <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a></p></li>
-<li><p>API <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a></p></li>
-</ul></li>
-<li><p>Restricted access and token</p>
-<ul>
-<li><a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">Token authentication</a></li>
-</ul></li>
-<li><p>Data visualization options <a href="https://comtrade.un.org/labs/" class="uri">https://comtrade.un.org/labs/</a></p></li>
+<li>Trade availability visualization tool <a href="https://comtrade.un.org/data/da" class="uri">https://comtrade.un.org/data/da</a></li>
+<li><a href="https://comtrade.un.org/data/Doc/API#DataAvailabilityRequests">API interface</a></li>
 </ul>
+</div>
+<div id="regular-download-httpscomtrade.un.orgdata" class="section level3">
+<h3>Regular download <a href="https://comtrade.un.org/data/" class="uri">https://comtrade.un.org/data/</a></h3>
+</div>
+<div id="bulk-download" class="section level3">
+<h3>Bulk download</h3>
+<ul>
+<li>Web based <a href="https://comtrade.un.org/data/bulk" class="uri">https://comtrade.un.org/data/bulk</a></li>
+<li>API <a href="https://comtrade.un.org/data/doc/api/bulk/" class="uri">https://comtrade.un.org/data/doc/api/bulk/</a></li>
+</ul>
+</div>
+<div id="restricted-access-and-token-authentication" class="section level3">
+<h3>Restricted access and <a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">Token authentication</a></h3>
+</div>
+<div id="data-visualization-options-httpscomtrade.un.orglabs" class="section level3">
+<h3>Data visualization options <a href="https://comtrade.un.org/labs/" class="uri">https://comtrade.un.org/labs/</a></h3>
+</div>
+<div id="metadata-httpsunstats.un.orgunsdtradekbknowledgebase13" class="section level3">
+<h3>Metadata <a href="https://unstats.un.org/unsd/tradekb/Knowledgebase/13" class="uri">https://unstats.un.org/unsd/tradekb/Knowledgebase/13</a></h3>
+</div>
+<div id="country-publication-notes-httpscomtrade.un.orgdbmrdapubnotedetail.aspx" class="section level3">
+<h3>Country publication notes <a href="https://comtrade.un.org/db/mr/daPubNoteDetail.aspx" class="uri">https://comtrade.un.org/db/mr/daPubNoteDetail.aspx</a></h3>
+</div>
 </div>
 <div id="world-bank" class="section level2">
 <h2>World Bank</h2>
-<ul>
-<li><p>WITS <a href="http://wits.worldbank.org/" class="uri">http://wits.worldbank.org/</a></p>
+<div id="wits-httpwits.worldbank.org" class="section level3">
+<h3>WITS <a href="http://wits.worldbank.org/" class="uri">http://wits.worldbank.org/</a></h3>
 <ul>
 <li>Registration / Log in</li>
 <li>Advance query - Trade Data</li>
+<li>Advance query - Trade Data</li>
 <li>User defined groups of commodities and countries</li>
-<li>Tarriffs data</li>
+<li>Tariffs data</li>
 <li>Trade indicators</li>
-</ul></li>
-<li><p>TCdata360 <a href="https://tcdata360.worldbank.org/" class="uri">https://tcdata360.worldbank.org/</a></p></li>
 </ul>
+</div>
+<div id="tcdata360-httpstcdata360.worldbank.org" class="section level3">
+<h3>TCdata360 <a href="https://tcdata360.worldbank.org/" class="uri">https://tcdata360.worldbank.org/</a></h3>
+</div>
 </div>
 <div id="world-trade-organization-data" class="section level2">
 <h2>World Trade Organization data</h2>
@@ -392,8 +457,25 @@ $(document).ready(function () {
 <li>Trade data time series <a href="http://stat.wto.org/" class="uri">http://stat.wto.org/</a>;</li>
 </ul>
 </div>
-<div id="international-trade-center-data" class="section level2">
-<h2>International Trade Center data</h2>
+<div id="international-trade-center-data---some-overviewhttpsebukin.github.iodatamanipulationpractice00-itc-trademap.html" class="section level2">
+<h2>International Trade Center data [- some overview]<a href="https://ebukin.github.io/dataManipulationPractice/00-itc-trademap.html" class="uri">https://ebukin.github.io/dataManipulationPractice/00-itc-trademap.html</a></h2>
+<ul>
+<li>Trade Map <a href="http://www.trademap.org/Index.aspx" class="uri">http://www.trademap.org/Index.aspx</a></li>
+<li>Market Access Map <a href="http://www.macmap.org/Main.aspx" class="uri">http://www.macmap.org/Main.aspx</a></li>
+<li>Standards Map <a href="http://www.standardsmap.org" class="uri">http://www.standardsmap.org</a></li>
+<li>Investment Map <a href="http://www.investmentmap.org" class="uri">http://www.investmentmap.org</a></li>
+<li>Trade competitiveness Map <a href="http://tradecompetitivenessmap.intracen.org/" class="uri">http://tradecompetitivenessmap.intracen.org/</a></li>
+</ul>
+</div>
+<div id="cepii" class="section level2">
+<h2>CEPII</h2>
+<ul>
+<li>Databases: <a href="http://www.cepii.fr/" class="uri">http://www.cepii.fr/</a>.
+<ul>
+<li><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=1">BACI</a></li>
+<li>Other data bases.</li>
+</ul></li>
+</ul>
 </div>
 <div id="mit-harvard-economic-complexity-solutions" class="section level2">
 <h2>MIT-Harvard <code>Economic Complexity</code> Solutions</h2>
@@ -403,23 +485,14 @@ $(document).ready(function () {
 <li><p><a href="http://globe.cid.harvard.edu/">Globe of economic complexity</a></p></li>
 </ul>
 </div>
-<div id="cepii" class="section level2">
-<h2>CEPII</h2>
-<ul>
-<li><p>Databases: <a href="http://www.cepii.fr/" class="uri">http://www.cepii.fr/</a>.</p>
-<ul>
-<li><a href="http://www.cepii.fr/CEPII/en/bdd_modele/presentation.asp?id=1">BACI</a></li>
-<li>Other data bases.</li>
-</ul></li>
-</ul>
-</div>
 <div id="shiny-trade-analysis-tool" class="section level2">
 <h2>Shiny trade analysis tool</h2>
+<p>Own development:</p>
 <p><a href="https://tradeanalysis.shinyapps.io/trade-data-explorer/" class="uri">https://tradeanalysis.shinyapps.io/trade-data-explorer/</a></p>
 </div>
 <div id="r-package-for-trade-data-analysis" class="section level2">
 <h2>R package for trade data analysis</h2>
-<p>In order to simplify trade data analysis work, an R package was developed to tacle with some basic operations.</p>
+<p>In order to simplify trade data analysis work, an R package was developed to tackle with some basic operations.</p>
 <p><code>tradeAnalysis</code> package could be found here: <a href="https://github.com/EBukin/tradeAnalysis-pack" class="uri">https://github.com/EBukin/tradeAnalysis-pack</a></p>
 <p>Installation in R is the following:</p>
 <pre><code>install.packages(&quot;devtools&quot;)

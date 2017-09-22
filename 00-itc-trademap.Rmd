@@ -10,11 +10,11 @@ Trade Map - [http://www.trademap.org/](http://www.trademap.org/) - provides - in
 
 Main products available from ITC are:
 
-*  Trade map
+*  Trade Map
 *  Market Access Map
 *  Standards Map
-*  Trade competitiveness map
-*  Export potential map
+*  Investment Map
+*  Trade competitiveness Map
 
 [ITC User guide](http://www.trademap.org/(S(ixaegk45uetoip45u2y2ojit))/Docs/TradeMap-Userguide-EN.pdf) - this is a complete guide over all ITC trade map services.
 
@@ -30,7 +30,7 @@ The interface of the Trade Map  is very intuitive. For and extensive overview of
 *  [Official Trade Map user guide](http://www.trademap.org/Docs/TradeMap-Userguide-EN.pdf);
 *  [Trade Map video tutorial playlist](https://www.youtube.com/playlist?list=PLBD125D3A2EB0D420). 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GIDZL0iUKF0" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GIDZL0iUKF0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
 ----
 
@@ -68,7 +68,7 @@ Supporting materials:
 *  [E-Learning](http://www.standardsmap.org/e-learning/lecture101/story.html);
 *  [Standards Map video tutorial playlist](https://www.youtube.com/playlist?list=PLTZPF2lAdflP-zPODP8R0B-ch0QJ6lRbs);
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HWaf6wpwgRs" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HWaf6wpwgRs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
 ## Investment Map
 
@@ -83,12 +83,12 @@ See:
 *  [Investment Map User Guide](http://www.investmentmap.org/docs/invmap-userguide-en.pdf)
 *  [Investment Map video tutorial playlist](https://www.youtube.com/playlist?list=PL9361964488652755)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yUi1Os5nPYg" frameborder="0" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yUi1Os5nPYg?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
 Supporting materials:
 
-*  [Investment Map – Guided tour](http://www.investmentmap.org/docs/Invmap-guided-Tour.pdf)
-*  [Investment Map – Guided tour - Version 2](http://www.investmentmap.org/docs/Invmap-guided-Tour-Handouts.pdf)
+*  [Investment Map - Guided tour](http://www.investmentmap.org/docs/Invmap-guided-Tour.pdf)
+*  [Investment Map - Guided tour - Version 2](http://www.investmentmap.org/docs/Invmap-guided-Tour-Handouts.pdf)
 
 ## Trade Competitiveness Map
 

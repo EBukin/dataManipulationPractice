@@ -24,15 +24,15 @@ Eduard Bukin
 <div id="trade-data-sources-overview" class="slide section level2">
 <h1>Trade data sources: Overview</h1>
 <p>Today, we will go through the main sources of trade data, which could be used in the trade data analysis.</p>
-<p>All information presented here is shown here:</p>
-<p><a href="https://ebukin.github.io/dataManipulationPractice/" class="uri">https://ebukin.github.io/dataManipulationPractice/</a></p>
+<p>All information presented today is on the website:</p>
+<p><strong><a href="https://ebukin.github.io/dataManipulationPractice/" class="uri">https://ebukin.github.io/dataManipulationPractice/</a></strong></p>
 <p>Content:</p>
 <ul>
-<li>General information about commodities classifications</li>
-<li>UN Comtrade data</li>
-<li>World Bank data</li>
-<li>World Trade Organization data</li>
-<li>International Trade Center data</li>
+<li>General information</li>
+<li>UN Comtrade</li>
+<li>World Bank</li>
+<li>World Trade Organization</li>
+<li>International Trade Center</li>
 <li>MIT-Harvard <code>Economic Complexity</code> Solutions</li>
 <li>CEPII</li>
 <li>Shiny trade analysis tool</li>
@@ -44,17 +44,45 @@ Eduard Bukin
 <ul>
 <li><p>Trade classifications (What are those? Why those are different? Where to find them?)</p>
 <ul>
-<li><p><a href="http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx">Harmonized System - HS</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=28&amp;Lg=1">Standard International Trade Classification - SITC</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=10&amp;Lg=1">Broad Economic Categories - BEC</a></p></li>
+<li><a href="http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx">Harmonized System - HS</a></li>
+<li><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=28&amp;Lg=1">Standard International Trade Classification - SITC</a></li>
+<li><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=10&amp;Lg=1">Broad Economic Categories - BEC</a></li>
 </ul></li>
 <li><p>Other products classifications</p>
 <ul>
-<li><p><a href="http://www.fao.org/economic/ess/ess-standards/commodity/en/">FAO Commodity list - FCL</a>.</p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14">Central Product Classification - CPC</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1">List of all UNSD classifications</a></p></li>
-<li><p><a href="https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf">UN Methodology for mapping classifications</a></p></li>
+<li><a href="http://www.fao.org/economic/ess/ess-standards/commodity/en/">FAO Commodity list - FCL</a></li>
+<li><a href="https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14">Central Product Classification - CPC</a></li>
+<li><a href="https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1">List of all UNSD classifications</a></li>
+<li><a href="https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf">UN Methodology for mapping classifications</a></li>
 </ul></li>
+<li><p>Areas Classification</p>
+<ul>
+<li><a href="https://unstats.un.org/unsd/methodology/m49/">m49 - UNSD classification</a></li>
+<li><a href="http://www.fao.org/faostat/">FAOSTAT - Country List</a></li>
+<li><a href="http://www.fao.org/countryprofiles/iso3list/en/">Other FAO classifications</a></li>
+</ul></li>
+<li><p>Asymmetry of information</p>
+<ul>
+<li>CIF vs FOB values</li>
+<li>Data Availability and data sources.</li>
+</ul></li>
+</ul>
+</div>
+<div id="one-exerciseexample" class="slide section level2">
+<h1>One exercise/example</h1>
+<p>Select data for:</p>
+<ul>
+<li>Ukraine</li>
+<li>Annual</li>
+<li>Commodities</li>
+<li>HS Code 1001 - Wheat</li>
+<li>2010-2015</li>
+<li>Trade with the world and some</li>
+</ul>
+<p>Analyze trade by regions:</p>
+<ul>
+<li>Use All Agrifood trade according to WTO classification</li>
+<li>Analyse this trade by Country groups (LDC and LIC)</li>
 </ul>
 </div>
 <div id="un-comtrade-data" class="slide section level2">
@@ -76,6 +104,8 @@ Eduard Bukin
 <li><a href="https://comtrade.un.org/data/auth/login?ReturnUrl=%2Fdata%2Fbulk">Token authentication</a></li>
 </ul></li>
 <li><p>Data visualization options <a href="https://comtrade.un.org/labs/" class="uri">https://comtrade.un.org/labs/</a></p></li>
+<li><p>Metadata <a href="https://unstats.un.org/unsd/tradekb/Knowledgebase/13" class="uri">https://unstats.un.org/unsd/tradekb/Knowledgebase/13</a></p></li>
+<li><p>Country publication notes <a href="https://comtrade.un.org/db/mr/daPubNoteDetail.aspx" class="uri">https://comtrade.un.org/db/mr/daPubNoteDetail.aspx</a></p></li>
 </ul>
 </div>
 <div id="world-bank" class="slide section level2">
@@ -85,8 +115,9 @@ Eduard Bukin
 <ul>
 <li>Registration / Log in</li>
 <li>Advance query - Trade Data</li>
+<li>Advance query - Trade Data</li>
 <li>User defined groups of commodities and countries</li>
-<li>Tarriffs data</li>
+<li>Tariffs data</li>
 <li>Trade indicators</li>
 </ul></li>
 <li><p>TCdata360 <a href="https://tcdata360.worldbank.org/" class="uri">https://tcdata360.worldbank.org/</a></p></li>
@@ -128,7 +159,7 @@ Eduard Bukin
 </div>
 <div id="r-package-for-trade-data-analysis" class="slide section level2">
 <h1>R package for trade data analysis</h1>
-<p>In order to simplify trade data analysis work, an R package was developed to tacle with some basic operations.</p>
+<p>In order to simplify trade data analysis work, an R package was developed to tackle with some basic operations.</p>
 <p><code>tradeAnalysis</code> package could be found here: <a href="https://github.com/EBukin/tradeAnalysis-pack" class="uri">https://github.com/EBukin/tradeAnalysis-pack</a></p>
 <p>Installation in R is the following:</p>
 <pre><code>install.packages(&quot;devtools&quot;)

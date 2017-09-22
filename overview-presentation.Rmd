@@ -12,17 +12,17 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Today, we will go through the main sources of trade data, which could be used in the trade data analysis. 
 
-All information presented here is shown here:
+All information presented today is on the website:
 
-[https://ebukin.github.io/dataManipulationPractice/](https://ebukin.github.io/dataManipulationPractice/)
+**[https://ebukin.github.io/dataManipulationPractice/](https://ebukin.github.io/dataManipulationPractice/)**
 
 Content: 
 
-*  General information about commodities classifications
-*  UN Comtrade data
-*  World Bank data
-*  World Trade Organization data
-*  International Trade Center data
+*  General information
+*  UN Comtrade
+*  World Bank
+*  World Trade Organization
+*  International Trade Center
 *  MIT-Harvard `Economic Complexity` Solutions
 *  CEPII
 *  Shiny trade analysis tool
@@ -33,20 +33,43 @@ Content:
 *  Trade classifications (What are those? Why those are different? Where to find them?)
 
     -  [Harmonized System - HS](http://www.wcoomd.org/en/topics/nomenclature/instrument-and-tools/hs-nomenclature-2017-edition.aspx)
-    
     -  [Standard International Trade Classification - SITC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=28&Lg=1)
-    
     -  [Broad Economic Categories - BEC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=10&Lg=1)
 
 *  Other products classifications
     
-    -  [FAO Commodity list - FCL](http://www.fao.org/economic/ess/ess-standards/commodity/en/).
-    
+    -  [FAO Commodity list - FCL](http://www.fao.org/economic/ess/ess-standards/commodity/en/)
     -  [Central Product Classification - CPC](https://unstats.un.org/unsd/cr/registry/regcst.asp?Cl=14)
-    
     -  [List of all UNSD classifications](https://unstats.un.org/unsd/cr/registry/regct.asp?Lg=1)
-    
     -  [UN Methodology for mapping classifications](https://unstats.un.org/unsd/trade/classifications/corr-notes/HS2017%20conversion%20to%20earlier%20HS%20versions%20and%20other%20classifications.pdf)
+    
+*  Areas Classification
+    
+    -  [m49 - UNSD classification](https://unstats.un.org/unsd/methodology/m49/)
+    -  [FAOSTAT - Country List](http://www.fao.org/faostat/)
+    -  [Other FAO classifications](http://www.fao.org/countryprofiles/iso3list/en/)
+    
+*   Asymmetry of information
+
+    -  CIF vs FOB values
+    -  Data Availability and data sources.
+    
+## One exercise/example
+
+Select data for:
+
+*  Ukraine
+*  Annual 
+*  Commodities
+*  HS Code 1001 - Wheat
+*  2010-2015
+*  Trade with the world and some 
+
+Analyze trade by regions:
+
+*  Use All Agrifood trade according to WTO classification
+*  Analyse this trade by Country groups (LDC and LIC)
+
     
 ## UN Comtrade data
     
@@ -70,14 +93,19 @@ Content:
     
 -  Data visualization options [https://comtrade.un.org/labs/](https://comtrade.un.org/labs/)
 
+-  Metadata [https://unstats.un.org/unsd/tradekb/Knowledgebase/13](https://unstats.un.org/unsd/tradekb/Knowledgebase/13)
+
+-  Country publication notes [https://comtrade.un.org/db/mr/daPubNoteDetail.aspx](https://comtrade.un.org/db/mr/daPubNoteDetail.aspx)
+
 ## World Bank
 
 -  WITS [http://wits.worldbank.org/](http://wits.worldbank.org/)
     
     *  Registration / Log in 
     *  Advance query - Trade Data
+    *  Advance query - Trade Data
     *  User defined groups of commodities and countries
-    *  Tarriffs data
+    *  Tariffs data
     *  Trade indicators
     
 -  TCdata360 [https://tcdata360.worldbank.org/](https://tcdata360.worldbank.org/)
@@ -114,7 +142,7 @@ Content:
 
 ## R package for trade data analysis
 
-In order to simplify trade data analysis work, an R package was developed to tacle with some basic operations. 
+In order to simplify trade data analysis work, an R package was developed to tackle with some basic operations. 
 
 `tradeAnalysis` package could be found here: [https://github.com/EBukin/tradeAnalysis-pack](https://github.com/EBukin/tradeAnalysis-pack)
 

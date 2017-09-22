@@ -6,10 +6,98 @@ date: '2017-09-03'
 
 ---
 
-Trade Map - [http://www.trademap.org/](http://www.trademap.org/) - provides - in the form of tables, graphs and maps - indicators on export performance, international demand, alternative markets and competitive markets, as well as a directory of importing and exporting companies. Trade Map covers 220 countries and territories and 5300 products of the Harmonized System. The monthly, quarterly and yearly trade flows are available from the most aggregated level to the tariff line level.
+Trade Map - [http://www.trademap.org/](http://www.trademap.org/) - provides - in the form of tables, graphs and maps - indicators on export performance, international demand, alternative markets and competitive markets, as well as a directory of importing and exporting companies. Trade Map covers 220 countries and territories and 5300 products of the Harmonized System. The monthly, quarterly and yearly trade flows are available from the most aggregated level to the tariff line level (under subscription).
 
-**Source**
+Main products available from ITC are:
 
-**How to access data**
+*  Trade map
+*  Market Access Map
+*  Standards Map
+*  Trade competitiveness map
+*  Export potential map
 
-**Registration and login**
+[ITC User guide](http://www.trademap.org/(S(ixaegk45uetoip45u2y2ojit))/Docs/TradeMap-Userguide-EN.pdf) - this is a complete guide over all ITC trade map services.
+
+----
+
+## Trade Map 
+
+[http://www.trademap.org/Index.aspx](http://www.trademap.org/Index.aspx)
+
+You need to follow a registration procedure in order to use more functions of the ITC Trade Map. The same registration credentials could be used to access other ITC services.
+
+The interface of the Trade Map  is very intuitive. For and extensive overview of the functionality, see:
+*  [Official Trade Map user guide](http://www.trademap.org/Docs/TradeMap-Userguide-EN.pdf);
+*  [Trade Map video tutorial playlist](https://www.youtube.com/playlist?list=PLBD125D3A2EB0D420). 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GIDZL0iUKF0" frameborder="0" allowfullscreen></iframe>
+
+----
+
+## Market Access Map
+
+Market Access Map provides six modules for retrieving, analysis and downloading information on tariffs, trade and non-tariff measures (market requirements). 
+
+[http://www.macmap.org/Main.aspx](http://www.macmap.org/Main.aspx). Use the same log in information as you use for the ITC trade map.
+
+For more information on how to use see:
+
+*  [Market Access Map video tutorial playlist](https://www.youtube.com/playlist?list=PLTZPF2lAdflOiJxNvc6ubm9nND4L8nWXA)
+*  [Official Market Access Map user guide](http://www.macmap.org/Content/UserGuide-en.pdf)
+*  [E-Learning](http://www.macmap.org/SupportMaterials/elearning/elearning.aspx)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1DoI4pyx3ZQ?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+
+Supporting materials:
+
+*  [E-Learning](http://www.macmap.org/SupportMaterials/elearning/elearning.aspx) - Web based e-learning from ITC; 
+*  [Methodology of the Market Access Map](http://www.macmap.org/SupportMaterials/Methodology.aspx) that is developed and used by ITC for the analysis;
+*  [Data availability](http://www.macmap.org/SupportMaterials/DataAvailabilityMfn.aspx);
+*  [Product nomenclatures ](http://www.macmap.org/SupportMaterials/ProductNomenclature/SearchByKeyword.aspx);
+*  [Glossary](http://www.macmap.org/SupportMaterials/Glossary.aspx)
+
+## Standards Map
+
+[http://www.standardsmap.org](http://www.standardsmap.org)
+
+Standards Map provides comprehensive, verified and transparent information on voluntary sustainability standards and other similar initiatives covering issues such as food quality and safety. The main objective of the programme is to strengthen the capacity of producers, exporters, policymakers and buyers, to participate in more sustainable production and trade.
+
+Supporting materials:
+
+*  [Introductory overview page](http://www.intracen.org/itc/market-data/standards-map/overview/);
+*  [E-Learning](http://www.standardsmap.org/e-learning/lecture101/story.html);
+*  [Standards Map video tutorial playlist](https://www.youtube.com/playlist?list=PLTZPF2lAdflP-zPODP8R0B-ch0QJ6lRbs);
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HWaf6wpwgRs" frameborder="0" allowfullscreen></iframe>
+
+## Investment Map
+
+[http://www.investmentmap.org](http://www.investmentmap.org)
+
+Investment Map is produced by the International Trade Centre (ITC) and the United Nations Conference on Trade and Development (UNCTAD) in partnership with: the World Association of Investment Promotion Agencies (WAIPA); and the Multilateral Investment Guarantee Agency (MIGA), part of the World Bank Group.
+
+Investment Map combines statistics on foreign direct investment and international trade, tariff data and activities of multinational firms. The tariff data includes MFN tariffs as well as multilateral, regional and bilateral preferences and covers ad valorem equivalents of specific tariffs, tariff quotas and anti-dumping duties. Tariff and trade data are available for merchandise goods (not services) at the 6-digit level of the Harmonized System for about 5,000 product items. Information on foreign direct investment (FDI) is available on goods and services for up to 150 sectors.
+
+See:
+
+*  [Investment Map User Guide](http://www.investmentmap.org/docs/invmap-userguide-en.pdf)
+*  [Investment Map video tutorial playlist](https://www.youtube.com/playlist?list=PL9361964488652755)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yUi1Os5nPYg" frameborder="0" allowfullscreen></iframe>
+
+Supporting materials:
+
+*  [Investment Map – Guided tour](http://www.investmentmap.org/docs/Invmap-guided-Tour.pdf)
+*  [Investment Map – Guided tour - Version 2](http://www.investmentmap.org/docs/Invmap-guided-Tour-Handouts.pdf)
+
+## Trade Competitiveness Map
+
+[http://tradecompetitivenessmap.intracen.org/](http://tradecompetitivenessmap.intracen.org/) 
+
+Analyse country and product competitiveness with trade flows. It does provides snapshots of the countries trade indicators for the list of predefined commodities.
+
+Supporting materials:
+
+*  [Trade Performance Index](http://tradecompetitivenessmap.intracen.org/Documents/TradeCompMap-Trade%20Performance%20Index-UserGuide-EN.pdf)
+*  [National Export Performance and National Import Profile](http://tradecompetitivenessmap.intracen.org/Documents/TradeCompMap-Trade%20PerformanceHS-UserGuide-EN.pdf);
+*  [User guide about the Consistency of Trade Statistics](http://tradecompetitivenessmap.intracen.org/Documents/TradeCompMap-Consistency%20of%20Trade%20Statistics-UserGuide-EN.pdf)
